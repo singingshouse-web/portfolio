@@ -21,18 +21,19 @@
   /* ---------- 參數 ---------- */
   const CELL = 68;          // 網格間距
   const INFLUENCE = 330;    // 滑鼠影響半徑
-  const MAX_WARP = 32;      // 最大牽引距離
+  const MAX_WARP = 16;      // 最大牽引距離
   const DOT_SPACING = 30;   // 背景點距
   const LERP = 0.08;        // 滑鼠跟隨平滑度
+  const CENTER_CLEAR = 1000;// 中央淨空寬度（px），此範圍內不顯示特效
 
   const css = getComputedStyle(document.documentElement);
   const ACCENT = (css.getPropertyValue("--accent").trim() || "#E986A2");
   const A = hex2rgb(ACCENT);
 
   const LINE_BASE = { r: 51, g: 51, b: 51, a: MODE === "static" ? 0.03 : 0.055 };
-  const LINE_ON   = { r: A.r, g: A.g, b: A.b, a: 0.6 };
+  const LINE_ON   = { r: A.r, g: A.g, b: A.b, a: 0.3 };
   const NODE_BASE = { r: 51, g: 51, b: 51, a: MODE === "static" ? 0.04 : 0.09 };
-  const NODE_ON   = { r: A.r, g: A.g, b: A.b, a: 1 };
+  const NODE_ON   = { r: A.r, g: A.g, b: A.b, a: 0.55 };
   const NODE_R = 1.9, NODE_R_ON = 3.8;
 
   function hex2rgb(h) {
@@ -50,7 +51,8 @@
   const mouse = { x: -9999, y: -9999 };
   const target = { x: -9999, y: -9999 };
   const ripples = [];
-  const band = document.querySelector(".pressure-band");
+  /* 首頁以大字區塊為界、內頁以主視覺大圖為界 */
+  const band = document.querySelector(".pressure-band") || document.querySelector(".b-hero");
 
   function resize() {
     W = window.innerWidth;
@@ -187,7 +189,7 @@
         if (t > 0.3) {
           const gr = r + lerp(0, 6, (t - 0.3) / 0.7);
           const g = ctx.createRadialGradient(p.x, p.y, r * 0.5, p.x, p.y, gr);
-          g.addColorStop(0, `rgba(${A.r},${A.g},${A.b},${(t * 0.28).toFixed(3)})`);
+          g.addColorStop(0, `rgba(${A.r},${A.g},${A.b},${(t * 0.14).toFixed(3)})`);
           g.addColorStop(1, `rgba(${A.r},${A.g},${A.b},0)`);
           ctx.beginPath();
           ctx.arc(p.x, p.y, gr, 0, Math.PI * 2);
@@ -205,10 +207,27 @@
     for (const r of ripples) {
       ctx.beginPath();
       ctx.arc(r.x, r.y, Math.max(0, r.radius), 0, Math.PI * 2);
-      ctx.strokeStyle = `rgba(${A.r},${A.g},${A.b},${(r.opacity * 0.3).toFixed(3)})`;
+      ctx.strokeStyle = `rgba(${A.r},${A.g},${A.b},${(r.opacity * 0.15).toFixed(3)})`;
       ctx.lineWidth = 1.4;
       ctx.stroke();
     }
+
+    /* 中央內容區清空：特效只出現在兩側，交界以漸層淡出 */
+    const cx = W / 2;
+    const half = Math.min(CENTER_CLEAR / 2, W * 0.34);
+    const band = 200;
+    const total = (half + band) * 2;
+    const g = ctx.createLinearGradient(cx - half - band, 0, cx + half + band, 0);
+    const edge = band / total;
+    g.addColorStop(0, "rgba(0,0,0,0)");
+    g.addColorStop(edge, "rgba(0,0,0,1)");
+    g.addColorStop(1 - edge, "rgba(0,0,0,1)");
+    g.addColorStop(1, "rgba(0,0,0,0)");
+    ctx.save();
+    ctx.globalCompositeOperation = "destination-out";
+    ctx.fillStyle = g;
+    ctx.fillRect(cx - half - band, 0, total, H);
+    ctx.restore();
   }
 
   let queued = false;

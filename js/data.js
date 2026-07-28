@@ -77,7 +77,7 @@ const SITE = {
     ]
   },
   otherWorks:
-    "其他參與案例：台北101 官方網站、TDCC 臺灣集中保管結算所、里山木屋、Braun 新品活動網頁、立頓英式茶館、好自在數位行銷、Bite! APP"
+    "其他參與案例：SK-II 年度銷售活動與彩妝網站、台北101 官方網站、TDCC 臺灣集中保管結算所、里山木屋、Braun 新品活動網頁、立頓英式茶館、好自在數位行銷、Bite! APP"
 };
 
 /* ---------------------------------------------------------
@@ -253,28 +253,5 @@ const BRANDS = [
       }
     ],
     also: ""
-  },
-  {
-    id: "skii",
-    name: "SK-II",
-    nameEn: "SK-II",
-    category: "數位活動",
-    tags: ["互動活動", "社群平台", "促銷視覺"],
-    card: "./images/skii_card.jpg",
-    hero: "./images/skii_hero.jpg",
-    intro:
-      "參與 SK-II 年度銷售活動的數位設計，於社群平台規劃一系列互動式活動機制，提升活動曝光與消費者參與。",
-    projects: [
-      {
-        name: "年度互動銷售活動",
-        note: "在精品美妝嚴謹的視覺規範內，設計吸引參與的互動機制。",
-        images: [
-          "./images/skii_p1_01.jpg",
-          "./images/skii_p1_02.jpg",
-          "./images/skii_p1_03.jpg"
-        ]
-      }
-    ],
-    also: "另參與：SK-II 促銷活動、彩妝網站系列。"
   }
 ];
