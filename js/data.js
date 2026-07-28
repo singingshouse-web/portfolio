@@ -7,8 +7,45 @@ const SITE = {
   brandName: "心映好事",
   brandNameEn: "SINGINGS HOUSE",
   tagline: "從自有品牌出發的設計服務",
-  heroTitle: "因為自己做過品牌，\n我們知道每個畫面背後都是取捨。",
+  /* 大字互動效果的文字（留空字串就不顯示） */
+  pressureText: "Hello!",
+
+  /* 大字使用的可變字型。換字型 = 整組換掉下面這一塊。
+     ── 其他選擇（複製貼上取代即可）──────────────────
+
+     Anybody（方正帶科技感，寬度落差最大、效果最戲劇化）
+     { family: "Anybody", url: "https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,100..900&display=swap",
+       wdth: [50, 150], wght: [100, 900], slnt: null }
+
+     Saira（方正偏工業風）
+     { family: "Saira", url: "https://fonts.googleapis.com/css2?family=Saira:wdth,wght@50..125,100..900&display=swap",
+       wdth: [50, 125], wght: [100, 900], slnt: null }
+
+     Martian Mono（等寬字，極度方正、技術感）
+     { family: "Martian Mono", url: "https://fonts.googleapis.com/css2?family=Martian+Mono:wdth,wght@75..112.5,100..800&display=swap",
+       wdth: [75, 112.5], wght: [100, 800], slnt: null }
+
+     Roboto Flex（範圍最寬但個性中性）
+     { family: "Roboto Flex", url: "https://fonts.googleapis.com/css2?family=Roboto+Flex:slnt,wdth,wght@-10..0,25..151,100..1000&display=swap",
+       wdth: [25, 151], wght: [100, 1000], slnt: [-10, 0] }
+     ──────────────────────────────────────────── */
+  pressureFont: {
+    family: "Archivo",
+    url: "https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap",
+    wdth: [62, 125],
+    wght: [100, 900],
+    slnt: null
+  },
+
+  /* Hero 主標。備選：
+     「先是品牌主，然後才是設計服務。」
+     「每個畫面，都是一次取捨。」                        */
+  heroTitle: "我們自己做品牌，\n也替品牌做設計。",
   heroSub: "心映好事既是品牌，也是設計服務。從自有產品「擁抱情緒卡」到國際品牌的數位專案，我們用同一種標準對待每一個畫面。",
+  /* Contact 區標題。備選：
+     「有想做的東西，寫信給我們。」
+     「從一封信開始。」                                  */
+  contactTitle: "說說你想解決的問題，\n我們從那裡開始。",
   email: "singingshouse@gmail.com",
   clients: ["IKEA", "SK-II", "兆豐銀行", "桂格", "台北101", "LP SUPPORT", "BRAUN", "立頓", "TDCC", "PIMQ"],
   attribution:
@@ -18,7 +55,7 @@ const SITE = {
     paragraphs: [
       "心映好事是一個從自有產品出發的設計品牌。我們自己企劃、設計並推出「擁抱情緒卡」與線上抽牌系統——從品牌識別、產品視覺到募資頁面，完整走過一次品牌主要走的路。",
       "設計服務聚焦於網頁視覺與前端設計。主理設計師擁有二十年多媒體設計經驗，曾於品牌設計代理商參與 IKEA、SK-II、兆豐銀行、台北 101 等品牌的數位專案。",
-      "帶著你的想法來，我們一起把它做成對的樣子。"
+      "從自有產品到客戶委託，我們用同一種標準對待每一個畫面。"
     ],
     /* 時間軸：年份請自行補上正確資訊（year 留空字串就不會顯示） */
     timeline: [

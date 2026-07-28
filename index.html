@@ -11,7 +11,7 @@
 <link rel="icon" href="./images/logo_mark.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Sans+TC:wght@200;300;400&family=Noto+Serif+TC:wght@300;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Noto+Sans+TC:wght@100..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
@@ -29,8 +29,11 @@
   </div>
 </nav>
 
+<div class="pressure-band">
+  <div class="wrap"><div id="pressure" aria-hidden="true"></div></div>
+</div>
+
 <header class="hero">
-  <img class="hero-mark" src="./images/logo_mark.svg" alt="">
   <div class="wrap">
     <p class="label" id="tagline"></p>
     <h1 id="heroTitle"></h1>
@@ -93,7 +96,7 @@
 <section class="contact" id="contact">
   <div class="wrap">
     <p class="label">Contact</p>
-    <h2>帶著你的想法來，<br>我們一起把它做成對的樣子。</h2>
+    <h2 id="contactTitle"></h2>
     <a class="mail" id="mail" href="#"></a>
   </div>
 </section>

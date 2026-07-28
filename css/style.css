@@ -14,8 +14,9 @@
   --max: 1320px;
   --gutter: 40px;
 
-  --f-display: "Noto Serif TC", "Songti TC", serif;
-  --f-latin: "Instrument Serif", "Times New Roman", serif;
+  /* 中文：Noto Sans TC ／ 英文：Archivo（中文字自動 fallback 回黑體） */
+  --f-display: "Noto Sans TC", -apple-system, "Helvetica Neue", sans-serif;
+  --f-latin: "Archivo", "Noto Sans TC", sans-serif;
   --f-body: "Noto Sans TC", -apple-system, "Helvetica Neue", sans-serif;
 }
 
@@ -49,6 +50,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .label {
+  font-family: var(--f-latin);
   font-size: 11px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -76,14 +78,15 @@ a { color: inherit; text-decoration: none; }
   margin: 0 auto;
   padding: 0 var(--gutter);
   height: 74px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
 }
-.nav-logo { display: flex; align-items: center; gap: 12px; }
+.nav-logo { grid-column: 2; justify-self: center; display: flex; align-items: center; gap: 12px; }
 .nav-logo img { width: auto; height: 30px; }
-.nav-links { display: flex; gap: 34px; }
+.nav-links { grid-column: 3; justify-self: end; display: flex; gap: 34px; }
 .nav-links a {
+  font-family: var(--f-latin);
   font-size: 12px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -94,24 +97,15 @@ a { color: inherit; text-decoration: none; }
 
 /* ---------- hero ---------- */
 .hero {
-  padding: 210px 0 120px;
+  padding: 40px 0 120px;
   position: relative;
-  overflow: hidden;
-}
-.hero-mark {
-  position: absolute;
-  right: -40px;
-  bottom: -60px;
-  width: 300px;
-  opacity: 0.05;
-  pointer-events: none;
 }
 .hero h1 {
   font-family: var(--f-display);
   font-weight: 500;
-  font-size: clamp(30px, 4.6vw, 60px);
-  line-height: 1.5;
-  letter-spacing: 0.01em;
+  font-size: clamp(28px, 4.2vw, 54px);
+  line-height: 1.45;
+  letter-spacing: 0.02em;
   max-width: 19em;
   margin: 28px 0 34px;
 }
@@ -252,8 +246,9 @@ a { color: inherit; text-decoration: none; }
 }
 .clients span {
   font-family: var(--f-latin);
-  font-size: 21px;
-  letter-spacing: 0.04em;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
   color: var(--ink-soft);
 }
 .attribution {
@@ -269,13 +264,16 @@ a { color: inherit; text-decoration: none; }
 .contact h2 {
   font-family: var(--f-display);
   font-weight: 500;
-  font-size: clamp(24px, 3vw, 38px);
+  font-size: clamp(22px, 2.7vw, 34px);
   line-height: 1.6;
+  letter-spacing: 0.02em;
   margin: 22px 0 34px;
 }
 .mail {
   font-family: var(--f-latin);
-  font-size: clamp(22px, 3.4vw, 40px);
+  font-weight: 400;
+  font-size: clamp(19px, 2.6vw, 32px);
+  letter-spacing: 0.02em;
   color: var(--accent);
   border-bottom: 1px solid var(--line);
   padding-bottom: 6px;
@@ -290,13 +288,13 @@ a { color: inherit; text-decoration: none; }
 }
 .footer-in {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
+  gap: 16px;
+  text-align: center;
 }
 .footer img { width: 150px; opacity: .75; }
-.footer small { font-size: 11px; letter-spacing: .12em; color: var(--ink-faint); }
+.footer small { font-family: var(--f-latin); font-size: 11px; letter-spacing: .12em; color: var(--ink-faint); }
 
 /* =========================================================
    brand detail page
@@ -319,7 +317,7 @@ a { color: inherit; text-decoration: none; }
 }
 .b-head .en {
   font-family: var(--f-latin);
-  font-size: 17px;
+  font-size: 13px;
   letter-spacing: .18em;
   color: var(--ink-faint);
 }
@@ -380,6 +378,35 @@ a { color: inherit; text-decoration: none; }
 .b-nav a { font-size: 13px; letter-spacing: .08em; color: var(--ink-soft); transition: color .25s; }
 .b-nav a:hover { color: var(--accent); }
 
+/* ---------- pressure headline ---------- */
+.pressure-band {
+  padding: 132px 0 0;
+}
+#pressure {
+  position: relative;
+  width: 100%;
+  user-select: none;
+}
+.pressure-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+  margin: 0;
+  line-height: 0.92;
+  white-space: nowrap;
+  font-family: var(--f-body);
+  font-weight: 100;
+  color: var(--ink);
+  text-transform: uppercase;
+  font-variation-settings: "wght" 300, "wdth" 100, "slnt" 0;
+}
+.pressure-title span {
+  display: inline-block;
+  font-variation-settings: "wght" 200, "wdth" 70;
+  will-change: font-variation-settings;
+}
+
 /* ---------- reveal ---------- */
 .rv { opacity: 0; transform: translateY(18px); transition: opacity .9s ease, transform .9s ease; }
 .rv.in { opacity: 1; transform: none; }
@@ -397,14 +424,16 @@ a { color: inherit; text-decoration: none; }
 }
 @media (max-width: 680px) {
   :root { --gutter: 22px; }
-  .nav-links { gap: 20px; }
+  .nav-in { grid-template-columns: 1fr; justify-items: center; height: auto; padding: 16px var(--gutter); gap: 10px; }
+  .nav-logo { grid-column: 1; }
+  .nav-links { grid-column: 1; justify-self: center; gap: 20px; }
+  .pressure-band { padding-top: 104px; }
   .nav-links a { font-size: 11px; letter-spacing: .12em; }
-  .hero { padding: 150px 0 80px; }
+  .hero { padding: 26px 0 80px; }
   .section { padding: 70px 0; }
   .grid { grid-template-columns: 1fr; gap: 42px; }
   .otherworks { grid-template-columns: 1fr; gap: 12px; }
   .orbit-item { grid-template-columns: 1fr auto; }
   .orbit-item .label { grid-column: 1 / -1; }
   .b-hero { aspect-ratio: 3 / 2; }
-  .footer-in { flex-direction: column; align-items: flex-start; }
 }

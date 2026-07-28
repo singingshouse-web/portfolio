@@ -24,6 +24,93 @@ function initReveal() {
   items.forEach(el => io.observe(el));
 }
 
+/* ========== 互動大字（滑鼠靠近字會變粗變寬） ========== */
+function initPressure() {
+  const root = $("#pressure");
+  if (!root || !SITE.pressureText) return;
+
+  /* 載入設定的可變字型 */
+  const F = SITE.pressureFont || {};
+  if (F.url) {
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = F.url;
+    document.head.appendChild(link);
+  }
+  const WGHT = F.wght || [100, 900];
+  const WDTH = F.wdth || [75, 125];
+  const SLNT = F.slnt || null;
+
+  const chars = [...SITE.pressureText];
+  const title = document.createElement("div");
+  title.className = "pressure-title";
+  const spans = chars.map(c => {
+    const el = document.createElement("span");
+    el.textContent = c === " " ? "\u00A0" : c;
+    title.appendChild(el);
+    return el;
+  });
+  if (F.family) title.style.fontFamily = `"${F.family}", sans-serif`;
+  root.appendChild(title);
+
+  /* 字級隨容器寬度調整 */
+  const MIN = 40, MAX = 190;
+  const setSize = () => {
+    const w = root.getBoundingClientRect().width;
+    title.style.fontSize = Math.max(MIN, Math.min(MAX, w / (chars.length / 2))) + "px";
+  };
+  setSize();
+  let t;
+  window.addEventListener("resize", () => { clearTimeout(t); t = setTimeout(setSize, 120); });
+
+  /* 距離越近 → 字越粗、越寬、越斜 */
+  const attr = (d, max, min, top) => Math.max(min, top - Math.abs((top * d) / max) + min);
+
+  function render(px, py) {
+    const box = title.getBoundingClientRect();
+    const maxDist = box.width / 2 || 1;
+    for (const sp of spans) {
+      const b = sp.getBoundingClientRect();
+      const dx = px - (b.left + b.width / 2);
+      const dy = py - (b.top + b.height / 2);
+      const d = Math.sqrt(dx * dx + dy * dy);
+      const wght = Math.round(attr(d, maxDist, WGHT[0], WGHT[1]));
+      const wdth = Math.round(attr(d, maxDist, WDTH[0], WDTH[1]) * 10) / 10;
+      let v = `"wght" ${wght}, "wdth" ${wdth}`;
+      if (SLNT) v += `, "slnt" ${-(attr(d, maxDist, 0, Math.abs(SLNT[0]))).toFixed(1)}`;
+      sp.style.fontVariationSettings = v;
+    }
+  }
+
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const box0 = title.getBoundingClientRect();
+  const cursor = { x: box0.left + box0.width / 2, y: box0.top + box0.height / 2 };
+  const mouse = { x: cursor.x, y: cursor.y };
+
+  const onMove = (e) => {
+    const p = e.touches ? e.touches[0] : e;
+    cursor.x = p.clientX;
+    cursor.y = p.clientY;
+    /* 系統開啟「減少動態效果」時：不做緩動，直接反應 */
+    if (reduce) render(cursor.x, cursor.y);
+  };
+  window.addEventListener("pointermove", onMove, { passive: true });
+  window.addEventListener("touchmove", onMove, { passive: true });
+
+  if (reduce) {
+    render(cursor.x, cursor.y);
+    return;
+  }
+
+  (function loop() {
+    mouse.x += (cursor.x - mouse.x) / 12;
+    mouse.y += (cursor.y - mouse.y) / 12;
+    render(mouse.x, mouse.y);
+    requestAnimationFrame(loop);
+  })();
+}
+
 /* ================= 首頁 ================= */
 function buildHome() {
   const grid = $("#workGrid");
@@ -34,6 +121,7 @@ function buildHome() {
   $("#heroSub").textContent = SITE.heroSub;
   $("#otherWorks").textContent = SITE.otherWorks;
   $("#aboutTitle").textContent = SITE.about.title;
+  $("#contactTitle").innerHTML = esc(SITE.contactTitle).replace(/\n/g, "<br>");
   $("#attribution").textContent = SITE.attribution;
 
   const mail = $("#mail");
@@ -62,6 +150,7 @@ function buildHome() {
       </div>
     </a>`).join("");
 
+  initPressure();
   initReveal();
 }
 
