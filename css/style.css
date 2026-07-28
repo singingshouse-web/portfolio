@@ -9,7 +9,8 @@
   --ink-soft: #6E6B64;
   --ink-faint: #A9A69D;
   --line: #D2CFC6;
-  --accent: #2F5D57;
+  --accent: #E986A2;        /* 裝飾用（網格、標籤） */
+  --accent-ink: #C4677F;    /* 文字用（深一階，確保可讀性） */
 
   --max: 1320px;
   --gutter: 40px;
@@ -21,6 +22,17 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* 背景互動網格：固定於視窗，位於內容之下 */
+#kgrid {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, transparent var(--kg-start, 0px), #000 var(--kg-end, 0px));
+          mask-image: linear-gradient(to bottom, transparent var(--kg-start, 0px), #000 var(--kg-end, 0px));
+}
+body > *:not(#kgrid):not(.nav) { position: relative; z-index: 1; }
 
 html { scroll-behavior: smooth; }
 
@@ -39,7 +51,7 @@ img { display: block; width: 100%; height: auto; }
 a { color: inherit; text-decoration: none; }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--accent-ink);
   outline-offset: 4px;
 }
 
@@ -174,7 +186,7 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: 6px;
   transition: color .25s;
 }
-.card:hover .card-body h3 { color: var(--accent); }
+.card:hover .card-body h3 { color: var(--accent-ink); }
 .card-tags {
   font-size: 12px;
   color: var(--ink-soft);
@@ -184,8 +196,8 @@ a { color: inherit; text-decoration: none; }
   content: "自有品牌";
   position: absolute;
   top: 14px; left: 14px;
-  background: var(--accent);
-  color: var(--paper);
+  background: var(--accent-ink);
+  color: #fff;
   font-size: 11px;
   letter-spacing: 0.14em;
   padding: 5px 12px;
@@ -235,7 +247,7 @@ a { color: inherit; text-decoration: none; }
   color: var(--ink-faint);
   letter-spacing: 0.08em;
 }
-.orbit-item.is-now strong { color: var(--accent); }
+.orbit-item.is-now strong { color: var(--accent-ink); }
 
 /* ---------- clients ---------- */
 .clients {
@@ -271,15 +283,15 @@ a { color: inherit; text-decoration: none; }
 }
 .mail {
   font-family: var(--f-latin);
-  font-weight: 400;
+  font-weight: 500;
   font-size: clamp(19px, 2.6vw, 32px);
   letter-spacing: 0.02em;
-  color: var(--accent);
+  color: var(--accent-ink);
   border-bottom: 1px solid var(--line);
   padding-bottom: 6px;
   transition: border-color .3s;
 }
-.mail:hover { border-color: var(--accent); }
+.mail:hover { border-color: var(--accent-ink); }
 
 /* ---------- footer ---------- */
 .footer {
@@ -376,11 +388,11 @@ a { color: inherit; text-decoration: none; }
   margin-top: 40px;
 }
 .b-nav a { font-size: 13px; letter-spacing: .08em; color: var(--ink-soft); transition: color .25s; }
-.b-nav a:hover { color: var(--accent); }
+.b-nav a:hover { color: var(--accent-ink); }
 
 /* ---------- pressure headline ---------- */
 .pressure-band {
-  padding: 132px 0 0;
+  padding: 140px 0 0;
 }
 #pressure {
   position: relative;

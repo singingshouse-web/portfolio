@@ -54,7 +54,7 @@ function initPressure() {
   root.appendChild(title);
 
   /* 字級隨容器寬度調整 */
-  const MIN = 40, MAX = 190;
+  const MIN = 80, MAX = 380;
   const setSize = () => {
     const w = root.getBoundingClientRect().width;
     title.style.fontSize = Math.max(MIN, Math.min(MAX, w / (chars.length / 2))) + "px";
