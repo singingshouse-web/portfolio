@@ -176,11 +176,11 @@ const BRANDS = [
     name: "IKEA",
     nameEn: "IKEA TAIWAN",
     category: "數位網站",
-    tags: ["檔期活動網頁", "企業入口網站", "eDM"],
+    tags: ["檔期活動網頁","eDM"],
     card: "./images/ikea_card.webp",
     hero: "./images/ikea_hero.webp",
     intro:
-      "連續數年參與 IKEA 數位設計項目，包含每月定期檔期活動網頁、企業客戶入口網站，以及會員 eDM 與官網主頁的促銷視覺。",
+      "連續數年參與 IKEA 數位設計項目，包含每月定期檔期活動網頁，以及會員 eDM 與官網主頁的促銷視覺。",
     projects: [
       {
         name: "每月檔期活動網頁",
@@ -188,14 +188,9 @@ const BRANDS = [
         images: ["./images/ikea_p1_01.webp", "./images/ikea_p1_02.webp"]
       },
       {
-        name: "企業客戶入口網站",
-        note: "B2B 入口的資訊架構與消費端截然不同，以效率與清晰為先。",
-        images: ["./images/ikea_p2_01.webp", "./images/ikea_p2_02.webp"]
-      },
-      {
         name: "會員 eDM 系列",
         note: "在 email 環境的技術限制下，讓促銷訊息保持品牌質感。",
-        images: ["./images/ikea_p3_01.webp", "./images/ikea_p3_02.webp"]
+        images: ["./images/ikea_p2_01.webp","./images/ikea_p2_02.webp", "./images/ikea_p2_03.webp"]
       }
     ],
     also: ""
