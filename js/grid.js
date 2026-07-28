@@ -10,16 +10,18 @@
   const ctx = canvas.getContext("2d");
   if (!ctx) return;
 
-  /* 尊重系統「減少動態效果」設定 */
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    canvas.style.display = "none";
-    return;
-  }
+  /* 執行模式：
+     full   桌機，完整互動（游標牽引 + 點擊漣漪）
+     direct 桌機且系統開啟「減少動態效果」→ 保留互動，取消緩動與漣漪
+     static 手機／觸控裝置 → 只留靜態淡紋理，不互動        */
+  const REDUCE = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const SMALL  = window.matchMedia("(max-width: 767px), (pointer: coarse)").matches;
+  const MODE = SMALL ? "static" : (REDUCE ? "direct" : "full");
 
   /* ---------- 參數 ---------- */
   const CELL = 68;          // 網格間距
-  const INFLUENCE = 260;    // 滑鼠影響半徑
-  const MAX_WARP = 24;      // 最大牽引距離
+  const INFLUENCE = 330;    // 滑鼠影響半徑
+  const MAX_WARP = 32;      // 最大牽引距離
   const DOT_SPACING = 30;   // 背景點距
   const LERP = 0.08;        // 滑鼠跟隨平滑度
 
@@ -27,11 +29,11 @@
   const ACCENT = (css.getPropertyValue("--accent").trim() || "#E986A2");
   const A = hex2rgb(ACCENT);
 
-  const LINE_BASE = { r: 51, g: 51, b: 51, a: 0.10 };
+  const LINE_BASE = { r: 51, g: 51, b: 51, a: MODE === "static" ? 0.07 : 0.17 };
   const LINE_ON   = { r: A.r, g: A.g, b: A.b, a: 0.85 };
-  const NODE_BASE = { r: 51, g: 51, b: 51, a: 0.16 };
+  const NODE_BASE = { r: 51, g: 51, b: 51, a: MODE === "static" ? 0.10 : 0.24 };
   const NODE_ON   = { r: A.r, g: A.g, b: A.b, a: 1 };
-  const NODE_R = 1.6, NODE_R_ON = 3.0;
+  const NODE_R = 1.9, NODE_R_ON = 3.8;
 
   function hex2rgb(h) {
     const m = h.replace("#", "");
@@ -61,24 +63,31 @@
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
   resize();
-  window.addEventListener("resize", resize);
+  window.addEventListener("resize", () => { resize(); schedule(); });
 
-  window.addEventListener("pointermove", e => {
-    target.x = e.clientX;
-    target.y = e.clientY;
-  }, { passive: true });
+  if (MODE !== "static") {
+    window.addEventListener("pointermove", e => {
+      target.x = e.clientX;
+      target.y = e.clientY;
+      if (MODE === "direct") { mouse.x = target.x; mouse.y = target.y; schedule(); }
+    }, { passive: true });
+  }
 
-  window.addEventListener("pointerdown", e => {
-    ripples.push({ x: e.clientX, y: e.clientY, radius: 0, opacity: 1, born: performance.now() });
-  }, { passive: true });
+  if (MODE === "full") {
+    window.addEventListener("pointerdown", e => {
+      ripples.push({ x: e.clientX, y: e.clientY, radius: 0, opacity: 1, born: performance.now() });
+    }, { passive: true });
+  }
+
+  window.addEventListener("scroll", () => { if (MODE !== "full") schedule(); }, { passive: true });
 
   /* 特效在大字下方才出現，交界處以漸層淡入 */
   function updateMask() {
     let start = 0, end = 0;
     if (band) {
       const b = band.getBoundingClientRect().bottom;
-      start = Math.max(0, b - 40);
-      end = Math.max(0, b + 180);
+      start = Math.max(0, b - 120);
+      end = Math.max(0, b + 60);
     }
     canvas.style.setProperty("--kg-start", start + "px");
     canvas.style.setProperty("--kg-end", end + "px");
@@ -124,7 +133,7 @@
     ctx.clearRect(0, 0, W, H);
 
     /* 底層靜態點陣 */
-    ctx.fillStyle = "rgba(51,51,51,0.055)";
+    ctx.fillStyle = MODE === "static" ? "rgba(51,51,51,0.04)" : "rgba(51,51,51,0.08)";
     for (let x = DOT_SPACING / 2; x < W; x += DOT_SPACING) {
       for (let y = DOT_SPACING / 2; y < H; y += DOT_SPACING) {
         ctx.beginPath();
@@ -160,7 +169,7 @@
       ctx.moveTo(p1.x, p1.y);
       ctx.lineTo(p2.x, p2.y);
       ctx.strokeStyle = mix(LINE_BASE, LINE_ON, t);
-      ctx.lineWidth = lerp(0.7, 1.4, t);
+      ctx.lineWidth = lerp(0.8, 1.7, t);
       ctx.stroke();
     };
 
@@ -202,13 +211,28 @@
     }
   }
 
-  (function loop(now) {
-    if (!document.hidden) {
-      mouse.x = lerp(mouse.x, target.x, LERP);
-      mouse.y = lerp(mouse.y, target.y, LERP);
+  let queued = false;
+  function schedule() {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(now => {
+      queued = false;
       updateMask();
       draw(now || performance.now());
-    }
-    requestAnimationFrame(loop);
-  })();
+    });
+  }
+
+  if (MODE === "full") {
+    (function loop(now) {
+      if (!document.hidden) {
+        mouse.x = lerp(mouse.x, target.x, LERP);
+        mouse.y = lerp(mouse.y, target.y, LERP);
+        updateMask();
+        draw(now || performance.now());
+      }
+      requestAnimationFrame(loop);
+    })();
+  } else {
+    schedule();
+  }
 })();

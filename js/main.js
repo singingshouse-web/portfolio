@@ -54,10 +54,21 @@ function initPressure() {
   root.appendChild(title);
 
   /* 字級隨容器寬度調整 */
-  const MIN = 80, MAX = 380;
+  const MIN = 60, MAX = 420;
   const setSize = () => {
     const w = root.getBoundingClientRect().width;
+    /* 字級：讓字母橫向剛好填滿版面 */
     title.style.fontSize = Math.max(MIN, Math.min(MAX, w / (chars.length / 2))) + "px";
+
+    /* 高度：以垂直拉伸達成，避免橫向溢出 */
+    title.style.transform = "none";
+    root.style.height = "";
+    const target = Math.min(SITE.pressureHeight || 0, window.innerHeight * 0.6);
+    const natural = title.getBoundingClientRect().height;
+    if (target > 0 && natural > 0) {
+      title.style.transform = `scale(1, ${(target / natural).toFixed(3)})`;
+      root.style.height = target + "px";
+    }
   };
   setSize();
   let t;

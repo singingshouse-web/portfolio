@@ -10,6 +10,10 @@ const SITE = {
   /* 大字互動效果的文字（留空字串就不顯示） */
   pressureText: "Hello!",
 
+  /* 大字高度（px）。字寬固定填滿版面，用垂直拉伸控制高度。
+     建議 400–650；設 0 則不拉伸，維持字型原始比例。 */
+  pressureHeight: 560,
+
   /* 大字使用的可變字型。換字型 = 整組換掉下面這一塊。
      ── 其他選擇（複製貼上取代即可）──────────────────
 
@@ -66,7 +70,7 @@ const SITE = {
     ]
   },
   otherWorks:
-    "其他參與案例：台北101 官方網站、PIMQ 官方網站、TDCC 臺灣集中保管結算所、里山木屋、LP 運動護具官方網站、Braun 新品活動網頁、立頓英式茶館、好自在數位行銷、Bite! APP"
+    "其他參與案例：台北101 官方網站、TDCC 臺灣集中保管結算所、里山木屋、Braun 新品活動網頁、立頓英式茶館、好自在數位行銷、Bite! APP"
 };
 
 /* ---------------------------------------------------------
@@ -133,6 +137,34 @@ const BRANDS = [
     also: ""
   },
   {
+    id: "lp",
+    name: "LP SUPPORT",
+    nameEn: "LP SUPPORT",
+    category: "數位網站",
+    tags: ["官方網站", "UI / UX", "新品活動頁"],
+    card: "./images/lp_card.jpg",
+    hero: "./images/lp_hero.jpg",
+    intro:
+      "連續多年為全球運動護具品牌 LP Support 設計官方網站，並定期更新網站內容與頁面設計，範圍涵蓋官網改版與新產品系列活動頁。",
+    projects: [
+      {
+        name: "官方網站設計",
+        note: "產品線龐雜的運動護具品牌，以身體部位與使用情境建立導覽邏輯，讓消費者能快速找到對應產品。",
+        images: [
+          "./images/lp_p1_01.jpg",
+          "./images/lp_p1_02.jpg",
+          "./images/lp_p1_03.jpg"
+        ]
+      },
+      {
+        name: "EmbioZ 新產品系列",
+        note: "新品系列的獨立活動頁，在既有品牌識別下建立系列專屬的視覺語言。",
+        images: ["./images/lp_p2_01.jpg", "./images/lp_p2_02.jpg"]
+      }
+    ],
+    also: ""
+  },
+  {
     id: "ikea",
     name: "IKEA",
     nameEn: "IKEA TAIWAN",
@@ -162,6 +194,60 @@ const BRANDS = [
     also: ""
   },
   {
+    id: "sf",
+    name: "桂格",
+    nameEn: "STANDARD FOODS",
+    category: "數位網站",
+    tags: ["官網改版", "前端視覺"],
+    card: "./images/sf_card.jpg",
+    hero: "./images/sf_hero.jpg",
+    intro: "參與桂格企業官網改版專案，負責前端視覺設計。",
+    projects: [
+      {
+        name: "企業官網改版",
+        note: "在企業集團的多品牌架構下，重整官網的視覺層級與導覽動線。",
+        images: [
+          "./images/sf_p1_01.jpg",
+          "./images/sf_p1_02.jpg",
+          "./images/sf_p1_03.jpg"
+        ]
+      }
+    ],
+    also: ""
+  },
+  {
+    id: "pimq",
+    name: "PIMQ",
+    nameEn: "PIMQ",
+    category: "數位網站",
+    tags: ["官方網站", "UI / UX", "介面動態"],
+    card: "./images/pimq_card.jpg",
+    hero: "./images/pimq_hero.jpg",
+    intro:
+      "為智能化工業軟體新創品牌 PIMQ 設計中英文版官方網站，將新品牌識別的視覺風格與調性延伸至各頁面，以清晰的資訊架構呈現其產品與服務。",
+    projects: [
+      {
+        name: "首頁設計",
+        note: "從進場動態、輪播主視覺到四大主題介紹區塊，用一條連貫的視覺動線帶出品牌的核心訴求。",
+        images: [
+          "./images/pimq_p1_01.jpg",
+          "./images/pimq_p1_02.jpg",
+          "./images/pimq_p1_03.jpg"
+        ]
+      },
+      {
+        name: "內頁與介面動態",
+        note: "產品與服務、公司訊息等內頁的版面規劃，並為分頁切換設計一致的過場動態。",
+        images: [
+          "./images/pimq_p2_01.jpg",
+          "./images/pimq_p2_02.jpg",
+          "./images/pimq_p2_03.jpg"
+        ]
+      }
+    ],
+    also: ""
+  },
+  {
     id: "skii",
     name: "SK-II",
     nameEn: "SK-II",
@@ -183,27 +269,5 @@ const BRANDS = [
       }
     ],
     also: "另參與：SK-II 促銷活動、彩妝網站系列。"
-  },
-  {
-    id: "sf",
-    name: "桂格",
-    nameEn: "STANDARD FOODS",
-    category: "數位網站",
-    tags: ["官網改版", "前端視覺"],
-    card: "./images/sf_card.jpg",
-    hero: "./images/sf_hero.jpg",
-    intro: "參與桂格企業官網改版專案，負責前端視覺設計。",
-    projects: [
-      {
-        name: "企業官網改版",
-        note: "在企業集團的多品牌架構下，重整官網的視覺層級與導覽動線。",
-        images: [
-          "./images/sf_p1_01.jpg",
-          "./images/sf_p1_02.jpg",
-          "./images/sf_p1_03.jpg"
-        ]
-      }
-    ],
-    also: ""
   }
 ];

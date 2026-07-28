@@ -73,16 +73,7 @@
     <div class="about-grid">
       <div class="about-text rv" id="aboutText"></div>
       <div class="orbit rv">
-        <svg viewBox="0 0 640 240" fill="none" aria-hidden="true">
-          <path d="M12 120 C 120 12, 520 12, 628 120" stroke="#D2CFC6" stroke-width="1"/>
-          <path d="M12 120 C 130 60, 510 60, 628 120" stroke="#D2CFC6" stroke-width="1"/>
-          <path d="M12 120 C 130 180, 510 180, 628 120" stroke="#D2CFC6" stroke-width="1"/>
-          <path d="M12 120 C 120 228, 520 228, 628 120" stroke="#D2CFC6" stroke-width="1"/>
-          <circle cx="140" cy="72"  r="5" fill="#333"/>
-          <circle cx="300" cy="60"  r="5" fill="#333"/>
-          <circle cx="440" cy="84"  r="5" fill="#333"/>
-          <circle cx="590" cy="120" r="9" fill="#C4677F"/>
-        </svg>
+        <canvas id="orb" aria-hidden="true"></canvas>
         <div class="orbit-list" id="timeline"></div>
       </div>
     </div>
@@ -111,6 +102,7 @@
 </footer>
 
 <script src="./js/grid.js"></script>
+<script src="./js/orb.js"></script>
 <script src="./js/data.js"></script>
 <script src="./js/main.js"></script>
 </body>

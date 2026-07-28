@@ -225,7 +225,12 @@ a { color: inherit; text-decoration: none; }
 .about-text p:not(:first-child) { color: var(--ink-soft); }
 
 .orbit { position: relative; }
-.orbit svg { width: 100%; height: auto; display: block; }
+.orbit canvas {
+  display: block;
+  width: 100%;
+  height: 380px;
+  margin: -20px auto 0;
+}
 .orbit-list { margin-top: 30px; display: grid; gap: 2px; }
 .orbit-item {
   display: grid;
@@ -397,6 +402,7 @@ a { color: inherit; text-decoration: none; }
 #pressure {
   position: relative;
   width: 100%;
+  overflow: visible;
   user-select: none;
 }
 .pressure-title {
@@ -405,8 +411,9 @@ a { color: inherit; text-decoration: none; }
   align-items: baseline;
   width: 100%;
   margin: 0;
-  line-height: 0.92;
+  line-height: 1;
   white-space: nowrap;
+  transform-origin: center top;
   font-family: var(--f-body);
   font-weight: 100;
   color: var(--ink);
@@ -446,6 +453,7 @@ a { color: inherit; text-decoration: none; }
   .grid { grid-template-columns: 1fr; gap: 42px; }
   .otherworks { grid-template-columns: 1fr; gap: 12px; }
   .orbit-item { grid-template-columns: 1fr auto; }
+  .orbit canvas { height: 260px; }
   .orbit-item .label { grid-column: 1 / -1; }
   .b-hero { aspect-ratio: 3 / 2; }
 }
