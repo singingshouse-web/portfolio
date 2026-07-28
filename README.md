@@ -15,13 +15,17 @@ images/           所有圖片（目前為灰色佔位圖，直接覆蓋同檔�
 
 | 檔名 | 尺寸 | 比例 |
 |---|---|---|
-| `品牌代號_card.jpg` | 1600×1200 | 4:3 |
-| `品牌代號_hero.jpg` | 2880×1200 | 21:9 |
-| `品牌代號_p1_01.jpg`… | 2000×1500 | 4:3 |
-| `og_image.jpg` | 1200×630 | — |
+| `品牌代號_card.webp` | 1600×1200 | 4:3 |
+| `品牌代號_hero.webp` | 2880×1200 | 21:9 |
+| `品牌代號_p1_01.webp`… | 2000×1500 | 4:3 |
+| `og_image.jpg` | 1200×630 | —（社群預覽維持 jpg）|
 
-品牌代號：singings / megabank / ikea / skii / sf
-JPG 品質 80，每張控制在 400KB 以內（hero 600KB 以內）。
+品牌代號：singings / megabank / lp / ikea / sf / pimq
+
+**圖片一律輸出 WebP**，品質 80–85，每張控制在 200KB 以內。
+- Photoshop：檔案 → 轉存 → 轉存為 → 格式選 WebP
+- Illustrator／Figma：轉存 PNG 後用 squoosh.app 轉 WebP
+- 若手邊工具不支援，輸出 jpg 也能用，但要記得同步修改 `js/data.js` 裡的副檔名。
 
 ## 改文字
 打開 `js/data.js`，所有文案、時間軸年份、專案說明都在裡面，改完存檔即可。

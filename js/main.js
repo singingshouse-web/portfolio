@@ -128,7 +128,9 @@ function buildHome() {
   if (!grid) return;
 
   $("#tagline").textContent = SITE.tagline;
-  $("#heroTitle").innerHTML = esc(SITE.heroTitle).replace(/\n/g, "<br>");
+  $("#heroTitle").innerHTML = esc(SITE.heroTitle)
+    .replace(/\n/g, "<br>")
+    .replace(/\*\*(.+?)\*\*/g, '<em class="hl"><i>$1</i></em>');
   $("#heroSub").textContent = SITE.heroSub;
   $("#otherWorks").textContent = SITE.otherWorks;
   $("#aboutTitle").textContent = SITE.about.title;
@@ -146,9 +148,10 @@ function buildHome() {
   if (stats && SITE.about.stats) {
     stats.innerHTML = SITE.about.stats.map(s => `
       <div class="stat">
-        <strong>${esc(s.num)}</strong>
+        <strong data-num="${esc(s.num)}">0</strong>
         <span>${esc(s.label)}</span>
       </div>`).join("");
+    countUp(stats);
   }
 
   $("#timeline").innerHTML = SITE.about.timeline.map(t => `
@@ -175,6 +178,35 @@ function buildHome() {
 
   initPressure();
   initReveal();
+}
+
+/* 數字遞增：捲到畫面時從 0 跑到目標值 */
+function countUp(root) {
+  const els = [...root.querySelectorAll("strong[data-num]")];
+  if (!els.length) return;
+
+  const run = el => {
+    const raw = el.dataset.num;
+    const target = parseInt(raw, 10);
+    const suffix = raw.replace(/[0-9]/g, "");
+    if (isNaN(target)) { el.textContent = raw; return; }
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      el.textContent = raw; return;
+    }
+    const dur = 1100, t0 = performance.now();
+    (function tick(now) {
+      const p = Math.min(1, (now - t0) / dur);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased) + (p === 1 ? suffix : "");
+      if (p < 1) requestAnimationFrame(tick);
+    })(t0);
+  };
+
+  if (!("IntersectionObserver" in window)) { els.forEach(run); return; }
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting) { run(e.target); io.unobserve(e.target); } });
+  }, { threshold: 0.5 });
+  els.forEach(el => io.observe(el));
 }
 
 /* ================= 品牌詳頁 ================= */

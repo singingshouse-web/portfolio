@@ -44,7 +44,7 @@ const SITE = {
   /* Hero 主標。備選：
      「先是品牌主，然後才是設計服務。」
      「每個畫面，都是一次取捨。」                        */
-  heroTitle: "我們自己做品牌，\n也替品牌做設計。",
+  heroTitle: "我們相信，\n**美感**本身就是最大的品牌競爭力。",
   heroSub: "心映好事既是品牌，也是設計服務。從自有產品「擁抱情緒卡」到國際品牌的數位專案，我們用同一種標準對待每一個畫面。",
   /* Contact 區標題。備選：
      「有想做的東西，寫信給我們。」
@@ -64,8 +64,8 @@ const SITE = {
     /* 數據列。請確認數字後再上線（note 可留空字串） */
     stats: [
       { num: "20+", label: "年設計經驗" },
-      { num: "10+", label: "合作品牌" },
-      { num: "15+", label: "數位專案" }
+      { num: "50+", label: "合作品牌" },
+      { num: "60+", label: "數位專案" }
     ],
 
     /* 時間軸：year 與 note 留空字串則不顯示 */
@@ -91,8 +91,8 @@ const BRANDS = [
     nameEn: "SINGINGS HOUSE",
     category: "自有品牌",
     tags: ["產品視覺", "網頁設計", "互動系統", "募資頁面"],
-    card: "./images/singings_card.jpg",
-    hero: "./images/singings_hero.jpg",
+    card: "./images/singings_card.webp",
+    hero: "./images/singings_hero.webp",
     intro:
       "心映好事的自有產品線。從「擁抱情緒卡」的產品視覺、募資頁面到線上抽牌系統，完整執行一個品牌從零到上線的所有數位介面。",
     projects: [
@@ -100,16 +100,16 @@ const BRANDS = [
         name: "線上抽牌系統",
         note: "以情緒陪伴為核心的互動體驗——抽牌的節奏、動效與畫面鋪陳，都為了讓使用者慢下來。",
         images: [
-          "./images/singings_p1_01.jpg",
-          "./images/singings_p1_02.jpg",
-          "./images/singings_p1_03.jpg",
-          "./images/singings_p1_04.jpg"
+          "./images/singings_p1_01.webp",
+          "./images/singings_p1_02.webp",
+          "./images/singings_p1_03.webp",
+          "./images/singings_p1_04.webp"
         ]
       },
       {
         name: "募資頁與行銷素材",
         note: "從敘事結構到視覺節奏一手設計，支撐擁抱情緒卡的群眾募資上線。",
-        images: ["./images/singings_p2_01.jpg", "./images/singings_p2_02.jpg"]
+        images: ["./images/singings_p2_01.webp", "./images/singings_p2_02.webp"]
       }
     ],
     also: ""
@@ -120,25 +120,25 @@ const BRANDS = [
     nameEn: "MEGA BANK",
     category: "數位網站",
     tags: ["官方網站", "活動網站", "網路銀行"],
-    card: "./images/megabank_card.jpg",
-    hero: "./images/megabank_hero.jpg",
+    card: "./images/megabank_card.webp",
+    hero: "./images/megabank_hero.webp",
     intro:
       "長期參與兆豐銀行數位專案，範圍涵蓋全球版官方網站的設計與改版更新、各波段財富管理活動網站，以及網路銀行平台的前端設計。",
     projects: [
       {
         name: "全球版官方網站",
         note: "在金融業的資訊層級與法遵限制下，維持清晰易讀的介面秩序。",
-        images: ["./images/megabank_p1_01.jpg", "./images/megabank_p1_02.jpg"]
+        images: ["./images/megabank_p1_01.webp", "./images/megabank_p1_02.webp"]
       },
       {
         name: "財富管理活動網站系列",
         note: "波段性活動在既有識別下快速產出，同時保持系列一致性。",
-        images: ["./images/megabank_p2_01.jpg", "./images/megabank_p2_02.jpg"]
+        images: ["./images/megabank_p2_01.webp", "./images/megabank_p2_02.webp"]
       },
       {
         name: "網路銀行平台",
         note: "個人網路銀行平台的前端視覺設計。",
-        images: ["./images/megabank_p3_01.jpg", "./images/megabank_p3_02.jpg"]
+        images: ["./images/megabank_p3_01.webp", "./images/megabank_p3_02.webp"]
       }
     ],
     also: ""
@@ -149,8 +149,8 @@ const BRANDS = [
     nameEn: "LP SUPPORT",
     category: "數位網站",
     tags: ["官方網站", "UI / UX", "新品活動頁"],
-    card: "./images/lp_card.jpg",
-    hero: "./images/lp_hero.jpg",
+    card: "./images/lp_card.webp",
+    hero: "./images/lp_hero.webp",
     intro:
       "連續多年為全球運動護具品牌 LP Support 設計官方網站，並定期更新網站內容與頁面設計，範圍涵蓋官網改版與新產品系列活動頁。",
     projects: [
@@ -158,15 +158,15 @@ const BRANDS = [
         name: "官方網站設計",
         note: "產品線龐雜的運動護具品牌，以身體部位與使用情境建立導覽邏輯，讓消費者能快速找到對應產品。",
         images: [
-          "./images/lp_p1_01.jpg",
-          "./images/lp_p1_02.jpg",
-          "./images/lp_p1_03.jpg"
+          "./images/lp_p1_01.webp",
+          "./images/lp_p1_02.webp",
+          "./images/lp_p1_03.webp"
         ]
       },
       {
         name: "EmbioZ 新產品系列",
         note: "新品系列的獨立活動頁，在既有品牌識別下建立系列專屬的視覺語言。",
-        images: ["./images/lp_p2_01.jpg", "./images/lp_p2_02.jpg"]
+        images: ["./images/lp_p2_01.webp", "./images/lp_p2_02.webp"]
       }
     ],
     also: ""
@@ -177,25 +177,25 @@ const BRANDS = [
     nameEn: "IKEA TAIWAN",
     category: "數位網站",
     tags: ["檔期活動網頁", "企業入口網站", "eDM"],
-    card: "./images/ikea_card.jpg",
-    hero: "./images/ikea_hero.jpg",
+    card: "./images/ikea_card.webp",
+    hero: "./images/ikea_hero.webp",
     intro:
       "連續數年參與 IKEA 數位設計項目，包含每月定期檔期活動網頁、企業客戶入口網站，以及會員 eDM 與官網主頁的促銷視覺。",
     projects: [
       {
         name: "每月檔期活動網頁",
         note: "高頻率產出下維持品牌一致性，建立可重複套用的版面邏輯。",
-        images: ["./images/ikea_p1_01.jpg", "./images/ikea_p1_02.jpg"]
+        images: ["./images/ikea_p1_01.webp", "./images/ikea_p1_02.webp"]
       },
       {
         name: "企業客戶入口網站",
         note: "B2B 入口的資訊架構與消費端截然不同，以效率與清晰為先。",
-        images: ["./images/ikea_p2_01.jpg", "./images/ikea_p2_02.jpg"]
+        images: ["./images/ikea_p2_01.webp", "./images/ikea_p2_02.webp"]
       },
       {
         name: "會員 eDM 系列",
         note: "在 email 環境的技術限制下，讓促銷訊息保持品牌質感。",
-        images: ["./images/ikea_p3_01.jpg", "./images/ikea_p3_02.jpg"]
+        images: ["./images/ikea_p3_01.webp", "./images/ikea_p3_02.webp"]
       }
     ],
     also: ""
@@ -206,17 +206,17 @@ const BRANDS = [
     nameEn: "STANDARD FOODS",
     category: "數位網站",
     tags: ["官網改版", "前端視覺"],
-    card: "./images/sf_card.jpg",
-    hero: "./images/sf_hero.jpg",
+    card: "./images/sf_card.webp",
+    hero: "./images/sf_hero.webp",
     intro: "參與桂格企業官網改版專案，負責前端視覺設計。",
     projects: [
       {
         name: "企業官網改版",
         note: "在企業集團的多品牌架構下，重整官網的視覺層級與導覽動線。",
         images: [
-          "./images/sf_p1_01.jpg",
-          "./images/sf_p1_02.jpg",
-          "./images/sf_p1_03.jpg"
+          "./images/sf_p1_01.webp",
+          "./images/sf_p1_02.webp",
+          "./images/sf_p1_03.webp"
         ]
       }
     ],
@@ -228,8 +228,8 @@ const BRANDS = [
     nameEn: "PIMQ",
     category: "數位網站",
     tags: ["官方網站", "UI / UX", "介面動態"],
-    card: "./images/pimq_card.jpg",
-    hero: "./images/pimq_hero.jpg",
+    card: "./images/pimq_card.webp",
+    hero: "./images/pimq_hero.webp",
     intro:
       "為智能化工業軟體新創品牌 PIMQ 設計中英文版官方網站，將新品牌識別的視覺風格與調性延伸至各頁面，以清晰的資訊架構呈現其產品與服務。",
     projects: [
@@ -237,18 +237,18 @@ const BRANDS = [
         name: "首頁設計",
         note: "從進場動態、輪播主視覺到四大主題介紹區塊，用一條連貫的視覺動線帶出品牌的核心訴求。",
         images: [
-          "./images/pimq_p1_01.jpg",
-          "./images/pimq_p1_02.jpg",
-          "./images/pimq_p1_03.jpg"
+          "./images/pimq_p1_01.webp",
+          "./images/pimq_p1_02.webp",
+          "./images/pimq_p1_03.webp"
         ]
       },
       {
         name: "內頁與介面動態",
         note: "產品與服務、公司訊息等內頁的版面規劃，並為分頁切換設計一致的過場動態。",
         images: [
-          "./images/pimq_p2_01.jpg",
-          "./images/pimq_p2_02.jpg",
-          "./images/pimq_p2_03.jpg"
+          "./images/pimq_p2_01.webp",
+          "./images/pimq_p2_02.webp",
+          "./images/pimq_p2_03.webp"
         ]
       }
     ],
