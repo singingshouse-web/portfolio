@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>心映好事 SINGINGS HOUSE — 設計服務</title>
+<meta name="description" content="心映好事是一個從自有產品出發的設計品牌，設計服務聚焦於網頁視覺與前端設計。">
+<meta property="og:title" content="心映好事 SINGINGS HOUSE — 設計服務">
+<meta property="og:description" content="從自有品牌出發的設計服務。網頁視覺與前端設計。">
+<meta property="og:image" content="./images/og_image.jpg">
+<link rel="icon" href="./images/logo_mark.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Sans+TC:wght@200;300;400&family=Noto+Serif+TC:wght@300;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="nav-logo" href="./index.html" aria-label="心映好事 首頁">
+      <img src="./images/logo_type.svg" alt="心映好事 SINGINGS HOUSE">
+    </a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <img class="hero-mark" src="./images/logo_mark.svg" alt="">
+  <div class="wrap">
+    <p class="label" id="tagline"></p>
+    <h1 id="heroTitle"></h1>
+    <p id="heroSub"></p>
+    <div class="hero-meta">
+      <span>網頁視覺設計</span>
+      <span>UI / UX</span>
+      <span>活動與募資頁面</span>
+      <span>eDM / Banner</span>
+      <span>前端設計</span>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="work">
+  <div class="wrap">
+    <div class="section-head rv">
+      <p class="label">Selected Work</p>
+      <h2>服務案例</h2>
+    </div>
+    <div class="grid" id="workGrid"></div>
+    <div class="otherworks rv">
+      <p class="label">Also Involved</p>
+      <p id="otherWorks"></p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="section-head rv">
+      <p class="label">About</p>
+      <h2 id="aboutTitle"></h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text rv" id="aboutText"></div>
+      <div class="orbit rv">
+        <svg viewBox="0 0 640 240" fill="none" aria-hidden="true">
+          <path d="M12 120 C 120 12, 520 12, 628 120" stroke="#D2CFC6" stroke-width="1"/>
+          <path d="M12 120 C 130 60, 510 60, 628 120" stroke="#D2CFC6" stroke-width="1"/>
+          <path d="M12 120 C 130 180, 510 180, 628 120" stroke="#D2CFC6" stroke-width="1"/>
+          <path d="M12 120 C 120 228, 520 228, 628 120" stroke="#D2CFC6" stroke-width="1"/>
+          <circle cx="140" cy="72"  r="5" fill="#333"/>
+          <circle cx="300" cy="60"  r="5" fill="#333"/>
+          <circle cx="440" cy="84"  r="5" fill="#333"/>
+          <circle cx="590" cy="120" r="9" fill="#2F5D57"/>
+        </svg>
+        <div class="orbit-list" id="timeline"></div>
+      </div>
+    </div>
+
+    <div style="margin-top:74px">
+      <p class="label" style="margin-bottom:24px">參與服務品牌</p>
+      <div class="clients" id="clients"></div>
+      <p class="attribution" id="attribution"></p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <p class="label">Contact</p>
+    <h2>帶著你的想法來，<br>我們一起把它做成對的樣子。</h2>
+    <a class="mail" id="mail" href="#"></a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap footer-in">
+    <img src="./images/logo_type.svg" alt="心映好事">
+    <small>© <span id="yr"></span> SINGINGS HOUSE. All rights reserved.</small>
+  </div>
+</footer>
+
+<script src="./js/data.js"></script>
+<script src="./js/main.js"></script>
+</body>
+</html>
