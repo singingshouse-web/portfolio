@@ -248,7 +248,9 @@ const BRANDS = [
         images: [
           "./images/pimq_p2_01.webp",
           "./images/pimq_p2_02.webp",
-          "./images/pimq_p2_03.webp"
+          "./images/pimq_p2_03.webp",
+          "./images/pimq_p2_04.webp",
+          "./images/pimq_p2_05.webp"
         ]
       }
     ],
