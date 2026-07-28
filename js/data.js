@@ -61,12 +61,19 @@ const SITE = {
       "設計服務聚焦於網頁視覺與前端設計。主理設計師擁有二十年多媒體設計經驗，曾於品牌設計代理商參與 IKEA、SK-II、兆豐銀行、台北 101 等品牌的數位專案。",
       "從自有產品到客戶委託，我們用同一種標準對待每一個畫面。"
     ],
-    /* 時間軸：年份請自行補上正確資訊（year 留空字串就不會顯示） */
+    /* 數據列。請確認數字後再上線（note 可留空字串） */
+    stats: [
+      { num: "20+", label: "年設計經驗" },
+      { num: "10+", label: "合作品牌" },
+      { num: "15+", label: "數位專案" }
+    ],
+
+    /* 時間軸：year 與 note 留空字串則不顯示 */
     timeline: [
-      { label: "EDUCATION", name: "文化大學 廣告系", year: "" },
-      { label: "EXPERIENCE", name: "pace design", year: "" },
-      { label: "EXPERIENCE", name: "MX minimax design", year: "" },
-      { label: "NOW", name: "心映好事 SINGINGS HOUSE", year: "至今" }
+      { label: "EDUCATION", name: "文化大學 廣告系", year: "", note: "廣告與傳播訓練，奠定從訊息出發思考視覺的習慣。" },
+      { label: "EXPERIENCE", name: "pace design", year: "", note: "設計生涯起點，接觸品牌視覺與印刷實務。" },
+      { label: "EXPERIENCE", name: "MX minimax design", year: "", note: "長期擔任數位設計主力，服務國際品牌與金融客戶。" },
+      { label: "NOW", name: "心映好事 SINGINGS HOUSE", year: "至今", note: "自有產品與設計服務並行，從品牌主的角度做設計。" }
     ]
   },
   otherWorks:

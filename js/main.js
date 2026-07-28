@@ -142,11 +142,23 @@ function buildHome() {
   $("#aboutText").innerHTML = SITE.about.paragraphs
     .map(p => `<p>${esc(p)}</p>`).join("");
 
+  const stats = $("#stats");
+  if (stats && SITE.about.stats) {
+    stats.innerHTML = SITE.about.stats.map(s => `
+      <div class="stat">
+        <strong>${esc(s.num)}</strong>
+        <span>${esc(s.label)}</span>
+      </div>`).join("");
+  }
+
   $("#timeline").innerHTML = SITE.about.timeline.map(t => `
-    <div class="orbit-item${t.label === "NOW" ? " is-now" : ""}">
-      <p class="label">${esc(t.label)}</p>
-      <strong>${esc(t.name)}</strong>
-      <em>${esc(t.year)}</em>
+    <div class="orbit-item${t.label === "NOW" ? " is-now" : ""}" tabindex="0">
+      <div class="orbit-row">
+        <p class="label">${esc(t.label)}</p>
+        <strong>${esc(t.name)}</strong>
+        <em>${esc(t.year)}</em>
+      </div>
+      ${t.note ? `<p class="orbit-note">${esc(t.note)}</p>` : ""}
     </div>`).join("");
 
   $("#clients").innerHTML = SITE.clients

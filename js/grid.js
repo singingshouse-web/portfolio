@@ -29,9 +29,9 @@
   const ACCENT = (css.getPropertyValue("--accent").trim() || "#E986A2");
   const A = hex2rgb(ACCENT);
 
-  const LINE_BASE = { r: 51, g: 51, b: 51, a: MODE === "static" ? 0.07 : 0.17 };
-  const LINE_ON   = { r: A.r, g: A.g, b: A.b, a: 0.85 };
-  const NODE_BASE = { r: 51, g: 51, b: 51, a: MODE === "static" ? 0.10 : 0.24 };
+  const LINE_BASE = { r: 51, g: 51, b: 51, a: MODE === "static" ? 0.03 : 0.055 };
+  const LINE_ON   = { r: A.r, g: A.g, b: A.b, a: 0.6 };
+  const NODE_BASE = { r: 51, g: 51, b: 51, a: MODE === "static" ? 0.04 : 0.09 };
   const NODE_ON   = { r: A.r, g: A.g, b: A.b, a: 1 };
   const NODE_R = 1.9, NODE_R_ON = 3.8;
 
@@ -133,7 +133,7 @@
     ctx.clearRect(0, 0, W, H);
 
     /* 底層靜態點陣 */
-    ctx.fillStyle = MODE === "static" ? "rgba(51,51,51,0.04)" : "rgba(51,51,51,0.08)";
+    ctx.fillStyle = MODE === "static" ? "rgba(51,51,51,0.018)" : "rgba(51,51,51,0.028)";
     for (let x = DOT_SPACING / 2; x < W; x += DOT_SPACING) {
       for (let y = DOT_SPACING / 2; y < H; y += DOT_SPACING) {
         ctx.beginPath();
@@ -169,7 +169,7 @@
       ctx.moveTo(p1.x, p1.y);
       ctx.lineTo(p2.x, p2.y);
       ctx.strokeStyle = mix(LINE_BASE, LINE_ON, t);
-      ctx.lineWidth = lerp(0.8, 1.7, t);
+      ctx.lineWidth = lerp(0.7, 1.5, t);
       ctx.stroke();
     };
 
