@@ -164,8 +164,7 @@ function buildHome() {
       ${t.note ? `<p class="orbit-note">${esc(t.note)}</p>` : ""}
     </div>`).join("");
 
-  $("#clients").innerHTML = SITE.clients
-    .map(c => `<span>${esc(c)}</span>`).join("");
+  buildClients();
 
   grid.innerHTML = BRANDS.map(b => `
     <a class="card rv${b.id === "singings" ? " is-own" : ""}" href="./brand.html?id=${esc(b.id)}">
@@ -178,6 +177,28 @@ function buildHome() {
 
   initPressure();
   initReveal();
+}
+
+/* 參與品牌列：跑馬燈（兩列反向）或靜態排列 */
+function buildClients() {
+  const wrap = $("#clients");
+  if (!wrap) return;
+  const list = SITE.clients || [];
+
+  if (!SITE.clientsMarquee) {
+    wrap.className = "clients";
+    wrap.innerHTML = list.map(c => `<span>${esc(c)}</span>`).join("");
+    return;
+  }
+
+  const half = Math.ceil(list.length / 2);
+  const rows = [list.slice(0, half), list.slice(half)];
+  wrap.className = "clients-marquee";
+  wrap.innerHTML = rows.map((row, i) => {
+    /* 內容複製兩份，才能無縫接續 */
+    const items = row.concat(row).map(c => `<span>${esc(c)}</span>`).join("");
+    return `<div class="mq-row"><div class="mq-track${i ? " rev" : ""}">${items}</div></div>`;
+  }).join("");
 }
 
 /* 數字遞增：捲到畫面時從 0 跑到目標值 */

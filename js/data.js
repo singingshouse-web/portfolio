@@ -51,7 +51,14 @@ const SITE = {
      「從一封信開始。」                                  */
   contactTitle: "說說你想解決的問題，\n我們從那裡開始。",
   email: "singingshouse@gmail.com",
-  clients: ["IKEA", "SK-II", "兆豐銀行", "桂格", "台北101", "LP SUPPORT", "BRAUN", "立頓", "TDCC", "PIMQ"],
+  clients: ["IKEA", "SK-II", "P&G", "KFC", "Intel", "LG", "PUMA", "EPSON", "Yahoo!",
+    "Dove", "OLAY", "PANTENE", "Gillette", "Oral-B", "ARIEL", "好自在 whisper",
+    "海倫仙度絲", "飛柔 PERT", "Neutrogena", "VS SASSOON", "白蘭氏 BRAND'S",
+    "立頓 Lipton", "兆豐銀行", "桂格", "台北101", "全家 FamilyMart", "威秀影城",
+    "SYSTEX", "Apacer", "LP SUPPORT", "PIMQ", "INFINI", "COSMOSHIP", "HMM", "TDCC"],
+
+  /* 品牌列是否使用跑馬燈（false 則為靜態排列） */
+  clientsMarquee: true,
   attribution:
     "除心映好事自有品牌外，其餘為主理設計師於品牌設計代理商任職期間參與執行之專案，僅作為個人參與經歷之呈現。",
   about: {

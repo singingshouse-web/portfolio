@@ -327,6 +327,34 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 0.08em;
   color: var(--ink-soft);
 }
+/* 品牌跑馬燈 */
+.clients-marquee { display: grid; gap: 10px; }
+.mq-row {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+          mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
+.mq-track {
+  display: flex;
+  width: max-content;
+  gap: 46px;
+  animation: mq 64s linear infinite;
+}
+.mq-track.rev { animation-duration: 78s; animation-direction: reverse; }
+.mq-track span {
+  font-family: var(--f-latin);
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  padding: 6px 0;
+}
+.clients-marquee:hover .mq-track { animation-play-state: paused; }
+@keyframes mq { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .mq-track { animation-duration: 140s; }
+}
+
 .attribution {
   margin-top: 34px;
   font-size: 12px;
