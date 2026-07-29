@@ -146,20 +146,21 @@ const BRANDS = [
       "長期參與兆豐銀行數位專案，範圍涵蓋全球版官方網站的設計與改版更新、各波段財富管理活動網站，以及網路銀行平台的前端設計。",
     projects: [
       {
-        name: "全球版官方網站",
-        note: "在金融業的資訊層級與法遵限制下，維持清晰易讀的介面秩序。",
-        images: ["./images/megabank_p1_01.webp", "./images/megabank_p1_02.webp"]
+        name: "全球版官方網站及網路銀行平台",
+        note: "在金融業的資訊層級與法遵限制下，維持清晰易讀的介面秩序的前端視覺設計。",
+        images: ["./images/megabank_p1_01.webp",
+                 "./images/megabank_p1_02.webp",
+                 "./images/megabank_p1_03.webp",
+                 "./images/megabank_p1_04.webp"]
       },
       {
         name: "財富管理活動網站系列",
         note: "波段性活動在既有識別下快速產出，同時保持系列一致性。",
-        images: ["./images/megabank_p2_01.webp", "./images/megabank_p2_02.webp"]
+        images: ["./images/megabank_p2_01.webp", 
+                 "./images/megabank_p2_02.webp", 
+                 "./images/megabank_p2_03.webp", 
+                 "./images/megabank_p2_04.webp"]
       },
-      {
-        name: "網路銀行平台",
-        note: "個人網路銀行平台的前端視覺設計。",
-        images: ["./images/megabank_p3_01.webp", "./images/megabank_p3_02.webp"]
-      }
     ],
     also: ""
   },
@@ -184,9 +185,13 @@ const BRANDS = [
         ]
       },
       {
-        name: "EmbioZ 新產品系列",
+        name: "新產品系列",
         note: "新品系列的獨立活動頁，在既有品牌識別下建立系列專屬的視覺語言。",
-        images: ["./images/lp_p2_01.webp", "./images/lp_p2_02.webp"]
+        images: ["./images/lp_p2_01.webp", 
+                 "./images/lp_p2_02.webp", 
+                 "./images/lp_p2_03.webp", 
+                 "./images/lp_p2_04.webp", 
+                 "./images/lp_p2_05.webp"]
       }
     ],
     also: ""
@@ -217,13 +222,13 @@ const BRANDS = [
   },
   {
     id: "sf",
-    name: "桂格",
+    name: "佳格",
     nameEn: "STANDARD FOODS",
     category: "數位網站",
     tags: ["官網改版", "前端視覺"],
     card: "./images/sf_card.webp",
     hero: "./images/sf_hero.webp",
-    intro: "參與桂格企業官網改版專案，負責前端視覺設計。",
+    intro: "參與佳格企業官網改版專案，負責前端視覺設計。",
     projects: [
       {
         name: "企業官網改版",
@@ -231,7 +236,9 @@ const BRANDS = [
         images: [
           "./images/sf_p1_01.webp",
           "./images/sf_p1_02.webp",
-          "./images/sf_p1_03.webp"
+          "./images/sf_p1_03.webp",
+          "./images/sf_p1_04.webp",
+          "./images/sf_p1_05.webp"
         ]
       }
     ],
