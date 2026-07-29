@@ -61,6 +61,16 @@ const SITE = {
   clientsMarquee: true,
   attribution:
     "除心映好事自有品牌外，其餘為主理設計師於品牌設計代理商任職期間參與執行之專案，僅作為個人參與經歷之呈現。",
+  /* 主理人資訊。cvUrl 留空字串則不顯示下載連結；
+     要放 CV 的話，把 PDF 放進專案根目錄並填 "./cv.pdf" */
+  profile: {
+    name: "郭俊彥",
+    nameEn: "YEN KUO",
+    role: "主理設計師 · 網頁視覺與前端設計",
+    photo: "./images/profile.webp",
+    cvUrl: ""
+  },
+
   about: {
     title: "關於心映好事",
     paragraphs: [

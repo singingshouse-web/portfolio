@@ -141,6 +141,18 @@ function buildHome() {
   mail.textContent = SITE.email;
   mail.href = "mailto:" + SITE.email;
 
+  const pf = SITE.profile;
+  const pfBox = $("#profile");
+  if (pf && pfBox) {
+    pfBox.innerHTML = `
+      <img src="${esc(pf.photo)}" alt="${esc(pf.name)}">
+      <div class="profile-meta">
+        <strong>${esc(pf.name)}<span>${esc(pf.nameEn)}</span></strong>
+        <p>${esc(pf.role)}</p>
+        ${pf.cvUrl ? `<a class="cv-link" href="${esc(pf.cvUrl)}" target="_blank" rel="noopener">下載完整 CV（PDF）</a>` : ""}
+      </div>`;
+  }
+
   $("#aboutText").innerHTML = SITE.about.paragraphs
     .map(p => `<p>${esc(p)}</p>`).join("");
 
