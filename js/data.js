@@ -64,8 +64,8 @@ const SITE = {
   /* 主理人資訊。cvUrl 留空字串則不顯示下載連結；
      要放 CV 的話，把 PDF 放進專案根目錄並填 "./cv.pdf" */
   profile: {
-    name: "郭俊彥",
-    nameEn: "YEN KUO",
+    name: "YEN",
+     /* nameEn: "YEN KUO",*/
     role: "主理設計師 · 網頁視覺與前端設計",
     photo: "./images/profile.webp",
     cvUrl: ""
