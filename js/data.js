@@ -116,7 +116,10 @@ const BRANDS = [
       {
         name: "募資頁與行銷素材",
         note: "從敘事結構到視覺節奏一手設計，支撐擁抱情緒卡的群眾募資上線。",
-        images: ["./images/singings_p2_01.webp", "./images/singings_p2_02.webp"]
+        images: ["./images/singings_p2_01.webp", 
+                 "./images/singings_p2_02.webp", 
+                 "./images/singings_p2_03.webp", 
+                 "./images/singings_p2_04.webp"]
       }
     ],
     also: ""
