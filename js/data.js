@@ -260,8 +260,7 @@ const BRANDS = [
         note: "從進場動態、輪播主視覺到四大主題介紹區塊，用一條連貫的視覺動線帶出品牌的核心訴求。",
         images: [
           "./images/pimq_p1_01.webp",
-          "./images/pimq_p1_02.webp",
-          "./images/pimq_p1_03.webp"
+          "./images/pimq_p1_02.webp"
         ]
       },
       {
