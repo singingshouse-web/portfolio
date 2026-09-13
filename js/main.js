@@ -178,14 +178,7 @@ function buildHome() {
 
   buildClients();
 
-  grid.innerHTML = BRANDS.map(b => `
-    <a class="card rv${b.id === "singings" ? " is-own" : ""}" href="./brand.html?id=${esc(b.id)}">
-      <div class="card-img"><img src="${esc(b.card)}" alt="${esc(b.name)} 案例縮圖" loading="lazy"></div>
-      <div class="card-body">
-        <h3>${esc(b.name)}</h3>
-        <p class="card-tags">${esc(b.tags.join("　·　"))}</p>
-      </div>
-    </a>`).join("");
+  buildWork();
 
   initPressure();
   initReveal();
