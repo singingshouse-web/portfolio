@@ -191,6 +191,73 @@ function buildHome() {
   initReveal();
 }
 
+/* 作品卡片 */
+function cardHTML(b) {
+  return `
+    <a class="card rv${b.id === "singings" ? " is-own" : ""}" href="./brand.html?id=${esc(b.id)}">
+      <div class="card-img"><img src="${esc(b.card)}" alt="${esc(b.name)} 案例縮圖" loading="lazy"></div>
+      <div class="card-body">
+        <h3>${esc(b.name)}</h3>
+        <p class="card-tags">${esc(b.tags.join("　·　"))}</p>
+      </div>
+    </a>`;
+}
+
+/* 作品區：篩選列 +（全部時）依類別分組 */
+function buildWork() {
+  const grid = $("#workGrid");
+  if (!grid) return;
+
+  /* 類別順序以 SITE.categories 為準，未列到的補在後面 */
+  const order = SITE.categories || [];
+  const cats = [...new Set(BRANDS.map(b => b.category))]
+    .sort((a, b) => {
+      const ia = order.indexOf(a), ib = order.indexOf(b);
+      return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
+    });
+
+  const bar = $("#workFilter");
+  const multi = bar && cats.length > 1;
+
+  const render = (cat) => {
+    if (cat === "all") {
+      grid.innerHTML = cats.map(c => `
+        <div class="cat-group">
+          <p class="cat-title">${esc(c)}</p>
+          <div class="grid">
+            ${BRANDS.filter(b => b.category === c).map(cardHTML).join("")}
+          </div>
+        </div>`).join("");
+    } else {
+      grid.innerHTML = `<div class="grid">${BRANDS.filter(b => b.category === cat).map(cardHTML).join("")}</div>`;
+    }
+    initReveal();
+  };
+
+  if (multi) {
+    bar.innerHTML = [`<button class="f-btn is-on" data-cat="all">全部</button>`]
+      .concat(cats.map(c => `<button class="f-btn" data-cat="${esc(c)}">${esc(c)}</button>`)).join("");
+    bar.addEventListener("click", e => {
+      const btn = e.target.closest(".f-btn");
+      if (!btn) return;
+      bar.querySelectorAll(".f-btn").forEach(b => b.classList.toggle("is-on", b === btn));
+      render(btn.dataset.cat);
+    });
+    render("all");
+  } else {
+    if (bar) bar.style.display = "none";
+    grid.innerHTML = `<div class="grid">${BRANDS.map(cardHTML).join("")}</div>`;
+  }
+}
+
+/* 圖片或影片：副檔名為 mp4/webm 時輸出 <video>，其餘為 <img> */
+function mediaHTML(src, alt) {
+  if (/\.(mp4|webm)$/i.test(src)) {
+    return `<video src="${esc(src)}" autoplay loop muted playsinline preload="metadata"></video>`;
+  }
+  return `<img src="${esc(src)}" alt="${esc(alt)}" loading="lazy">`;
+}
+
 /* 參與品牌列：跑馬燈（兩列反向）或靜態排列 */
 function buildClients() {
   const wrap = $("#clients");
@@ -255,9 +322,8 @@ function buildBrand() {
 
   document.title = `${b.name} — 心映好事 SINGINGS HOUSE`;
 
-  const hero = $("#bHero");
-  hero.src = b.hero;
-  hero.alt = `${b.name} 主視覺`;
+  const heroBox = $("#bHero").parentElement;
+  heroBox.innerHTML = mediaHTML(b.hero, `${b.name} 主視覺`);
 
   $("#bCat").textContent = b.category;
   $("#bName").textContent = b.name;
@@ -275,7 +341,7 @@ function buildBrand() {
         </div>
         <div class="proj-flow">
           ${p.images.map(src => `
-            <figure class="rv"><img src="${esc(src)}" alt="${esc(p.name)}" loading="lazy"></figure>
+            <figure class="rv">${mediaHTML(src, p.name)}</figure>
           `).join("")}
         </div>
       </div>

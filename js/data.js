@@ -7,6 +7,9 @@ const SITE = {
   brandName: "心映好事",
   brandNameEn: "SINGINGS HOUSE",
   tagline: "從自有品牌出發的設計服務",
+
+  /* 類別順序（決定篩選列與「全部」的分組順序） */
+  categories: ["網頁與介面", "募資專案", "品牌識別", "包裝設計", "插畫", "動態設計"],
   /* 大字互動效果的文字（留空字串就不顯示） */
   pressureText: "Hello!",
 
@@ -64,8 +67,8 @@ const SITE = {
   /* 主理人資訊。cvUrl 留空字串則不顯示下載連結；
      要放 CV 的話，把 PDF 放進專案根目錄並填 "./cv.pdf" */
   profile: {
-    name: "YEN",
-     /* nameEn: "YEN KUO",*/
+    name: "郭俊彥",
+    nameEn: "YEN KUO",
     role: "主理設計師 · 網頁視覺與前端設計",
     photo: "./images/profile.webp",
     cvUrl: ""
@@ -106,7 +109,7 @@ const BRANDS = [
     id: "singings",
     name: "心映好事",
     nameEn: "SINGINGS HOUSE",
-    category: "自有品牌",
+    category: "網頁與介面",
     tags: ["產品視覺", "網頁設計", "互動系統", "募資頁面"],
     card: "./images/singings_card.webp",
     hero: "./images/singings_hero.webp",
@@ -122,14 +125,6 @@ const BRANDS = [
           "./images/singings_p1_03.webp",
           "./images/singings_p1_04.webp"
         ]
-      },
-      {
-        name: "募資頁與行銷素材",
-        note: "從敘事結構到視覺節奏一手設計，支撐擁抱情緒卡的群眾募資上線。",
-        images: ["./images/singings_p2_01.webp", 
-                 "./images/singings_p2_02.webp", 
-                 "./images/singings_p2_03.webp", 
-                 "./images/singings_p2_04.webp"]
       }
     ],
     also: ""
@@ -138,7 +133,7 @@ const BRANDS = [
     id: "megabank",
     name: "兆豐銀行",
     nameEn: "MEGA BANK",
-    category: "數位網站",
+    category: "網頁與介面",
     tags: ["官方網站", "活動網站", "網路銀行"],
     card: "./images/megabank_card.webp",
     hero: "./images/megabank_hero.webp",
@@ -146,21 +141,20 @@ const BRANDS = [
       "長期參與兆豐銀行數位專案，範圍涵蓋全球版官方網站的設計與改版更新、各波段財富管理活動網站，以及網路銀行平台的前端設計。",
     projects: [
       {
-        name: "全球版官方網站及網路銀行平台",
-        note: "在金融業的資訊層級與法遵限制下，維持清晰易讀的介面秩序的前端視覺設計。",
-        images: ["./images/megabank_p1_01.webp",
-                 "./images/megabank_p1_02.webp",
-                 "./images/megabank_p1_03.webp",
-                 "./images/megabank_p1_04.webp"]
+        name: "全球版官方網站",
+        note: "在金融業的資訊層級與法遵限制下，維持清晰易讀的介面秩序。",
+        images: ["./images/megabank_p1_01.webp", "./images/megabank_p1_02.webp"]
       },
       {
         name: "財富管理活動網站系列",
         note: "波段性活動在既有識別下快速產出，同時保持系列一致性。",
-        images: ["./images/megabank_p2_01.webp", 
-                 "./images/megabank_p2_02.webp", 
-                 "./images/megabank_p2_03.webp", 
-                 "./images/megabank_p2_04.webp"]
+        images: ["./images/megabank_p2_01.webp", "./images/megabank_p2_02.webp"]
       },
+      {
+        name: "網路銀行平台",
+        note: "個人網路銀行平台的前端視覺設計。",
+        images: ["./images/megabank_p3_01.webp", "./images/megabank_p3_02.webp"]
+      }
     ],
     also: ""
   },
@@ -168,7 +162,7 @@ const BRANDS = [
     id: "lp",
     name: "LP SUPPORT",
     nameEn: "LP SUPPORT",
-    category: "數位網站",
+    category: "網頁與介面",
     tags: ["官方網站", "UI / UX", "新品活動頁"],
     card: "./images/lp_card.webp",
     hero: "./images/lp_hero.webp",
@@ -185,13 +179,9 @@ const BRANDS = [
         ]
       },
       {
-        name: "新產品系列",
+        name: "EmbioZ 新產品系列",
         note: "新品系列的獨立活動頁，在既有品牌識別下建立系列專屬的視覺語言。",
-        images: ["./images/lp_p2_01.webp", 
-                 "./images/lp_p2_02.webp", 
-                 "./images/lp_p2_03.webp", 
-                 "./images/lp_p2_04.webp", 
-                 "./images/lp_p2_05.webp"]
+        images: ["./images/lp_p2_01.webp", "./images/lp_p2_02.webp"]
       }
     ],
     also: ""
@@ -200,7 +190,7 @@ const BRANDS = [
     id: "ikea",
     name: "IKEA",
     nameEn: "IKEA TAIWAN",
-    category: "數位網站",
+    category: "網頁與介面",
     tags: ["檔期活動網頁","eDM"],
     card: "./images/ikea_card.webp",
     hero: "./images/ikea_hero.webp",
@@ -222,13 +212,13 @@ const BRANDS = [
   },
   {
     id: "sf",
-    name: "佳格",
+    name: "桂格",
     nameEn: "STANDARD FOODS",
-    category: "數位網站",
+    category: "網頁與介面",
     tags: ["官網改版", "前端視覺"],
     card: "./images/sf_card.webp",
     hero: "./images/sf_hero.webp",
-    intro: "參與佳格企業官網改版專案，負責前端視覺設計。",
+    intro: "參與桂格企業官網改版專案，負責前端視覺設計。",
     projects: [
       {
         name: "企業官網改版",
@@ -236,9 +226,7 @@ const BRANDS = [
         images: [
           "./images/sf_p1_01.webp",
           "./images/sf_p1_02.webp",
-          "./images/sf_p1_03.webp",
-          "./images/sf_p1_04.webp",
-          "./images/sf_p1_05.webp"
+          "./images/sf_p1_03.webp"
         ]
       }
     ],
@@ -248,7 +236,7 @@ const BRANDS = [
     id: "pimq",
     name: "PIMQ",
     nameEn: "PIMQ",
-    category: "數位網站",
+    category: "網頁與介面",
     tags: ["官方網站", "UI / UX", "介面動態"],
     card: "./images/pimq_card.webp",
     hero: "./images/pimq_hero.webp",
@@ -260,7 +248,8 @@ const BRANDS = [
         note: "從進場動態、輪播主視覺到四大主題介紹區塊，用一條連貫的視覺動線帶出品牌的核心訴求。",
         images: [
           "./images/pimq_p1_01.webp",
-          "./images/pimq_p1_02.webp"
+          "./images/pimq_p1_02.webp",
+          "./images/pimq_p1_03.webp"
         ]
       },
       {
@@ -274,6 +263,201 @@ const BRANDS = [
           "./images/pimq_p2_05.webp"
         ]
       }
+    ],
+    also: ""
+  },
+
+
+  /* ═══════════ 募資專案 ═══════════
+     之後每個新的募資案，複製下面整個 { } 區塊、改 id 與內容即可。
+     累積到三件以上時，可比照 digital/ 的做法獨立成 crowdfunding/ 專頁。 */
+  {
+    id: "cf-embrace",
+    name: "擁抱情緒卡",
+    nameEn: "EMBRACE EMOTION CARDS",
+    category: "募資專案",
+    tags: ["募資頁面", "專案視覺", "行銷素材"],
+    card: "./images/cf-embrace_card.webp",
+    hero: "./images/cf-embrace_hero.webp",
+    intro:
+      "自有品牌「擁抱情緒卡」的群眾募資專案。從募資頁的敘事結構、專案主視覺到各階段的行銷素材，完整規劃並執行一次募資上線。",
+    projects: [
+      {
+        name: "募資頁面設計",
+        note: "募資頁的難處不在版面而在順序——先讓人認得自己的情緒，才有後面的支持理由。整頁的節奏都是照這個邏輯排的。",
+        images: [
+          "./images/cf-embrace_p1_01.webp",
+          "./images/cf-embrace_p1_02.webp",
+          "./images/cf-embrace_p1_03.webp",
+          "./images/cf-embrace_p1_04.webp"
+        ]
+      },
+      {
+        name: "專案行銷素材",
+        note: "預熱到結案各階段的社群與廣告素材，在同一套視覺語言下對應不同的溝通任務。",
+        images: [
+          "./images/cf-embrace_p2_01.webp",
+          "./images/cf-embrace_p2_02.webp"
+        ]
+      }
+    ],
+    also: ""
+  },
+
+  /* ═══════════ 品牌識別 ═══════════ */
+  {
+    id: "fm-dayplus",
+    name: "DAYPLUS",
+    nameEn: "FAMILYMART ONLINESTORE",
+    category: "品牌識別",
+    tags: ["品牌識別", "視覺系統", "提案"],
+    card: "./images/fm-dayplus_card.webp",
+    hero: "./images/fm-dayplus_hero.webp",
+    intro: "全家網路商店自有品牌視覺溝通提案之一。為生鮮與即食類商品建立品牌識別與延伸應用。",
+    projects: [
+      { name: "識別與應用", note: "以標誌、色彩系統到包裝與通路陳列，建立可延展的品牌語言。",
+        images: ["./images/fm-dayplus_p1_01.webp", "./images/fm-dayplus_p1_02.webp", "./images/fm-dayplus_p1_03.webp"] }
+    ],
+    also: ""
+  },
+  {
+    id: "fm-goods",
+    name: "the good GOODs",
+    nameEn: "FAMILYMART ONLINESTORE",
+    category: "品牌識別",
+    tags: ["品牌識別", "標誌設計", "包裝延伸"],
+    card: "./images/fm-goods_card.webp",
+    hero: "./images/fm-goods_hero.webp",
+    intro: "全家網路商店自有品牌視覺溝通提案。以直白有力的字標建立品牌個性，並延伸至包裝與傳達物。",
+    projects: [
+      { name: "識別與應用", note: "標誌結構、色彩計畫與副品牌關係的整體規劃。",
+        images: ["./images/fm-goods_p1_01.webp", "./images/fm-goods_p1_02.webp", "./images/fm-goods_p1_03.webp"] }
+    ],
+    also: ""
+  },
+  {
+    id: "fm-plus",
+    name: "PLUS",
+    nameEn: "FAMILYMART ONLINESTORE",
+    category: "品牌識別",
+    tags: ["品牌識別", "通路視覺", "包裝"],
+    card: "./images/fm-plus_card.webp",
+    hero: "./images/fm-plus_hero.webp",
+    intro: "全家網路商店自有品牌視覺溝通提案。以高彩度與鮮明字標，建立在通路現場能被快速辨識的視覺。",
+    projects: [
+      { name: "識別與應用", note: "從標誌變化到店頭、包材與宣傳物的整體延伸。",
+        images: ["./images/fm-plus_p1_01.webp", "./images/fm-plus_p1_02.webp", "./images/fm-plus_p1_03.webp"] }
+    ],
+    also: ""
+  },
+
+  /* ═══════════ 包裝設計 ═══════════ */
+  {
+    id: "cosmoship",
+    name: "COSMOSHIP",
+    nameEn: "COSMOSHIP PACKAGE",
+    category: "包裝設計",
+    tags: ["包裝設計", "禮盒", "系列視覺"],
+    card: "./images/cosmoship_card.webp",
+    hero: "./images/cosmoship_hero.webp",
+    intro: "宇宙小艇聯名禮盒包裝設計，以系列化的圖樣語言區分口味，同時維持整體的一致性。",
+    projects: [
+      { name: "禮盒包裝", note: "三款圖樣共用同一套構成邏輯，讓系列陳列時具有整體感。",
+        images: ["./images/cosmoship_p1_01.webp", "./images/cosmoship_p1_02.webp"] }
+    ],
+    also: ""
+  },
+  {
+    id: "taipei101",
+    name: "台北 101 月餅禮盒",
+    nameEn: "TAIPEI 101 MOONCAKE",
+    category: "包裝設計",
+    tags: ["包裝設計", "節慶禮盒", "插畫應用"],
+    card: "./images/taipei101_card.webp",
+    hero: "./images/taipei101_hero.webp",
+    intro: "台北 101 中秋節禮盒包裝設計，將地標意象與節慶花卉結合成具辨識度的節慶視覺。",
+    projects: [
+      { name: "禮盒包裝與延伸", note: "主視覺、盒型展開與系列色彩變化的整體規劃。",
+        images: ["./images/taipei101_p1_01.webp", "./images/taipei101_p1_02.webp", "./images/taipei101_p1_03.webp"] }
+    ],
+    also: ""
+  },
+
+  /* ═══════════ 插畫 ═══════════ */
+  {
+    id: "starbucks",
+    name: "STARBUCKS 蘇門答臘",
+    nameEn: "STARBUCKS STYLE REDESIGN",
+    category: "插畫",
+    tags: ["插畫", "包裝應用", "風格改造"],
+    card: "./images/starbucks_card.webp",
+    hero: "./images/starbucks_hero.webp",
+    intro: "星巴克單品咖啡包裝的風格改造提案，以產區生態為題繪製熱帶叢林插畫。",
+    projects: [
+      { name: "包裝插畫", note: "以層疊的葉形與產區動物構成畫面，讓產地故事成為包裝本身。",
+        images: ["./images/starbucks_p1_01.webp", "./images/starbucks_p1_02.webp", "./images/starbucks_p1_03.webp"] }
+    ],
+    also: ""
+  },
+  {
+    id: "plus-coldbrew",
+    name: "PLUS 冷萃咖啡",
+    nameEn: "FAMILYMART NEW BRAND COLD BREW",
+    category: "插畫",
+    tags: ["插畫", "包裝設計", "新品視覺"],
+    card: "./images/plus-coldbrew_card.webp",
+    hero: "./images/plus-coldbrew_hero.webp",
+    intro: "全家網路商店自有品牌新品冷萃咖啡的包裝插畫，以細緻線繪呈現果香風味的差異。",
+    projects: [
+      { name: "瓶身插畫與系列視覺", note: "三種風味以同一種線繪語言區分，兼顧系列感與單瓶識別度。",
+        images: ["./images/plus-coldbrew_p1_01.webp", "./images/plus-coldbrew_p1_02.webp", "./images/plus-coldbrew_p1_03.webp"] }
+    ],
+    also: ""
+  },
+
+  /* ═══════════ 動態設計 ═══════════ */
+  {
+    id: "ecard",
+    name: "節慶動態電子卡",
+    nameEn: "FESTIVAL E-CARD",
+    category: "動態設計",
+    tags: ["動態設計", "節慶視覺", "社群素材"],
+    card: "./images/ecard_card.webp",
+    hero: "./images/ecard_hero.webp",
+    intro: "歷年年節與節慶的動態電子卡設計，每年以不同的視覺語言重新詮釋節慶題材。",
+    projects: [
+      { name: "年節系列", note: "從角色插畫到像素遊戲風，每年更換手法但維持品牌識別的存在感。",
+        images: ["./images/ecard_p1_01.webp", "./images/ecard_p1_02.webp", "./images/ecard_p1_03.webp"] }
+    ],
+    also: ""
+  },
+  {
+    id: "hmm-banner",
+    name: "hmm 促銷網路廣告",
+    nameEn: "HMM BANNER",
+    category: "動態設計",
+    tags: ["動態設計", "Banner", "促銷素材"],
+    card: "./images/hmm-banner_card.webp",
+    hero: "./images/hmm-banner_hero.webp",
+    intro: "hmm 週年慶促銷網路廣告的動態設計，以等距插畫與倒數節奏帶動點擊。",
+    projects: [
+      { name: "動態 Banner 系列", note: "在極短的秒數內完成訊息傳達，構圖與節奏都為了讓重點停留在畫面最後一幀。",
+        images: ["./images/hmm-banner_p1_01.webp", "./images/hmm-banner_p1_02.webp", "./images/hmm-banner_p1_03.webp"] }
+    ],
+    also: ""
+  },
+  {
+    id: "mx-logo",
+    name: "MX 識別動畫",
+    nameEn: "MX LOGO ANIMATION",
+    category: "動態設計",
+    tags: ["動態設計", "識別動畫", "動態標誌"],
+    card: "./images/mx-logo_card.webp",
+    hero: "./images/mx-logo_hero.webp",
+    intro: "公司識別標誌的動態化設計，以幾何元素的聚合過程演繹標誌的構成邏輯。",
+    projects: [
+      { name: "標誌動態", note: "動畫本身就是標誌結構的說明——線條如何成形，品牌個性就在那幾秒裡。",
+        images: ["./images/mx-logo_p1_01.webp", "./images/mx-logo_p1_02.webp"] }
     ],
     also: ""
   }
