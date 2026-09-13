@@ -191,11 +191,17 @@ function buildHome() {
   initReveal();
 }
 
-/* 作品卡片 */
-function cardHTML(b) {
+/* 作品卡片。wide=每組首件，橫跨兩欄；badge=顯示類別標籤 */
+function cardHTML(b, opt = {}) {
+  const cls = ["card", "rv"];
+  if (b.id === "singings") cls.push("is-own");
+  if (opt.wide) cls.push("is-wide");
   return `
-    <a class="card rv${b.id === "singings" ? " is-own" : ""}" href="./brand.html?id=${esc(b.id)}">
-      <div class="card-img"><img src="${esc(b.card)}" alt="${esc(b.name)} 案例縮圖" loading="lazy"></div>
+    <a class="${cls.join(" ")}" href="./brand.html?id=${esc(b.id)}">
+      <div class="card-img">
+        <img src="${esc(b.card)}" alt="${esc(b.name)} 案例縮圖" loading="lazy">
+        ${opt.badge ? `<span class="card-cat">${esc(b.category)}</span>` : ""}
+      </div>
       <div class="card-body">
         <h3>${esc(b.name)}</h3>
         <p class="card-tags">${esc(b.tags.join("　·　"))}</p>
@@ -220,16 +226,18 @@ function buildWork() {
   const multi = bar && cats.length > 1;
 
   const render = (cat) => {
+    const layout = list => list
+      .map((b, i) => cardHTML(b, { wide: i === 0 && list.length > 1, badge: true }))
+      .join("");
+
     if (cat === "all") {
       grid.innerHTML = cats.map(c => `
         <div class="cat-group">
           <p class="cat-title">${esc(c)}</p>
-          <div class="grid">
-            ${BRANDS.filter(b => b.category === c).map(cardHTML).join("")}
-          </div>
+          <div class="grid">${layout(BRANDS.filter(b => b.category === c))}</div>
         </div>`).join("");
     } else {
-      grid.innerHTML = `<div class="grid">${BRANDS.filter(b => b.category === cat).map(cardHTML).join("")}</div>`;
+      grid.innerHTML = `<div class="grid">${layout(BRANDS.filter(b => b.category === cat))}</div>`;
     }
     initReveal();
   };
