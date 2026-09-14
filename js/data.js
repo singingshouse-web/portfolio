@@ -8,7 +8,10 @@ const SITE = {
   brandNameEn: "SINGINGS HOUSE",
   tagline: "從自有品牌出發的設計服務",
 
-  /* 類別順序（決定篩選列與「全部」的分組順序） */
+  /* 作品區版型："bento" 類別入口格 ／ "grid" 三欄列表 */
+  workLayout: "bento",
+
+  /* 類別順序（決定篩選列與便當格順序） */
   categories: ["網頁與介面", "募資專案", "品牌識別", "包裝設計", "插畫與動態"],
   /* 大字互動效果的文字（留空字串就不顯示） */
   pressureText: "Hello!",

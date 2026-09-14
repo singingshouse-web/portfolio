@@ -229,6 +229,7 @@ a { color: inherit; text-decoration: none; }
   position: relative;
   display: block;
   width: 100%;
+  height: 100%;
   aspect-ratio: 1 / 1;
   border: 0;
   padding: 0;
@@ -238,9 +239,10 @@ a { color: inherit; text-decoration: none; }
   font-family: inherit;
   text-align: left;
 }
+/* hero 不設比例，改由同列的方格決定高度，才能精準對齊 */
 .bento-tile.is-hero {
   grid-column: span 2;
-  aspect-ratio: 2 / 1;
+  aspect-ratio: auto;
 }
 .bento-img {
   position: absolute;
@@ -282,12 +284,21 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: 4px;
 }
 .bento-tile.is-hero .bento-name { font-size: 28px; }
-.bento-count {
-  display: block;
-  font-family: var(--f-latin);
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  opacity: .82;
+.bento-dots {
+  display: flex;
+  gap: 7px;
+  margin-top: 10px;
+}
+.bento-dots i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.42);
+  transition: background .4s, transform .4s;
+}
+.bento-dots i.is-on {
+  background: #fff;
+  transform: scale(1.25);
 }
 
 .card-img video {.card-img video {

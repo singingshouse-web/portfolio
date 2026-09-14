@@ -197,8 +197,8 @@ function cardHTML(b) {
 }
 
 /* 作品區
-   「全部」 → 便當式類別入口（首格為輪播 hero）
-   單一類別 → 三欄作品列表                                */
+   workLayout: "bento" → 便當式類別入口（每格輪播、點點指示）
+   workLayout: "grid"  → 三欄作品列表                        */
 function buildWork() {
   const grid = $("#workGrid");
   if (!grid) return;
@@ -211,63 +211,77 @@ function buildWork() {
     });
 
   const bar = $("#workFilter");
-  const multi = bar && cats.length > 1;
-  let heroTimer = null;
+  const useBento = (SITE.workLayout || (cats.length > 1 ? "bento" : "grid")) === "bento";
+  const timers = [];
 
-  /* ---- 便當格：一格代表一個類別 ---- */
+  /* ---- 便當格 ---- */
   function bentoHTML() {
-    /* 每次進站隨機挑一個類別放在 hero 位置 */
-    const heroIdx = Math.floor(Math.random() * cats.length);
-    const ordered = [cats[heroIdx], ...cats.filter((_, i) => i !== heroIdx)];
+    /* 每次進站重新洗牌，類別位置與 hero 都會不同 */
+    const shuffled = cats.slice();
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
 
-    return `<div class="bento">` + ordered.map((c, i) => {
-      const list = BRANDS.filter(b => b.category === c);
-      const imgs = list.map(b => b.card);
+    return `<div class="bento">` + shuffled.map((c, i) => {
+      const imgs = BRANDS.filter(b => b.category === c).map(b => b.card);
+      const dots = imgs.map((_, k) =>
+        `<i class="${k === 0 ? "is-on" : ""}"></i>`).join("");
       return `
         <button class="bento-tile${i === 0 ? " is-hero" : ""} rv"
                 data-cat="${esc(c)}" data-imgs='${esc(JSON.stringify(imgs))}'>
           <span class="bento-img"><img src="${esc(imgs[0])}" alt=""></span>
-          ${i === 0 ? `<span class="bento-img bento-img2"><img src="${esc(imgs[1] || imgs[0])}" alt=""></span>` : ""}
+          <span class="bento-img bento-img2"><img src="${esc(imgs[1] || imgs[0])}" alt=""></span>
           <span class="bento-meta">
             <span class="bento-name">${esc(c)}</span>
-            <span class="bento-count">${list.length} 件作品</span>
+            ${imgs.length > 1 ? `<span class="bento-dots">${dots}</span>` : ""}
           </span>
         </button>`;
     }).join("") + `</div>`;
   }
 
-  /* hero 格內的圖片每 5 秒交錯淡出淡入 */
-  function startHeroLoop() {
-    clearInterval(heroTimer);
-    const hero = grid.querySelector(".bento-tile.is-hero");
-    if (!hero) return;
-    let imgs = [];
-    try { imgs = JSON.parse(hero.dataset.imgs); } catch (e) { return; }
-    if (imgs.length < 2) return;
+  /* 每格獨立輪播，起始時間錯開，避免同時切換 */
+  function startLoops() {
+    timers.forEach(clearInterval);
+    timers.length = 0;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    const layers = hero.querySelectorAll(".bento-img img");
-    let i = 0, top = false;
-    heroTimer = setInterval(() => {
-      i = (i + 1) % imgs.length;
-      layers[top ? 0 : 1].src = imgs[i];
-      hero.classList.toggle("swap", !top);
-      top = !top;
-    }, 5000);
+    grid.querySelectorAll(".bento-tile").forEach((tile, idx) => {
+      let imgs = [];
+      try { imgs = JSON.parse(tile.dataset.imgs); } catch (e) { return; }
+      if (imgs.length < 2) return;
+
+      const layers = tile.querySelectorAll(".bento-img img");
+      const dots = tile.querySelectorAll(".bento-dots i");
+      let i = 0, top = false;
+
+      const step = () => {
+        i = (i + 1) % imgs.length;
+        layers[top ? 0 : 1].src = imgs[i];
+        tile.classList.toggle("swap", !top);
+        top = !top;
+        dots.forEach((d, k) => d.classList.toggle("is-on", k === i));
+      };
+
+      setTimeout(() => {
+        step();
+        timers.push(setInterval(step, 4800));
+      }, idx * 900);
+    });
   }
 
   const render = (cat) => {
-    clearInterval(heroTimer);
-    if (cat === "all") {
+    timers.forEach(clearInterval);
+    timers.length = 0;
+
+    if (useBento && cat === "all") {
       grid.innerHTML = bentoHTML();
-      startHeroLoop();
-      grid.querySelectorAll(".bento-tile").forEach(t => {
-        t.addEventListener("click", () => setCat(t.dataset.cat));
-      });
+      startLoops();
+      grid.querySelectorAll(".bento-tile").forEach(t =>
+        t.addEventListener("click", () => setCat(t.dataset.cat)));
     } else {
-      grid.innerHTML = `<div class="grid">${
-        BRANDS.filter(b => b.category === cat).map(b => cardHTML(b)).join("")
-      }</div>`;
+      const list = cat === "all" ? BRANDS : BRANDS.filter(b => b.category === cat);
+      grid.innerHTML = `<div class="grid">${list.map(b => cardHTML(b)).join("")}</div>`;
     }
     initReveal();
   };
@@ -280,13 +294,15 @@ function buildWork() {
     if (head && cat !== "all") head.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  if (multi) {
-    bar.innerHTML = [`<button class="f-btn is-on" data-cat="all">全部</button>`]
-      .concat(cats.map(c => `<button class="f-btn" data-cat="${esc(c)}">${esc(c)}</button>`)).join("");
-    bar.addEventListener("click", e => {
-      const btn = e.target.closest(".f-btn");
-      if (btn) setCat(btn.dataset.cat);
-    });
+  if (useBento) {
+    if (bar) {
+      bar.innerHTML = [`<button class="f-btn is-on" data-cat="all">全部</button>`]
+        .concat(cats.map(c => `<button class="f-btn" data-cat="${esc(c)}">${esc(c)}</button>`)).join("");
+      bar.addEventListener("click", e => {
+        const btn = e.target.closest(".f-btn");
+        if (btn) setCat(btn.dataset.cat);
+      });
+    }
     render("all");
   } else {
     if (bar) bar.style.display = "none";

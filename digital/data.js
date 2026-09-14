@@ -7,6 +7,9 @@ const SITE = {
   brandName: "心映好事",
   brandNameEn: "SINGINGS HOUSE",
   tagline: "從自有品牌出發的設計服務",
+
+  /* 數位版固定為三欄列表 */
+  workLayout: "grid",
   /* 大字互動效果的文字（留空字串就不顯示） */
   pressureText: "Hello!",
 
