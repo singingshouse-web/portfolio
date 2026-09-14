@@ -225,6 +225,7 @@ a { color: inherit; text-decoration: none; }
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
+a.bento-tile { text-decoration: none; color: inherit; }
 .bento-tile {
   position: relative;
   display: block;

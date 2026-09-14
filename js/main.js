@@ -224,19 +224,24 @@ function buildWork() {
     }
 
     return `<div class="bento">` + shuffled.map((c, i) => {
-      const imgs = BRANDS.filter(b => b.category === c).map(b => b.card);
+      const list = BRANDS.filter(b => b.category === c);
+      const imgs = list.map(b => b.card);
       const dots = imgs.map((_, k) =>
         `<i class="${k === 0 ? "is-on" : ""}"></i>`).join("");
+      /* 只有一件作品時直接連到該作品詳頁 */
+      const single = list.length === 1 ? list[0].id : "";
+      const tag = single ? "a" : "button";
+      const attr = single ? `href="./brand.html?id=${esc(single)}"` : `type="button"`;
       return `
-        <button class="bento-tile${i === 0 ? " is-hero" : ""} rv"
-                data-cat="${esc(c)}" data-imgs='${esc(JSON.stringify(imgs))}'>
+        <${tag} class="bento-tile${i === 0 ? " is-hero" : ""} rv" ${attr}
+                data-cat="${esc(c)}" data-single="${esc(single)}" data-imgs='${esc(JSON.stringify(imgs))}'>
           <span class="bento-img"><img src="${esc(imgs[0])}" alt=""></span>
           <span class="bento-img bento-img2"><img src="${esc(imgs[1] || imgs[0])}" alt=""></span>
           <span class="bento-meta">
             <span class="bento-name">${esc(c)}</span>
             ${imgs.length > 1 ? `<span class="bento-dots">${dots}</span>` : ""}
           </span>
-        </button>`;
+        </${tag}>`;
     }).join("") + `</div>`;
   }
 
@@ -277,8 +282,10 @@ function buildWork() {
     if (useBento && cat === "all") {
       grid.innerHTML = bentoHTML();
       startLoops();
-      grid.querySelectorAll(".bento-tile").forEach(t =>
-        t.addEventListener("click", () => setCat(t.dataset.cat)));
+      grid.querySelectorAll(".bento-tile").forEach(t => {
+        if (t.dataset.single) return;        /* <a> 自己會跳轉 */
+        t.addEventListener("click", () => setCat(t.dataset.cat));
+      });
     } else {
       const list = cat === "all" ? BRANDS : BRANDS.filter(b => b.category === cat);
       grid.innerHTML = `<div class="grid">${list.map(b => cardHTML(b)).join("")}</div>`;
@@ -287,6 +294,13 @@ function buildWork() {
   };
 
   const setCat = (cat) => {
+    if (cat !== "all") {
+      const list = BRANDS.filter(b => b.category === cat);
+      if (list.length === 1) {
+        location.href = `./brand.html?id=${list[0].id}`;
+        return;
+      }
+    }
     if (bar) bar.querySelectorAll(".f-btn").forEach(b =>
       b.classList.toggle("is-on", b.dataset.cat === cat));
     render(cat);
