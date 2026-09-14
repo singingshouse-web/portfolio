@@ -184,17 +184,11 @@ function buildHome() {
   initReveal();
 }
 
-/* 作品卡片。wide=每組首件，橫跨兩欄；badge=顯示類別標籤 */
-function cardHTML(b, opt = {}) {
-  const cls = ["card", "rv"];
-  if (b.id === "singings") cls.push("is-own");
-  if (opt.wide) cls.push("is-wide");
+/* 作品卡片 */
+function cardHTML(b) {
   return `
-    <a class="${cls.join(" ")}" href="./brand.html?id=${esc(b.id)}">
-      <div class="card-img">
-        <img src="${esc(b.card)}" alt="${esc(b.name)} 案例縮圖" loading="lazy">
-        ${opt.badge ? `<span class="card-cat">${esc(b.category)}</span>` : ""}
-      </div>
+    <a class="card rv${b.id === "singings" ? " is-own" : ""}" href="./brand.html?id=${esc(b.id)}">
+      <div class="card-img"><img src="${esc(b.card)}" alt="${esc(b.name)} 案例縮圖" loading="lazy"></div>
       <div class="card-body">
         <h3>${esc(b.name)}</h3>
         <p class="card-tags">${esc(b.tags.join("　·　"))}</p>
@@ -202,12 +196,13 @@ function cardHTML(b, opt = {}) {
     </a>`;
 }
 
-/* 作品區：篩選列 +（全部時）依類別分組 */
+/* 作品區
+   「全部」 → 便當式類別入口（首格為輪播 hero）
+   單一類別 → 三欄作品列表                                */
 function buildWork() {
   const grid = $("#workGrid");
   if (!grid) return;
 
-  /* 類別順序以 SITE.categories 為準，未列到的補在後面 */
   const order = SITE.categories || [];
   const cats = [...new Set(BRANDS.map(b => b.category))]
     .sort((a, b) => {
@@ -217,22 +212,72 @@ function buildWork() {
 
   const bar = $("#workFilter");
   const multi = bar && cats.length > 1;
+  let heroTimer = null;
+
+  /* ---- 便當格：一格代表一個類別 ---- */
+  function bentoHTML() {
+    /* 每次進站隨機挑一個類別放在 hero 位置 */
+    const heroIdx = Math.floor(Math.random() * cats.length);
+    const ordered = [cats[heroIdx], ...cats.filter((_, i) => i !== heroIdx)];
+
+    return `<div class="bento">` + ordered.map((c, i) => {
+      const list = BRANDS.filter(b => b.category === c);
+      const imgs = list.map(b => b.card);
+      return `
+        <button class="bento-tile${i === 0 ? " is-hero" : ""} rv"
+                data-cat="${esc(c)}" data-imgs='${esc(JSON.stringify(imgs))}'>
+          <span class="bento-img"><img src="${esc(imgs[0])}" alt=""></span>
+          ${i === 0 ? `<span class="bento-img bento-img2"><img src="${esc(imgs[1] || imgs[0])}" alt=""></span>` : ""}
+          <span class="bento-meta">
+            <span class="bento-name">${esc(c)}</span>
+            <span class="bento-count">${list.length} 件作品</span>
+          </span>
+        </button>`;
+    }).join("") + `</div>`;
+  }
+
+  /* hero 格內的圖片每 5 秒交錯淡出淡入 */
+  function startHeroLoop() {
+    clearInterval(heroTimer);
+    const hero = grid.querySelector(".bento-tile.is-hero");
+    if (!hero) return;
+    let imgs = [];
+    try { imgs = JSON.parse(hero.dataset.imgs); } catch (e) { return; }
+    if (imgs.length < 2) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const layers = hero.querySelectorAll(".bento-img img");
+    let i = 0, top = false;
+    heroTimer = setInterval(() => {
+      i = (i + 1) % imgs.length;
+      layers[top ? 0 : 1].src = imgs[i];
+      hero.classList.toggle("swap", !top);
+      top = !top;
+    }, 5000);
+  }
 
   const render = (cat) => {
-    const layout = list => list
-      .map((b, i) => cardHTML(b, { wide: i === 0 && list.length > 1, badge: true }))
-      .join("");
-
+    clearInterval(heroTimer);
     if (cat === "all") {
-      grid.innerHTML = cats.map(c => `
-        <div class="cat-group">
-          <p class="cat-title">${esc(c)}</p>
-          <div class="grid">${layout(BRANDS.filter(b => b.category === c))}</div>
-        </div>`).join("");
+      grid.innerHTML = bentoHTML();
+      startHeroLoop();
+      grid.querySelectorAll(".bento-tile").forEach(t => {
+        t.addEventListener("click", () => setCat(t.dataset.cat));
+      });
     } else {
-      grid.innerHTML = `<div class="grid">${layout(BRANDS.filter(b => b.category === cat))}</div>`;
+      grid.innerHTML = `<div class="grid">${
+        BRANDS.filter(b => b.category === cat).map(b => cardHTML(b)).join("")
+      }</div>`;
     }
     initReveal();
+  };
+
+  const setCat = (cat) => {
+    if (bar) bar.querySelectorAll(".f-btn").forEach(b =>
+      b.classList.toggle("is-on", b.dataset.cat === cat));
+    render(cat);
+    const head = document.querySelector("#work .section-head");
+    if (head && cat !== "all") head.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   if (multi) {
@@ -240,14 +285,12 @@ function buildWork() {
       .concat(cats.map(c => `<button class="f-btn" data-cat="${esc(c)}">${esc(c)}</button>`)).join("");
     bar.addEventListener("click", e => {
       const btn = e.target.closest(".f-btn");
-      if (!btn) return;
-      bar.querySelectorAll(".f-btn").forEach(b => b.classList.toggle("is-on", b === btn));
-      render(btn.dataset.cat);
+      if (btn) setCat(btn.dataset.cat);
     });
     render("all");
   } else {
     if (bar) bar.style.display = "none";
-    grid.innerHTML = `<div class="grid">${BRANDS.map(cardHTML).join("")}</div>`;
+    grid.innerHTML = `<div class="grid">${BRANDS.map(b => cardHTML(b)).join("")}</div>`;
   }
 }
 

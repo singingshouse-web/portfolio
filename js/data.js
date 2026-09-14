@@ -9,7 +9,7 @@ const SITE = {
   tagline: "從自有品牌出發的設計服務",
 
   /* 類別順序（決定篩選列與「全部」的分組順序） */
-  categories: ["網頁與介面", "募資專案", "品牌識別", "包裝設計", "插畫", "動態設計"],
+  categories: ["網頁與介面", "募資專案", "品牌識別", "包裝設計", "插畫與動態"],
   /* 大字互動效果的文字（留空字串就不顯示） */
   pressureText: "Hello!",
 
@@ -388,7 +388,7 @@ const BRANDS = [
     id: "starbucks",
     name: "STARBUCKS 蘇門答臘",
     nameEn: "STARBUCKS STYLE REDESIGN",
-    category: "插畫",
+    category: "插畫與動態",
     tags: ["插畫", "包裝應用", "風格改造"],
     card: "./images/starbucks_card.webp",
     hero: "./images/starbucks_hero.webp",
@@ -403,7 +403,7 @@ const BRANDS = [
     id: "plus-coldbrew",
     name: "PLUS 冷萃咖啡",
     nameEn: "FAMILYMART NEW BRAND COLD BREW",
-    category: "插畫",
+    category: "插畫與動態",
     tags: ["插畫", "包裝設計", "新品視覺"],
     card: "./images/plus-coldbrew_card.webp",
     hero: "./images/plus-coldbrew_hero.webp",
@@ -420,7 +420,7 @@ const BRANDS = [
     id: "ecard",
     name: "節慶動態電子卡",
     nameEn: "FESTIVAL E-CARD",
-    category: "動態設計",
+    category: "插畫與動態",
     tags: ["動態設計", "節慶視覺", "社群素材"],
     card: "./images/ecard_card.webp",
     hero: "./images/ecard_hero.webp",
@@ -435,7 +435,7 @@ const BRANDS = [
     id: "hmm-banner",
     name: "hmm 促銷網路廣告",
     nameEn: "HMM BANNER",
-    category: "動態設計",
+    category: "插畫與動態",
     tags: ["動態設計", "Banner", "促銷素材"],
     card: "./images/hmm-banner_card.webp",
     hero: "./images/hmm-banner_hero.webp",
@@ -450,7 +450,7 @@ const BRANDS = [
     id: "mx-logo",
     name: "MX 識別動畫",
     nameEn: "MX LOGO ANIMATION",
-    category: "動態設計",
+    category: "插畫與動態",
     tags: ["動態設計", "識別動畫", "動態標誌"],
     card: "./images/mx-logo_card.webp",
     hero: "./images/mx-logo_hero.webp",
