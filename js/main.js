@@ -179,9 +179,22 @@ function buildHome() {
   buildClients();
 
   buildWork();
+  buildHeroTags();
 
   initPressure();
   initReveal();
+}
+
+/* Hero 上排：與作品分類使用同一套名稱，點擊跳到該分類 */
+function buildHeroTags() {
+  const box = $("#heroTags");
+  if (!box || !SITE.categories) return;
+  box.innerHTML = SITE.categories
+    .map(c => `<button type="button" data-cat="${esc(c)}">${esc(c)}</button>`).join("");
+  box.addEventListener("click", e => {
+    const b = e.target.closest("button");
+    if (b && window.setWorkCat) window.setWorkCat(b.dataset.cat);
+  });
 }
 
 /* 作品卡片 */
@@ -306,6 +319,13 @@ function buildWork() {
     render(cat);
     const head = document.querySelector("#work .section-head");
     if (head && cat !== "all") head.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  /* 讓頁面其他地方（如 Hero 上排標籤）也能切換分類 */
+  window.setWorkCat = (cat) => {
+    setCat(cat);
+    const head = document.querySelector("#work .section-head");
+    if (head) head.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   if (useBento) {
