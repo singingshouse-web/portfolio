@@ -145,17 +145,17 @@ const BRANDS = [
     projects: [
       {
         name: "全球版官方網站",
-        note: "在金融業的資訊層級與法遵限制下，維持清晰易讀的介面秩序。",
+        note: "金融官網的難處是資訊量大又不能出錯。以明確的層級與留白，讓使用者在法遵規範的密集文字中仍找得到路。",
         images: ["./images/megabank_p1_01.webp", "./images/megabank_p1_02.webp"]
       },
       {
         name: "財富管理活動網站系列",
-        note: "波段性活動在既有識別下快速產出，同時保持系列一致性。",
+        note: "波段活動要快速產出，所以先把版型模組化——每一波只換內容與色彩，系列一致性自然維持住。",
         images: ["./images/megabank_p2_01.webp", "./images/megabank_p2_02.webp"]
       },
       {
         name: "網路銀行平台",
-        note: "個人網路銀行平台的前端視覺設計。",
+        note: "個人網銀的介面設計，以功能分群與圖示化降低操作門檻。",
         images: ["./images/megabank_p3_01.webp", "./images/megabank_p3_02.webp"]
       }
     ],
@@ -183,7 +183,7 @@ const BRANDS = [
       },
       {
         name: "EmbioZ 新產品系列",
-        note: "新品系列的獨立活動頁，在既有品牌識別下建立系列專屬的視覺語言。",
+        note: "新品系列需要自己的個性，又不能脫離母品牌。用獨立的活動頁語言處理這個張力。",
         images: ["./images/lp_p2_01.webp", "./images/lp_p2_02.webp"]
       }
     ],
@@ -202,12 +202,12 @@ const BRANDS = [
     projects: [
       {
         name: "每月檔期活動網頁",
-        note: "高頻率產出下維持品牌一致性，建立可重複套用的版面邏輯。",
+        note: "每月固定產出的壓力下，靠可重複套用的版面邏輯守住品牌一致性，把時間留給真正需要判斷的部分。",
         images: ["./images/ikea_p1_01.webp", "./images/ikea_p1_02.webp"]
       },
       {
         name: "會員 eDM 系列",
-        note: "在 email 環境的技術限制下，讓促銷訊息保持品牌質感。",
+        note: "email 環境的技術限制遠多於網頁，在能用的元素裡把促銷訊息做出品牌該有的質感。",
         images: ["./images/ikea_p2_01.webp","./images/ikea_p2_02.webp", "./images/ikea_p2_03.webp"]
       }
     ],
@@ -225,7 +225,7 @@ const BRANDS = [
     projects: [
       {
         name: "企業官網改版",
-        note: "在企業集團的多品牌架構下，重整官網的視覺層級與導覽動線。",
+        note: "企業集團的多品牌架構容易讓官網變成目錄。重整視覺層級與導覽動線，讓訪客先看懂集團、再找到品牌。",
         images: [
           "./images/sf_p1_01.webp",
           "./images/sf_p1_02.webp",
@@ -257,7 +257,7 @@ const BRANDS = [
       },
       {
         name: "內頁與介面動態",
-        note: "產品與服務、公司訊息等內頁的版面規劃，並為分頁切換設計一致的過場動態。",
+        note: "產品與服務、公司訊息等內頁的版面規劃，並為分頁切換設計一致的過場動態，讓瀏覽過程不斷裂。",
         images: [
           "./images/pimq_p2_01.webp",
           "./images/pimq_p2_02.webp",
@@ -316,9 +316,11 @@ const BRANDS = [
     tags: ["品牌識別", "視覺系統", "提案"],
     card: "./images/fm-dayplus_card.webp",
     hero: "./images/fm-dayplus_hero.webp",
-    intro: "全家網路商店自有品牌視覺溝通提案之一。為生鮮與即食類商品建立品牌識別與延伸應用。",
+    intro:
+      "全家網路商店自有品牌開發案，五個命名與識別方向之一。DAYPLUS 以日常補給為題，讓識別在生鮮與即食的密集陳列中保持清爽好認。",
     projects: [
-      { name: "識別與應用", note: "以標誌、色彩系統到包裝與通路陳列，建立可延展的品牌語言。",
+      { name: "識別與應用",
+        note: "商品照密集的貨架與網頁列表裡，識別要夠安靜才不會跟商品搶注意力——標誌、色彩到包裝與陳列都照這個原則收斂。",
         images: [
           "./images/fm-dayplus_p1_01.webp", 
           "./images/fm-dayplus_p1_02.webp", 
@@ -342,7 +344,7 @@ const BRANDS = [
     card: "./images/fm-goods-a_card.webp",
     hero: "./images/fm-goods-a_hero.webp",
     intro:
-      "全家網路商店自有品牌視覺溝通提案方向之一。把商品直接寫進字標——以食物圖像替換字母中的 O，讓同一個標誌能長出零食、泡麵等副品牌，不必另外設計一套。",
+      "全家網路商店自有品牌開發案，五個命名與識別方向之一。把商品直接寫進字標——以食物圖像替換字母中的 O，讓同一個標誌能長出零食、泡麵等副品牌，不必為每個品類另外設計一套。",
     projects: [
       {
         name: "識別與應用",
@@ -370,7 +372,7 @@ const BRANDS = [
     card: "./images/fm-goods-b_card.webp",
     hero: "./images/fm-goods-b_hero.webp",
     intro:
-      "同一份提案的另一個方向。以可重組的方塊構成識別，呼應「多元」的品牌概念；同一套模組在廣告版面上能直接當成圖形系統延展。",
+      "同一個品牌名的另一種解法。以可重組的方塊構成識別，呼應「多元」的品牌概念；同一套模組放大後就是廣告版面的圖形系統，不需要另外設計主視覺。",
     projects: [
       {
         name: "識別與應用",
@@ -397,9 +399,11 @@ const BRANDS = [
     tags: ["品牌識別", "通路視覺", "包裝"],
     card: "./images/fm-plus_card.webp",
     hero: "./images/fm-plus_hero.webp",
-    intro: "全家網路商店自有品牌視覺溝通提案。以高彩度與鮮明字標，建立在通路現場能被快速辨識的視覺。",
+    intro:
+      "全家網路商店自有品牌開發案，五個命名與識別方向之一。以高彩度與鮮明字標處理通路現場的辨識問題——在貨架與螢幕上都要能一秒被認出來。",
     projects: [
-      { name: "識別與應用", note: "從標誌變化到店頭、包材與宣傳物的整體延伸。",
+      { name: "識別與應用",
+        note: "從標誌變化到店頭、包材與宣傳物的整體延伸，並製作動態版本供數位通路使用。",
         images: [
           "./images/fm-plus_p1_01.webp", 
           "./images/fm-plus_p1_02.webp",
@@ -424,11 +428,11 @@ const BRANDS = [
     card: "./images/fm-plass_card.webp",
     hero: "./images/fm-plass_hero.webp",
     intro:
-      "全家網路商店自有品牌視覺溝通提案。以「MORE & LESS」為核心概念，從標誌、色彩到包裝與戶外廣告，建立一套能橫跨通路與媒體的識別系統。",
+      "全家網路商店自有品牌開發案，五個命名與識別方向之一。以「MORE & LESS」為核心概念，用幾何切面構成的字標建立一套能橫跨包裝、通路與戶外媒體的識別系統。",
     projects: [
       {
         name: "品牌識別",
-        note: "字標以幾何切面構成，在單色與彩色底上都能維持辨識度，讓後續應用有寬裕的延展空間。",
+        note: "字標在單色與彩色底上都能維持辨識度，所以從提袋、包材到戶外看板都能直接沿用，不必為每個媒材重畫一次。",
         images: [
           "./images/fm-plass_p1_01.webp",
           "./images/fm-plass_p1_02.webp",
@@ -455,7 +459,8 @@ const BRANDS = [
     hero: "./images/cosmoship_hero.webp",
     intro: "宇宙小艇聯名禮盒包裝設計，以系列化的圖樣語言區分口味，同時維持整體的一致性。",
     projects: [
-      { name: "禮盒包裝", note: "三款圖樣共用同一套構成邏輯，讓系列陳列時具有整體感。",
+      { name: "禮盒包裝",
+        note: "三款圖樣共用同一套構成邏輯——並排陳列時是完整系列，單獨拿出來又各有個性。",
         images: [
           "./images/cosmoship_p1_01.webp", 
           "./images/cosmoship_p1_02.webp", 
@@ -477,7 +482,8 @@ const BRANDS = [
     hero: "./images/taipei101_hero.webp",
     intro: "台北 101 中秋節禮盒包裝設計，將地標意象與節慶花卉結合成具辨識度的節慶視覺。",
     projects: [
-      { name: "禮盒包裝與延伸", note: "主視覺、盒型展開與系列色彩變化的整體規劃。",
+      { name: "禮盒包裝與延伸",
+        note: "地標意象容易流於具象。改以節慶花卉為主、建築為輔，讓禮盒先是美的，其次才認得出是台北 101。",
         images: [
           "./images/taipei101_p1_01.webp", 
           "./images/taipei101_p1_02.webp", 
@@ -501,7 +507,8 @@ const BRANDS = [
     hero: "./images/starbucks_hero.webp",
     intro: "星巴克單品咖啡包裝的風格改造提案，以產區生態為題繪製熱帶叢林插畫。",
     projects: [
-      { name: "包裝插畫", note: "以層疊的葉形與產區動物構成畫面，讓產地故事成為包裝本身。",
+      { name: "包裝插畫",
+        note: "以層疊的葉形與產區動物構成畫面，讓產地故事成為包裝本身，而不是背面那段沒人讀的說明文字。",
         images: [
           "./images/starbucks_p1_01.webp", 
           "./images/starbucks_p1_02.webp",
@@ -549,7 +556,8 @@ const BRANDS = [
     hero: "./images/ecard_hero.webp",
     intro: "歷年年節與節慶的動態電子卡設計，每年以不同的視覺語言重新詮釋節慶題材。",
     projects: [
-      { name: "年節系列", note: "從角色插畫到像素遊戲風，每年更換手法但維持品牌識別的存在感。",
+      { name: "年節系列",
+        note: "每年更換表現手法——角色插畫、像素遊戲、粒子動畫——但識別的存在感維持不變，讓系列有延續也有新鮮感。",
         images: [
           "./images/ecard_p1_01.webp", 
           "./images/ecard_p1_02.webp", 
