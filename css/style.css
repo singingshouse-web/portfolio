@@ -438,20 +438,47 @@ a.bento-tile { text-decoration: none; color: inherit; }
 .stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  margin-top: 46px;
+  gap: 0 18px;
+  margin-top: 54px;
   border-top: 1px solid var(--line);
 }
-.stat { padding: 22px 0 4px; }
+.stat {
+  padding: 30px 0 6px;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1);
+}
+.stat.in { opacity: 1; transform: none; }
 .stat strong {
   display: block;
   font-family: var(--f-latin);
   font-weight: 500;
-  font-size: 30px;
+  font-size: clamp(40px, 5.2vw, 64px);
   font-variant-numeric: tabular-nums;
-  letter-spacing: 0.01em;
-  line-height: 1.2;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+  margin-bottom: 10px;
 }
-.stat span { font-size: 12px; color: var(--ink-soft); letter-spacing: 0.06em; }
+.stat span {
+  display: block;
+  position: relative;
+  padding-top: 10px;
+  font-size: 12px;
+  color: var(--ink-soft);
+  letter-spacing: 0.1em;
+}
+.stat span::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 26px;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .8s cubic-bezier(.2,.7,.2,1) .35s;
+}
+.stat.in span::before { transform: scaleX(1); }
 
 /* 時間軸 */
 .orbit-list { display: grid; gap: 2px; }
@@ -693,6 +720,15 @@ a.bento-tile { text-decoration: none; color: inherit; }
   will-change: font-variation-settings;
 }
 
+/* ---------- 視差：圖片比容器慢一點，產生深度 ---------- */
+.card-img img,
+.bento-img img,
+.b-hero img,
+.proj-flow img {
+  will-change: transform;
+}
+.px-wrap { overflow: hidden; }
+
 /* ---------- reveal ---------- */
 .rv { opacity: 0; transform: translateY(18px); transition: opacity .9s ease, transform .9s ease; }
 .rv.in { opacity: 1; transform: none; }
@@ -700,6 +736,8 @@ a.bento-tile { text-decoration: none; color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .rv { opacity: 1; transform: none; transition: none; }
+  .stat { opacity: 1; transform: none; transition: none; }
+  .stat span::before { transform: scaleX(1); transition: none; }
   .card-img img { transition: none; }
 }
 
@@ -727,7 +765,7 @@ a.bento-tile { text-decoration: none; color: inherit; }
   .otherworks { grid-template-columns: 1fr; gap: 12px; }
   .orbit-row { grid-template-columns: 1fr auto; }
   .orbit-note { padding-left: 0; max-height: 90px; opacity: 1; margin-top: 8px; }
-  .stats { grid-template-columns: repeat(3, 1fr); }
+  .stats { grid-template-columns: repeat(3, 1fr); gap: 0 10px; }
   .profile { gap: 16px; }
   .profile img { width: 72px; height: 72px; }
   .stat strong { font-size: 22px; }

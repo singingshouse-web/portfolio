@@ -8,118 +8,22 @@ const esc = (t) => String(t ?? "").replace(/[&<>"]/g, c =>
 const yr = $("#yr");
 if (yr) yr.textContent = new Date().getFullYear();
 
-/* 捲動顯現 */
+/* 捲動顯現：同時進入畫面的元素依序出現，製造節奏 */
 function initReveal() {
-  const items = document.querySelectorAll(".rv");
+  const items = document.querySelectorAll(".rv:not(.in)");
   if (!items.length) return;
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     items.forEach(el => el.classList.add("in"));
     return;
   }
   const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+    const show = entries.filter(e => e.isIntersecting).map(e => e.target);
+    show.forEach((el, i) => {
+      setTimeout(() => el.classList.add("in"), i * 110);
+      io.unobserve(el);
     });
   }, { threshold: 0.12, rootMargin: "0px 0px -40px" });
   items.forEach(el => io.observe(el));
-}
-
-/* ========== 互動大字（滑鼠靠近字會變粗變寬） ========== */
-function initPressure() {
-  const root = $("#pressure");
-  if (!root || !SITE.pressureText) return;
-
-  /* 載入設定的可變字型 */
-  const F = SITE.pressureFont || {};
-  if (F.url) {
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = F.url;
-    document.head.appendChild(link);
-  }
-  const WGHT = F.wght || [100, 900];
-  const WDTH = F.wdth || [75, 125];
-  const SLNT = F.slnt || null;
-
-  const chars = [...SITE.pressureText];
-  const title = document.createElement("div");
-  title.className = "pressure-title";
-  const spans = chars.map(c => {
-    const el = document.createElement("span");
-    el.textContent = c === " " ? "\u00A0" : c;
-    title.appendChild(el);
-    return el;
-  });
-  if (F.family) title.style.fontFamily = `"${F.family}", sans-serif`;
-  root.appendChild(title);
-
-  /* 字級隨容器寬度調整 */
-  const MIN = 60, MAX = 420;
-  const setSize = () => {
-    const w = root.getBoundingClientRect().width;
-    /* 字級：讓字母橫向剛好填滿版面 */
-    title.style.fontSize = Math.max(MIN, Math.min(MAX, w / (chars.length / 2))) + "px";
-
-    /* 高度：以垂直拉伸達成，避免橫向溢出 */
-    title.style.transform = "none";
-    root.style.height = "";
-    const target = Math.min(SITE.pressureHeight || 0, window.innerHeight * 0.6);
-    const natural = title.getBoundingClientRect().height;
-    if (target > 0 && natural > 0) {
-      title.style.transform = `scale(1, ${(target / natural).toFixed(3)})`;
-      root.style.height = target + "px";
-    }
-  };
-  setSize();
-  let t;
-  window.addEventListener("resize", () => { clearTimeout(t); t = setTimeout(setSize, 120); });
-
-  /* 距離越近 → 字越粗、越寬、越斜 */
-  const attr = (d, max, min, top) => Math.max(min, top - Math.abs((top * d) / max) + min);
-
-  function render(px, py) {
-    const box = title.getBoundingClientRect();
-    const maxDist = box.width / 2 || 1;
-    for (const sp of spans) {
-      const b = sp.getBoundingClientRect();
-      const dx = px - (b.left + b.width / 2);
-      const dy = py - (b.top + b.height / 2);
-      const d = Math.sqrt(dx * dx + dy * dy);
-      const wght = Math.round(attr(d, maxDist, WGHT[0], WGHT[1]));
-      const wdth = Math.round(attr(d, maxDist, WDTH[0], WDTH[1]) * 10) / 10;
-      let v = `"wght" ${wght}, "wdth" ${wdth}`;
-      if (SLNT) v += `, "slnt" ${-(attr(d, maxDist, 0, Math.abs(SLNT[0]))).toFixed(1)}`;
-      sp.style.fontVariationSettings = v;
-    }
-  }
-
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  const box0 = title.getBoundingClientRect();
-  const cursor = { x: box0.left + box0.width / 2, y: box0.top + box0.height / 2 };
-  const mouse = { x: cursor.x, y: cursor.y };
-
-  const onMove = (e) => {
-    const p = e.touches ? e.touches[0] : e;
-    cursor.x = p.clientX;
-    cursor.y = p.clientY;
-    /* 系統開啟「減少動態效果」時：不做緩動，直接反應 */
-    if (reduce) render(cursor.x, cursor.y);
-  };
-  window.addEventListener("pointermove", onMove, { passive: true });
-  window.addEventListener("touchmove", onMove, { passive: true });
-
-  if (reduce) {
-    render(cursor.x, cursor.y);
-    return;
-  }
-
-  (function loop() {
-    mouse.x += (cursor.x - mouse.x) / 12;
-    mouse.y += (cursor.y - mouse.y) / 12;
-    render(mouse.x, mouse.y);
-    requestAnimationFrame(loop);
-  })();
 }
 
 /* ================= 首頁 ================= */
@@ -183,6 +87,7 @@ function buildHome() {
 
   initPressure();
   initReveal();
+  initParallax();
 }
 
 /* Hero 上排：與作品分類使用同一套名稱，點擊跳到該分類 */
@@ -304,6 +209,7 @@ function buildWork() {
       grid.innerHTML = `<div class="grid">${list.map(b => cardHTML(b)).join("")}</div>`;
     }
     initReveal();
+    initParallax();
   };
 
   const setCat = (cat) => {
@@ -374,33 +280,90 @@ function buildClients() {
   }).join("");
 }
 
-/* 數字遞增：捲到畫面時從 0 跑到目標值 */
+/* 數字遞增：捲到畫面時依序從 0 跑到目標值 */
 function countUp(root) {
-  const els = [...root.querySelectorAll("strong[data-num]")];
-  if (!els.length) return;
+  const items = [...root.querySelectorAll(".stat")];
+  if (!items.length) return;
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  const run = el => {
-    const raw = el.dataset.num;
-    const target = parseInt(raw, 10);
-    const suffix = raw.replace(/[0-9]/g, "");
-    if (isNaN(target)) { el.textContent = raw; return; }
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      el.textContent = raw; return;
-    }
-    const dur = 1100, t0 = performance.now();
-    (function tick(now) {
-      const p = Math.min(1, (now - t0) / dur);
-      const eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(target * eased) + (p === 1 ? suffix : "");
-      if (p < 1) requestAnimationFrame(tick);
-    })(t0);
+  const run = (item, delay) => {
+    setTimeout(() => {
+      item.classList.add("in");
+      const el = item.querySelector("strong[data-num]");
+      if (!el) return;
+      const raw = el.dataset.num;
+      const target = parseInt(raw, 10);
+      const suffix = raw.replace(/[0-9]/g, "");
+      if (isNaN(target) || reduce) { el.textContent = raw; return; }
+
+      const dur = 1500, t0 = performance.now();
+      (function tick(now) {
+        const p = Math.min(1, (now - t0) / dur);
+        const eased = 1 - Math.pow(1 - p, 4);
+        el.textContent = Math.round(target * eased) + (p === 1 ? suffix : "");
+        if (p < 1) requestAnimationFrame(tick);
+      })(t0);
+    }, delay);
   };
 
-  if (!("IntersectionObserver" in window)) { els.forEach(run); return; }
+  if (!("IntersectionObserver" in window)) {
+    items.forEach((it, i) => run(it, i * 160));
+    return;
+  }
   const io = new IntersectionObserver(es => {
-    es.forEach(e => { if (e.isIntersecting) { run(e.target); io.unobserve(e.target); } });
-  }, { threshold: 0.5 });
-  els.forEach(el => io.observe(el));
+    if (es.some(e => e.isIntersecting)) {
+      items.forEach((it, i) => run(it, i * 160));
+      io.disconnect();
+    }
+  }, { threshold: 0.4 });
+  io.observe(root);
+}
+
+/* 捲動視差：圖片比容器慢，產生深度。
+   只處理進入視窗的元素，單一 rAF 迴圈。 */
+function initParallax() {
+  if (SITE.parallax === false) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if (window.matchMedia("(max-width: 767px), (pointer: coarse)").matches) return;
+
+  const AMOUNT = 0.06;   // 位移幅度（容器高度的比例）
+  const sel = ".card-img img, .bento-img img, .b-hero img, .proj-flow img";
+  const items = [...document.querySelectorAll(sel)];
+  if (!items.length) return;
+
+  const live = new Set();
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => e.isIntersecting ? live.add(e.target) : live.delete(e.target));
+  }, { rootMargin: "120px 0px" });
+
+  items.forEach(img => {
+    const box = img.parentElement;
+    if (box) box.style.overflow = "hidden";
+    /* 先放大一點，位移時才不會露出邊緣 */
+    img.style.transform = "scale(1.12)";
+    io.observe(img);
+  });
+
+  let ticking = false;
+  const update = () => {
+    const vh = window.innerHeight;
+    live.forEach(img => {
+      const r = img.getBoundingClientRect();
+      const mid = r.top + r.height / 2;
+      const off = (mid - vh / 2) / vh;          // -1 ~ 1
+      const y = -off * r.height * AMOUNT;
+      img.style.transform = `translate3d(0, ${y.toFixed(1)}px, 0) scale(1.12)`;
+    });
+    ticking = false;
+  };
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll, { passive: true });
+  update();
 }
 
 /* ================= 品牌詳頁 ================= */
@@ -443,6 +406,8 @@ function buildBrand() {
 
   const also = $("#bAlso");
   if (b.also) also.textContent = b.also; else also.style.display = "none";
+
+  initParallax();
 
   const prev = BRANDS[(i - 1 + BRANDS.length) % BRANDS.length];
   const next = BRANDS[(i + 1) % BRANDS.length];

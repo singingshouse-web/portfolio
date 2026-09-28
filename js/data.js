@@ -8,6 +8,9 @@ const SITE = {
   brandNameEn: "SINGINGS HOUSE",
   tagline: "從自有品牌出發的設計服務",
 
+  /* 圖片捲動視差（false 則關閉）。手機與「減少動態效果」自動停用。 */
+  parallax: true,
+
   /* 作品區版型："bento" 類別入口格 ／ "grid" 三欄列表 */
   workLayout: "bento",
 
