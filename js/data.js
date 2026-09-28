@@ -324,17 +324,48 @@ const BRANDS = [
     also: ""
   },
   {
-    id: "fm-goods",
-    name: "the good GOODs",
-    nameEn: "FAMILYMART ONLINESTORE",
+    id: "fm-goods-a",
+    name: "the good GOODs｜方向 A",
+    nameEn: "GOOD THINGS ARE COMING",
     category: "品牌識別",
-    tags: ["品牌識別", "標誌設計", "包裝延伸"],
-    card: "./images/fm-goods_card.webp",
-    hero: "./images/fm-goods_hero.webp",
-    intro: "全家網路商店自有品牌視覺溝通提案。以直白有力的字標建立品牌個性，並延伸至包裝與傳達物。",
+    tags: ["品牌識別", "標誌設計", "副品牌延伸"],
+    card: "./images/fm-goods-a_card.webp",
+    hero: "./images/fm-goods-a_hero.webp",
+    intro:
+      "全家網路商店自有品牌視覺溝通提案方向之一。把商品直接寫進字標——以食物圖像替換字母中的 O，讓同一個標誌能長出零食、泡麵等副品牌，不必另外設計一套。",
     projects: [
-      { name: "識別與應用", note: "標誌結構、色彩計畫與副品牌關係的整體規劃。",
-        images: ["./images/fm-goods_p1_01.webp", "./images/fm-goods_p1_02.webp", "./images/fm-goods_p1_03.webp"] }
+      {
+        name: "識別與應用",
+        note: "標誌結構、色彩計畫與副品牌關係的整體規劃，並延伸至包裝、海報與店頭傳達物。",
+        images: [
+          "./images/fm-goods-a_p1_01.webp",
+          "./images/fm-goods-a_p1_02.webp",
+          "./images/fm-goods-a_p1_03.webp"
+        ]
+      }
+    ],
+    also: ""
+  },
+  {
+    id: "fm-goods-b",
+    name: "the good GOODs｜方向 B",
+    nameEn: "TODAY IS A GOOD DAY",
+    category: "品牌識別",
+    tags: ["品牌識別", "模組化系統", "廣告應用"],
+    card: "./images/fm-goods-b_card.webp",
+    hero: "./images/fm-goods-b_hero.webp",
+    intro:
+      "同一份提案的另一個方向。以可重組的方塊構成識別，呼應「多元」的品牌概念；同一套模組在廣告版面上能直接當成圖形系統延展。",
+    projects: [
+      {
+        name: "識別與應用",
+        note: "模組化標誌的組合邏輯與色彩計畫，延伸至戶外廣告、提袋與通路視覺。",
+        images: [
+          "./images/fm-goods-b_p1_01.webp",
+          "./images/fm-goods-b_p1_02.webp",
+          "./images/fm-goods-b_p1_03.webp"
+        ]
+      }
     ],
     also: ""
   },
@@ -350,6 +381,39 @@ const BRANDS = [
     projects: [
       { name: "識別與應用", note: "從標誌變化到店頭、包材與宣傳物的整體延伸。",
         images: ["./images/fm-plus_p1_01.webp", "./images/fm-plus_p1_02.webp", "./images/fm-plus_p1_03.webp"] }
+    ],
+    also: ""
+  },
+
+  {
+    id: "fm-plass",
+    name: "PLASS",
+    nameEn: "FAMILYMART ONLINESTORE",
+    category: "品牌識別",
+    tags: ["品牌識別", "包裝應用", "廣告視覺"],
+    card: "./images/fm-plass_card.webp",
+    hero: "./images/fm-plass_hero.webp",
+    intro:
+      "全家網路商店自有品牌視覺溝通提案。以「MORE & LESS」為核心概念，從標誌、色彩到包裝與戶外廣告，建立一套能橫跨通路與媒體的識別系統。",
+    projects: [
+      {
+        name: "品牌識別",
+        note: "字標以幾何切面構成，在單色與彩色底上都能維持辨識度，讓後續應用有寬裕的延展空間。",
+        images: [
+          "./images/fm-plass_p1_01.webp",
+          "./images/fm-plass_p1_02.webp",
+          "./images/fm-plass_p1_03.webp"
+        ]
+      },
+      {
+        name: "應用與廣告",
+        note: "從提袋、包材到戶外看板，以「DO MORE, BE MORE」延伸出一致的訊息語氣與版面節奏。",
+        images: [
+          "./images/fm-plass_p2_01.webp",
+          "./images/fm-plass_p2_02.webp",
+          "./images/fm-plass_p2_03.webp"
+        ]
+      }
     ],
     also: ""
   },
@@ -403,17 +467,17 @@ const BRANDS = [
     also: ""
   },
   {
-    id: "plus-coldbrew",
-    name: "PLUS 冷萃咖啡",
-    nameEn: "FAMILYMART NEW BRAND COLD BREW",
+    id: "plass-coldbrew",
+    name: "PLASS 冷萃咖啡",
+    nameEn: "PLASS COLD BREW COFFEE",
     category: "插畫與動態",
     tags: ["插畫", "包裝設計", "新品視覺"],
-    card: "./images/plus-coldbrew_card.webp",
-    hero: "./images/plus-coldbrew_hero.webp",
-    intro: "全家網路商店自有品牌新品冷萃咖啡的包裝插畫，以細緻線繪呈現果香風味的差異。",
+    card: "./images/plass-coldbrew_card.webp",
+    hero: "./images/plass-coldbrew_hero.webp",
+    intro: "PLASS 品牌旗下新品冷萃咖啡的包裝插畫，以細緻線繪呈現果香風味的差異。",
     projects: [
       { name: "瓶身插畫與系列視覺", note: "三種風味以同一種線繪語言區分，兼顧系列感與單瓶識別度。",
-        images: ["./images/plus-coldbrew_p1_01.webp", "./images/plus-coldbrew_p1_02.webp", "./images/plus-coldbrew_p1_03.webp"] }
+        images: ["./images/plass-coldbrew_p1_01.webp", "./images/plass-coldbrew_p1_02.webp", "./images/plass-coldbrew_p1_03.webp"] }
     ],
     also: ""
   },
