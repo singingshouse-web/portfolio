@@ -319,7 +319,17 @@ const BRANDS = [
     intro: "全家網路商店自有品牌視覺溝通提案之一。為生鮮與即食類商品建立品牌識別與延伸應用。",
     projects: [
       { name: "識別與應用", note: "以標誌、色彩系統到包裝與通路陳列，建立可延展的品牌語言。",
-        images: ["./images/fm-dayplus_p1_01.webp", "./images/fm-dayplus_p1_02.webp", "./images/fm-dayplus_p1_03.webp"] }
+        images: [
+          "./images/fm-dayplus_p1_01.webp", 
+          "./images/fm-dayplus_p1_02.webp", 
+          "./images/fm-dayplus_p1_03.webp", 
+          "./images/fm-dayplus_p1_04.webp",
+          "./images/fm-dayplus_p1_05.webp", 
+          "./images/fm-dayplus_p1_06.webp", 
+          "./images/fm-dayplus_p1_07.webp", 
+          "./images/fm-dayplus_p1_08.webp"
+        ] 
+      }
     ],
     also: ""
   },
@@ -340,7 +350,12 @@ const BRANDS = [
         images: [
           "./images/fm-goods-a_p1_01.webp",
           "./images/fm-goods-a_p1_02.webp",
-          "./images/fm-goods-a_p1_03.webp"
+          "./images/fm-goods-a_p1_03.webp",
+          "./images/fm-goods-a_p1_04.webp",
+          "./images/fm-goods-a_p1_05.webp",
+          "./images/fm-goods-a_p1_06.webp",
+          "./images/fm-goods-a_p1_07.webp",
+          "./images/fm-goods-a_p1_08.webp"
         ]
       }
     ],
@@ -363,7 +378,12 @@ const BRANDS = [
         images: [
           "./images/fm-goods-b_p1_01.webp",
           "./images/fm-goods-b_p1_02.webp",
-          "./images/fm-goods-b_p1_03.webp"
+          "./images/fm-goods-b_p1_03.webp",
+          "./images/fm-goods-b_p1_04.webp",
+          "./images/fm-goods-b_p1_05.webp",
+          "./images/fm-goods-b_p1_06.webp",
+          "./images/fm-goods-b_p1_07.webp",
+          "./images/fm-goods-b_p1_08.webp"
         ]
       }
     ],
@@ -380,7 +400,17 @@ const BRANDS = [
     intro: "全家網路商店自有品牌視覺溝通提案。以高彩度與鮮明字標，建立在通路現場能被快速辨識的視覺。",
     projects: [
       { name: "識別與應用", note: "從標誌變化到店頭、包材與宣傳物的整體延伸。",
-        images: ["./images/fm-plus_p1_01.webp", "./images/fm-plus_p1_02.webp", "./images/fm-plus_p1_03.webp"] }
+        images: [
+          "./images/fm-plus_p1_01.webp", 
+          "./images/fm-plus_p1_02.webp",
+          "./images/fm-plus_p1_03.webp",
+          "./images/fm-plus_p1_04.webp",
+          "./images/fm-plus_p1_05.webp",
+          "./images/fm-plus_p1_06.webp",
+          "./images/fm-plus_p1_07.webp", 
+          "./images/fm-plus_p1_08.gif"
+        ] 
+      }
     ],
     also: ""
   },
@@ -402,18 +432,14 @@ const BRANDS = [
         images: [
           "./images/fm-plass_p1_01.webp",
           "./images/fm-plass_p1_02.webp",
-          "./images/fm-plass_p1_03.webp"
+          "./images/fm-plass_p1_03.webp",
+          "./images/fm-plass_p1_04.webp",
+          "./images/fm-plass_p1_05.webp",
+          "./images/fm-plass_p1_06.webp",
+          "./images/fm-plass_p1_07.webp",
+          "./images/fm-plass_p1_08.webp"
         ]
       },
-      {
-        name: "應用與廣告",
-        note: "從提袋、包材到戶外看板，以「DO MORE, BE MORE」延伸出一致的訊息語氣與版面節奏。",
-        images: [
-          "./images/fm-plass_p2_01.webp",
-          "./images/fm-plass_p2_02.webp",
-          "./images/fm-plass_p2_03.webp"
-        ]
-      }
     ],
     also: ""
   },
@@ -430,7 +456,14 @@ const BRANDS = [
     intro: "宇宙小艇聯名禮盒包裝設計，以系列化的圖樣語言區分口味，同時維持整體的一致性。",
     projects: [
       { name: "禮盒包裝", note: "三款圖樣共用同一套構成邏輯，讓系列陳列時具有整體感。",
-        images: ["./images/cosmoship_p1_01.webp", "./images/cosmoship_p1_02.webp"] }
+        images: [
+          "./images/cosmoship_p1_01.webp", 
+          "./images/cosmoship_p1_02.webp", 
+          "./images/cosmoship_p1_03.webp", 
+          "./images/cosmoship_p1_04.webp", 
+          "./images/cosmoship_p1_05.webp"
+        ]
+       }
     ],
     also: ""
   },
@@ -445,7 +478,14 @@ const BRANDS = [
     intro: "台北 101 中秋節禮盒包裝設計，將地標意象與節慶花卉結合成具辨識度的節慶視覺。",
     projects: [
       { name: "禮盒包裝與延伸", note: "主視覺、盒型展開與系列色彩變化的整體規劃。",
-        images: ["./images/taipei101_p1_01.webp", "./images/taipei101_p1_02.webp", "./images/taipei101_p1_03.webp"] }
+        images: [
+          "./images/taipei101_p1_01.webp", 
+          "./images/taipei101_p1_02.webp", 
+          "./images/taipei101_p1_03.webp", 
+          "./images/taipei101_p1_04.webp", 
+          "./images/taipei101_p1_05.webp"
+        ] 
+      }
     ],
     also: ""
   },
@@ -462,7 +502,15 @@ const BRANDS = [
     intro: "星巴克單品咖啡包裝的風格改造提案，以產區生態為題繪製熱帶叢林插畫。",
     projects: [
       { name: "包裝插畫", note: "以層疊的葉形與產區動物構成畫面，讓產地故事成為包裝本身。",
-        images: ["./images/starbucks_p1_01.webp", "./images/starbucks_p1_02.webp", "./images/starbucks_p1_03.webp"] }
+        images: [
+          "./images/starbucks_p1_01.webp", 
+          "./images/starbucks_p1_02.webp",
+          "./images/starbucks_p1_03.webp",
+          "./images/starbucks_p1_04.webp",
+          "./images/starbucks_p1_05.webp", 
+          "./images/starbucks_p1_06.webp"
+        ] 
+      }
     ],
     also: ""
   },
@@ -477,7 +525,15 @@ const BRANDS = [
     intro: "PLASS 品牌旗下新品冷萃咖啡的包裝插畫，以細緻線繪呈現果香風味的差異。",
     projects: [
       { name: "瓶身插畫與系列視覺", note: "三種風味以同一種線繪語言區分，兼顧系列感與單瓶識別度。",
-        images: ["./images/plass-coldbrew_p1_01.webp", "./images/plass-coldbrew_p1_02.webp", "./images/plass-coldbrew_p1_03.webp"] }
+        images: [
+          "./images/plass-coldbrew_p1_01.webp", 
+          "./images/plass-coldbrew_p1_02.webp", 
+          "./images/plass-coldbrew_p1_03.webp", 
+          "./images/plass-coldbrew_p1_04.webp", 
+          "./images/plass-coldbrew_p1_05.webp", 
+          "./images/plass-coldbrew_p1_06.webp"
+        ] 
+      }
     ],
     also: ""
   },
@@ -494,7 +550,12 @@ const BRANDS = [
     intro: "歷年年節與節慶的動態電子卡設計，每年以不同的視覺語言重新詮釋節慶題材。",
     projects: [
       { name: "年節系列", note: "從角色插畫到像素遊戲風，每年更換手法但維持品牌識別的存在感。",
-        images: ["./images/ecard_p1_01.webp", "./images/ecard_p1_02.webp", "./images/ecard_p1_03.webp"] }
+        images: [
+          "./images/ecard_p1_01.webp", 
+          "./images/ecard_p1_02.webp", 
+          "./images/ecard_p1_03.webp"
+        ] 
+      }
     ],
     also: ""
   },
@@ -509,7 +570,12 @@ const BRANDS = [
     intro: "hmm 週年慶促銷網路廣告的動態設計，以等距插畫與倒數節奏帶動點擊。",
     projects: [
       { name: "動態 Banner 系列", note: "在極短的秒數內完成訊息傳達，構圖與節奏都為了讓重點停留在畫面最後一幀。",
-        images: ["./images/hmm-banner_p1_01.webp", "./images/hmm-banner_p1_02.webp", "./images/hmm-banner_p1_03.webp"] }
+        images: [
+          "./images/hmm-banner_p1_01.webp", 
+          "./images/hmm-banner_p1_02.webp", 
+          "./images/hmm-banner_p1_03.webp"
+        ] 
+      }
     ],
     also: ""
   },
