@@ -344,10 +344,16 @@ function fitMedia(root) {
       const h = el.naturalHeight || el.videoHeight;
       if (!w || !h) return;
       const ratio = w / h;
-      if (ratio < 1.25) {                       /* 方形或直式 */
+      fig.style.setProperty("--nat-w", w + "px");
+
+      if (w < 600) {
+        /* 小尺寸素材：300 以下三欄、300–600 兩欄，手機一律一欄 */
+        fig.classList.add(w < 300 ? "is-mini" : "is-small");
+        el.dataset.noParallax = "1";
+        el.style.transform = "none";
+      } else if (ratio < 1.25) {
+        /* 方形或直式：置中完整顯示，不裁切也不放大 */
         fig.classList.add("is-tall");
-        fig.style.setProperty("--nat-w", w + "px");
-        /* 不裁切的圖不套視差，否則放大後又被切掉 */
         el.dataset.noParallax = "1";
         el.style.transform = "none";
       } else {
