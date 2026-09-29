@@ -346,9 +346,9 @@ function fitMedia(root) {
       const ratio = w / h;
       fig.style.setProperty("--nat-w", w + "px");
 
-      if (w < 600) {
+      if (w <= 600) {
         /* 小尺寸素材：300 以下三欄、300–600 兩欄，手機一律一欄 */
-        fig.classList.add(w < 300 ? "is-mini" : "is-small");
+        fig.classList.add(w <= 300 ? "is-mini" : "is-small");
         el.dataset.noParallax = "1";
         el.style.transform = "none";
       } else if (ratio < 1.25) {
@@ -361,8 +361,9 @@ function fitMedia(root) {
       }
     };
 
+    /* 已載入的直接套用；未載入的等 load。兩者都掛，避免競態 */
     if (el.complete || el.readyState >= 1) apply();
-    else el.addEventListener(el.tagName === "VIDEO" ? "loadedmetadata" : "load", apply, { once: true });
+    el.addEventListener(el.tagName === "VIDEO" ? "loadedmetadata" : "load", apply, { once: true });
   });
 }
 
@@ -456,6 +457,7 @@ function buildBrand() {
   const also = $("#bAlso");
   if (b.also) also.textContent = b.also; else also.style.display = "none";
 
+  fitMedia();
   initParallax();
 
   /* 上下篇：優先在同一個分類內循環，逛完一類才是完整的一輪 */
