@@ -591,10 +591,14 @@ const BRANDS = [
     projects: [
       { name: "動態 Banner 系列", note: "在極短的秒數內完成訊息傳達，構圖與節奏都為了讓重點停留在畫面最後一幀。",
         images: [
-          "./images/hmm-banner_p1_01.webp", 
-          "./images/hmm-banner_p1_02.webp", 
-          "./images/hmm-banner_p1_03.webp"
-        ] 
+          "./images/hmm-banner_p1_01.gif",
+          "./images/hmm-banner_p1_02.gif",
+          "./images/hmm-banner_p1_03.gif",
+          "./images/hmm-banner_p1_04.gif",
+          "./images/hmm-banner_p1_05.gif",
+          "./images/hmm-banner_p1_06.gif",
+          "./images/hmm-banner_p1_07.gif"
+        ]
       }
     ],
     also: ""
@@ -610,7 +614,12 @@ const BRANDS = [
     intro: "公司識別標誌的動態化設計，以幾何元素的聚合過程演繹標誌的構成邏輯。",
     projects: [
       { name: "標誌動態", note: "動畫本身就是標誌結構的說明——線條如何成形，品牌個性就在那幾秒裡。",
-        images: ["./images/mx-logo_p1_01.webp", "./images/mx-logo_p1_02.webp"] }
+        images: [
+          "./images/mx-logo_p1_01.gif",
+          "./images/mx-logo_p1_02.gif",
+          "./images/mx-logo_p1_03.gif"
+        ]
+      }
     ],
     also: ""
   }

@@ -345,19 +345,21 @@ function fitMedia(root) {
       if (!w || !h) return;
       const ratio = w / h;
       fig.style.setProperty("--nat-w", w + "px");
+      fig.style.aspectRatio = ratio.toFixed(4);
 
-      if (w <= 600) {
-        /* 小尺寸素材：300 以下三欄、300–600 兩欄，手機一律一欄 */
-        fig.classList.add(w <= 300 ? "is-mini" : "is-small");
+      /* 依「比例」決定欄數，不依賴檔案實際像素大小：
+           極小素材（≤300px，如 banner）→ 三欄
+           方形或直式（比例 ≤ 1.15）      → 兩欄
+           橫式                            → 整列滿版
+         方形圖滿版在作品集裡幾乎都是錯的，所以一律排成兩欄。 */
+      if (w <= 300) {
+        fig.classList.add("is-mini");
         el.dataset.noParallax = "1";
         el.style.transform = "none";
-      } else if (ratio < 1.25) {
-        /* 方形或直式：置中完整顯示，不裁切也不放大 */
-        fig.classList.add("is-tall");
+      } else if (ratio <= 1.15) {
+        fig.classList.add("is-small");
         el.dataset.noParallax = "1";
         el.style.transform = "none";
-      } else {
-        fig.style.aspectRatio = ratio.toFixed(4);
       }
     };
 

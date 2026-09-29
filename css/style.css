@@ -708,8 +708,10 @@ a.bento-tile { text-decoration: none; color: inherit; }
 .proj-flow figure.is-mini {
   width: min(calc(var(--nat-w, 300px) * 2), calc(33.333% - 17.34px));
 }
+/* 方形／直式：兩欄。圖片本身大於欄寬時直接縮小，不會有上限問題 */
 .proj-flow figure.is-small {
-  width: min(calc(var(--nat-w, 600px) * 2), calc(50% - 13px));
+  width: calc(50% - 13px);
+  max-width: calc(var(--nat-w, 600px) * 2);
 }
 
 .proj-flow figure.is-small img,
