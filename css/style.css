@@ -668,8 +668,23 @@ a.bento-tile { text-decoration: none; color: inherit; }
 }
 .proj-head p { color: var(--ink-soft); }
 .proj-flow { display: grid; gap: 26px; }
-.proj-flow figure { background: var(--paper-2); aspect-ratio: 4 / 3; overflow: hidden; }
-.proj-flow img { height: 100%; object-fit: cover; }
+.proj-flow figure {
+  background: var(--paper-2);
+  overflow: hidden;
+  /* 預設以 4:3 呈現；載入後由 JS 依實際比例調整 */
+  aspect-ratio: 4 / 3;
+}
+.proj-flow img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* 方形或直式圖片：置中、不放大超過原始尺寸，避免糊掉 */
+.proj-flow figure.is-tall {
+  aspect-ratio: auto;
+  background: transparent;
+  width: 100%;
+  max-width: var(--nat-w, 760px);
+  margin: 0 auto;
+}
+.proj-flow figure.is-tall img { height: auto; object-fit: contain; }
 
 .b-also {
   padding: 30px 0 0;
@@ -679,15 +694,82 @@ a.bento-tile { text-decoration: none; color: inherit; }
 }
 
 .b-nav {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
   gap: 20px;
-  padding: 44px 0 96px;
+  padding: 40px 0 96px;
   border-top: 1px solid var(--line);
   margin-top: 40px;
 }
-.b-nav a { font-size: 13px; letter-spacing: .08em; color: var(--ink-soft); transition: color .25s; }
-.b-nav a:hover { color: var(--accent-ink); }
+.b-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+  padding: 14px 0;
+  color: var(--ink-soft);
+  transition: color .25s;
+}
+.b-nav-item.is-next { justify-content: flex-end; text-align: right; }
+.b-nav-item.is-prev .b-nav-arrow { order: -1; }
+
+/* 縮圖：讓讀者先看到下一件長什麼樣 */
+.b-nav-thumb {
+  flex: 0 0 auto;
+  width: 64px;
+  height: 64px;
+  overflow: hidden;
+  background: var(--paper-2);
+  border-radius: 2px;
+}
+.b-nav-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s cubic-bezier(.2,.7,.2,1);
+}
+.b-nav-item:hover .b-nav-thumb img { transform: scale(1.08); }
+.b-nav-item:hover { color: var(--accent-ink); }
+.b-nav-arrow {
+  flex: 0 0 auto;
+  font-family: var(--f-latin);
+  font-size: 15px;
+  transition: transform .3s cubic-bezier(.2,.7,.2,1);
+}
+.b-nav-item.is-prev:hover .b-nav-arrow { transform: translateX(-4px); }
+.b-nav-item.is-next:hover .b-nav-arrow { transform: translateX(4px); }
+.b-nav-arrow { color: var(--ink-faint); }
+.b-nav-item:hover .b-nav-arrow { color: var(--accent-ink); }
+.b-nav-text { min-width: 0; }
+.b-nav-label {
+  display: block;
+  font-family: var(--f-latin);
+  font-size: 10px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 3px;
+}
+.b-nav-name {
+  display: block;
+  font-size: 14px;
+  letter-spacing: .04em;
+  color: var(--ink);
+  /* 依可用寬度自動截斷，不必設固定字數 */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.b-nav-back {
+  font-size: 13px;
+  letter-spacing: .08em;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  padding: 14px 0;
+  transition: color .25s;
+}
+.b-nav-back:hover { color: var(--accent-ink); }
 
 /* ---------- pressure headline ---------- */
 .pressure-band {
@@ -771,4 +853,27 @@ a.bento-tile { text-decoration: none; color: inherit; }
   .stat strong { font-size: 22px; }
   .orbit-row .label { grid-column: 1 / -1; }
   .b-hero { aspect-ratio: 3 / 2; }
+
+  /* 上下篇導覽：手機改為堆疊的整列連結 */
+  .b-nav {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 0 0 72px;
+    margin-top: 32px;
+  }
+  .b-nav-item {
+    padding: 14px 2px;
+    border-bottom: 1px solid var(--line);
+    min-height: 72px;
+    gap: 14px;
+  }
+  .b-nav-item.is-next { justify-content: flex-start; text-align: left; }
+  .b-nav-item.is-next .b-nav-arrow { order: 3; margin-left: auto; }
+  .b-nav-item.is-next .b-nav-thumb { order: -1; }
+  .b-nav-item.is-prev .b-nav-arrow { order: 3; margin-left: auto; }
+  .b-nav-thumb { width: 52px; height: 52px; }
+  .b-nav-back {
+    padding: 22px 0 0;
+    text-align: center;
+  }
 }

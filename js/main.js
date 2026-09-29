@@ -105,7 +105,7 @@ function buildHeroTags() {
 /* 作品卡片 */
 function cardHTML(b) {
   return `
-    <a class="card rv${b.id === "singings" ? " is-own" : ""}" href="./brand.html?id=${esc(b.id)}">
+    <a class="card rv${b.id === "singings" ? " is-own" : ""}" href="./brand.html?id=${esc(b.id)}&from=${encodeURIComponent(b.category)}">
       <div class="card-img"><img src="${esc(b.card)}" alt="${esc(b.name)} 案例縮圖" loading="lazy"></div>
       <div class="card-body">
         <h3>${esc(b.name)}</h3>
@@ -149,7 +149,9 @@ function buildWork() {
       /* 只有一件作品時直接連到該作品詳頁 */
       const single = list.length === 1 ? list[0].id : "";
       const tag = single ? "a" : "button";
-      const attr = single ? `href="./brand.html?id=${esc(single)}"` : `type="button"`;
+          const attr = single
+        ? `href="./brand.html?id=${esc(single)}&from=${encodeURIComponent(c)}"`
+        : `type="button"`;
       return `
         <${tag} class="bento-tile${i === 0 ? " is-hero" : ""} rv" ${attr}
                 data-cat="${esc(c)}" data-single="${esc(single)}" data-imgs='${esc(JSON.stringify(imgs))}'>
@@ -216,7 +218,7 @@ function buildWork() {
     if (cat !== "all") {
       const list = BRANDS.filter(b => b.category === cat);
       if (list.length === 1) {
-        location.href = `./brand.html?id=${list[0].id}`;
+        location.href = `./brand.html?id=${list[0].id}&from=${encodeURIComponent(cat)}`;
         return;
       }
     }
@@ -243,7 +245,17 @@ function buildWork() {
         if (btn) setCat(btn.dataset.cat);
       });
     }
-    render("all");
+    /* 初次載入：直接渲染，不套用「單件直跳詳頁」那條規則，
+       否則從單件分類按返回會被立刻彈回作品頁 */
+    const wanted = new URLSearchParams(location.search).get("cat");
+    const start = cats.includes(wanted) ? wanted : "all";
+    bar.querySelectorAll(".f-btn").forEach(btn =>
+      btn.classList.toggle("is-on", btn.dataset.cat === start));
+    render(start);
+    if (start !== "all") {
+      const head = document.querySelector("#work .section-head");
+      if (head) head.scrollIntoView({ block: "start" });
+    }
   } else {
     if (bar) bar.style.display = "none";
     grid.innerHTML = `<div class="grid">${BRANDS.map(b => cardHTML(b)).join("")}</div>`;
@@ -319,6 +331,35 @@ function countUp(root) {
   io.observe(root);
 }
 
+/* 圖片載入後依實際比例調整：
+   橫式 → 滿版裁切；方形或直式 → 置中、不放大超過原始尺寸 */
+function fitMedia(root) {
+  const figs = (root || document).querySelectorAll(".proj-flow figure");
+  figs.forEach(fig => {
+    const el = fig.querySelector("img, video");
+    if (!el) return;
+
+    const apply = () => {
+      const w = el.naturalWidth || el.videoWidth;
+      const h = el.naturalHeight || el.videoHeight;
+      if (!w || !h) return;
+      const ratio = w / h;
+      if (ratio < 1.25) {                       /* 方形或直式 */
+        fig.classList.add("is-tall");
+        fig.style.setProperty("--nat-w", w + "px");
+        /* 不裁切的圖不套視差，否則放大後又被切掉 */
+        el.dataset.noParallax = "1";
+        el.style.transform = "none";
+      } else {
+        fig.style.aspectRatio = ratio.toFixed(4);
+      }
+    };
+
+    if (el.complete || el.readyState >= 1) apply();
+    else el.addEventListener(el.tagName === "VIDEO" ? "loadedmetadata" : "load", apply, { once: true });
+  });
+}
+
 /* 捲動視差：圖片比容器慢，產生深度。
    只處理進入視窗的元素，單一 rAF 迴圈。 */
 function initParallax() {
@@ -337,6 +378,7 @@ function initParallax() {
   }, { rootMargin: "120px 0px" });
 
   items.forEach(img => {
+    if (img.dataset.noParallax) return;
     const box = img.parentElement;
     if (box) box.style.overflow = "hidden";
     /* 先放大一點，位移時才不會露出邊緣 */
@@ -348,6 +390,7 @@ function initParallax() {
   const update = () => {
     const vh = window.innerHeight;
     live.forEach(img => {
+      if (img.dataset.noParallax) return;
       const r = img.getBoundingClientRect();
       const mid = r.top + r.height / 2;
       const off = (mid - vh / 2) / vh;          // -1 ~ 1
@@ -409,12 +452,33 @@ function buildBrand() {
 
   initParallax();
 
-  const prev = BRANDS[(i - 1 + BRANDS.length) % BRANDS.length];
-  const next = BRANDS[(i + 1) % BRANDS.length];
-  $("#prevLink").href = `./brand.html?id=${prev.id}`;
-  $("#prevLink").textContent = `← ${prev.name}`;
-  $("#nextLink").href = `./brand.html?id=${next.id}`;
-  $("#nextLink").textContent = `${next.name} →`;
+  /* 上下篇：優先在同一個分類內循環，逛完一類才是完整的一輪 */
+  const from = new URLSearchParams(location.search).get("from") || "";
+  const scope = from ? BRANDS.filter(x => x.category === from) : BRANDS;
+  const list = scope.length > 1 ? scope : BRANDS;
+  const j = list.findIndex(x => x.id === b.id);
+  const prev = list[(j - 1 + list.length) % list.length];
+  const next = list[(j + 1) % list.length];
+  const keep = from ? `&from=${encodeURIComponent(from)}` : "";
+
+  const setNav = (sel, item) => {
+    const a = $(sel);
+    a.href = `./brand.html?id=${item.id}${keep}`;
+    a.querySelector(".b-nav-name").textContent = item.name;
+    const t = a.querySelector(".b-nav-thumb img");
+    if (t) { t.src = item.card; t.alt = item.name; }
+    a.title = item.name;
+  };
+  setNav("#prevLink", prev);
+  setNav("#nextLink", next);
+
+  /* 返回列表：回到原本瀏覽的分類，而不是重新從全部開始 */
+  const back = $("#backLink");
+  if (back && from) {
+    back.href = `./index.html?cat=${encodeURIComponent(from)}#work`;
+    /* 只有分類入口版（首頁為便當格）才顯示分類名，數位版維持通用字樣 */
+    if (SITE.workLayout === "bento") back.textContent = `回到${from}`;
+  }
 
   initReveal();
 }
