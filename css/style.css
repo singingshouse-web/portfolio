@@ -618,6 +618,23 @@ a.bento-tile { text-decoration: none; color: inherit; }
 }
 .b-hero img { height: 100%; object-fit: cover; }
 
+/* 非橫式的主視覺（方形 GIF 等）：完整顯示、置中，不硬裁成 21:9 */
+.b-hero.is-contain {
+  aspect-ratio: auto;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  padding: 40px var(--gutter) 0;
+}
+.b-hero.is-contain img,
+.b-hero.is-contain video {
+  width: auto;
+  height: auto;
+  max-width: min(680px, 100%);
+  max-height: 62vh;
+  object-fit: contain;
+}
+
 .b-head { padding: 66px 0 76px; text-align: center; }
 .b-head h1 {
   font-family: var(--f-display);
@@ -895,6 +912,8 @@ a.bento-tile { text-decoration: none; color: inherit; }
   .stat strong { font-size: 22px; }
   .orbit-row .label { grid-column: 1 / -1; }
   .b-hero { aspect-ratio: 3 / 2; }
+  .b-hero.is-contain { padding: 24px var(--gutter) 0; }
+  .b-hero.is-contain img { max-height: 48vh; }
   .proj-flow { gap: 18px; }
   .proj-flow figure.is-small,
   .proj-flow figure.is-mini { width: 100%; }

@@ -334,6 +334,21 @@ function countUp(root) {
 /* 圖片載入後依實際比例調整：
    橫式 → 滿版裁切；方形或直式 → 置中、不放大超過原始尺寸 */
 function fitMedia(root) {
+  /* 詳頁主視覺：非橫式的圖改為完整顯示，不要硬裁成 21:9 */
+  const heroBox = document.querySelector(".b-hero");
+  const heroImg = heroBox && heroBox.querySelector("img, video");
+  if (heroImg) {
+    const fitHero = () => {
+      const w = heroImg.naturalWidth || heroImg.videoWidth;
+      const h = heroImg.naturalHeight || heroImg.videoHeight;
+      if (!w || !h) return;
+      if (w / h < 1.7) heroBox.classList.add("is-contain");
+    };
+    if (heroImg.complete || heroImg.readyState >= 1) fitHero();
+    heroImg.addEventListener(
+      heroImg.tagName === "VIDEO" ? "loadedmetadata" : "load", fitHero, { once: true });
+  }
+
   const figs = (root || document).querySelectorAll(".proj-flow figure");
   figs.forEach(fig => {
     const el = fig.querySelector("img, video");

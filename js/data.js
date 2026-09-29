@@ -555,8 +555,8 @@ const BRANDS = [
     nameEn: "FESTIVAL E-CARD",
     category: "插畫與動態",
     tags: ["動態設計", "節慶視覺", "社群素材"],
-    card: "./images/ecard_card.webp",
-    hero: "./images/ecard_hero.webp",
+    card: "./images/ecard_p1_01.gif",
+    hero: "./images/ecard_p1_02.gif",
     intro: "歷年年節與節慶的動態電子卡設計，每年以不同的視覺語言重新詮釋節慶題材。",
     projects: [
       { name: "年節系列",
@@ -585,8 +585,8 @@ const BRANDS = [
     nameEn: "HMM BANNER",
     category: "插畫與動態",
     tags: ["動態設計", "Banner", "促銷素材"],
-    card: "./images/hmm-banner_card.webp",
-    hero: "./images/hmm-banner_hero.webp",
+    card: "./images/hmm-banner_p1_01.gif",
+    hero: "./images/hmm-banner_p1_04.gif",
     intro: "hmm 週年慶促銷網路廣告的動態設計，以等距插畫與倒數節奏帶動點擊。",
     projects: [
       { name: "動態 Banner 系列", note: "在極短的秒數內完成訊息傳達，構圖與節奏都為了讓重點停留在畫面最後一幀。",
@@ -609,8 +609,8 @@ const BRANDS = [
     nameEn: "MX LOGO ANIMATION",
     category: "插畫與動態",
     tags: ["動態設計", "識別動畫", "動態標誌"],
-    card: "./images/mx-logo_card.webp",
-    hero: "./images/mx-logo_hero.webp",
+    card: "./images/mx-logo_p1_01.gif",
+    hero: "./images/mx-logo_p1_02.gif",
     intro: "公司識別標誌的動態化設計，以幾何元素的聚合過程演繹標誌的構成邏輯。",
     projects: [
       { name: "標誌動態", note: "動畫本身就是標誌結構的說明——線條如何成形，品牌個性就在那幾秒裡。",
