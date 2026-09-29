@@ -748,6 +748,12 @@ a.bento-tile { text-decoration: none; color: inherit; }
 .b-nav-item.is-next { justify-content: flex-end; text-align: right; }
 .b-nav-item.is-prev .b-nav-arrow { order: -1; }
 
+/* 桌機排序：上一個（左）｜回到列表（中）｜下一個（右）
+   HTML 為了手機堆疊採 prev→next→back，這裡用 order 調回來 */
+.b-nav-item.is-prev { order: 1; justify-self: start; }
+.b-nav-back         { order: 2; justify-self: center; text-align: center; }
+.b-nav-item.is-next { order: 3; justify-self: end; }
+
 /* 縮圖：讓讀者先看到下一件長什麼樣 */
 .b-nav-thumb {
   flex: 0 0 auto;
@@ -898,6 +904,10 @@ a.bento-tile { text-decoration: none; color: inherit; }
     padding: 0 0 72px;
     margin-top: 32px;
   }
+  /* 手機排序：上一個 → 下一個 → 回到列表 */
+  .b-nav-item.is-prev { order: 1; justify-self: stretch; }
+  .b-nav-item.is-next { order: 2; justify-self: stretch; }
+  .b-nav-back         { order: 3; justify-self: stretch; }
   .b-nav-item {
     padding: 14px 2px;
     border-bottom: 1px solid var(--line);

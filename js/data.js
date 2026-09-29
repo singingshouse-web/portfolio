@@ -562,10 +562,19 @@ const BRANDS = [
       { name: "年節系列",
         note: "每年更換表現手法——角色插畫、像素遊戲、粒子動畫——但識別的存在感維持不變，讓系列有延續也有新鮮感。",
         images: [
-          "./images/ecard_p1_01.webp", 
-          "./images/ecard_p1_02.webp", 
-          "./images/ecard_p1_03.webp"
-        ] 
+          "./images/ecard_p1_01.gif",
+          "./images/ecard_p1_02.gif",
+          "./images/ecard_p1_03.gif",
+          "./images/ecard_p1_04.gif",
+          "./images/ecard_p1_05.gif",
+          "./images/ecard_p1_06.gif",
+          "./images/ecard_p1_07.gif",
+          "./images/ecard_p1_08.gif",
+          "./images/ecard_p1_09.gif",
+          "./images/ecard_p1_10.gif",
+          "./images/ecard_p1_11.gif",
+          "./images/ecard_p1_12.gif"
+        ]
       }
     ],
     also: ""
