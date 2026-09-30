@@ -367,6 +367,13 @@ function fitMedia(root) {
            方形或直式（比例 ≤ 1.15）      → 兩欄
            橫式                            → 整列滿版
          方形圖滿版在作品集裡幾乎都是錯的，所以一律排成兩欄。 */
+      /* 該子案有指定欄數時，交給 CSS 處理，不套自動分類 */
+      if (fig.parentElement && fig.parentElement.style.getPropertyValue("--cols")) {
+        el.dataset.noParallax = "1";
+        el.style.transform = "none";
+        return;
+      }
+
       if (w <= 300) {
         fig.classList.add("is-mini");
         el.dataset.noParallax = "1";
@@ -463,7 +470,7 @@ function buildBrand() {
           <h2>${esc(p.name)}</h2>
           <p>${esc(p.note)}</p>
         </div>
-        <div class="proj-flow">
+        <div class="proj-flow"${p.cols ? ` style="--cols:${p.cols}"` : ""}>
           ${p.images.map(src => `
             <figure class="rv">${mediaHTML(src, p.name)}</figure>
           `).join("")}

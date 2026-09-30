@@ -708,6 +708,28 @@ a.bento-tile { text-decoration: none; color: inherit; }
 }
 .proj-flow figure.is-tall img { height: auto; object-fit: contain; }
 
+/* 指定欄數：在 data.js 的子案加上 cols: 3 即可。
+   欄數越多、顯示越小，在 Retina 螢幕上越銳利。 */
+.proj-flow[style*="--cols"] figure {
+  flex: 0 0 auto !important;
+  width: calc((100% - (var(--cols) - 1) * 26px) / var(--cols)) !important;
+  max-width: none !important;
+  aspect-ratio: auto !important;
+  background: transparent;
+  margin: 0;
+}
+/* 關鍵：顯示寬度不超過原圖的一半（= Retina 上 1:1），
+   所以圖片永遠不會被放大，也就不會糊。圖比欄窄時置中。 */
+.proj-flow[style*="--cols"] figure img,
+.proj-flow[style*="--cols"] figure video {
+  width: 100%;
+  max-width: calc(var(--nat-w, 4000px) / 2);
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
 /* 小尺寸素材：順著版面排下去、自然折行，不鎖死欄數。
    每張依原始寬度取得起始寬度，再撐滿剩餘空間，
    但放大不超過原尺寸兩倍，避免 GIF 或小圖糊掉。
@@ -917,6 +939,10 @@ a.bento-tile { text-decoration: none; color: inherit; }
   .proj-flow { gap: 18px; }
   .proj-flow figure.is-small,
   .proj-flow figure.is-mini { width: 100%; }
+  /* 手機：指定欄數最多兩欄 */
+  .proj-flow[style*="--cols"] figure {
+    width: calc((100% - 18px) / 2) !important;
+  }
 
   /* 上下篇導覽：手機改為堆疊的整列連結 */
   .b-nav {

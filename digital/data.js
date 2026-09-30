@@ -107,14 +107,14 @@ const SITE = {
 const BRANDS = [
   {
     id: "singings",
-    name: "心映好事",
-    nameEn: "SINGINGS HOUSE",
+    name: "擁抱情緒牌卡 數位系統開發",
+    nameEn: "EMBRACE EMOTION CARDS",
     category: "網頁與介面",
-    tags: ["產品視覺", "網頁設計", "互動系統", "募資頁面"],
+    tags: ["產品視覺", "網頁設計", "互動系統"],
     card: "../images/singings_card.webp",
     hero: "../images/singings_hero.webp",
     intro:
-      "心映好事的自有產品線。從「擁抱情緒卡」的產品視覺、募資頁面到線上抽牌系統，完整執行一個品牌從零到上線的所有數位介面。",
+      "「擁抱情緒牌卡」的數位系統開發。從產品視覺、線上抽牌互動到跨裝置介面，把一套實體牌卡延伸成隨時能使用的數位體驗。",
     projects: [
       {
         name: "線上抽牌系統",
@@ -125,13 +125,27 @@ const BRANDS = [
           "../images/singings_p1_03.webp",
           "../images/singings_p1_04.webp"
         ]
-      },
+      }
+    ],
+    also: ""
+  },
+  {
+    id: "cf-embrace",
+    name: "擁抱情緒牌卡 募資頁",
+    nameEn: "CROWDFUNDING PAGE",
+    category: "網頁與介面",
+    tags: ["募資頁面", "長頁設計", "行銷素材"],
+    card: "../images/singings_p2_01.webp",
+    hero: "../images/singings_p2_02.webp",
+    intro:
+      "「擁抱情緒牌卡」群眾募資頁的設計。長頁敘事的結構、視覺節奏到各階段行銷素材，一手規劃並執行。",
+    projects: [
       {
-        name: "募資頁與行銷素材",
-        note: "從敘事結構到視覺節奏一手設計，支撐擁抱情緒卡的群眾募資上線。",
-        images: ["../images/singings_p2_01.webp", 
-                 "../images/singings_p2_02.webp", 
-                 "../images/singings_p2_03.webp", 
+        name: "募資頁面設計",
+        note: "募資頁的難處不在版面而在順序——先讓人認得自己的情緒，才有後面的支持理由。整頁的節奏都照這個邏輯排。",
+        images: ["../images/singings_p2_01.webp",
+                 "../images/singings_p2_02.webp",
+                 "../images/singings_p2_03.webp",
                  "../images/singings_p2_04.webp"]
       }
     ],

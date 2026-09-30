@@ -113,14 +113,14 @@ const SITE = {
 const BRANDS = [
   {
     id: "singings",
-    name: "心映好事",
-    nameEn: "SINGINGS HOUSE",
+    name: "擁抱情緒牌卡 數位系統開發",
+    nameEn: "EMBRACE EMOTION CARDS",
     category: "網頁與介面",
-    tags: ["產品視覺", "網頁設計", "互動系統", "募資頁面"],
+    tags: ["產品視覺", "網頁設計", "互動系統"],
     card: "./images/singings_card.webp",
     hero: "./images/singings_hero.webp",
     intro:
-      "心映好事的自有產品線。從「擁抱情緒卡」的產品視覺、募資頁面到線上抽牌系統，完整執行一個品牌從零到上線的所有數位介面。",
+      "「擁抱情緒牌卡」的數位系統開發。從產品視覺、線上抽牌互動到跨裝置介面，把一套實體牌卡延伸成隨時能使用的數位體驗。",
     projects: [
       {
         name: "線上抽牌系統",
