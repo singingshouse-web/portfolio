@@ -134,19 +134,28 @@ const BRANDS = [
     name: "擁抱情緒牌卡 募資頁",
     nameEn: "CROWDFUNDING PAGE",
     category: "網頁與介面",
-    tags: ["募資頁面", "長頁設計", "行銷素材"],
-    card: "../images/singings_p2_01.webp",
-    hero: "../images/singings_p2_02.webp",
+    tags: ["募資影片", "募資頁面", "長頁設計"],
+    card: "../images/cf-embrace_card.webp",
+    hero: "../images/cf-embrace_hero.webp",
     intro:
-      "「擁抱情緒牌卡」群眾募資頁的設計。長頁敘事的結構、視覺節奏到各階段行銷素材，一手規劃並執行。",
+      "《擁抱情緒牌卡》群眾募資頁的設計。從募資影片、長頁敘事的結構到視覺節奏，以品牌主的身分一手規劃並執行。",
     projects: [
+      {
+        name: "募資影片",
+        note: "影片要在前十秒回答「這是給誰的」。先讓人認出自己正在經歷的情緒，產品的說明才有落腳的地方。",
+        images: [
+          { src: "../images/cf-embrace_p1_01.mp4",
+            poster: "../images/cf-embrace_p1_01.webp",
+            controls: true }
+        ]
+      },
       {
         name: "募資頁面設計",
         note: "募資頁的難處不在版面而在順序——先讓人認得自己的情緒，才有後面的支持理由。整頁的節奏都照這個邏輯排。",
-        images: ["../images/singings_p2_01.webp",
-                 "../images/singings_p2_02.webp",
-                 "../images/singings_p2_03.webp",
-                 "../images/singings_p2_04.webp"]
+        images: ["../images/cf-embrace_p2_01.webp",
+                 "../images/cf-embrace_p2_02.webp",
+                 "../images/cf-embrace_p2_03.webp",
+                 "../images/cf-embrace_p2_04.webp"]
       }
     ],
     also: ""

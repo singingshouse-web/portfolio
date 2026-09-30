@@ -262,9 +262,20 @@ function buildWork() {
   }
 }
 
-/* 圖片或影片：副檔名為 mp4/webm 時輸出 <video>，其餘為 <img> */
-function mediaHTML(src, alt) {
+/* 圖片或影片。images 陣列可以放字串，或放物件指定更多設定：
+     "./images/xxx.webp"                                   一般圖片
+     "./images/xxx.mp4"                                    無聲短片：自動循環、無播放器介面
+     { src:"./images/xxx.mp4", poster:"./images/xxx.webp",
+       controls:true }                                     有聲影片：封面圖 + 點擊播放          */
+function mediaHTML(item, alt) {
+  const o = (item && typeof item === "object") ? item : {};
+  const src = (typeof item === "string") ? item : (o.src || "");
+
   if (/\.(mp4|webm)$/i.test(src)) {
+    if (o.controls) {
+      return `<video src="${esc(src)}" controls playsinline preload="metadata"${
+        o.poster ? ` poster="${esc(o.poster)}"` : ""}></video>`;
+    }
     return `<video src="${esc(src)}" autoplay loop muted playsinline preload="metadata"></video>`;
   }
   return `<img src="${esc(src)}" alt="${esc(alt)}" loading="lazy">`;
@@ -471,8 +482,8 @@ function buildBrand() {
           <p>${esc(p.note)}</p>
         </div>
         <div class="proj-flow"${p.cols ? ` style="--cols:${p.cols}"` : ""}>
-          ${p.images.map(src => `
-            <figure class="rv">${mediaHTML(src, p.name)}</figure>
+          ${p.images.map(item => `
+            <figure class="rv">${mediaHTML(item, p.name)}</figure>
           `).join("")}
         </div>
       </div>

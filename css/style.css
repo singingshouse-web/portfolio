@@ -320,6 +320,8 @@ a.bento-tile { text-decoration: none; color: inherit; }
   display: block;
 }
 .proj-flow video { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* 有聲影片：完整顯示、不裁切，留深色底避免邊緣露白 */
+.proj-flow video[controls] { object-fit: contain; background: #16150F; }
 .b-hero video { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 /* ---------- work grid ---------- */

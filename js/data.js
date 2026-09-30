@@ -279,31 +279,41 @@ const BRANDS = [
      累積到三件以上時，可比照 digital/ 的做法獨立成 crowdfunding/ 專頁。 */
   {
     id: "cf-embrace",
-    name: "擁抱情緒卡",
+    name: "擁抱情緒牌卡",
     nameEn: "EMBRACE EMOTION CARDS",
     category: "募資專案",
-    tags: ["募資頁面", "專案視覺", "行銷素材"],
+    tags: ["募資影片", "募資頁面", "專案視覺", "行銷素材"],
     card: "./images/cf-embrace_card.webp",
     hero: "./images/cf-embrace_hero.webp",
     intro:
-      "自有品牌「擁抱情緒卡」的群眾募資專案。從募資頁的敘事結構、專案主視覺到各階段的行銷素材，完整規劃並執行一次募資上線。",
+      "自有品牌《擁抱情緒牌卡》的群眾募資專案。一套專為情緒設計的療癒工具，結合療癒、設計與靈性，陪伴使用者從覺察、探索走到支持與轉化。從募資影片、募資頁的敘事結構到各階段行銷素材，以品牌主的身分一手規劃並執行。",
     projects: [
+      {
+        name: "募資影片",
+        note: "影片要在前十秒回答「這是給誰的」。先讓人認出自己正在經歷的情緒，產品的說明才有落腳的地方。",
+        images: [
+          { src: "./images/cf-embrace_p1_01.mp4",
+            poster: "./images/cf-embrace_p1_01.webp",
+            controls: true }
+        ]
+      },
       {
         name: "募資頁面設計",
         note: "募資頁的難處不在版面而在順序——先讓人認得自己的情緒，才有後面的支持理由。整頁的節奏都是照這個邏輯排的。",
         images: [
-          "./images/cf-embrace_p1_01.webp",
-          "./images/cf-embrace_p1_02.webp",
-          "./images/cf-embrace_p1_03.webp",
-          "./images/cf-embrace_p1_04.webp"
+          "./images/cf-embrace_p2_01.webp",
+          "./images/cf-embrace_p2_02.webp",
+          "./images/cf-embrace_p2_03.webp",
+          "./images/cf-embrace_p2_04.webp"
         ]
       },
       {
-        name: "專案行銷素材",
-        note: "預熱到結案各階段的社群與廣告素材，在同一套視覺語言下對應不同的溝通任務。",
+        name: "回饋品與行銷素材",
+        note: "數位月曆桌布等回饋延伸自牌卡的視覺系統，讓支持者在募資結束之後，日常裡仍然接得住品牌。",
         images: [
-          "./images/cf-embrace_p2_01.webp",
-          "./images/cf-embrace_p2_02.webp"
+          "./images/cf-embrace_p3_01.mp4",
+          "./images/cf-embrace_p3_02.webp",
+          "./images/cf-embrace_p3_03.webp"
         ]
       }
     ],
