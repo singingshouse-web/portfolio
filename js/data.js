@@ -286,7 +286,7 @@ const BRANDS = [
     card: "./images/cf-embrace_card.webp",
     hero: "./images/cf-embrace_hero.webp",
     intro:
-      "自有品牌《擁抱情緒牌卡》的群眾募資專案。一套專為情緒設計的療癒工具，結合療癒、設計與靈性，陪伴使用者從覺察、探索走到支持與轉化。從募資影片、募資頁的敘事結構到各階段行銷素材，以品牌主的身分一手規劃並執行。",
+      "自有品牌《擁抱情緒牌卡》的群眾募資專案。以 NT$100,000 為目標在嘖嘖上線，最終募得 NT$1,032,197、669 位支持者，達成率 1,032%。執行了募資影片、募資頁、牌卡視覺、廣告素材、數位體驗到實體製作物，整體節奏切成募資前、募資中（三波廣告）與募資後三個階段推進。",
     projects: [
       {
         name: "募資影片",
@@ -304,12 +304,18 @@ const BRANDS = [
           "./images/cf-embrace_p2_01.webp",
           "./images/cf-embrace_p2_02.webp",
           "./images/cf-embrace_p2_03.webp",
-          "./images/cf-embrace_p2_04.webp"
+          "./images/cf-embrace_p2_04.webp",
+          "./images/cf-embrace_p2_05.webp",
+          "./images/cf-embrace_p2_06.webp",
+          "./images/cf-embrace_p2_07.webp",
+          "./images/cf-embrace_p2_08.webp",
+          "./images/cf-embrace_p2_09.webp",
+          "./images/cf-embrace_p2_10.webp"
         ]
       },
       {
         name: "回饋品與行銷素材",
-        note: "數位月曆桌布等回饋延伸自牌卡的視覺系統，讓支持者在募資結束之後，日常裡仍然接得住品牌。",
+        note: "素材依募資前、募資中三波廣告、募資後分段規劃，各自承擔不同的溝通任務。數位月曆桌布這類回饋延伸自牌卡的視覺系統，讓支持者在專案結束之後，日常裡仍然接得住品牌。",
         images: [
           "./images/cf-embrace_p3_01.mp4",
           "./images/cf-embrace_p3_02.webp",

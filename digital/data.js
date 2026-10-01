@@ -138,7 +138,7 @@ const BRANDS = [
     card: "../images/cf-embrace_card.webp",
     hero: "../images/cf-embrace_hero.webp",
     intro:
-      "《擁抱情緒牌卡》群眾募資頁的設計。從募資影片、長頁敘事的結構到視覺節奏，以品牌主的身分一手規劃並執行。",
+      "自有品牌《擁抱情緒牌卡》的群眾募資專案。以 NT$100,000 為目標在嘖嘖上線，最終募得 NT$1,032,197、669 位支持者，達成率 1,032%。執行了募資影片、募資頁、廣告頁面與數位體驗，整體節奏切成募資前、募資中（三波廣告）與募資後三個階段推進。",
     projects: [
       {
         name: "募資影片",
@@ -155,7 +155,13 @@ const BRANDS = [
         images: ["../images/cf-embrace_p2_01.webp",
                  "../images/cf-embrace_p2_02.webp",
                  "../images/cf-embrace_p2_03.webp",
-                 "../images/cf-embrace_p2_04.webp"]
+                 "../images/cf-embrace_p2_04.webp",
+                 "../images/cf-embrace_p2_05.webp",
+                 "../images/cf-embrace_p2_06.webp",
+                 "../images/cf-embrace_p2_07.webp",
+                 "../images/cf-embrace_p2_08.webp",
+                 "../images/cf-embrace_p2_09.webp",
+                 "../images/cf-embrace_p2_10.webp"]
       }
     ],
     also: ""
