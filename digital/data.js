@@ -108,7 +108,7 @@ const BRANDS = [
   {
     id: "singings",
     name: "擁抱情緒牌卡 數位系統開發",
-    nameEn: "EMBRACE EMOTION CARDS",
+    nameEn: "EMBRACE YOUR FEELINGS CARDS",
     category: "網頁與介面",
     tags: ["產品視覺", "網頁設計", "互動系統"],
     card: "../images/singings_card.webp",

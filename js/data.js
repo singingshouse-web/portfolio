@@ -114,7 +114,7 @@ const BRANDS = [
   {
     id: "singings",
     name: "擁抱情緒牌卡 數位系統開發",
-    nameEn: "EMBRACE EMOTION CARDS",
+    nameEn: "EMBRACE YOUR FEELINGS CARDS",
     category: "網頁與介面",
     tags: ["產品視覺", "網頁設計", "互動系統"],
     card: "./images/singings_card.webp",
@@ -280,7 +280,7 @@ const BRANDS = [
   {
     id: "cf-embrace",
     name: "擁抱情緒牌卡",
-    nameEn: "EMBRACE EMOTION CARDS",
+    nameEn: "EMBRACE YOUR FEELINGS CARDS",
     category: "募資專案",
     tags: ["募資影片", "募資頁面", "專案視覺", "行銷素材"],
     card: "./images/cf-embrace_card.webp",
