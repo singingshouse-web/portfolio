@@ -299,7 +299,7 @@ const BRANDS = [
       },
       {
         name: "募資頁面設計",
-        note: "募資頁的難處不在版面而在順序——先讓人認得自己的情緒，才有後面的支持理由。整頁的節奏都是照這個邏輯排的。",
+        note: "募資頁的難處不在版面而在順序——先讓人認得自己的情緒，才有後面的支持理由。整頁的節奏都是照這個邏輯排的，同一套視覺也延伸到數位月曆桌布等回饋，讓支持者在專案結束之後仍然接得住品牌。",
         images: [
           "./images/cf-embrace_p2_01.webp",
           "./images/cf-embrace_p2_02.webp",
@@ -310,16 +310,8 @@ const BRANDS = [
           "./images/cf-embrace_p2_07.webp",
           "./images/cf-embrace_p2_08.webp",
           "./images/cf-embrace_p2_09.webp",
-          "./images/cf-embrace_p2_10.webp"
-        ]
-      },
-      {
-        name: "回饋品與行銷素材",
-        note: "素材依募資前、募資中三波廣告、募資後分段規劃，各自承擔不同的溝通任務。數位月曆桌布這類回饋延伸自牌卡的視覺系統，讓支持者在專案結束之後，日常裡仍然接得住品牌。",
-        images: [
-          "./images/cf-embrace_p3_01.mp4",
-          "./images/cf-embrace_p3_02.webp",
-          "./images/cf-embrace_p3_03.webp"
+          "./images/cf-embrace_p2_10.webp",
+          "./images/cf-embrace_p3_01.mp4"
         ]
       }
     ],
