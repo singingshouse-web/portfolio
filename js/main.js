@@ -90,6 +90,119 @@ function buildHome() {
   initParallax();
 }
 
+/* ---------------------------------------------------------
+   大字互動（Hello!）
+   每個字母是一個 span，依游標距離即時改變可變字型的
+   wght / wdth。字級先算到剛好填滿版面寬度，再用 scaleY
+   拉到 SITE.pressureHeight 指定的高度。
+   設定都在 data.js 的 pressureText / pressureHeight /
+   pressureFont，這裡不寫死任何字型或數值。
+--------------------------------------------------------- */
+function initPressure() {
+  const host = $("#pressure");
+  if (!host || !SITE.pressureText) return;
+
+  const cfg  = SITE.pressureFont || {};
+  const wdth = cfg.wdth || [62, 125];
+  const wght = cfg.wght || [100, 900];
+  const slnt = cfg.slnt || null;
+  const REST = 0.15;                       // 沒有游標時的基礎重量，避免太淡
+
+  /* 建立字母 */
+  const title = document.createElement("h1");
+  title.className = "pressure-title";
+  if (cfg.family) title.style.fontFamily = `"${cfg.family}", var(--f-latin)`;
+  title.innerHTML = [...SITE.pressureText]
+    .map(ch => `<span>${ch === " " ? "&nbsp;" : esc(ch)}</span>`).join("");
+  host.replaceChildren(title);
+
+  const spans = [...title.querySelectorAll("span")];
+  if (!spans.length) return;
+
+  /* 字級：量出字母總寬，推算填滿容器需要的 font-size，
+     再用 scaleY 拉到指定高度（CSS 的 transform-origin 是 center top） */
+  function fit() {
+    title.style.transform = "none";
+    title.style.fontSize = "100px";
+    const sum = spans.reduce((a, s) => a + s.getBoundingClientRect().width, 0);
+    const box = host.clientWidth;
+    if (!sum || !box) return;
+
+    const size = 100 * (box / sum);
+    title.style.fontSize = size + "px";
+
+    const natural = title.getBoundingClientRect().height || size;
+    const target  = SITE.pressureHeight || 0;
+    if (target > 0) {
+      title.style.transform = `scaleY(${(target / natural).toFixed(4)})`;
+      host.style.height = target + "px";
+    } else {
+      host.style.height = natural + "px";
+    }
+  }
+
+  /* 游標 */
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const pointer = { x: -9999, y: -9999 };
+  const eased   = { x: -9999, y: -9999 };
+  let raf = 0, seen = false;
+
+  function paint() {
+    raf = 0;
+    const falloff = Math.max(host.clientWidth * 0.42, 260);
+
+    spans.forEach(s => {
+      const r = s.getBoundingClientRect();
+      const dx = eased.x - (r.left + r.width / 2);
+      const dy = eased.y - (r.top + r.height / 2);
+      const d  = Math.hypot(dx, dy);
+
+      /* 距離越近越重、越寬；平方曲線讓中心更集中 */
+      let t = seen ? Math.max(0, 1 - d / falloff) : 0;
+      t = REST + (1 - REST) * t * t;
+
+      let fv = `"wght" ${Math.round(wght[0] + (wght[1] - wght[0]) * t)}`
+             + `, "wdth" ${(wdth[0] + (wdth[1] - wdth[0]) * t).toFixed(1)}`;
+      if (slnt) fv += `, "slnt" ${(slnt[0] + (slnt[1] - slnt[0]) * t).toFixed(1)}`;
+      s.style.fontVariationSettings = fv;
+    });
+
+    /* 緩動尚未追上游標就繼續跑；reduced-motion 直接到位、不續跑 */
+    if (!reduce && (Math.abs(pointer.x - eased.x) > 0.5 || Math.abs(pointer.y - eased.y) > 0.5)) {
+      schedule();
+    }
+  }
+
+  function schedule() {
+    if (raf) return;
+    raf = requestAnimationFrame(() => {
+      if (reduce) { eased.x = pointer.x; eased.y = pointer.y; }
+      else { eased.x += (pointer.x - eased.x) * 0.18; eased.y += (pointer.y - eased.y) * 0.18; }
+      paint();
+    });
+  }
+
+  /* 整頁的游標都算數，不限定在大字上面。
+     reduced-motion 只拿掉緩動，互動本身保留。 */
+  addEventListener("pointermove", e => {
+    pointer.x = e.clientX; pointer.y = e.clientY;
+    if (!seen) { seen = true; eased.x = pointer.x; eased.y = pointer.y; }
+    schedule();
+  }, { passive: true });
+
+  addEventListener("pointerleave", () => { seen = false; schedule(); }, { passive: true });
+
+  addEventListener("resize", () => { fit(); schedule(); });
+  addEventListener("scroll", schedule, { passive: true });
+
+  /* 字型載入完才量得準 */
+  fit();
+  paint();
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => { fit(); paint(); });
+  }
+}
+
 /* Hero 上排：與作品分類使用同一套名稱，點擊跳到該分類 */
 function buildHeroTags() {
   const box = $("#heroTags");
