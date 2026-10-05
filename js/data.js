@@ -5,7 +5,7 @@
 
 const SITE = {
   brandName: "心映好事",
-  brandNameEn: "SINGINGS HOUSE",
+  brandNameEn: "SINGING HOUSE",
   tagline: "從自有品牌出發的設計服務",
 
   /* 圖片捲動視差（false 則關閉）。手機與「減少動態效果」自動停用。 */
@@ -98,7 +98,7 @@ const SITE = {
     timeline: [
       { label: "EDUCATION", name: "文化大學 廣告系", year: "", note: "廣告與傳播訓練，奠定從訊息出發思考視覺的習慣。" },
       { label: "EXPERIENCE", name: "MX minimax design", year: "", note: "長期擔任數位設計主力，服務國際品牌與金融客戶。" },
-      { label: "NOW", name: "心映好事 SINGINGS HOUSE", year: "至今", note: "自有產品與設計服務並行，從品牌主的角度做設計。" }
+      { label: "NOW", name: "心映好事 SINGING HOUSE", year: "至今", note: "自有產品與設計服務並行，從品牌主的角度做設計。" }
     ]
   },
   otherWorks:
