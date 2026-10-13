@@ -62,11 +62,14 @@ function buildHome() {
 
   const stats = $("#stats");
   if (stats && SITE.about.stats) {
-    stats.innerHTML = SITE.about.stats.map(s => `
-      <div class="stat">
-        <strong data-num="${esc(s.num)}">0</strong>
-        <span>${esc(s.label)}</span>
-      </div>`).join("");
+    const note = SITE.about.statsNote;
+    stats.innerHTML =
+      (note ? `<p class="stats-note">${esc(note)}</p>` : "") +
+      `<div class="stats-row">` + SITE.about.stats.map(s => `
+        <div class="stat">
+          <strong data-num="${esc(s.num)}">0</strong>
+          <span>${esc(s.label)}</span>
+        </div>`).join("") + `</div>`;
     countUp(stats);
   }
 
@@ -575,7 +578,7 @@ function buildBrand() {
 
   if (!b) { location.replace("./index.html#work"); return; }
 
-  document.title = `${b.name} — 心映好事 SINGING HOUSE`;
+  document.title = `${b.name} — 心映好事 SINGINGS HOUSE`;
 
   const heroBox = $("#bHero").parentElement;
   heroBox.innerHTML = mediaHTML(b.hero, `${b.name} 主視覺`);
