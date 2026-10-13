@@ -97,34 +97,26 @@ a { color: inherit; text-decoration: none; }
 .nav-logo { grid-column: 2; justify-self: center; display: flex; align-items: center; gap: 12px; }
 .nav-logo img { width: auto; height: 30px; }
 
-/* 文字版標誌（個人作品集用，沒有 logo 圖檔時） */
-.nav-logo.is-text { gap: 10px; align-items: baseline; }
-.nav-logo .nav-zh {
-  font-family: var(--f-display);
-  font-weight: 500;
-  font-size: 17px;
-  letter-spacing: 0.08em;
+/* ---------- YENnext 字標 ----------
+   不是圖檔，是鎖死字軸的活字：任何螢幕都銳利，而且跟內文
+   共用同一支 Archivo，字標等於字級系統最上面那一階。
+   要改比例改這兩組 font-variation-settings 就好。      */
+.wm {
+  display: inline-flex;
+  align-items: baseline;
+  font-family: var(--f-latin);
+  font-size: 27px;
+  line-height: 1;
   color: var(--ink);
+  white-space: nowrap;
 }
-.nav-logo .nav-en {
-  font-family: var(--f-latin);
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  color: var(--ink-faint);
-}
-.footer-name { display: flex; flex-direction: column; gap: 6px; margin: 0; }
-.footer-name span:first-child {
-  font-family: var(--f-display);
-  font-size: 16px;
-  letter-spacing: 0.08em;
-  color: var(--ink-soft);
-}
-.footer-name span:last-child {
-  font-family: var(--f-latin);
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  color: var(--ink-faint);
-}
+.wm > span { font-size: 1em; }
+.wm-a { font-variation-settings: "wght" 620, "wdth" 88; }
+.wm-b { font-variation-settings: "wght" 330, "wdth" 108; }
+
+.nav-logo.is-text { gap: 0; }
+.footer-name { margin: 0; }
+.footer .wm { font-size: 22px; color: var(--ink-soft); }
 .nav-links { grid-column: 3; justify-self: end; display: flex; gap: 34px; }
 .nav-links a {
   font-family: var(--f-latin);

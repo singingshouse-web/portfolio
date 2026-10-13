@@ -101,7 +101,6 @@ const SITE = {
     /* 時間軸：year 與 note 留空字串則不顯示 */
     timeline: [
       { label: "EDUCATION", name: "文化大學 廣告系", year: "", note: "廣告與傳播訓練，奠定從訊息出發思考視覺的習慣。" },
-      { label: "EXPERIENCE", name: "pace design", year: "", note: "設計生涯起點，接觸品牌視覺與印刷實務。" },
       { label: "EXPERIENCE", name: "MX minimax design", year: "", note: "長期擔任數位設計主力，服務國際品牌與金融客戶。" },
       { label: "NOW", name: "獨立接案 · 心映好事", year: "至今", note: "經營自有產品，同時承接設計專案。從品牌主的角度做設計。" }
     ]
