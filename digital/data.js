@@ -54,7 +54,7 @@ const SITE = {
      「想聊聊的話，\n從一封信開始。」
      「有想解決的問題，\n我們從那裡開始。」              */
   contactTitle: "有想談的機會，\n歡迎寫信給我。",
-  email: "singingshouse@gmail.com",
+  email: "hello@yennext.com",
   clients: ["IKEA", "SK-II", "P&G", "KFC", "Intel", "LG", "PUMA", "EPSON", "Yahoo!",
     "Dove", "OLAY", "PANTENE", "Gillette", "Oral-B", "ARIEL", "好自在 whisper",
     "海倫仙度絲", "飛柔 PERT", "Neutrogena", "VS SASSOON", "白蘭氏 BRAND'S",
