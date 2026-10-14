@@ -6,6 +6,7 @@
 const SITE = {
   brandName: "YENNEXT",
   brandNameEn: "延序",
+  titleName: "YEN作品集",   /* 瀏覽器分頁標題用的名稱 */
   tagline: "視覺設計 · 網頁前端視覺 · 品牌視覺",
 
   /* 作品區標題下方的說明（留空字串則不顯示） */

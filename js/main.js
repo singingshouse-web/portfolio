@@ -584,7 +584,7 @@ function buildBrand() {
 
   if (!b) { location.replace("./index.html#work"); return; }
 
-  document.title = `${b.name} — ${SITE.brandName}`;
+  document.title = `${b.name} — ${SITE.titleName || SITE.brandName}`;
 
   const heroBox = $("#bHero").parentElement;
   heroBox.innerHTML = mediaHTML(b.hero, `${b.name} 主視覺`);
