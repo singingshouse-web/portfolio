@@ -526,7 +526,8 @@ function initParallax() {
   if (window.matchMedia("(max-width: 767px), (pointer: coarse)").matches) return;
 
   const AMOUNT = 0.06;   // 位移幅度（容器高度的比例）
-  const sel = ".card-img img, .bento-img img, .b-hero img, .proj-flow img";
+  /* 案例內頁的作品圖不做視差：放大 112% 會裁掉圖片四邊，設計稿邊緣的文字與留白會被切到 */
+  const sel = ".card-img img, .bento-img img, .b-hero img";
   const items = [...document.querySelectorAll(sel)];
   if (!items.length) return;
 

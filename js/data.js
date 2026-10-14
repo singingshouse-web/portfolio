@@ -151,7 +151,6 @@ const BRANDS = [
     projects: [
       {
         name: "首頁與作品列表",
-        cols: 2,
         note: "首頁不放代表作，只留一片會呼吸的線條與一段說明——先讓人慢下來，再進作品。列表用分類頁籤取代長捲軸，讓不同需求的訪客各走各的路。",
         images: [
           "./images/MX_p1_01.webp",
@@ -161,7 +160,6 @@ const BRANDS = [
       },
       {
         name: "客戶與聯絡",
-        cols: 2,
         note: "客戶頁把 logo 統一成單色金，深色底上只留輪廓——避免各家品牌色在同一頁互相打架。聯絡頁反過來翻成亮底，收在一個安靜的句點上。",
         images: [
           "./images/MX_p1_03.webp",
@@ -379,7 +377,6 @@ const BRANDS = [
       },
       {
         name: "字體與色彩",
-        cols: 2,
         note: "主字選 jf open 粉圓，圓角但不幼稚；襯線的 Newsreader 負責留白處的敘事。牌卡與印刷品另用「淚體」，筆畫末端那一點垂墜剛好是情緒的形狀。主色 Dusty Rose 取自黃昏的海面——不是粉紅色的甜，是光快要收掉時的那種暖。",
         images: [
           "./images/singsingshouse_p1_06.webp",
