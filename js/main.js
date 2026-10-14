@@ -36,6 +36,11 @@ function buildHome() {
     .replace(/\n/g, "<br>")
     .replace(/\*\*(.+?)\*\*/g, '<em class="hl"><i>$1</i></em>');
   $("#heroSub").textContent = SITE.heroSub;
+  const workNote = $("#workNote");
+  if (workNote) {
+    if (SITE.workNote) workNote.textContent = SITE.workNote;
+    else workNote.style.display = "none";
+  }
   $("#otherWorks").textContent = SITE.otherWorks;
   $("#aboutTitle").textContent = SITE.about.title;
   $("#contactTitle").innerHTML = esc(SITE.contactTitle).replace(/\n/g, "<br>");
@@ -596,7 +601,7 @@ function buildBrand() {
         <div class="proj-head rv">
           <p class="label">Project</p>
           <h2>${esc(p.name)}</h2>
-          <p>${esc(p.note)}</p>
+          <p>${esc(p.note).replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>')}</p>
         </div>
         <div class="proj-flow"${p.cols ? ` style="--cols:${p.cols}"` : ""}>
           ${p.images.map(item => `
