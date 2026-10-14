@@ -578,7 +578,7 @@ function buildBrand() {
 
   if (!b) { location.replace("./index.html#work"); return; }
 
-  document.title = `${b.name} — 心映好事 SINGINGS HOUSE`;
+  document.title = `${b.name} — ${SITE.brandName}`;
 
   const heroBox = $("#bHero").parentElement;
   heroBox.innerHTML = mediaHTML(b.hero, `${b.name} 主視覺`);

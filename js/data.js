@@ -94,7 +94,7 @@ const SITE = {
     /* 數據列。請確認數字後再上線（note 可留空字串） */
     stats: [
       { num: "20+", label: "年設計經驗" },
-      { num: "50+", label: "合作品牌" },
+      { num: "50+", label: "參與品牌專案" },
       { num: "60+", label: "數位專案" }
     ],
 
@@ -133,6 +133,39 @@ const BRANDS = [
           "./images/singings_p1_02.webp",
           "./images/singings_p1_03.webp",
           "./images/singings_p1_04.webp"
+        ]
+      }
+    ],
+    also: ""
+  },
+  {
+    id: "mx-web",
+    name: "MX 官方網站",
+    nameEn: "MX MINIMAX DESIGN",
+    category: "網頁與介面",
+    tags: ["官方網站", "響應式設計", "動態視覺"],
+    card: "./images/MX_card.webp",
+    hero: "./images/MX_hero.webp",
+    intro:
+      "設計公司自己的官方網站改版。客戶名單夠硬，但真正要被看見的是判斷力，不是 logo 牆——所以整站走深色、用線條動態取代大圖，把注意力留給作品本身。作品列表依 Film／Digital／Animation／Campaign 分頁，桌機、平板與手機各自重排。",
+    projects: [
+      {
+        name: "首頁與作品列表",
+        cols: 2,
+        note: "首頁不放代表作，只留一片會呼吸的線條與一段說明——先讓人慢下來，再進作品。列表用分類頁籤取代長捲軸，讓不同需求的訪客各走各的路。",
+        images: [
+          "./images/MX_p1_01.webp",
+          "./images/MX_p1_02.webp",
+          "./images/MX_p1_04.webp"
+        ]
+      },
+      {
+        name: "客戶與聯絡",
+        cols: 2,
+        note: "客戶頁把 logo 統一成單色金，深色底上只留輪廓——避免各家品牌色在同一頁互相打架。聯絡頁反過來翻成亮底，收在一個安靜的句點上。",
+        images: [
+          "./images/MX_p1_03.webp",
+          "./images/MX_p1_05.webp"
         ]
       }
     ],
@@ -323,6 +356,49 @@ const BRANDS = [
 
   /* ═══════════ 品牌識別 ═══════════ */
   {
+    id: "singsingshouse",
+    name: "心映好事",
+    nameEn: "SINGINGHOUSE",
+    category: "品牌識別",
+    tags: ["品牌識別", "標誌設計", "視覺系統", "應用延伸"],
+    card: "./images/singsingshouse_card.webp",
+    hero: "./images/singsingshouse_hero.webp",
+    intro:
+      "自有品牌「心映好事」的識別系統，從標誌、字體、色彩到名片、官網與周邊一次做完。品牌談的是潛意識與情緒，識別就不能用喊的——所有決定都朝同一個方向收：安靜、但站得住。",
+    projects: [
+      {
+        name: "標誌與結構",
+        note: "標誌疊了三個元素——字母 H 是 House，中間的聲波是引導的聲音，星芒是被照亮的那一刻。中英文橫式、直式與單標都從同一組格線推導，縮到名片大小仍然讀得出來。",
+        images: [
+          "./images/singsingshouse_p1_01.webp",
+          "./images/singsingshouse_p1_02webp.webp",
+          "./images/singsingshouse_p1_03.webp",
+          "./images/singsingshouse_p1_04.webp",
+          "./images/singsingshouse_p1_05.webp"
+        ]
+      },
+      {
+        name: "字體與色彩",
+        cols: 2,
+        note: "主字選 jf open 粉圓，圓角但不幼稚；襯線的 Newsreader 負責留白處的敘事。牌卡與印刷品另用「淚體」，筆畫末端那一點垂墜剛好是情緒的形狀。主色 Dusty Rose 取自黃昏的海面——不是粉紅色的甜，是光快要收掉時的那種暖。",
+        images: [
+          "./images/singsingshouse_p1_06.webp",
+          "./images/singsingshouse_p1_07.webp"
+        ]
+      },
+      {
+        name: "應用延伸",
+        note: "官網、名片到帆布袋。名片用壓凸不印色，讓標誌在光線下才浮出來——這個品牌的訊息本來就不該一眼看完。",
+        images: [
+          "./images/singsingshouse_p1_08.webp",
+          "./images/singsingshouse_p1_09.webp",
+          "./images/singsingshouse_p1_10.webp"
+        ]
+      }
+    ],
+    also: ""
+  },
+  {
     id: "fm-dayplus",
     name: "DAYPLUS",
     nameEn: "FAMILYMART ONLINESTORE",
@@ -395,11 +471,10 @@ const BRANDS = [
           "./images/fm-goods-b_p1_01.webp",
           "./images/fm-goods-b_p1_02.webp",
           "./images/fm-goods-b_p1_03.webp",
-          "./images/fm-goods-b_p1_04.webp",
+          "./images/fm-goods-b_p1_04webp.webp",
           "./images/fm-goods-b_p1_05.webp",
           "./images/fm-goods-b_p1_06.webp",
-          "./images/fm-goods-b_p1_07.webp",
-          "./images/fm-goods-b_p1_08.webp"
+          "./images/fm-goods-b_p1_07.webp"
         ]
       }
     ],
@@ -422,10 +497,6 @@ const BRANDS = [
           "./images/fm-plus_p1_01.webp", 
           "./images/fm-plus_p1_02.webp",
           "./images/fm-plus_p1_03.webp",
-          "./images/fm-plus_p1_04.webp",
-          "./images/fm-plus_p1_05.webp",
-          "./images/fm-plus_p1_06.webp",
-          "./images/fm-plus_p1_07.webp", 
           "./images/fm-plus_p1_08.gif"
         ] 
       }
