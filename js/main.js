@@ -8,6 +8,13 @@ const esc = (t) => String(t ?? "").replace(/[&<>"]/g, c =>
 const yr = $("#yr");
 if (yr) yr.textContent = new Date().getFullYear();
 
+/* 停用開關：在 data.js 的案例加上 enabled: false，就會整筆從網站上消失
+   （卡片、分類、上下篇導覽都不會出現），但資料和文案都保留著。
+   要讓它回來，把那一行刪掉或改成 true 即可。 */
+for (let i = BRANDS.length - 1; i >= 0; i--) {
+  if (BRANDS[i].enabled === false) BRANDS.splice(i, 1);
+}
+
 /* 捲動顯現：同時進入畫面的元素依序出現，製造節奏 */
 function initReveal() {
   const items = document.querySelectorAll(".rv:not(.in)");

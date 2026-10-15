@@ -394,11 +394,10 @@ const BRANDS = [
           "../images/fm-goods-b_p1_01.webp",
           "../images/fm-goods-b_p1_02.webp",
           "../images/fm-goods-b_p1_03.webp",
-          "../images/fm-goods-b_p1_04.webp",
+          "../images/fm-goods-b_p1_04webp.webp",
           "../images/fm-goods-b_p1_05.webp",
           "../images/fm-goods-b_p1_06.webp",
-          "../images/fm-goods-b_p1_07.webp",
-          "../images/fm-goods-b_p1_08.webp"
+          "../images/fm-goods-b_p1_07.webp"
         ]
       }
     ],
@@ -421,10 +420,6 @@ const BRANDS = [
           "../images/fm-plus_p1_01.webp", 
           "../images/fm-plus_p1_02.webp",
           "../images/fm-plus_p1_03.webp",
-          "../images/fm-plus_p1_04.webp",
-          "../images/fm-plus_p1_05.webp",
-          "../images/fm-plus_p1_06.webp",
-          "../images/fm-plus_p1_07.webp", 
           "../images/fm-plus_p1_08.gif"
         ] 
       }
@@ -433,6 +428,9 @@ const BRANDS = [
   },
 
   {
+    /* ⚠️ 暫時停用：fm-plass_hero 與 p1_01～p1_08 共 9 張圖沒有上傳到 images/，
+       留著整頁都是破圖。圖補上之後把下面這一行刪掉就會回來。 */
+    enabled: false,
     id: "fm-plass",
     name: "PLASS",
     nameEn: "FAMILYMART ONLINESTORE",
