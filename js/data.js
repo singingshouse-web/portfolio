@@ -401,6 +401,50 @@ const BRANDS = [
     also: ""
   },
   {
+    /* ⚠️ 暫時停用：等 yennext_card／hero 與 p1～p3 共 10 張圖上傳到 images/ 之後，
+       把下面這一行刪掉就會上線。圖的張數可以增減，直接加減 images 裡的行數即可。 */
+    enabled: false,
+    id: "yennext",
+    name: "YENnext",
+    nameEn: "PERSONAL BRAND IDENTITY",
+    category: "品牌識別",
+    tags: ["品牌識別", "字標設計", "字級系統", "自有品牌"],
+    card: "./images/yennext_card.webp",
+    hero: "./images/yennext_hero.webp",
+    intro:
+      "自己的個人品牌識別。Yennext 取自「延序」——延展與接續，所以字標不該是一個固定的點，而是一段範圍。整套以 Syne 的字重軸建立三個階層：大字可以自由伸縮，導覽列鎖死，小到讀不出字的尺寸就只留一個 Y。",
+    projects: [
+      {
+        name: "字標與概念",
+        note: "YEN 重、next 輕，在同一個字體裡拉出落差——二十年的累積和還沒發生的下一步，同時出現在一行字裡。中文走 Noto Sans TC，不進字軸系統：可變字軸是為拉丁字母設計的，中文沒有對應的軸，硬套會壞。",
+        images: [
+          "./images/yennext_p1_01.webp",
+          "./images/yennext_p1_02.webp",
+          "./images/yennext_p1_03.webp"
+        ]
+      },
+      {
+        name: "三階尺寸系統",
+        cols: 2,
+        note: "Display 80px 以上，字重 800 遞減到 400，這一格可以動；Nav 20–30px，YEN 700／next 400、字距 +0.02em，鎖死不動；16px 以下字標讀不出來，就不該用字標。能不能在 16px 被認出來，是檢驗字標個性會不會變雜訊的第一關。",
+        images: [
+          "./images/yennext_p2_01.webp",
+          "./images/yennext_p2_02.webp"
+        ]
+      },
+      {
+        name: "應用延伸",
+        cols: 2,
+        note: "Mark 只留 Y、字重固定 800，是整套唯一會轉外框修字的一格。標籤與英文內文交給 Montserrat，讓 Syne 只負責需要被記得的那幾個字。",
+        images: [
+          "./images/yennext_p3_01.webp",
+          "./images/yennext_p3_02.webp"
+        ]
+      }
+    ],
+    also: ""
+  },
+  {
     id: "fm-dayplus",
     name: "DAYPLUS",
     nameEn: "FAMILYMART ONLINESTORE",
