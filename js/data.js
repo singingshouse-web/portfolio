@@ -63,7 +63,7 @@ const SITE = {
   /* Contact 區標題。備選：
      「想聊聊的話，\n從一封信開始。」
      「有想解決的問題，\n我們從那裡開始。」              */
-  contactTitle: "有合適的工作機會，\n歡迎與我聯繫。",
+  contactTitle: "正在找能把設計\n顧到交付的人，歡迎來信聊聊。",
   email: "hello@yennext.com",
   clients: ["IKEA", "SK-II", "P&G", "KFC", "Intel", "LG", "PUMA", "EPSON", "Yahoo!",
     "Dove", "OLAY", "PANTENE", "Gillette", "Oral-B", "ARIEL", "好自在 whisper",
@@ -329,7 +329,7 @@ const BRANDS = [
     projects: [
       {
         name: "募資影片",
-        note: "影片要在前十秒回答「這是給誰的」。先讓人認出自己正在經歷的情緒，產品的說明才有落腳的地方。",
+        note: "影片要在前十秒回答「這是給誰的」。先讓人認出自己正在經歷的情緒，產品的說明才有落腳的地方。我的角色：影片由我獨立製作完成。",
         images: [
           { src: "./images/cf-embrace_p1_01.mp4",
             poster: "./images/cf-embrace_p1_01.webp",
