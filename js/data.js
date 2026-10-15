@@ -134,7 +134,7 @@ const BRANDS = [
     projects: [
       {
         name: "線上抽牌系統",
-        note: "以情緒陪伴為核心的互動體驗——抽牌的節奏、動效與畫面鋪陳，都為了讓使用者慢下來。線上體驗：https://embrace.singingtsai.com/",
+        note: "以情緒陪伴為核心的互動體驗——抽牌的節奏、動效與畫面鋪陳，都為了讓使用者慢下來。",
         images: [
           "./images/singings_p1_01.webp",
           "./images/singings_p1_02.webp",
@@ -330,7 +330,7 @@ const BRANDS = [
   {
     id: "hscare",
     scope: "任職期間專案",
-    role: "網頁前端視覺設計",
+    role: "台灣與香港版網頁前端視覺設計（依中國版內容進行在地化調整）",
     name: "海倫仙度絲",
     nameEn: "HEAD & SHOULDERS",
     category: "網頁與介面",
@@ -338,11 +338,11 @@ const BRANDS = [
     card: "./images/hscare_card.webp",
     hero: "./images/hscare_hero.webp",
     intro:
-      "海倫仙度絲的台灣與香港官方網站，兩個版本目前皆在線上。台灣版依頭皮屬性整理產品導覽，搭配皮膚科專家內容與購買通路，讓訪客從認識產品一路走到購買。",
+      "海倫仙度絲台灣與香港官方網站，目前皆在線上。內容與架構承襲中國版，由我針對台灣與香港進行視覺與版面的在地化調整；兩版的差異主要在文字用法與產品名稱，頁面設計相近。產品內頁以銷售頁的形式呈現。",
     projects: [
       {
         name: "台灣官方網站",
-        note: "首頁從主視覺、依頭皮屬性分類的產品選擇，到專家推薦、頭皮健康百科與購買通路，依序排出一條瀏覽動線。線上版本：https://hscare.tw/",
+        note: "以台灣版首頁為例：從主視覺、依頭皮屬性分類的產品選擇，到專家推薦、頭皮健康百科與購買通路，依序排出瀏覽動線。",
         images: [
           "./images/hscare_p1_01.webp",
           "./images/hscare_p1_02.webp",
