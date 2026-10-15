@@ -600,6 +600,12 @@ function buildBrand() {
   $("#bName").textContent = b.name;
   $("#bNameEn").textContent = b.nameEn;
   $("#bIntro").textContent = b.intro;
+  const roleEl = $("#bRole");
+  if (b.role) {
+    roleEl.textContent = (b.scope ? b.scope + "｜" : "") + "我的角色：" + b.role;
+  } else {
+    roleEl.style.display = "none";
+  }
   $("#bTags").innerHTML = b.tags.map(t => `<span>${esc(t)}</span>`).join("");
 
   holder.innerHTML = b.projects.map(p => `

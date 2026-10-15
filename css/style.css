@@ -697,6 +697,15 @@ a.bento-tile { text-decoration: none; color: inherit; }
   margin: 34px auto 0;
   color: var(--ink-soft);
 }
+.b-role {
+  max-width: 40em;
+  margin: 18px auto 0;
+  font-size: 13px;
+  line-height: 1.9;
+  letter-spacing: .06em;
+  color: var(--ink-soft);
+  text-align: center;
+}
 .b-tags {
   display: flex;
   justify-content: center;

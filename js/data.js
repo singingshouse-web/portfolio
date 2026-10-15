@@ -121,6 +121,8 @@ const SITE = {
 const BRANDS = [
   {
     id: "singings",
+    scope: "自有專案",
+    role: "功能需求、操作流程與視覺介面設計、測試與上線（程式由 AI 協同完成）",
     name: "擁抱情緒牌卡 數位系統開發",
     nameEn: "EMBRACE YOUR FEELINGS CARDS",
     category: "網頁與介面",
@@ -145,6 +147,8 @@ const BRANDS = [
   },
   {
     id: "mx-web",
+    scope: "任職期間專案",
+    role: "網頁視覺設計、動態示範",
     name: "MX 官方網站",
     nameEn: "MX MINIMAX DESIGN",
     category: "網頁與介面",
@@ -176,6 +180,8 @@ const BRANDS = [
   },
   {
     id: "megabank",
+    scope: "任職期間專案",
+    role: "網頁前端視覺設計",
     name: "兆豐銀行",
     nameEn: "MEGA BANK",
     category: "網頁與介面",
@@ -205,6 +211,8 @@ const BRANDS = [
   },
   {
     id: "lp",
+    scope: "任職期間專案",
+    role: "網頁前端視覺設計",
     name: "LP SUPPORT",
     nameEn: "LP SUPPORT",
     category: "網頁與介面",
@@ -233,6 +241,8 @@ const BRANDS = [
   },
   {
     id: "ikea",
+    scope: "任職期間專案",
+    role: "網頁與 eDM 視覺設計",
     name: "IKEA",
     nameEn: "IKEA TAIWAN",
     category: "網頁與介面",
@@ -257,6 +267,8 @@ const BRANDS = [
   },
   {
     id: "sf",
+    scope: "任職期間專案",
+    role: "網頁前端視覺設計",
     name: "桂格",
     nameEn: "STANDARD FOODS",
     category: "網頁與介面",
@@ -279,6 +291,8 @@ const BRANDS = [
   },
   {
     id: "pimq",
+    scope: "任職期間專案",
+    role: "網頁視覺設計、動態示範",
     name: "PIMQ",
     nameEn: "PIMQ",
     category: "網頁與介面",
@@ -313,11 +327,41 @@ const BRANDS = [
   },
 
 
+  {
+    id: "hscare",
+    scope: "任職期間專案",
+    role: "網頁前端視覺設計",
+    name: "海倫仙度絲",
+    nameEn: "HEAD & SHOULDERS",
+    category: "網頁與介面",
+    tags: ["官方網站", "產品導覽", "前端視覺"],
+    card: "./images/hscare_card.webp",
+    hero: "./images/hscare_hero.webp",
+    intro:
+      "海倫仙度絲的台灣與香港官方網站，兩個版本目前皆在線上。台灣版依頭皮屬性整理產品導覽，搭配皮膚科專家內容與購買通路，讓訪客從認識產品一路走到購買。",
+    projects: [
+      {
+        name: "台灣官方網站",
+        note: "首頁從主視覺、依頭皮屬性分類的產品選擇，到專家推薦、頭皮健康百科與購買通路，依序排出一條瀏覽動線。線上版本：https://hscare.tw/",
+        images: [
+          "./images/hscare_p1_01.webp",
+          "./images/hscare_p1_02.webp",
+          "./images/hscare_p1_03.webp",
+          "./images/hscare_p1_04.webp",
+          "./images/hscare_p1_05.webp"
+        ]
+      }
+    ],
+    also: ""
+  },
+
   /* ═══════════ 募資專案 ═══════════
      之後每個新的募資案，複製下面整個 { } 區塊、改 id 與內容即可。
      累積到三件以上時，可比照 digital/ 的做法獨立成 crowdfunding/ 專頁。 */
   {
     id: "cf-embrace",
+    scope: "自有專案",
+    role: "募資頁視覺統合與編排、產品示意素材合成、募資影片製作；牌卡局部繪製、Layout 與完稿（頁面文案由合作夥伴負責）",
     name: "擁抱情緒牌卡",
     nameEn: "EMBRACE YOUR FEELINGS CARDS",
     category: "募資專案",
@@ -360,6 +404,8 @@ const BRANDS = [
   /* ═══════════ 品牌識別 ═══════════ */
   {
     id: "singsingshouse",
+    scope: "自有專案",
+    role: "品牌識別設計與延伸應用",
     name: "心映好事",
     nameEn: "SINGINGHOUSE",
     category: "品牌識別",
@@ -406,6 +452,8 @@ const BRANDS = [
        張數可以增減，直接加減 images 裡的行數即可。 */
     enabled: false,
     id: "yennext",
+    scope: "個人專案",
+    role: "品牌識別設計",
     name: "YENnext",
     nameEn: "PERSONAL BRAND IDENTITY",
     category: "品牌識別",
@@ -437,6 +485,8 @@ const BRANDS = [
   },
   {
     id: "fm-dayplus",
+    scope: "任職期間專案",
+    role: "品牌識別與延伸設計",
     name: "DAYPLUS",
     nameEn: "FAMILYMART ONLINESTORE",
     category: "品牌識別",
@@ -464,6 +514,8 @@ const BRANDS = [
   },
   {
     id: "fm-goods-a",
+    scope: "任職期間專案",
+    role: "品牌識別與延伸設計",
     name: "the good GOODs｜方向 A",
     nameEn: "GOOD THINGS ARE COMING",
     category: "品牌識別",
@@ -492,6 +544,8 @@ const BRANDS = [
   },
   {
     id: "fm-goods-b",
+    scope: "任職期間專案",
+    role: "品牌識別與延伸設計",
     name: "the good GOODs｜方向 B",
     nameEn: "TODAY IS A GOOD DAY",
     category: "品牌識別",
@@ -519,6 +573,8 @@ const BRANDS = [
   },
   {
     id: "fm-plus",
+    scope: "任職期間專案",
+    role: "品牌識別與延伸設計（含動態版本）",
     name: "PLUS",
     nameEn: "FAMILYMART ONLINESTORE",
     category: "品牌識別",
@@ -546,6 +602,8 @@ const BRANDS = [
        留著整頁都是破圖。圖補上之後把下面這一行刪掉就會回來。 */
     enabled: false,
     id: "fm-plass",
+    scope: "任職期間專案",
+    role: "品牌識別與延伸設計",
     name: "PLASS",
     nameEn: "FAMILYMART ONLINESTORE",
     category: "品牌識別",
@@ -576,6 +634,8 @@ const BRANDS = [
   /* ═══════════ 包裝設計 ═══════════ */
   {
     id: "cosmoship",
+    scope: "任職期間專案",
+    role: "包裝設計",
     name: "COSMOSHIP",
     nameEn: "COSMOSHIP PACKAGE",
     category: "包裝設計",
@@ -599,6 +659,8 @@ const BRANDS = [
   },
   {
     id: "taipei101",
+    scope: "任職期間專案",
+    role: "包裝設計",
     name: "台北 101 月餅禮盒",
     nameEn: "TAIPEI 101 MOONCAKE",
     category: "包裝設計",
@@ -624,6 +686,8 @@ const BRANDS = [
   /* ═══════════ 插畫 ═══════════ */
   {
     id: "starbucks",
+    scope: "任職期間專案",
+    role: "包裝風格提案與插畫",
     name: "STARBUCKS 蘇門答臘",
     nameEn: "STARBUCKS STYLE REDESIGN",
     category: "插畫與動態",
@@ -648,6 +712,8 @@ const BRANDS = [
   },
   {
     id: "plass-coldbrew",
+    scope: "任職期間專案",
+    role: "包裝插畫",
     name: "PLASS 冷萃咖啡",
     nameEn: "PLASS COLD BREW COFFEE",
     category: "插畫與動態",
@@ -673,6 +739,8 @@ const BRANDS = [
   /* ═══════════ 動態設計 ═══════════ */
   {
     id: "ecard",
+    scope: "任職期間專案",
+    role: "動態電子卡設計",
     name: "節慶動態電子卡",
     nameEn: "FESTIVAL E-CARD",
     category: "插畫與動態",
@@ -703,6 +771,8 @@ const BRANDS = [
   },
   {
     id: "hmm-banner",
+    scope: "任職期間專案",
+    role: "動態廣告設計",
     name: "hmm 促銷網路廣告",
     nameEn: "HMM BANNER",
     category: "插畫與動態",
@@ -727,6 +797,8 @@ const BRANDS = [
   },
   {
     id: "mx-logo",
+    scope: "任職期間專案",
+    role: "標誌動態設計",
     name: "MX 識別動畫",
     nameEn: "MX LOGO ANIMATION",
     category: "插畫與動態",
