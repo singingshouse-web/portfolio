@@ -107,7 +107,7 @@ const SITE = {
     timeline: [
       { label: "EDUCATION", name: "文化大學 廣告系", year: "", note: "廣告與傳播訓練，奠定從訊息出發思考視覺的習慣。" },
       { label: "EXPERIENCE", name: "MX minimax design", year: "", note: "任職期間負責網頁前端視覺與廣告媒體設計，服務國際品牌與金融客戶。" },
-      { label: "NOW", name: "心映好事 共同創辦人", year: "至今", note: "自有品牌的視覺與數位內容製作，包含品牌識別、募資頁與線上互動產品。" }
+      { label: "NOW", name: "近期自主專案", year: "近期", note: "自有品牌「心映好事」的視覺與數位內容製作，包含募資頁視覺與線上抽牌系統。" }
     ]
   },
   otherWorks:
