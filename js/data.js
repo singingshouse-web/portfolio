@@ -598,9 +598,6 @@ const BRANDS = [
   },
 
   {
-    /* ⚠️ 暫時停用：fm-plass_hero 與 p1_01～p1_08 共 9 張圖沒有上傳到 images/，
-       留著整頁都是破圖。圖補上之後把下面這一行刪掉就會回來。 */
-    enabled: false,
     id: "fm-plass",
     scope: "任職期間專案",
     role: "品牌識別與延伸設計",
