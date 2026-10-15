@@ -447,9 +447,9 @@ const BRANDS = [
     also: ""
   },
   {
-    /* ⚠️ 暫時停用：等 yennext_card／hero 與 p1_01、p1_02、p2_01、p2_02 共 6 張圖
-       上傳到 images/ 之後，把下面這一行刪掉就會上線。
-       張數可以增減，直接加減 images 裡的行數即可。 */
+    /* ⚠️ 暫時停用：等 yennext_card／hero 與 p1_01（動圖）、p1_02、p1_03、
+       p2_01、p2_02 共 7 張圖上傳到 images/ 之後，把下面這一行刪掉就會上線。
+       p1_01 是動態字軸實驗的 animated webp。張數可增減，直接加減 images 的行數。 */
     enabled: false,
     id: "yennext",
     scope: "個人專案",
@@ -461,14 +461,15 @@ const BRANDS = [
     card: "./images/yennext_card.webp",
     hero: "./images/yennext_hero.webp",
     intro:
-      "自己的個人品牌識別。Yennext 取自「延序」——延展與接續，所以字標不該是一個固定的點，而是一段範圍。整套以 Syne 的字重軸建立三個階層：大字可以自由伸縮，導覽列鎖死，小到讀不出字的尺寸就只留一個 Y。",
+      "自己的個人品牌識別。Yennext 取自「延序」——延展與接續，所以一開始就不想把字標釘死成一個樣子。先做了一版游標驅動的可變字標，再把它收回來，變成一套能天天用的三階系統。",
     projects: [
       {
-        name: "字標與三階系統",
-        note: "YEN 重、next 輕，在同一個字體裡拉出落差——二十年的累積和還沒發生的下一步，同時出現在一行字裡。Display 80px 以上字重可以自由伸縮，Nav 鎖死在 YEN 700／next 400、字距 +0.02em，16px 以下讀不出字標就只留一個 Y。",
+        name: "字軸實驗，與放棄它的理由",
+        note: "第一版用 Archivo：它有 wdth 62–125 的寬度軸，游標靠近時字母同時被加粗與撐寬。概念成立，但放進導覽列就垮了——logo 一天要被看幾十次，不能每次長得都不一樣。\n定稿換成 Syne，只留字重軸。伸縮沒有消失，是被收進 Display 那一階；Nav 鎖死在 YEN 700／next 400、字距 +0.02em，16px 以下只留一個 Y。\n實驗留在這裡，因為放棄它的理由本身就是這套系統的設計說明。",
         images: [
           "./images/yennext_p1_01.webp",
-          "./images/yennext_p1_02.webp"
+          "./images/yennext_p1_02.webp",
+          "./images/yennext_p1_03.webp"
         ]
       },
       {

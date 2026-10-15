@@ -735,7 +735,8 @@ a.bento-tile { text-decoration: none; color: inherit; }
   letter-spacing: .05em;
   margin: 14px 0 12px;
 }
-.proj-head p { color: var(--ink-soft); }
+/* note 裡的換行（\n）會保留，方便在 data.js 分段 */
+.proj-head p { color: var(--ink-soft); white-space: pre-line; }
 .proj-flow {
   display: flex;
   flex-wrap: wrap;
