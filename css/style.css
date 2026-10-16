@@ -751,6 +751,8 @@ a.bento-tile { text-decoration: none; color: inherit; }
   aspect-ratio: 4 / 3;
 }
 .proj-flow img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* 沒有 controls 的影片與圖片同規格，否則高度會塌成瀏覽器預設的 150px */
+.proj-flow figure > video { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 /* 方形或直式：置中、不放大超過原始尺寸，避免糊掉 */
 .proj-flow figure.is-tall {

@@ -470,12 +470,19 @@ const BRANDS = [
         ]
       },
       {
+        name: "輔助圖形",
+        note: "同一條互動規則放大到整個畫面：游標靠近，網格被推開再彈回。字標講「字會回應」，這裡講「空間會回應」——同一套系統的兩個尺度。",
+        images: [
+          "./images/yennext_p2_01.mp4"
+        ]
+      },
+      {
         name: "應用",
         cols: 2,
         note: "同一組設定換底不換字。Mark 只留 Y，是整套唯一會轉外框修字的一格。",
         images: [
-          "./images/yennext_p2_01.webp",
-          "./images/yennext_p2_02.webp"
+          "./images/yennext_p3_01.webp",
+          "./images/yennext_p3_02.webp"
         ]
       }
     ],
