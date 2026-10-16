@@ -447,10 +447,6 @@ const BRANDS = [
     also: ""
   },
   {
-    /* ⚠️ 暫時停用：等 yennext_card／hero 與 p1_01（動圖）、p1_02、p1_03、
-       p2_01、p2_02 共 7 張圖上傳到 images/ 之後，把下面這一行刪掉就會上線。
-       p1_01 是動態字軸實驗的 animated webp。張數可增減，直接加減 images 的行數。 */
-    enabled: false,
     id: "yennext",
     scope: "個人專案",
     role: "品牌識別設計",
@@ -465,7 +461,7 @@ const BRANDS = [
     projects: [
       {
         name: "字軸實驗，與放棄它的理由",
-        note: "第一版用 Archivo：它有 wdth 62–125 的寬度軸，游標靠近時字母同時被加粗與撐寬。概念成立，但放進導覽列就垮了——logo 一天要被看幾十次，不能每次長得都不一樣。\n定稿換成 Syne，只留字重軸。伸縮沒有消失，是被收進 Display 那一階；Nav 鎖死在 YEN 700／next 400、字距 +0.02em，16px 以下只留一個 Y。\n實驗留在這裡，因為放棄它的理由本身就是這套系統的設計說明。",
+        note: "第一版做成游標驅動的可變字標，字母會隨游標加粗與撐寬。概念成立，但導覽列不能每次長得都不一樣——所以收成三階：Display 可動、Nav 鎖死、16px 以下只留一個 Y。",
         images: [
           "./images/yennext_p1_01.webp",
           "./images/yennext_p1_02.webp",
@@ -475,7 +471,7 @@ const BRANDS = [
       {
         name: "應用",
         cols: 2,
-        note: "Mark 的字重固定 800，是整套唯一會轉外框修字的一格。標籤與英文內文交給 Montserrat，中文走 Noto Sans TC 不進字軸系統——可變字軸是為拉丁字母設計的，中文沒有對應的軸，硬套會壞。",
+        note: "同一組設定換底不換字。Mark 只留 Y，是整套唯一會轉外框修字的一格。",
         images: [
           "./images/yennext_p2_01.webp",
           "./images/yennext_p2_02.webp"
