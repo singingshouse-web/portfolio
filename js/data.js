@@ -465,7 +465,8 @@ const BRANDS = [
         images: [
           "./images/yennext_p1_01.webp",
           "./images/yennext_p1_02.webp",
-          "./images/yennext_p1_03.webp"
+          "./images/yennext_p1_03.webp",
+          "./images/yennext_p1_04.webp"
         ]
       },
       {
