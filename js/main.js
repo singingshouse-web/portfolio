@@ -296,19 +296,26 @@ function buildHeroCollage() {
     /* 進度：作品串剛從畫面下緣冒出＝0，離開畫面上緣＝1；焦點由最左走到最右 */
     const p = Math.min(1, Math.max(0, (vh - r.top) / (vh + r.height)));
     /* 電腦版：焦點走完整段；手機版：提早在作品串到達畫面上方、主標接上來時剛好走完 */
-    /* 手機：HELLO 隨著往下滑逐漸淡出，作品串從下方浮上來蓋過它 */
+    const band = document.getElementById("streamBand");
     const hb = document.querySelector(".pressure-band");
-    if (hb) hb.style.opacity = narrowNow
-      ? String(1 - Math.min(1, Math.max(0, (window.scrollY - vh * 0.05) / (vh * 0.5))))
-      : "";
+    const intro = document.getElementById("intro");
     let raw;
-    if (narrowNow) {
-      /* 手機：一開始焦點就在正中間（兩側由小到大對稱），往下滑才往右走完 */
-      const top0 = r.top + window.scrollY;
-      const pS = Math.min(1, Math.max(0, (vh - top0) / (vh + r.height)));
+    if (narrowNow && intro && band) {
+      /* 手機：釘住的舞台。t＝0→1：HELLO 淡出，作品串斜向往上浮現並走完一輪 */
+      const ir = intro.getBoundingClientRect();
+      const extra = Math.max(1, ir.height - vh);
+      const t = Math.min(1, Math.max(0, -ir.top / extra));
+      const c = (x) => Math.min(1, Math.max(0, x));
+      hb.style.opacity = String(1 - c(t / 0.3));
+      const op = c((t - 0.06) / 0.2);
+      band.style.opacity = String(op);
+      band.style.pointerEvents = op > 0.3 ? "" : "none";
+      band.style.transform = `translateY(calc(-50% + ${((1 - c(t / 0.9)) * vh * 0.2).toFixed(1)}px))`;
       const mid = Math.floor((n - 1) / 2);
-      raw = mid + Math.min(1, Math.max(0, (p - pS) / (0.85 - pS))) * (n - 1 - mid);
+      raw = mid + c((t - 0.1) / 0.85) * (n - 1 - mid);
     } else {
+      if (hb) hb.style.opacity = "";
+      if (band) { band.style.opacity = ""; band.style.transform = ""; band.style.pointerEvents = ""; }
       raw = Math.min(1, Math.max(0, (p - 0.12) / 0.76)) * (n - 1);
     }
     /* 讓焦點停在一張上，只在兩張之間的一小段快速換過去 */
