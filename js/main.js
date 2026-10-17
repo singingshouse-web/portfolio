@@ -311,19 +311,23 @@ function buildHeroCollage() {
       /* HELLO 淡出；作品串由右上角往左下角噴射：小 → 中間最大 → 小，
          走完後整串往左下滑出並淡掉，視覺設計的文字再接上來 */
       hb.style.webkitMaskImage = ""; hb.style.maskImage = "";
-      hb.style.opacity = String(1 - c(t / 0.45));
+      hb.style.opacity = String(1 - c(t / 0.35));
       /* 文字稍微加速往上補位：到終點時剛好貼在選單下方，中間不留空 */
       const hero = document.querySelector(".hero");
-      const lift = 0.08 * vh;
-      if (hero) { hero.style.transform = `translateY(${(-lift * c((t - 0.4) / 0.6)).toFixed(1)}px)`; hero.style.marginBottom = (-lift) + "px"; }
-      const out = c((t - 0.42) / 0.3);
-      const op = Math.min(c((t - 0.03) / 0.1), 1 - c((t - 0.45) / 0.3));
+      const lift = 0.23 * vh;
+      if (hero) {
+        const lf = lift * c((t - 0.3) / 0.7);
+        hero.style.transform = `translateY(${(-lf).toFixed(1)}px)`;
+        hero.style.marginBottom = (-lf).toFixed(1) + "px";   // 下面的區塊跟著一起補上，不會被疊到
+      }
+      const out = c((t - 0.3) / 0.25);
+      const op = Math.min(c((t - 0.03) / 0.1), 1 - c((t - 0.32) / 0.25));
       band.style.opacity = String(op);
       band.style.pointerEvents = op > 0.3 ? "" : "none";
       const cw0 = band.clientWidth;
       const yc = 0.27 * vh;                                // 作品串中心固定在舞台偏上
       band.style.transform = `translate(${(-out * 0.3 * cw0).toFixed(1)}px,${(yc - band.offsetHeight / 2 + out * 0.08 * vh).toFixed(1)}px)`;
-      raw = (n + 0.6) - c((t - 0.04) / 0.55) * (n + 0.6 + 1.6);   // 從右上外側進場 → 走出左下
+      raw = (n + 0.6) - c((t - 0.04) / 0.45) * (n + 0.6 + 1.6);   // 從右上外側進場 → 走出左下
     } else {
       if (hb) { hb.style.webkitMaskImage = ""; hb.style.maskImage = ""; hb.style.opacity = ""; hb.style.transform = ""; { const h2 = document.querySelector(".hero"); if (h2) { h2.style.transform = ""; h2.style.marginBottom = ""; } } }
       if (band) { band.style.opacity = ""; band.style.transform = ""; band.style.pointerEvents = ""; }
