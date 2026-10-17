@@ -18,7 +18,7 @@ const SITE = {
   /* 首頁 HELLO 與主標之間的作品串：圖片排成一條橫跨頁面、由左下往右上的斜線，
      捲動時先聚在中間再往左右展開，靠近畫面中心的放大、離開的縮小。
      順序＝由左到右；id 對應 BRANDS 的案例，圖用該案卡片圖。
-     想增減張數，加減一行即可（桌機建議 6–10 張，手機只用前 6 張）。 */
+     想增減張數，加減一行即可（桌機建議 6–10 張，手機只用前 5 張）。 */
   heroCollage: [
     { id: "cf-embrace", img: "./images/cf-embrace_card.webp" },
     { id: "megabank",   img: "./images/megabank_card.webp" },
