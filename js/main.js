@@ -305,21 +305,21 @@ function buildHeroCollage() {
     if (narrowNow && intro && band) {
       /* 手機：釘住的舞台。t＝0→1：HELLO 淡出，作品串斜向往上浮現並走完一輪 */
       const ir = intro.getBoundingClientRect();
-      const extra = Math.max(1, ir.height - vh);
+      const extra = Math.max(1, ir.height - intro.firstElementChild.offsetHeight);
       const t = Math.min(1, Math.max(0, -ir.top / extra));
       const c = (x) => Math.min(1, Math.max(0, x));
       /* HELLO 淡出；作品串由右上角往左下角噴射：小 → 中間最大 → 小，
          走完後整串往左下滑出並淡掉，視覺設計的文字再接上來 */
       hb.style.webkitMaskImage = ""; hb.style.maskImage = "";
-      hb.style.opacity = String(1 - c(t / 0.4));
-      const out = c((t - 0.42) / 0.28);
-      const op = Math.min(c((t - 0.03) / 0.1), 1 - c((t - 0.45) / 0.25));
+      hb.style.opacity = String(1 - c(t / 0.35));
+      const out = c((t - 0.3) / 0.3);
+      const op = Math.min(c((t - 0.03) / 0.1), 1 - c((t - 0.3) / 0.3));
       band.style.opacity = String(op);
       band.style.pointerEvents = op > 0.3 ? "" : "none";
       const cw0 = band.clientWidth;
-      const yc = 0.34 * vh;                                // 作品串中心固定在舞台偏上
+      const yc = 0.3 * vh;                                // 作品串中心固定在舞台偏上
       band.style.transform = `translate(${(-out * 0.3 * cw0).toFixed(1)}px,${(yc - band.offsetHeight / 2 + out * 0.08 * vh).toFixed(1)}px)`;
-      raw = (n + 0.6) - c((t - 0.04) / 0.62) * (n + 0.6 + 1.6);   // 從右上外側進場 → 走出左下
+      raw = (n + 0.6) - c((t - 0.04) / 0.5) * (n + 0.6 + 1.6);   // 從右上外側進場 → 走出左下
     } else {
       if (hb) { hb.style.webkitMaskImage = ""; hb.style.maskImage = ""; hb.style.opacity = ""; }
       if (band) { band.style.opacity = ""; band.style.transform = ""; band.style.pointerEvents = ""; }
