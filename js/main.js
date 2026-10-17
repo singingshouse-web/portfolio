@@ -220,7 +220,7 @@ function initPressure() {
 }
 
 /* Hero 上排：與作品分類使用同一套名稱，點擊跳到該分類 */
-/* HELLO 與主標之間的作品串：圖片排成連續的波浪，
+/* HELLO 與主標之間的作品串：圖片排成一條單向的斜線，
    靠近畫面中心的放大、離開的縮小（只用 transform，單一 rAF）。
    電腦版放在 Hero 右側往下延伸；手機版在 HELLO 與主標之間。 */
 function buildHeroCollage() {
@@ -243,7 +243,7 @@ function buildHeroCollage() {
   const SC_MIN = 0.6, SC_MAX = 1.22;       // 離中心最遠／最近時的縮放
   let base = [], ticking = false;
 
-  /* 排版：沿垂直方向依序排開、彼此重疊；左右位置走一條柔和的波浪 */
+  /* 排版：沿垂直方向依序排開、彼此重疊；左右位置由右往左單向斜排 */
   function layout() {
     const narrow = matchMedia("(max-width: 1000px)").matches;
     const cw = box.clientWidth;
@@ -252,7 +252,7 @@ function buildHeroCollage() {
     const pitch = ih * (narrow ? 0.6 : 0.5);
     box.style.height = (pitch * (n - 1) + ih) + "px";
     base = items.map((el, i) => {
-      const x = (cw - iw) * (0.5 + 0.5 * Math.sin(i * 1.05));
+      const x = (cw - iw) * (n > 1 ? 1 - i / (n - 1) : 0.5);   // 單向斜線：由右上往左下，不往回勾
       const y = pitch * i;
       el.style.width = iw + "px";
       el.style.left = x + "px";
