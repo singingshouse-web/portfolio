@@ -251,7 +251,7 @@ function buildHeroCollage() {
   function layout() {
     const narrow = matchMedia("(max-width: 1000px)").matches;
     narrowNow = narrow;
-    items = narrow ? all.filter((_, i) => ![4, 5, 6].includes(i)) : all;   // 手機：拿掉第 5、6、7 張，第 4 張直接接第 8 張
+    items = all;                                     // 手機也用全部 8 張，作品串走得更長
     all.forEach(el => { el.style.display = items.includes(el) ? "" : "none"; });
     n = items.length;
     scMax = narrow ? 1.9 : 2.1;
@@ -286,7 +286,7 @@ function buildHeroCollage() {
   /* 手機：輸送帶。每張沿著右上→左下的斜線走，大小只看它離畫面正中間多遠：
      中間永遠最大、兩側小；右上角進場時最小，往左下離場時也縮到最小 */
   const TR = { cw: 0, iw: 0, ih: 0 };
-  const DELTA = 0.27, UIN = 1.12, UW = 0.2;
+  const DELTA = 0.24, UIN = 1.12, UW = 0.2;
   const trainEnd = () => (UIN + 0.12) + (n - 1) * DELTA;
   function renderTrain(q) {
     items.forEach((el, j) => {
@@ -334,20 +334,22 @@ function buildHeroCollage() {
       hb.style.opacity = String(1 - c(t / 0.35));
       /* 文字稍微加速往上補位：到終點時剛好貼在選單下方，中間不留空 */
       const hero = document.querySelector(".hero");
-      const lift = 0.23 * vh;
+      const lift = 0.13 * vh;
       if (hero) {
         const lf = lift * c((t - 0.3) / 0.7);
         hero.style.transform = `translateY(${(-lf).toFixed(1)}px)`;
         hero.style.marginBottom = (-lf).toFixed(1) + "px";   // 下面的區塊跟著一起補上，不會被疊到
       }
-      const out = c((t - 0.5) / 0.25);
-      const op = Math.min(c((t - 0.12) / 0.1), 1 - c((t - 0.5) / 0.25));
+      const out = c((t - 0.74) / 0.2);
+      const op = Math.min(c((t - 0.1) / 0.08), 1 - c((t - 0.74) / 0.2));
       band.style.opacity = String(op);
       band.style.pointerEvents = op > 0.3 ? "" : "none";
       const cw0 = band.clientWidth;
-      const yc = 0.38 * vh;                                // 作品串中心固定在舞台偏上
-      band.style.transform = `translate(${(-out * 0.3 * cw0).toFixed(1)}px,${(yc - band.offsetHeight / 2 + out * 0.08 * vh).toFixed(1)}px)`;
-      trainQ = c((t - 0.12) / 0.56) * trainEnd();
+      /* 作品串跟著文字一路往上走：永遠停在文字上方，不留大空白 */
+      const heroTop = hero ? hero.getBoundingClientRect().top : vh;
+      const yc = Math.min(0.38 * vh, heroTop - 0.45 * band.offsetHeight - 16);
+      band.style.transform = `translate(${(-out * 0.2 * cw0).toFixed(1)}px,${(yc - band.offsetHeight / 2).toFixed(1)}px)`;
+      trainQ = c((t - 0.1) / 0.8) * trainEnd();
     } else {
       if (hb) { hb.style.webkitMaskImage = ""; hb.style.maskImage = ""; hb.style.opacity = ""; hb.style.transform = ""; { const h2 = document.querySelector(".hero"); if (h2) { h2.style.transform = ""; h2.style.marginBottom = ""; } } }
       if (band) { band.style.opacity = ""; band.style.transform = ""; band.style.pointerEvents = ""; }

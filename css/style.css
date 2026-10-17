@@ -957,13 +957,13 @@ html { overflow-anchor: none; }
   /* 手機：作品串排在 HELLO 與主標之間，不疊到 HELLO；上下各留一點空間讓它有伸展感 */
   /* 手機：HELLO 與作品串共用一個釘住的舞台，往下滑時 HELLO 淡出、作品串斜向往上出現，
      約 1.4 個畫面長；跑完後視覺設計的文字才往上接上來 */
-  .intro::after { content: ""; display: block; height: 32vh; height: 32svh; }
+  .intro::after { content: ""; display: block; height: 46vh; height: 46svh; }
   .intro-stage { position: sticky; top: 0; }
   .stream-band { position: absolute; left: 0; right: 0; top: 0; padding: 0; opacity: 0;
                  transform: translateY(70vh); z-index: 2;
                  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 16%, #000 84%, transparent 100%);
                          mask-image: linear-gradient(to right, transparent 0, #000 16%, #000 84%, transparent 100%); will-change: transform, opacity; }
-  .hero { margin-top: -32vh; margin-top: -32svh; position: relative; z-index: 3; }
+  .hero { margin-top: -46vh; margin-top: -46svh; position: relative; z-index: 3; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hc-item { animation: none; }
