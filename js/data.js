@@ -499,10 +499,10 @@ const BRANDS = [
     card: "./images/fm-dayplus_card.webp",
     hero: "./images/fm-dayplus_hero.webp",
     intro:
-      "全家網路商店自有品牌開發案，五個命名與識別方向之一。DAYPLUS 以日常補給為題，讓識別在生鮮與即食的密集陳列中保持清爽好認。",
+      "全家網路商店自有品牌開發案，五個命名與識別方向之一。DAY＋PLUS，是「每一天，多一點」。字標用纖細的線條，上方一道弧線中央落著一顆四芒星，像日常裡多出來的那一點光；搭配標語 DO MORE, BE MORE，把平常的補貨變成有點期待的小事。",
     projects: [
       { name: "識別與應用",
-        note: "商品照密集的貨架與網頁列表裡，識別要夠安靜才不會跟商品搶注意力——標誌、色彩到包裝與陳列都照這個原則收斂。",
+        note: "名字講「每天」，所以識別要經得起天天看：深紫色為主、珊瑚紅點綴，細線字標放在深色底上，讓生鮮與即食的商品照自己發光，標誌只在角落輕輕落款。包裝、海報與戶外看板都照這個原則收斂。",
         images: [
           "./images/fm-dayplus_p1_01.webp", 
           "./images/fm-dayplus_p1_02.webp", 
@@ -522,17 +522,17 @@ const BRANDS = [
     scope: "任職期間專案",
     role: "品牌識別與延伸設計",
     name: "the good GOODs｜方向 A",
-    nameEn: "GOOD THINGS ARE COMING",
+    nameEn: "TODAY IS A GOOD DAY",
     category: "品牌識別",
-    tags: ["品牌識別", "標誌設計", "副品牌延伸"],
+    tags: ["品牌識別", "模組化系統", "廣告應用"],
     card: "./images/fm-goods-a_card.webp",
     hero: "./images/fm-goods-a_hero.webp",
     intro:
-      "全家網路商店自有品牌開發案，五個命名與識別方向之一。把商品直接寫進字標——以食物圖像替換字母中的 O，讓同一個標誌能長出零食、泡麵等副品牌，不必為每個品類另外設計一套。",
+      "全家網路商店自有品牌開發案，五個命名與識別方向之一。名字有兩層意思：good 是好，goods 是商品。方向 A 取 The Good Goods 的縮寫 T、G、G，各做成一個圓角方塊，拼成一枚可以重組的標誌——一個方塊一件好東西，拼在一起，就是標語說的 TODAY IS A GOOD DAY。",
     projects: [
       {
         name: "識別與應用",
-        note: "標誌結構、色彩計畫與副品牌關係的整體規劃，並延伸至包裝、海報與店頭傳達物。",
+        note: "方塊是這套識別的最小單位：標誌用它組成，海報角落的勾勾也用它拼出來。廣告版面再放大成商品重複排列的圖形，搭配高彩度底色與珊瑚紅面板，不需要另外設計主視覺，一路延伸到提袋與通路看板。",
         images: [
           "./images/fm-goods-a_p1_01.webp",
           "./images/fm-goods-a_p1_02.webp",
@@ -552,17 +552,17 @@ const BRANDS = [
     scope: "任職期間專案",
     role: "品牌識別與延伸設計",
     name: "the good GOODs｜方向 B",
-    nameEn: "TODAY IS A GOOD DAY",
+    nameEn: "GOOD THINGS ARE COMING",
     category: "品牌識別",
-    tags: ["品牌識別", "模組化系統", "廣告應用"],
+    tags: ["品牌識別", "標誌設計", "副品牌延伸"],
     card: "./images/fm-goods-b_card.webp",
     hero: "./images/fm-goods-b_hero.webp",
     intro:
-      "同一個品牌名的另一種解法。以可重組的方塊構成識別，呼應「多元」的品牌概念；同一套模組放大後就是廣告版面的圖形系統，不需要另外設計主視覺。",
+      "同一個品牌名的另一種解法。把名字直接做成商品的容器：the good 用輕的字、GOODs 用粗的字，兩個 O 連成橫向的無限符號，呼應「多元」，裡面放進零食、泡麵、生鮮等圖示。同一個標誌能長出各品類的副品牌，不必為每個品類另外設計一套。",
     projects: [
       {
         name: "識別與應用",
-        note: "模組化標誌的組合邏輯與色彩計畫，延伸至戶外廣告、提袋與通路視覺。",
+        note: "O 裡的圖示換一個，就是新的副品牌；字標本身完全不動。標語 GOOD THINGS ARE COMING 搭配整齊排列的食材攝影，讓海報看起來像「好東西正在上架」，並延伸到包裝與店頭傳達物。",
         images: [
           "./images/fm-goods-b_p1_01.webp",
           "./images/fm-goods-b_p1_02.webp",
@@ -587,10 +587,10 @@ const BRANDS = [
     card: "./images/fm-plus_card.webp",
     hero: "./images/fm-plus_hero.webp",
     intro:
-      "全家網路商店自有品牌開發案，五個命名與識別方向之一。以高彩度與鮮明字標處理通路現場的辨識問題——在貨架與螢幕上都要能一秒被認出來。",
+      "全家網路商店自有品牌開發案，五個命名與識別方向之一。PLUS 是「多加一點」，所以字標做成圓潤的方塊字，P 和 U 各有一張小臉，S 上多出一顆閃爍的星芒。網購最期待的是拆開箱子的那一刻，這套識別就想像成從箱子裡探出頭來打招呼的那一點驚喜。",
     projects: [
       { name: "識別與應用",
-        note: "從標誌變化到店頭、包材與宣傳物的整體延伸，並製作動態版本供數位通路使用。",
+        note: "字標有動態版本：小臉會眨眼，星芒閃爍後變成愛心，讓數位通路上的標誌也有表情。靜態應用則放在紙箱上，與探頭的貓咪一起傳達開箱的樂趣。（更多應用圖整理中）",
         images: [
           "./images/fm-plus_p1_01.webp", 
           "./images/fm-plus_p1_02.webp",
@@ -613,11 +613,11 @@ const BRANDS = [
     card: "./images/fm-plass_card.webp",
     hero: "./images/fm-plass_hero.webp",
     intro:
-      "全家網路商店自有品牌開發案，五個命名與識別方向之一。以「MORE & LESS」為核心概念，用幾何切面構成的字標建立一套能橫跨包裝、通路與戶外媒體的識別系統。",
+      "全家網路商店自有品牌開發案，五個命名與識別方向之一。以「MORE & LESS」為核心：字標用鏤空的模板字形做出「少」，刪去多餘的筆畫與留白；中間那個拉高的 A 做出「多」，多出來的一筆就是品牌想給的那一點。搭配標語 DO MORE, BE MORE，與水晶般的幾何切面質感。",
     projects: [
       {
         name: "品牌識別",
-        note: "字標在單色與彩色底上都能維持辨識度，所以從提袋、包材到戶外看板都能直接沿用，不必為每個媒材重畫一次。",
+        note: "鏤空的字形在單色與彩色底上都清楚好認，從提袋、包材到戶外看板都能直接沿用，不必為每個媒材重畫一次。淺藍、青綠的色彩，加上水晶切面的背景攝影，讓「少而精」的感覺落在食材與商品上。",
         images: [
           "./images/fm-plass_p1_01.webp",
           "./images/fm-plass_p1_02.webp",
