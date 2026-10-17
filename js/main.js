@@ -257,7 +257,7 @@ function buildHeroCollage() {
     items = all;                                     // 手機也用全部 8 張，作品串走得更長
     all.forEach(el => { el.style.display = items.includes(el) ? "" : "none"; });
     n = items.length;
-    scMax = small ? 1.9 : 2.0;
+    scMax = small ? 2.85 : 3.0;
     const cw = box.clientWidth;
     const iw = cw * (small ? 0.22 : 0.12);
     const ih = iw * 0.75;
@@ -289,7 +289,7 @@ function buildHeroCollage() {
   /* 手機：輸送帶。每張沿著右上→左下的斜線走，大小只看它離畫面正中間多遠：
      中間永遠最大、兩側小；右上角進場時最小，往左下離場時也縮到最小 */
   const TR = { cw: 0, iw: 0, ih: 0 };
-  const DELTA = 0.24, UIN = 1.12, UW = 0.2;
+  const DELTA = 0.27, UIN = 1.12, UW = 0.2;
   const trainEnd = () => (UIN + 0.12) + (n - 1) * DELTA;
   function renderTrain(q) {
     items.forEach((el, j) => {
