@@ -251,14 +251,14 @@ function buildHeroCollage() {
   function layout() {
     const narrow = matchMedia("(max-width: 1000px)").matches;
     narrowNow = narrow;
-    items = narrow ? all.slice(0, 5) : all;          // 手機只用前 5 張
+    items = all;                                     // 手機也用全部，動態才夠長
     all.forEach(el => { el.style.display = items.includes(el) ? "" : "none"; });
     n = items.length;
-    scMax = narrow ? 1.6 : 2.1;
+    scMax = narrow ? 1.7 : 2.1;
     const cw = box.clientWidth;
-    const iw = cw * (narrow ? 0.26 : 0.14);
+    const iw = cw * (narrow ? 0.22 : 0.14);
     const ih = iw * 0.75;
-    rise = ih * (narrow ? 1.15 : 1.4);               // 左右兩端的高低差（手機壓低，縮短版面）
+    rise = ih * (narrow ? 1.6 : 1.4);               // 左右兩端的高低差（手機壓低，縮短版面）
     const unit = 1 - Math.exp(-Math.pow(1 / YIELD, 2));          // 相鄰一張時的讓開比例
     const scN = SC_MIN + (scMax - SC_MIN) / (1 + Math.pow(1 / FALL, 2));   // 緊鄰焦點那張的大小
     const need = (iw * scMax / 2 + iw * scN / 2) / cw + GAP;     // 焦點與鄰圖中心至少相距
@@ -301,8 +301,8 @@ function buildHeroCollage() {
       /* 手機：一開始焦點就在正中間（兩側由小到大對稱），往下滑才往右走完 */
       const top0 = r.top + window.scrollY;
       const pS = Math.min(1, Math.max(0, (vh - top0) / (vh + r.height)));
-      const mid = (n - 1) / 2;
-      raw = mid + Math.min(1, Math.max(0, (p - pS) / (0.6 - pS))) * (n - 1 - mid);
+      const mid = Math.floor((n - 1) / 2);
+      raw = mid + Math.min(1, Math.max(0, (p - pS) / (0.85 - pS))) * (n - 1 - mid);
     } else {
       raw = Math.min(1, Math.max(0, (p - 0.12) / 0.76)) * (n - 1);
     }
