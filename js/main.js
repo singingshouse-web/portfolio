@@ -244,12 +244,13 @@ function buildHeroCollage() {
   const FALL = 0.78;                       // 縮小的陡緩（以「張」為單位）：越大，兩側的圖越大、遞減越平緩
   const YIELD = 0.8;                       // 兩側讓開的範圍
   const GAP = 0.02;                        // 焦點與鄰圖之間至少留的空隙（容器寬的比例）
-  let items = all, n = all.length, A = 0, rise = 0, span = 1, scMax = 2.2, ticking = false;
+  let items = all, n = all.length, A = 0, rise = 0, span = 1, scMax = 2.2, narrowNow = false, ticking = false;
 
   /* 排版：左邊最低、右邊最高；圖做小、間距拉開。
      A＝焦點旁邊的圖要往外讓開的距離，由焦點放大後的寬度反推，讓背後不重疊 */
   function layout() {
     const narrow = matchMedia("(max-width: 1000px)").matches;
+    narrowNow = narrow;
     items = narrow ? all.slice(0, 5) : all;          // 手機只用前 5 張
     all.forEach(el => { el.style.display = items.includes(el) ? "" : "none"; });
     n = items.length;
@@ -294,7 +295,9 @@ function buildHeroCollage() {
     const r = box.getBoundingClientRect();
     /* 進度：作品串剛從畫面下緣冒出＝0，離開畫面上緣＝1；焦點由最左走到最右 */
     const p = Math.min(1, Math.max(0, (vh - r.top) / (vh + r.height)));
-    const raw = Math.min(1, Math.max(0, (p - 0.12) / 0.76)) * (n - 1);
+    /* 電腦版：焦點走完整段；手機版：提早在作品串到達畫面上方、主標接上來時剛好走完 */
+    const [p0, p1] = narrowNow ? [0.04, 0.6] : [0.12, 0.88];
+    const raw = Math.min(1, Math.max(0, (p - p0) / (p1 - p0))) * (n - 1);
     /* 讓焦點停在一張上，只在兩張之間的一小段快速換過去 */
     const k = Math.min(n - 1, Math.floor(raw));
     const u = Math.min(1, Math.max(0, (raw - k - 0.3) / 0.4));
