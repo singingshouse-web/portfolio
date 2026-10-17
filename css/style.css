@@ -955,7 +955,7 @@ a.bento-tile { text-decoration: none; color: inherit; }
 html { overflow-anchor: none; }
 /* HELLO 下方就是排好的作品串，文字在它下面 */
 .stream-band { -webkit-mask-image: linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%);
-                       mask-image: linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%); padding: 8px 0 0; }
+                       mask-image: linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%); padding: 0; position: relative; z-index: 2; }
 @media (prefers-reduced-motion: reduce) {
   .hc-item { animation: none; }
 }

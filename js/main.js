@@ -257,7 +257,7 @@ function buildHeroCollage() {
     items = all;                                     // 手機也用全部 8 張，作品串走得更長
     all.forEach(el => { el.style.display = items.includes(el) ? "" : "none"; });
     n = items.length;
-    scMax = small ? 2.85 : 3.0;
+    scMax = small ? 4.0 : 4.5;
     const cw = box.clientWidth;
     const iw = cw * (small ? 0.22 : 0.12);
     const ih = iw * 0.75;
@@ -273,7 +273,9 @@ function buildHeroCollage() {
     span = W - iw;
     const pad = ih * (scMax - 1) / 2 + 12;           // 焦點放大後會超出的上下空間
     box.style.height = (rise + ih) + "px";
-    box.style.margin = pad + "px 0";
+    box.style.margin = pad + "px 0 " + (pad * 0.55) + "px";
+    const bandEl = document.getElementById("streamBand");
+    if (bandEl) bandEl.style.marginTop = (-pad * 0.75) + "px";
     TR.cw = cw; TR.iw = iw; TR.ih = ih;
     items.forEach((el, i) => {
       const t = n > 1 ? i / (n - 1) : 0.5;           // 0＝最左、1＝最右
