@@ -241,8 +241,8 @@ function buildHeroCollage() {
   const all = [...box.querySelectorAll(".hc-item")];
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const SC_MIN = 0.28;                     // 遠處的圖：縮到很小
-  const SIGMA = 0.6;                       // 放大範圍（以「張」為單位），越小越只放大一張
-  const YIELD = 0.7;                       // 兩側讓開的範圍
+  const FALL = 0.78;                       // 縮小的陡緩（以「張」為單位）：越大，兩側的圖越大、遞減越平緩
+  const YIELD = 0.8;                       // 兩側讓開的範圍
   const GAP = 0.02;                        // 焦點與鄰圖之間至少留的空隙（容器寬的比例）
   let items = all, n = all.length, A = 0, rise = 0, span = 1, scMax = 2.2, ticking = false;
 
@@ -253,13 +253,14 @@ function buildHeroCollage() {
     items = narrow ? all.slice(0, 5) : all;          // 手機只用前 5 張
     all.forEach(el => { el.style.display = items.includes(el) ? "" : "none"; });
     n = items.length;
-    scMax = narrow ? 1.6 : 2.2;
+    scMax = narrow ? 1.6 : 2.1;
     const cw = box.clientWidth;
-    const iw = cw * (narrow ? 0.26 : 0.15);
+    const iw = cw * (narrow ? 0.26 : 0.14);
     const ih = iw * 0.75;
     rise = ih * (narrow ? 1.5 : 1.4);                // 左右兩端的高低差
     const unit = 1 - Math.exp(-Math.pow(1 / YIELD, 2));          // 相鄰一張時的讓開比例
-    const need = (iw * scMax / 2 + iw * SC_MIN / 2) / cw + GAP;  // 焦點與鄰圖中心至少相距
+    const scN = SC_MIN + (scMax - SC_MIN) / (1 + Math.pow(1 / FALL, 2));   // 緊鄰焦點那張的大小
+    const need = (iw * scMax / 2 + iw * scN / 2) / cw + GAP;     // 焦點與鄰圖中心至少相距
     const nat = (cw - iw) / cw / Math.max(1, n - 1);
     const aCalc = (need - nat) / Math.max(0.2, unit - 2 / Math.max(1, n - 1));
     A = Math.max(0, Math.min(aCalc, (cw - iw - cw * 0.2) / 2 / cw)) * cw;
@@ -278,7 +279,7 @@ function buildHeroCollage() {
   function render(focus) {
     items.forEach((el, i) => {
       const d = i - focus;
-      const g = Math.exp(-Math.pow(d / SIGMA, 2));   // 1＝焦點
+      const g = 1 / (1 + Math.pow(d / FALL, 2));     // 1＝焦點；往兩側一階一階遞減
       const sc = SC_MIN + (scMax - SC_MIN) * g;
       const push = A * Math.sign(d) * (1 - Math.exp(-Math.pow(d / YIELD, 2)));
       const dy = -rise * push / span;                // 沿斜線移動，線條維持筆直
