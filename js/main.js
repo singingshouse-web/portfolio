@@ -257,7 +257,7 @@ function buildHeroCollage() {
     const cw = box.clientWidth;
     const iw = cw * (narrow ? 0.26 : 0.14);
     const ih = iw * 0.75;
-    rise = ih * (narrow ? 1.5 : 1.4);                // 左右兩端的高低差
+    rise = ih * (narrow ? 1.15 : 1.4);               // 左右兩端的高低差（手機壓低，縮短版面）
     const unit = 1 - Math.exp(-Math.pow(1 / YIELD, 2));          // 相鄰一張時的讓開比例
     const scN = SC_MIN + (scMax - SC_MIN) / (1 + Math.pow(1 / FALL, 2));   // 緊鄰焦點那張的大小
     const need = (iw * scMax / 2 + iw * scN / 2) / cw + GAP;     // 焦點與鄰圖中心至少相距
