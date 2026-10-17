@@ -266,7 +266,7 @@ function buildHeroCollage() {
     const aCalc = (need - nat) / Math.max(0.2, unit - 2 / Math.max(1, n - 1));
     A = Math.max(0, Math.min(aCalc, (cw - iw - cw * 0.2) / 2 / cw)) * cw;
     span = cw - iw;
-    const pad = ih * (scMax - 1) / 2 + 12;           // 焦點放大後會超出的上下空間
+    const pad = narrowNow ? ih * (scMax - 1) / 2 * 0.5 + 2 : ih * (scMax - 1) / 2 + 12;           // 焦點放大後會超出的上下空間
     box.style.height = (rise + ih) + "px";
     box.style.margin = pad + "px 0";
     items.forEach((el, i) => {
