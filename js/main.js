@@ -221,8 +221,8 @@ function initPressure() {
 
 /* Hero 上排：與作品分類使用同一套名稱，點擊跳到該分類 */
 /* HELLO 與主標之間的作品串：一條橫跨頁面寬度、由左下往右上的斜線。
-   捲動時圖片先聚在中間，再往左右快速展開；靠近畫面中心的放大、離開的縮小。
-   只用 transform，單一 rAF。 */
+   「焦點」隨捲動沿斜線由左往右移動：焦點那張放到最大、最完整，
+   其餘縮得很小，所以不會互相蓋住。只用 transform，單一 rAF。 */
 function buildHeroCollage() {
   const box = $("#heroCollage");
   const list = SITE.heroCollage;
@@ -239,20 +239,23 @@ function buildHeroCollage() {
 
   const all = [...box.querySelectorAll(".hc-item")];
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const SC_MIN = 0.62, SC_MAX = 1.2;       // 離中心最遠／最近時的縮放
-  let items = all, n = all.length, cw = 0, mid = [], dx0 = [], ticking = false;
+  const SC_MIN = 0.55, SC_MAX = 2.2;       // 非焦點／焦點的縮放：差距要大
+  const SIGMA = 0.85;                      // 焦點的寬度（以「張」為單位），越小越只放大一張
+  let items = all, n = all.length, mid = [], dx0 = [], ticking = false;
 
-  /* 排版：左邊最低、右邊最高，x 由最左排到最右，彼此重疊 */
+  /* 排版：左邊最低、右邊最高；間距拉開，圖本身做小，焦點才放大 */
   function layout() {
     const narrow = matchMedia("(max-width: 1000px)").matches;
-    items = narrow ? all.slice(0, 6) : all;          // 手機只用前 6 張，避免太擠
+    items = narrow ? all.slice(0, 6) : all;          // 手機只用前 6 張
     all.forEach(el => { el.style.display = items.includes(el) ? "" : "none"; });
     n = items.length;
-    cw = box.clientWidth;
-    const iw = cw * (narrow ? 0.46 : 0.2);
+    const cw = box.clientWidth;
+    const iw = cw * (narrow ? 0.3 : 0.15);
     const ih = iw * 0.75;
-    const rise = ih * (narrow ? 0.9 : 1.1);          // 左右兩端的高低差
+    const rise = ih * (narrow ? 1.5 : 1.4);          // 左右兩端的高低差
+    const pad = ih * (SC_MAX - 1) / 2 + 12;          // 焦點放大後會超出的上下空間
     box.style.height = (rise + ih) + "px";
+    box.style.margin = pad + "px 0";
     mid = []; dx0 = [];
     items.forEach((el, i) => {
       const t = n > 1 ? i / (n - 1) : 0.5;           // 0＝最左、1＝最右
@@ -261,8 +264,18 @@ function buildHeroCollage() {
       el.style.width = iw + "px";
       el.style.left = x + "px";
       el.style.top = y + "px";
-      mid.push(y + ih / 2);                          // 圖片中心（容器座標）
-      dx0.push(cw / 2 - (x + iw / 2));               // 聚在中間時需要的位移
+      dx0.push(cw / 2 - (x + iw / 2));               // 剛進入畫面時略往中間靠的位移
+    });
+  }
+
+  function render(focus, fe) {
+    items.forEach((el, i) => {
+      const dlt = (i - focus) / SIGMA;
+      const g = Math.exp(-dlt * dlt);                // 1＝焦點
+      const sc = SC_MIN + (SC_MAX - SC_MIN) * g;
+      const dx = dx0[i] * (1 - fe) * 0.5;
+      el.style.transform = `translate3d(${dx.toFixed(1)}px,0,0) scale(${sc.toFixed(3)})`;
+      el.style.zIndex = String(Math.round(g * 100));
     });
   }
 
@@ -270,25 +283,19 @@ function buildHeroCollage() {
     ticking = false;
     const vh = window.innerHeight;
     const r = box.getBoundingClientRect();
-    /* 展開程度：作品串剛進入畫面＝0（聚在中間），到達畫面中段＝1（完全展開） */
-    let f = (vh - (r.top + r.height / 2)) / (vh * 0.55);
-    f = Math.min(1, Math.max(0, f));
-    const fe = f * f * (3 - 2 * f);
-    items.forEach((el, i) => {
-      const d = Math.abs(r.top + mid[i] - vh * 0.5) / (vh * 0.5);
-      const w = 1 - Math.min(1, d);                  // 1＝在畫面中心
-      const e = w * w * (3 - 2 * w);
-      const s = SC_MIN + (SC_MAX - SC_MIN) * e;
-      el.style.transform = `translate3d(${(dx0[i] * (1 - fe)).toFixed(1)}px,0,0) scale(${s.toFixed(3)})`;
-      el.style.zIndex = String(Math.round(e * 100));
-    });
+    /* 進度：作品串剛從畫面下緣冒出＝0，離開畫面上緣＝1；焦點由最左走到最右 */
+    const p = Math.min(1, Math.max(0, (vh - r.top) / (vh + r.height)));
+    const pe = Math.min(1, Math.max(0, (p - 0.12) / 0.76));       // 兩端各留一點緩衝
+    /* 略往中間靠 → 展開：只在剛進入畫面時作用 */
+    const fe0 = Math.min(1, Math.max(0, (vh - (r.top + r.height / 2)) / (vh * 0.45)));
+    render(pe * (n - 1), fe0 * fe0 * (3 - 2 * fe0));
   }
   const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
 
   layout();
   if (reduce) {
-    items.forEach(el => { el.style.transform = "scale(.9)"; });
-    addEventListener("resize", () => { layout(); items.forEach(el => { el.style.transform = "scale(.9)"; }); }, { passive: true });
+    render((n - 1) / 2, 1);                          // 不動：停在中間那張放大
+    addEventListener("resize", () => { layout(); render((n - 1) / 2, 1); }, { passive: true });
     return;
   }
   update();

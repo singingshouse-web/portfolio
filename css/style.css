@@ -940,7 +940,7 @@ a.bento-tile { text-decoration: none; color: inherit; }
 
 /* ---------- HELLO 與主標之間的作品串 ---------- */
 /* 橫跨頁面寬度的一條斜線，正常排在 HELLO 與主標之間 */
-.stream-band { position: relative; padding: 36px 0 18px; overflow-x: clip; }
+.stream-band { position: relative; padding: 12px 0 0; overflow-x: clip; }
 .hero-collage { position: relative; width: 100%; }
 .hc-item {
   position: absolute;
@@ -953,7 +953,7 @@ a.bento-tile { text-decoration: none; color: inherit; }
 .hc-item img { display: block; width: 100%; height: auto; border-radius: 3px; }
 @keyframes hc-in { from { opacity: 0; } to { opacity: 1; } }
 @media (max-width: 1000px) {
-  .stream-band { padding: 28px 0 14px; }
+  .stream-band { padding: 8px 0 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hc-item { animation: none; }
