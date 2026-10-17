@@ -258,7 +258,7 @@ function buildHeroCollage() {
     const cw = box.clientWidth;
     const iw = cw * (narrow ? 0.22 : 0.14);
     const ih = iw * 0.75;
-    rise = ih * (narrow ? 1.6 : 1.4);               // 左右兩端的高低差（手機壓低，縮短版面）
+    rise = narrow ? window.innerHeight * 0.26 : ih * 1.4;               // 左右兩端的高低差（手機壓低，縮短版面）
     const unit = 1 - Math.exp(-Math.pow(1 / YIELD, 2));          // 相鄰一張時的讓開比例
     const scN = SC_MIN + (scMax - SC_MIN) / (1 + Math.pow(1 / FALL, 2));   // 緊鄰焦點那張的大小
     const need = (iw * scMax / 2 + iw * scN / 2) / cw + GAP;     // 焦點與鄰圖中心至少相距
@@ -306,26 +306,27 @@ function buildHeroCollage() {
       const extra = Math.max(1, ir.height - vh);
       const t = Math.min(1, Math.max(0, -ir.top / extra));
       const c = (x) => Math.min(1, Math.max(0, x));
-      /* HELLO 由下往上被擦掉；作品串跟在擦除線後面，一路往上升到選單下方 */
-      const edge = (1 - t) * 0.76 * vh;
-      const mk = `linear-gradient(to bottom,#000 0,#000 ${Math.max(0, edge - 70).toFixed(0)}px,transparent ${Math.max(1, edge).toFixed(0)}px)`;
-      hb.style.webkitMaskImage = mk; hb.style.maskImage = mk;
-      const op = c((t - 0.02) / 0.12);
+      /* HELLO 淡出；作品串由右上角往左下角噴射：小 → 中間最大 → 小，
+         走完後整串往左下滑出並淡掉，視覺設計的文字再接上來 */
+      hb.style.webkitMaskImage = ""; hb.style.maskImage = "";
+      hb.style.opacity = String(1 - c(t / 0.4));
+      const out = c((t - 0.42) / 0.28);
+      const op = Math.min(c((t - 0.03) / 0.1), 1 - c((t - 0.45) / 0.25));
       band.style.opacity = String(op);
       band.style.pointerEvents = op > 0.3 ? "" : "none";
-      const yc = (0.76 - 0.57 * t) * vh;                 // 作品串中心：76% → 19% 畫面高
-      band.style.transform = `translateY(${(yc - band.offsetHeight / 2).toFixed(1)}px)`;
-      const mid = Math.floor((n - 1) / 2);
-      raw = mid + c((t - 0.1) / 0.85) * (n - 1 - mid);
+      const cw0 = band.clientWidth;
+      const yc = 0.34 * vh;                                // 作品串中心固定在舞台偏上
+      band.style.transform = `translate(${(-out * 0.3 * cw0).toFixed(1)}px,${(yc - band.offsetHeight / 2 + out * 0.08 * vh).toFixed(1)}px)`;
+      raw = (n + 0.6) - c((t - 0.04) / 0.62) * (n + 0.6 + 1.6);   // 從右上外側進場 → 走出左下
     } else {
-      if (hb) { hb.style.webkitMaskImage = ""; hb.style.maskImage = ""; }
+      if (hb) { hb.style.webkitMaskImage = ""; hb.style.maskImage = ""; hb.style.opacity = ""; }
       if (band) { band.style.opacity = ""; band.style.transform = ""; band.style.pointerEvents = ""; }
       raw = Math.min(1, Math.max(0, (p - 0.12) / 0.76)) * (n - 1);
     }
     /* 讓焦點停在一張上，只在兩張之間的一小段快速換過去 */
-    const k = Math.min(n - 1, Math.floor(raw));
+    const k = Math.floor(raw);
     const u = Math.min(1, Math.max(0, (raw - k - 0.3) / 0.4));
-    render(Math.min(n - 1, k + u * u * (3 - 2 * u)));
+    render(k + u * u * (3 - 2 * u));
   }
   const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
 
