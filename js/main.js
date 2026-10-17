@@ -149,8 +149,8 @@ function initPressure() {
 
     const natural = title.getBoundingClientRect().height || size;
     let target  = SITE.pressureHeight || 0;
-    /* 桌機：大字高度跟著視窗高度走，畫面越高字越高，不會顯得扁 */
-    if (target > 0 && !matchMedia("(max-width: 1000px)").matches) target = Math.max(target, Math.round(innerHeight * 0.72));
+    /* 大字高度跟著視窗高度走，讓第一屏就看得到下方排好的作品串 */
+    if (target > 0) target = Math.round(innerHeight * (matchMedia("(max-width: 1000px)").matches ? 0.5 : 0.52));
     if (target > 0) {
       title.style.transform = `scaleY(${(target / natural).toFixed(4)})`;
       host.style.height = target + "px";
@@ -271,7 +271,7 @@ function buildHeroCollage() {
     const aCalc = (need - nat) / Math.max(0.2, unit - 2 / Math.max(1, n - 1));
     A = Math.max(0, Math.min(aCalc, (W - iw - cw * 0.2) / 2 / cw)) * cw;
     span = W - iw;
-    const pad = narrowNow ? 0 : ih * (scMax - 1) / 2 + 12;           // 焦點放大後會超出的上下空間
+    const pad = ih * (scMax - 1) / 2 + 12;           // 焦點放大後會超出的上下空間
     box.style.height = (rise + ih) + "px";
     box.style.margin = pad + "px 0";
     TR.cw = cw; TR.iw = iw; TR.ih = ih;
@@ -290,9 +290,8 @@ function buildHeroCollage() {
      大小只看離畫面正中間幾格，中間永遠最大。φ＝目前在畫面正中間的位置（以作品順序計） */
   const TR = { cw: 0, iw: 0, ih: 0 };
   const FALLB = 1.0, STEP = 0.46;
-  const trainFrom = () => -3.0;
-  const trainTo = () => n + 2.0;
-  const scAt = d => SC_MIN + (scMax - SC_MIN) / (1 + Math.pow(d / FALLB, 2));
+  const TRAIN0 = 2.2, TRAIN1 = 8 + 2.5;
+    const scAt = d => SC_MIN + (scMax - SC_MIN) / (1 + Math.pow(d / FALLB, 2));
   function renderTrain(phi) {
     /* k＝由左到右的順序；index 越大越靠左下，所以 k = n-1-index */
     const K0 = -6, K1 = n + 5;
@@ -340,52 +339,14 @@ function buildHeroCollage() {
     /* 進度：作品串剛從畫面下緣冒出＝0，離開畫面上緣＝1；焦點由最左走到最右 */
     const p = Math.min(1, Math.max(0, (vh - r.top) / (vh + r.height)));
     /* 電腦版：焦點走完整段；手機版：提早在作品串到達畫面上方、主標接上來時剛好走完 */
-    const band = document.getElementById("streamBand");
-    const hb = document.querySelector(".pressure-band");
-    const intro = document.getElementById("intro");
-    let raw, trainQ = null;
-    if (narrowNow && intro && band) {
-      /* 手機：釘住的舞台。t＝0→1：HELLO 淡出，作品串斜向往上浮現並走完一輪 */
-      const ir = intro.getBoundingClientRect();
-      const extra = Math.max(1, ir.height - intro.firstElementChild.offsetHeight);
-      const t = Math.min(1, Math.max(0, -ir.top / extra));
-      const c = (x) => Math.min(1, Math.max(0, x));
-      /* HELLO 淡出；作品串由右上角往左下角噴射：小 → 中間最大 → 小，
-         走完後整串往左下滑出並淡掉，視覺設計的文字再接上來 */
-      hb.style.webkitMaskImage = ""; hb.style.maskImage = "";
-      hb.style.opacity = String(1 - c(t / 0.35));
-      /* 文字稍微加速往上補位：到終點時剛好貼在選單下方，中間不留空 */
-      const hero = document.querySelector(".hero");
-      const stageH = intro.firstElementChild.offsetHeight;
-      const navB = (document.querySelector(".nav") || { offsetHeight: 74 }).offsetHeight;
-      const lift = Math.max(0, stageH - extra - (navB + 30));    // 到終點時文字剛好貼在選單下方
-      if (hero) {
-        const lf = lift * c((t - 0.3) / 0.7);
-        hero.style.transform = `translateY(${(-lf).toFixed(1)}px)`;
-        hero.style.marginBottom = (-lf).toFixed(1) + "px";   // 下面的區塊跟著一起補上，不會被疊到
-      }
-      const out = c((t - 0.74) / 0.2);
-      const op = Math.min(c((t - 0.1) / 0.08), 1 - c((t - 0.74) / 0.2));
-      const cw0 = band.clientWidth;
-      /* 作品串跟著文字一路往上走：永遠停在文字上方，不留大空白 */
-      const heroTop = hero ? hero.getBoundingClientRect().top : vh;
-      const yc = Math.min(0.38 * vh, heroTop - 0.45 * band.offsetHeight - 16);
-      band.style.transform = `translate(${(-out * 0.2 * cw0).toFixed(1)}px,${(yc - band.offsetHeight / 2).toFixed(1)}px)`;
-      /* 桌機：作品串快碰到選單時先淡掉，不被選單切到 */
-      let opF = op;
-      if (!matchMedia("(max-width: 1000px)").matches) {
-        const room = (yc - 0.34 * band.offsetHeight) - navB;
-        opF = Math.min(op, c((room + 20) / 70));
-      }
-      band.style.opacity = String(opF);
-      band.style.pointerEvents = opF > 0.3 ? "" : "none";
-      trainQ = trainFrom() + c((t - 0.1) / 0.8) * (trainTo() - trainFrom());
-    } else {
-      if (hb) { hb.style.webkitMaskImage = ""; hb.style.maskImage = ""; hb.style.opacity = ""; hb.style.transform = ""; { const h2 = document.querySelector(".hero"); if (h2) { h2.style.transform = ""; h2.style.marginBottom = ""; } } }
-      if (band) { band.style.opacity = ""; band.style.transform = ""; band.style.pointerEvents = ""; }
-      raw = Math.min(1, Math.max(0, (p - 0.12) / 0.76)) * (n - 1);
-    }
-    /* 讓焦點停在一張上，只在兩張之間的一小段快速換過去 */
+    /* 作品串排在 HELLO 下方、文字上方，一開始就是排好的；
+       往下滑時整串沿斜線往左下走，中間那張永遠最大，文字自然跟在後面 */
+    const r2 = box.getBoundingClientRect();
+    const yc = r2.top + r2.height / 2;
+    const yc0 = yc + window.scrollY;
+    const tt = Math.min(1, Math.max(0, (yc0 - yc) / Math.max(1, yc0 + r2.height * 0.2)));
+    const trainQ = TRAIN0 + tt * (TRAIN1 - TRAIN0);
+    let raw = 0;
     if (trainQ !== null) { renderTrain(trainQ); return; }
     const k = Math.floor(raw);
     const u = Math.min(1, Math.max(0, (raw - k - 0.3) / 0.4));
@@ -396,7 +357,7 @@ function buildHeroCollage() {
   layout();
   if (reduce) {
     const still = () => narrowNow
-      ? renderTrain((n - 1) / 2)
+      ? renderTrain(TRAIN0)
       : render(Math.floor((n - 1) / 2));            // 不動：停在中間那張放大
     still();
     addEventListener("resize", () => { layout(); still(); }, { passive: true });

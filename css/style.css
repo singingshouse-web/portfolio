@@ -953,21 +953,11 @@ a.bento-tile { text-decoration: none; color: inherit; }
 .hc-item img { display: block; width: 100%; height: auto; border-radius: 3px; }
 @keyframes hc-in { from { opacity: 0; } to { opacity: 1; } }
 html { overflow-anchor: none; }
-/* 桌機、手機共用：HELLO 與作品串共用一個釘住的舞台，往下滑時 HELLO 淡出、作品串斜向往上出現，
-   約 1.4 個畫面長；跑完後視覺設計的文字才往上接上來 */
-.intro::after { content: ""; display: block; height: 46vh; height: 46svh; }
-.intro-stage { position: sticky; top: 0; }
-.stream-band { position: absolute; left: 0; right: 0; top: 0; padding: 0; opacity: 0;
-               transform: translateY(70vh); z-index: 2;
-               -webkit-mask-image: linear-gradient(to right, transparent 0, #000 16%, #000 84%, transparent 100%);
-                       mask-image: linear-gradient(to right, transparent 0, #000 16%, #000 84%, transparent 100%); will-change: transform, opacity; }
-.hero { margin-top: -46vh; margin-top: -46svh; position: relative; z-index: 3; }
+/* HELLO 下方就是排好的作品串，文字在它下面 */
+.stream-band { -webkit-mask-image: linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%);
+                       mask-image: linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%); padding: 8px 0 0; }
 @media (prefers-reduced-motion: reduce) {
   .hc-item { animation: none; }
-  .intro::after { display: none; }
-  .intro-stage { position: static; height: auto; }
-  .stream-band { position: relative; top: auto; opacity: 1; transform: none; }
-  .hero { margin-top: 0; }
 }
 
 /* ---------- 視差：圖片比容器慢一點，產生深度 ---------- */
