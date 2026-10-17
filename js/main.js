@@ -345,7 +345,7 @@ function buildHeroCollage() {
       band.style.opacity = String(op);
       band.style.pointerEvents = op > 0.3 ? "" : "none";
       const cw0 = band.clientWidth;
-      const yc = 0.27 * vh;                                // 作品串中心固定在舞台偏上
+      const yc = 0.38 * vh;                                // 作品串中心固定在舞台偏上
       band.style.transform = `translate(${(-out * 0.3 * cw0).toFixed(1)}px,${(yc - band.offsetHeight / 2 + out * 0.08 * vh).toFixed(1)}px)`;
       trainQ = c((t - 0.12) / 0.56) * trainEnd();
     } else {
