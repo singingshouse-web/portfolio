@@ -249,18 +249,19 @@ function buildHeroCollage() {
   /* 排版：左邊最低、右邊最高；圖做小、間距拉開。
      A＝焦點旁邊的圖要往外讓開的距離，由焦點放大後的寬度反推，讓背後不重疊 */
   function layout() {
-    const narrow = matchMedia("(max-width: 1000px)").matches;
+    const small = matchMedia("(max-width: 1000px)").matches;
+    const narrow = true;                              // 桌機、手機都用釘住的舞台
     narrowNow = narrow;
     items = all;                                     // 手機也用全部 8 張，作品串走得更長
     all.forEach(el => { el.style.display = items.includes(el) ? "" : "none"; });
     n = items.length;
-    scMax = narrow ? 1.9 : 2.1;
+    scMax = small ? 1.9 : 2.0;
     const cw = box.clientWidth;
-    const iw = cw * (narrow ? 0.22 : 0.14);
+    const iw = cw * (small ? 0.22 : 0.11);
     const ih = iw * 0.75;
-    const off = narrow ? cw * 0.12 : 0;                // 手機：斜線兩端延伸到畫面外，靠邊緣遮罩淡入淡出
+    const off = cw * 0.12;                // 手機：斜線兩端延伸到畫面外，靠邊緣遮罩淡入淡出
     const W = cw + 2 * off;
-    rise = narrow ? window.innerHeight * 0.16 : ih * 1.4;               // 左右兩端的高低差（手機壓低，縮短版面）
+    rise = window.innerHeight * (small ? 0.16 : 0.12);               // 左右兩端的高低差（手機壓低，縮短版面）
     const unit = 1 - Math.exp(-Math.pow(1 / YIELD, 2));          // 相鄰一張時的讓開比例
     const scN = SC_MIN + (scMax - SC_MIN) / (1 + Math.pow(1 / FALL, 2));   // 緊鄰焦點那張的大小
     const need = (iw * scMax / 2 + iw * scN / 2) / cw + GAP;     // 焦點與鄰圖中心至少相距
@@ -334,7 +335,9 @@ function buildHeroCollage() {
       hb.style.opacity = String(1 - c(t / 0.35));
       /* 文字稍微加速往上補位：到終點時剛好貼在選單下方，中間不留空 */
       const hero = document.querySelector(".hero");
-      const lift = 0.13 * vh;
+      const stageH = intro.firstElementChild.offsetHeight;
+      const navB = (document.querySelector(".nav") || { offsetHeight: 74 }).offsetHeight;
+      const lift = Math.max(0, stageH - extra - (navB + 30));    // 到終點時文字剛好貼在選單下方
       if (hero) {
         const lf = lift * c((t - 0.3) / 0.7);
         hero.style.transform = `translateY(${(-lf).toFixed(1)}px)`;
@@ -342,13 +345,19 @@ function buildHeroCollage() {
       }
       const out = c((t - 0.74) / 0.2);
       const op = Math.min(c((t - 0.1) / 0.08), 1 - c((t - 0.74) / 0.2));
-      band.style.opacity = String(op);
-      band.style.pointerEvents = op > 0.3 ? "" : "none";
       const cw0 = band.clientWidth;
       /* 作品串跟著文字一路往上走：永遠停在文字上方，不留大空白 */
       const heroTop = hero ? hero.getBoundingClientRect().top : vh;
       const yc = Math.min(0.38 * vh, heroTop - 0.45 * band.offsetHeight - 16);
       band.style.transform = `translate(${(-out * 0.2 * cw0).toFixed(1)}px,${(yc - band.offsetHeight / 2).toFixed(1)}px)`;
+      /* 桌機：作品串快碰到選單時先淡掉，不被選單切到 */
+      let opF = op;
+      if (!matchMedia("(max-width: 1000px)").matches) {
+        const room = (yc - 0.5 * band.offsetHeight) - navB;
+        opF = Math.min(op, c((room + 40) / 100));
+      }
+      band.style.opacity = String(opF);
+      band.style.pointerEvents = opF > 0.3 ? "" : "none";
       trainQ = c((t - 0.1) / 0.8) * trainEnd();
     } else {
       if (hb) { hb.style.webkitMaskImage = ""; hb.style.maskImage = ""; hb.style.opacity = ""; hb.style.transform = ""; { const h2 = document.querySelector(".hero"); if (h2) { h2.style.transform = ""; h2.style.marginBottom = ""; } } }
