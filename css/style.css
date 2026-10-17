@@ -959,7 +959,9 @@ a.bento-tile { text-decoration: none; color: inherit; }
   .intro { height: 167vh; height: 167svh; }
   .intro-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
   .stream-band { position: absolute; left: 0; right: 0; top: 0; padding: 0; opacity: 0;
-                 transform: translateY(70vh); z-index: 2; will-change: transform, opacity; }
+                 transform: translateY(70vh); z-index: 2;
+                 -webkit-mask-image: linear-gradient(to right, transparent 0, #000 16%, #000 84%, transparent 100%);
+                         mask-image: linear-gradient(to right, transparent 0, #000 16%, #000 84%, transparent 100%); will-change: transform, opacity; }
   .hero { margin-top: -67vh; margin-top: -67svh; position: relative; z-index: 3; }
 }
 @media (prefers-reduced-motion: reduce) {

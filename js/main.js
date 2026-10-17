@@ -258,21 +258,23 @@ function buildHeroCollage() {
     const cw = box.clientWidth;
     const iw = cw * (narrow ? 0.22 : 0.14);
     const ih = iw * 0.75;
-    rise = narrow ? window.innerHeight * 0.26 : ih * 1.4;               // 左右兩端的高低差（手機壓低，縮短版面）
+    const off = narrow ? cw * 0.12 : 0;                // 手機：斜線兩端延伸到畫面外，靠邊緣遮罩淡入淡出
+    const W = cw + 2 * off;
+    rise = narrow ? window.innerHeight * 0.16 : ih * 1.4;               // 左右兩端的高低差（手機壓低，縮短版面）
     const unit = 1 - Math.exp(-Math.pow(1 / YIELD, 2));          // 相鄰一張時的讓開比例
     const scN = SC_MIN + (scMax - SC_MIN) / (1 + Math.pow(1 / FALL, 2));   // 緊鄰焦點那張的大小
     const need = (iw * scMax / 2 + iw * scN / 2) / cw + GAP;     // 焦點與鄰圖中心至少相距
-    const nat = (cw - iw) / cw / Math.max(1, n - 1);
+    const nat = (W - iw) / cw / Math.max(1, n - 1);
     const aCalc = (need - nat) / Math.max(0.2, unit - 2 / Math.max(1, n - 1));
-    A = Math.max(0, Math.min(aCalc, (cw - iw - cw * 0.2) / 2 / cw)) * cw;
-    span = cw - iw;
+    A = Math.max(0, Math.min(aCalc, (W - iw - cw * 0.2) / 2 / cw)) * cw;
+    span = W - iw;
     const pad = narrowNow ? 0 : ih * (scMax - 1) / 2 + 12;           // 焦點放大後會超出的上下空間
     box.style.height = (rise + ih) + "px";
     box.style.margin = pad + "px 0";
     items.forEach((el, i) => {
       const t = n > 1 ? i / (n - 1) : 0.5;           // 0＝最左、1＝最右
       el.style.width = iw + "px";
-      el.style.left = (A + (cw - iw - 2 * A) * t) + "px";
+      el.style.left = (-off + A + (W - iw - 2 * A) * t) + "px";
       el.style.top = (rise * (1 - t)) + "px";
     });
   }
