@@ -311,7 +311,15 @@ function buildHeroCollage() {
       /* HELLO 淡出；作品串由右上角往左下角噴射：小 → 中間最大 → 小，
          走完後整串往左下滑出並淡掉，視覺設計的文字再接上來 */
       hb.style.webkitMaskImage = ""; hb.style.maskImage = "";
-      hb.style.opacity = String(1 - c(t / 0.35));
+      hb.style.opacity = "";
+      hb.style.transform = `translateY(${(-t * extra * 1.05).toFixed(1)}px)`;   // HELLO 邊消失邊往上走，不去撞文字
+      /* HELLO 逐字消失：! 先走，H 最後才消失 */
+      const lets = hb.querySelectorAll(".pressure-title span");
+      const L = lets.length;
+      lets.forEach((sp, k) => {
+        const st = 0.04 + (L - 1 - k) * 0.1;
+        sp.style.opacity = String(1 - c((t - st) / 0.2));
+      });
       const out = c((t - 0.3) / 0.3);
       const op = Math.min(c((t - 0.03) / 0.1), 1 - c((t - 0.3) / 0.3));
       band.style.opacity = String(op);
@@ -321,7 +329,7 @@ function buildHeroCollage() {
       band.style.transform = `translate(${(-out * 0.3 * cw0).toFixed(1)}px,${(yc - band.offsetHeight / 2 + out * 0.08 * vh).toFixed(1)}px)`;
       raw = (n + 0.6) - c((t - 0.04) / 0.5) * (n + 0.6 + 1.6);   // 從右上外側進場 → 走出左下
     } else {
-      if (hb) { hb.style.webkitMaskImage = ""; hb.style.maskImage = ""; hb.style.opacity = ""; }
+      if (hb) { hb.style.webkitMaskImage = ""; hb.style.maskImage = ""; hb.style.opacity = ""; hb.style.transform = ""; hb.querySelectorAll(".pressure-title span").forEach(sp => { sp.style.opacity = ""; }); }
       if (band) { band.style.opacity = ""; band.style.transform = ""; band.style.pointerEvents = ""; }
       raw = Math.min(1, Math.max(0, (p - 0.12) / 0.76)) * (n - 1);
     }
