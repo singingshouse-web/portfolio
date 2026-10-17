@@ -99,6 +99,7 @@ function buildHome() {
 
   buildWork();
   buildHeroTags();
+  buildHeroCollage();
 
   initPressure();
   initReveal();
@@ -219,6 +220,46 @@ function initPressure() {
 }
 
 /* Hero 上排：與作品分類使用同一套名稱，點擊跳到該分類 */
+/* Hero 右側作品拼貼：卡片圖 + 捲動時位移與縮放（只用 transform，單一 rAF） */
+function buildHeroCollage() {
+  const box = $("#heroCollage");
+  const list = SITE.heroCollage;
+  if (!box || !list || !list.length) return;
+
+  box.innerHTML = list.map((it, i) => {
+    const b = BRANDS.find(x => x.id === it.id);
+    if (!b) return "";
+    return `<a class="hc-item" href="./brand.html?id=${esc(b.id)}&from=${encodeURIComponent(b.category)}"
+      style="left:${it.x}%;top:${it.y}%;width:${it.w}%;z-index:${i + 1};--d:${i * 120}ms"
+      data-speed="${it.speed || 0}" data-scale="${it.scale || 1}" aria-label="${esc(b.name)}">
+      <img src="${esc(it.img)}" alt="${esc(b.name)} 案例縮圖" width="1600" height="1200" decoding="async">
+    </a>`;
+  }).join("");
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const items = [...box.querySelectorAll(".hc-item")];
+  const hero = box.closest(".hero");
+  let ticking = false;
+  const update = () => {
+    ticking = false;
+    const end = Math.max(1, hero.offsetTop + hero.offsetHeight - window.innerHeight * 0.2);
+    const t = Math.min(1, Math.max(0, window.scrollY / end));
+    const e = t * t * (3 - 2 * t);                       // smoothstep，起收較柔
+    items.forEach(el => {
+      const sp = parseFloat(el.dataset.speed) || 0;
+      const sc = parseFloat(el.dataset.scale) || 1;
+      const y = -sp * e;
+      const s = 1 + (sc - 1) * e;
+      el.style.transform = `translate3d(0, ${y.toFixed(1)}px, 0) scale(${s.toFixed(3)})`;
+    });
+  };
+  const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+  addEventListener("scroll", onScroll, { passive: true });
+  addEventListener("resize", onScroll, { passive: true });
+  update();
+}
+
 function buildHeroTags() {
   const box = $("#heroTags");
   if (!box || !SITE.categories) return;

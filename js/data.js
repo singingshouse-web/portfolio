@@ -15,6 +15,17 @@ const SITE = {
   /* 圖片捲動視差（false 則關閉）。手機與「減少動態效果」自動停用。 */
   parallax: true,
 
+  /* 首頁 Hero 右側的作品拼貼：捲動時各張以不同速度位移與縮放。
+     id 對應 BRANDS 的案例，圖用該案卡片圖。
+     x / y / w 是在拼貼區內的位置與寬度（%）；speed 是捲動位移量（px，負值＝往下沉）；
+     scale 是捲完 Hero 時的縮放比（>1 放大、<1 縮小）。 */
+  heroCollage: [
+    { id: "cf-embrace", img: "./images/cf-embrace_card.webp", x: 24, y: 0,  w: 58, speed: 120, scale: 1.12 },
+    { id: "fm-goods-b", img: "./images/fm-goods-b_card.webp", x: 0,  y: 34, w: 40, speed: 220, scale: 0.9 },
+    { id: "megabank",   img: "./images/megabank_card.webp",   x: 60, y: 42, w: 38, speed: 70,  scale: 1.18 },
+    { id: "cosmoship",  img: "./images/cosmoship_card.webp",  x: 30, y: 70, w: 34, speed: 170, scale: 0.86 },
+  ],
+
   /* 作品區版型："bento" 類別入口格 ／ "grid" 三欄列表 */
   workLayout: "bento",
 
