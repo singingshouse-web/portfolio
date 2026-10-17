@@ -257,11 +257,11 @@ function buildHeroCollage() {
     n = items.length;
     scMax = small ? 1.9 : 2.0;
     const cw = box.clientWidth;
-    const iw = cw * (small ? 0.22 : 0.11);
+    const iw = cw * (small ? 0.22 : 0.12);
     const ih = iw * 0.75;
     const off = cw * 0.12;                // 手機：斜線兩端延伸到畫面外，靠邊緣遮罩淡入淡出
     const W = cw + 2 * off;
-    rise = window.innerHeight * (small ? 0.16 : 0.12);               // 左右兩端的高低差（手機壓低，縮短版面）
+    rise = window.innerHeight * (small ? 0.16 : 0.19);               // 左右兩端的高低差（手機壓低，縮短版面）
     const unit = 1 - Math.exp(-Math.pow(1 / YIELD, 2));          // 相鄰一張時的讓開比例
     const scN = SC_MIN + (scMax - SC_MIN) / (1 + Math.pow(1 / FALL, 2));   // 緊鄰焦點那張的大小
     const need = (iw * scMax / 2 + iw * scN / 2) / cw + GAP;     // 焦點與鄰圖中心至少相距
@@ -353,8 +353,8 @@ function buildHeroCollage() {
       /* 桌機：作品串快碰到選單時先淡掉，不被選單切到 */
       let opF = op;
       if (!matchMedia("(max-width: 1000px)").matches) {
-        const room = (yc - 0.5 * band.offsetHeight) - navB;
-        opF = Math.min(op, c((room + 40) / 100));
+        const room = (yc - 0.34 * band.offsetHeight) - navB;
+        opF = Math.min(op, c((room + 20) / 70));
       }
       band.style.opacity = String(opF);
       band.style.pointerEvents = opF > 0.3 ? "" : "none";
