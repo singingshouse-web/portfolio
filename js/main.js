@@ -263,7 +263,7 @@ function buildHeroCollage() {
     const ih = iw * 0.75;
     const off = cw * 0.12;                // 手機：斜線兩端延伸到畫面外，靠邊緣遮罩淡入淡出
     const W = cw + 2 * off;
-    rise = window.innerHeight * (small ? 0.16 : 0.19);               // 左右兩端的高低差（手機壓低，縮短版面）
+    rise = window.innerHeight * (small ? 0.26 : 0.3);               // 左右兩端的高低差（手機壓低，縮短版面）
     const unit = 1 - Math.exp(-Math.pow(1 / YIELD, 2));          // 相鄰一張時的讓開比例
     const scN = SC_MIN + (scMax - SC_MIN) / (1 + Math.pow(1 / FALL, 2));   // 緊鄰焦點那張的大小
     const need = (iw * scMax / 2 + iw * scN / 2) / cw + GAP;     // 焦點與鄰圖中心至少相距
@@ -286,19 +286,38 @@ function buildHeroCollage() {
     });
   }
 
-  /* 手機：輸送帶。每張沿著右上→左下的斜線走，大小只看它離畫面正中間多遠：
-     中間永遠最大、兩側小；右上角進場時最小，往左下離場時也縮到最小 */
+  /* 輸送帶（桌機、手機共用）：作品一張緊貼一張，水平邊對邊，沿右上→左下排成階梯；
+     大小只看離畫面正中間幾格，中間永遠最大。φ＝目前在畫面正中間的位置（以作品順序計） */
   const TR = { cw: 0, iw: 0, ih: 0 };
-  const DELTA = 0.27, UIN = 1.12, UW = 0.2;
-  const trainEnd = () => (UIN + 0.12) + (n - 1) * DELTA;
-  function renderTrain(q) {
+  const FALLB = 1.0, STEP = 0.46;
+  const trainFrom = () => -3.0;
+  const trainTo = () => n + 2.0;
+  const scAt = d => SC_MIN + (scMax - SC_MIN) / (1 + Math.pow(d / FALLB, 2));
+  function renderTrain(phi) {
+    /* k＝由左到右的順序；index 越大越靠左下，所以 k = n-1-index */
+    const K0 = -6, K1 = n + 5;
+    const a = Math.floor(phi), fr = phi - a;
+    const X = {}, Y = {};
+    X[a] = 0; Y[a] = 0;
+    const wOf = k => TR.iw * scAt(k - phi), hOf = k => wOf(k) * 0.75;
+    for (let k = a + 1; k <= K1; k++) {
+      X[k] = X[k - 1] + (wOf(k - 1) + wOf(k)) / 2;
+      Y[k] = Y[k - 1] + STEP * (hOf(k - 1) + hOf(k)) / 2;
+    }
+    for (let k = a - 1; k >= K0; k--) {
+      X[k] = X[k + 1] - (wOf(k + 1) + wOf(k)) / 2;
+      Y[k] = Y[k + 1] - STEP * (hOf(k + 1) + hOf(k)) / 2;
+    }
+    const xc = X[a] + fr * (X[a + 1] - X[a]);
+    const yc = Y[a] + fr * (Y[a + 1] - Y[a]);
+    const midY = (rise + TR.ih) / 2;
     items.forEach((el, j) => {
-      const u = UIN + (n - 1 - j) * DELTA - q;          // 1.12＝右上外側，-0.12＝左下外側
-      const g = 1 / (1 + Math.pow((u - 0.5) / UW, 2));
-      const sc = SC_MIN + (scMax - SC_MIN) * g;
-      const x = TR.cw * u, y = rise * (1 - u);
-      el.style.transform = `translate3d(${(x - TR.iw / 2).toFixed(1)}px,${(y - TR.ih / 2 + rise * 0.05).toFixed(1)}px,0) scale(${sc.toFixed(3)})`;
-      el.style.zIndex = String(Math.round(g * 100));
+      const k = n - 1 - j;
+      const sc = scAt(k - phi);
+      const x = TR.cw / 2 + (X[k] - xc);
+      const y = midY - (Y[k] - yc);
+      el.style.transform = `translate3d(${(x - TR.iw / 2).toFixed(1)}px,${(y - TR.ih / 2).toFixed(1)}px,0) scale(${sc.toFixed(3)})`;
+      el.style.zIndex = String(Math.round(sc / scMax * 100));
     });
   }
 
@@ -360,7 +379,7 @@ function buildHeroCollage() {
       }
       band.style.opacity = String(opF);
       band.style.pointerEvents = opF > 0.3 ? "" : "none";
-      trainQ = c((t - 0.1) / 0.8) * trainEnd();
+      trainQ = trainFrom() + c((t - 0.1) / 0.8) * (trainTo() - trainFrom());
     } else {
       if (hb) { hb.style.webkitMaskImage = ""; hb.style.maskImage = ""; hb.style.opacity = ""; hb.style.transform = ""; { const h2 = document.querySelector(".hero"); if (h2) { h2.style.transform = ""; h2.style.marginBottom = ""; } } }
       if (band) { band.style.opacity = ""; band.style.transform = ""; band.style.pointerEvents = ""; }
@@ -377,7 +396,7 @@ function buildHeroCollage() {
   layout();
   if (reduce) {
     const still = () => narrowNow
-      ? renderTrain(UIN - 0.5 + (n - 1 - Math.floor((n - 1) / 2)) * DELTA)
+      ? renderTrain((n - 1) / 2)
       : render(Math.floor((n - 1) / 2));            // 不動：停在中間那張放大
     still();
     addEventListener("resize", () => { layout(); still(); }, { passive: true });
