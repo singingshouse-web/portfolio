@@ -251,7 +251,7 @@ function buildHeroCollage() {
   function layout() {
     const narrow = matchMedia("(max-width: 1000px)").matches;
     narrowNow = narrow;
-    items = all;                                     // 手機也用全部，動態才夠長
+    items = narrow ? all.filter((_, i) => ![4, 5, 6].includes(i)) : all;   // 手機：拿掉第 5、6、7 張，第 4 張直接接第 8 張
     all.forEach(el => { el.style.display = items.includes(el) ? "" : "none"; });
     n = items.length;
     scMax = narrow ? 1.7 : 2.1;
@@ -321,13 +321,13 @@ function buildHeroCollage() {
         hero.style.marginBottom = (-lf).toFixed(1) + "px";   // 下面的區塊跟著一起補上，不會被疊到
       }
       const out = c((t - 0.3) / 0.25);
-      const op = Math.min(c((t - 0.03) / 0.1), 1 - c((t - 0.32) / 0.25));
+      const op = Math.min(c((t - 0.14) / 0.1), 1 - c((t - 0.32) / 0.25));
       band.style.opacity = String(op);
       band.style.pointerEvents = op > 0.3 ? "" : "none";
       const cw0 = band.clientWidth;
       const yc = 0.27 * vh;                                // 作品串中心固定在舞台偏上
       band.style.transform = `translate(${(-out * 0.3 * cw0).toFixed(1)}px,${(yc - band.offsetHeight / 2 + out * 0.08 * vh).toFixed(1)}px)`;
-      raw = (n + 0.6) - c((t - 0.04) / 0.45) * (n + 0.6 + 1.6);   // 從右上外側進場 → 走出左下
+      raw = (n + 0.6) - c((t - 0.14) / 0.42) * (n + 0.6 + 1.6);   // 從右上外側進場 → 走出左下
     } else {
       if (hb) { hb.style.webkitMaskImage = ""; hb.style.maskImage = ""; hb.style.opacity = ""; hb.style.transform = ""; { const h2 = document.querySelector(".hero"); if (h2) { h2.style.transform = ""; h2.style.marginBottom = ""; } } }
       if (band) { band.style.opacity = ""; band.style.transform = ""; band.style.pointerEvents = ""; }
