@@ -306,15 +306,19 @@ function buildHeroCollage() {
       const extra = Math.max(1, ir.height - vh);
       const t = Math.min(1, Math.max(0, -ir.top / extra));
       const c = (x) => Math.min(1, Math.max(0, x));
-      hb.style.opacity = String(1 - c(t / 0.3));
-      const op = c((t - 0.06) / 0.2);
+      /* HELLO 由下往上被擦掉；作品串跟在擦除線後面，一路往上升到選單下方 */
+      const edge = (1 - t) * 0.76 * vh;
+      const mk = `linear-gradient(to bottom,#000 0,#000 ${Math.max(0, edge - 70).toFixed(0)}px,transparent ${Math.max(1, edge).toFixed(0)}px)`;
+      hb.style.webkitMaskImage = mk; hb.style.maskImage = mk;
+      const op = c((t - 0.02) / 0.12);
       band.style.opacity = String(op);
       band.style.pointerEvents = op > 0.3 ? "" : "none";
-      band.style.transform = `translateY(calc(-50% + ${((1 - c(t / 0.9)) * vh * 0.2).toFixed(1)}px))`;
+      const yc = (0.76 - 0.57 * t) * vh;                 // 作品串中心：76% → 19% 畫面高
+      band.style.transform = `translateY(${(yc - band.offsetHeight / 2).toFixed(1)}px)`;
       const mid = Math.floor((n - 1) / 2);
       raw = mid + c((t - 0.1) / 0.85) * (n - 1 - mid);
     } else {
-      if (hb) hb.style.opacity = "";
+      if (hb) { hb.style.webkitMaskImage = ""; hb.style.maskImage = ""; }
       if (band) { band.style.opacity = ""; band.style.transform = ""; band.style.pointerEvents = ""; }
       raw = Math.min(1, Math.max(0, (p - 0.12) / 0.76)) * (n - 1);
     }
