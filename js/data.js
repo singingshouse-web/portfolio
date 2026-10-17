@@ -18,15 +18,21 @@ const SITE = {
   /* 首頁 HELLO 與主標之間的作品串：圖片排成一條橫跨頁面、由左下往右上的斜線，
      捲動時先聚在中間再往左右展開，靠近畫面中心的放大、離開的縮小。
      順序＝由左到右；id 對應 BRANDS 的案例，圖用該案卡片圖。
-     想增減張數，加減一行即可（桌機建議 6–10 張，手機只用前 5 張）。 */
+     想增減張數，加減一行即可（桌機、手機都用全部）。 */
   heroCollage: [
-    { id: "cf-embrace", img: "./images/cf-embrace_p1_01.webp" },
-    { id: "megabank",   img: "./images/megabank_p1_01.webp" },
-    { id: "fm-goods-b", img: "./images/fm-goods-b_p1_01.webp" },
-    { id: "cosmoship",  img: "./images/cosmoship_p1_01.webp" },
-    { id: "fm-plass",   img: "./images/fm-plass_p1_01.webp" },
-    { id: "ikea",       img: "./images/ikea_p1_01.webp" },
-    { id: "yennext",    img: "./images/yennext_p1_01.webp" },
+    { id: "mx-web", img: "./images/MX_p1_01.webp" },
+    { id: "lp", img: "./images/lp_p2_01.webp" },
+    { id: "ikea", img: "./images/ikea_p1_02.webp" },
+    { id: "pimq", img: "./images/pimq_p1_01.webp" },
+    { id: "cf-embrace", img: "./images/cf-embrace_p2_01.webp" },
+    { id: "singsingshouse", img: "./images/singsingshouse_p1_05.webp" },
+    { id: "yennext", img: "./images/yennext_p1_01.webp" },
+    { id: "fm-dayplus", img: "./images/fm-dayplus_p1_07.webp" },
+    { id: "fm-goods-b", img: "./images/fm-goods-b_p1_05.webp" },
+    { id: "fm-plass", img: "./images/fm-plass_p1_05.webp" },
+    { id: "cosmoship", img: "./images/cosmoship_p1_01.webp" },
+    { id: "starbucks", img: "./images/starbucks_p1_01.webp" },
+    { id: "plass-coldbrew", img: "./images/plass-coldbrew_p1_03.webp" },
   ],
 
   /* 作品區版型："bento" 類別入口格 ／ "grid" 三欄列表 */
