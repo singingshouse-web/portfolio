@@ -220,7 +220,9 @@ function initPressure() {
 }
 
 /* Hero 上排：與作品分類使用同一套名稱，點擊跳到該分類 */
-/* Hero 右側作品拼貼：卡片圖 + 捲動時位移與縮放（只用 transform，單一 rAF） */
+/* HELLO 與主標之間的作品串：圖片排成連續的波浪，
+   靠近畫面中心的放大、離開的縮小（只用 transform，單一 rAF）。
+   電腦版放在 Hero 右側往下延伸；手機版在 HELLO 與主標之間。 */
 function buildHeroCollage() {
   const box = $("#heroCollage");
   const list = SITE.heroCollage;
@@ -230,34 +232,59 @@ function buildHeroCollage() {
     const b = BRANDS.find(x => x.id === it.id);
     if (!b) return "";
     return `<a class="hc-item" href="./brand.html?id=${esc(b.id)}&from=${encodeURIComponent(b.category)}"
-      style="left:${it.x}%;top:${it.y}%;width:${it.w}%;z-index:${i + 1};--d:${i * 120}ms"
-      data-speed="${it.speed || 0}" data-scale="${it.scale || 1}" aria-label="${esc(b.name)}">
+      style="--d:${i * 90}ms" aria-label="${esc(b.name)}">
       <img src="${esc(it.img)}" alt="${esc(b.name)} 案例縮圖" width="1600" height="1200" decoding="async">
     </a>`;
   }).join("");
 
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
   const items = [...box.querySelectorAll(".hc-item")];
-  const hero = box.closest(".hero");
-  let ticking = false;
-  const update = () => {
-    ticking = false;
-    const end = Math.max(1, hero.offsetTop + hero.offsetHeight - window.innerHeight * 0.2);
-    const t = Math.min(1, Math.max(0, window.scrollY / end));
-    const e = t * t * (3 - 2 * t);                       // smoothstep，起收較柔
-    items.forEach(el => {
-      const sp = parseFloat(el.dataset.speed) || 0;
-      const sc = parseFloat(el.dataset.scale) || 1;
-      const y = -sp * e;
-      const s = 1 + (sc - 1) * e;
-      el.style.transform = `translate3d(0, ${y.toFixed(1)}px, 0) scale(${s.toFixed(3)})`;
+  const n = items.length;
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const SC_MIN = 0.6, SC_MAX = 1.22;       // 離中心最遠／最近時的縮放
+  let base = [], ticking = false;
+
+  /* 排版：沿垂直方向依序排開、彼此重疊；左右位置走一條柔和的波浪 */
+  function layout() {
+    const narrow = matchMedia("(max-width: 1000px)").matches;
+    const cw = box.clientWidth;
+    const iw = cw * (narrow ? 0.56 : 0.5);
+    const ih = iw * 0.75;
+    const pitch = ih * (narrow ? 0.6 : 0.5);
+    box.style.height = (pitch * (n - 1) + ih) + "px";
+    base = items.map((el, i) => {
+      const x = (cw - iw) * (0.5 + 0.5 * Math.sin(i * 1.05));
+      const y = pitch * i;
+      el.style.width = iw + "px";
+      el.style.left = x + "px";
+      el.style.top = y + "px";
+      return y + ih / 2;                    // 圖片中心（容器座標）
     });
-  };
+  }
+
+  function update() {
+    ticking = false;
+    const vh = window.innerHeight;
+    const top = box.getBoundingClientRect().top;
+    items.forEach((el, i) => {
+      const d = Math.abs(top + base[i] - vh * 0.5) / (vh * 0.5);
+      const w = 1 - Math.min(1, d);                    // 1＝在畫面中心
+      const e = w * w * (3 - 2 * w);
+      const s = SC_MIN + (SC_MAX - SC_MIN) * e;
+      el.style.transform = `scale(${s.toFixed(3)})`;
+      el.style.zIndex = String(Math.round(e * 100));
+    });
+  }
   const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
-  addEventListener("scroll", onScroll, { passive: true });
-  addEventListener("resize", onScroll, { passive: true });
+
+  layout();
+  if (reduce) {
+    items.forEach(el => { el.style.transform = "scale(.9)"; });
+    addEventListener("resize", layout, { passive: true });
+    return;
+  }
   update();
+  addEventListener("scroll", onScroll, { passive: true });
+  addEventListener("resize", () => { layout(); onScroll(); }, { passive: true });
 }
 
 function buildHeroTags() {

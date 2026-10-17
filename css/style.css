@@ -938,37 +938,31 @@ a.bento-tile { text-decoration: none; color: inherit; }
   will-change: font-variation-settings;
 }
 
-/* ---------- Hero 作品拼貼 ---------- */
-.hero .wrap { position: relative; }
+/* ---------- HELLO 與主標之間的作品串 ---------- */
+/* 電腦版：不佔高度，作品串從 HELLO 下緣沿右側往下延伸；手機版：正常排在兩者之間 */
+.stream-band { position: relative; height: 0; }
+.stream-band .wrap { position: relative; }
 .hero-collage {
   position: absolute;
   right: var(--gutter);
-  top: -8px;
-  width: 40%;
-  aspect-ratio: 1 / 1.12;
-  pointer-events: none;
+  top: 40px;
+  width: 38%;
 }
 .hc-item {
   position: absolute;
   display: block;
-  pointer-events: auto;
   border-radius: 3px;
   box-shadow: 0 18px 40px -22px rgba(0,0,0,.35);
   will-change: transform;
-  animation: hc-in .9s cubic-bezier(.2,.7,.2,1) var(--d, 0ms) both;
+  animation: hc-in .9s ease var(--d, 0ms) both;
 }
-.hc-item img { display: block; width: 100%; height: auto; border-radius: 3px; transition: filter .3s; }
-.hc-item:hover img { filter: brightness(1.04); }
-@keyframes hc-in { from { opacity: 0; translate: 0 26px; } to { opacity: 1; translate: 0 0; } }
+.hc-item img { display: block; width: 100%; height: auto; border-radius: 3px; }
+@keyframes hc-in { from { opacity: 0; } to { opacity: 1; } }
 .hero p { max-width: min(40em, 54%); }
 @media (max-width: 1000px) {
+  .stream-band { height: auto; padding: 44px 0 36px; }
+  .hero-collage { position: relative; right: auto; top: auto; width: 100%; }
   .hero p { max-width: 40em; }
-  .hero-collage {
-    position: relative;
-    right: auto; top: auto;
-    width: 100%;
-    margin-top: 48px;
-  }
 }
 @media (prefers-reduced-motion: reduce) {
   .hc-item { animation: none; }
