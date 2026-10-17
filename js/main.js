@@ -148,7 +148,9 @@ function initPressure() {
     title.style.fontSize = size + "px";
 
     const natural = title.getBoundingClientRect().height || size;
-    const target  = SITE.pressureHeight || 0;
+    let target  = SITE.pressureHeight || 0;
+    /* 桌機：大字高度跟著視窗高度走，畫面越高字越高，不會顯得扁 */
+    if (target > 0 && !matchMedia("(max-width: 1000px)").matches) target = Math.max(target, Math.round(innerHeight * 0.72));
     if (target > 0) {
       title.style.transform = `scaleY(${(target / natural).toFixed(4)})`;
       host.style.height = target + "px";
