@@ -296,6 +296,11 @@ function buildHeroCollage() {
     /* 進度：作品串剛從畫面下緣冒出＝0，離開畫面上緣＝1；焦點由最左走到最右 */
     const p = Math.min(1, Math.max(0, (vh - r.top) / (vh + r.height)));
     /* 電腦版：焦點走完整段；手機版：提早在作品串到達畫面上方、主標接上來時剛好走完 */
+    /* 手機：HELLO 隨著往下滑逐漸淡出，作品串從下方浮上來蓋過它 */
+    const hb = document.querySelector(".pressure-band");
+    if (hb) hb.style.opacity = narrowNow
+      ? String(1 - Math.min(1, Math.max(0, (window.scrollY - vh * 0.05) / (vh * 0.5))))
+      : "";
     let raw;
     if (narrowNow) {
       /* 手機：一開始焦點就在正中間（兩側由小到大對稱），往下滑才往右走完 */
