@@ -254,7 +254,7 @@ function buildHeroCollage() {
     items = narrow ? all.filter((_, i) => ![4, 5, 6].includes(i)) : all;   // 手機：拿掉第 5、6、7 張，第 4 張直接接第 8 張
     all.forEach(el => { el.style.display = items.includes(el) ? "" : "none"; });
     n = items.length;
-    scMax = narrow ? 1.7 : 2.1;
+    scMax = narrow ? 1.9 : 2.1;
     const cw = box.clientWidth;
     const iw = cw * (narrow ? 0.22 : 0.14);
     const ih = iw * 0.75;
@@ -271,11 +271,31 @@ function buildHeroCollage() {
     const pad = narrowNow ? 0 : ih * (scMax - 1) / 2 + 12;           // 焦點放大後會超出的上下空間
     box.style.height = (rise + ih) + "px";
     box.style.margin = pad + "px 0";
+    TR.cw = cw; TR.iw = iw; TR.ih = ih;
     items.forEach((el, i) => {
       const t = n > 1 ? i / (n - 1) : 0.5;           // 0＝最左、1＝最右
       el.style.width = iw + "px";
-      el.style.left = (-off + A + (W - iw - 2 * A) * t) + "px";
-      el.style.top = (rise * (1 - t)) + "px";
+      if (narrow) { el.style.left = "0px"; el.style.top = "0px"; }
+      else {
+        el.style.left = (-off + A + (W - iw - 2 * A) * t) + "px";
+        el.style.top = (rise * (1 - t)) + "px";
+      }
+    });
+  }
+
+  /* 手機：輸送帶。每張沿著右上→左下的斜線走，大小只看它離畫面正中間多遠：
+     中間永遠最大、兩側小；右上角進場時最小，往左下離場時也縮到最小 */
+  const TR = { cw: 0, iw: 0, ih: 0 };
+  const DELTA = 0.27, UIN = 1.12, UW = 0.2;
+  const trainEnd = () => (UIN + 0.12) + (n - 1) * DELTA;
+  function renderTrain(q) {
+    items.forEach((el, j) => {
+      const u = UIN + (n - 1 - j) * DELTA - q;          // 1.12＝右上外側，-0.12＝左下外側
+      const g = 1 / (1 + Math.pow((u - 0.5) / UW, 2));
+      const sc = SC_MIN + (scMax - SC_MIN) * g;
+      const x = TR.cw * u, y = rise * (1 - u);
+      el.style.transform = `translate3d(${(x - TR.iw / 2).toFixed(1)}px,${(y - TR.ih / 2 + rise * 0.05).toFixed(1)}px,0) scale(${sc.toFixed(3)})`;
+      el.style.zIndex = String(Math.round(g * 100));
     });
   }
 
@@ -301,7 +321,7 @@ function buildHeroCollage() {
     const band = document.getElementById("streamBand");
     const hb = document.querySelector(".pressure-band");
     const intro = document.getElementById("intro");
-    let raw;
+    let raw, trainQ = null;
     if (narrowNow && intro && band) {
       /* 手機：釘住的舞台。t＝0→1：HELLO 淡出，作品串斜向往上浮現並走完一輪 */
       const ir = intro.getBoundingClientRect();
@@ -320,20 +340,21 @@ function buildHeroCollage() {
         hero.style.transform = `translateY(${(-lf).toFixed(1)}px)`;
         hero.style.marginBottom = (-lf).toFixed(1) + "px";   // 下面的區塊跟著一起補上，不會被疊到
       }
-      const out = c((t - 0.3) / 0.25);
-      const op = Math.min(c((t - 0.14) / 0.1), 1 - c((t - 0.32) / 0.25));
+      const out = c((t - 0.5) / 0.25);
+      const op = Math.min(c((t - 0.12) / 0.1), 1 - c((t - 0.5) / 0.25));
       band.style.opacity = String(op);
       band.style.pointerEvents = op > 0.3 ? "" : "none";
       const cw0 = band.clientWidth;
       const yc = 0.27 * vh;                                // 作品串中心固定在舞台偏上
       band.style.transform = `translate(${(-out * 0.3 * cw0).toFixed(1)}px,${(yc - band.offsetHeight / 2 + out * 0.08 * vh).toFixed(1)}px)`;
-      raw = (n + 0.6) - c((t - 0.14) / 0.42) * (n + 0.6 + 1.6);   // 從右上外側進場 → 走出左下
+      trainQ = c((t - 0.12) / 0.56) * trainEnd();
     } else {
       if (hb) { hb.style.webkitMaskImage = ""; hb.style.maskImage = ""; hb.style.opacity = ""; hb.style.transform = ""; { const h2 = document.querySelector(".hero"); if (h2) { h2.style.transform = ""; h2.style.marginBottom = ""; } } }
       if (band) { band.style.opacity = ""; band.style.transform = ""; band.style.pointerEvents = ""; }
       raw = Math.min(1, Math.max(0, (p - 0.12) / 0.76)) * (n - 1);
     }
     /* 讓焦點停在一張上，只在兩張之間的一小段快速換過去 */
+    if (trainQ !== null) { renderTrain(trainQ); return; }
     const k = Math.floor(raw);
     const u = Math.min(1, Math.max(0, (raw - k - 0.3) / 0.4));
     render(k + u * u * (3 - 2 * u));
@@ -342,8 +363,11 @@ function buildHeroCollage() {
 
   layout();
   if (reduce) {
-    render(Math.floor((n - 1) / 2));                 // 不動：停在中間那張放大
-    addEventListener("resize", () => { layout(); render(Math.floor((n - 1) / 2)); }, { passive: true });
+    const still = () => narrowNow
+      ? renderTrain(UIN - 0.5 + (n - 1 - Math.floor((n - 1) / 2)) * DELTA)
+      : render(Math.floor((n - 1) / 2));            // 不動：停在中間那張放大
+    still();
+    addEventListener("resize", () => { layout(); still(); }, { passive: true });
     return;
   }
   update();
