@@ -939,15 +939,9 @@ a.bento-tile { text-decoration: none; color: inherit; }
 }
 
 /* ---------- HELLO 與主標之間的作品串 ---------- */
-/* 電腦版：不佔高度，作品串從 HELLO 下緣沿右側往下延伸；手機版：正常排在兩者之間 */
-.stream-band { position: relative; height: 0; }
-.stream-band .wrap { position: relative; }
-.hero-collage {
-  position: absolute;
-  right: var(--gutter);
-  top: 40px;
-  width: 38%;
-}
+/* 橫跨頁面寬度的一條斜線，正常排在 HELLO 與主標之間 */
+.stream-band { position: relative; padding: 36px 0 18px; overflow-x: clip; }
+.hero-collage { position: relative; width: 100%; }
 .hc-item {
   position: absolute;
   display: block;
@@ -958,11 +952,8 @@ a.bento-tile { text-decoration: none; color: inherit; }
 }
 .hc-item img { display: block; width: 100%; height: auto; border-radius: 3px; }
 @keyframes hc-in { from { opacity: 0; } to { opacity: 1; } }
-.hero p { max-width: min(40em, 54%); }
 @media (max-width: 1000px) {
-  .stream-band { height: auto; padding: 44px 0 36px; }
-  .hero-collage { position: relative; right: auto; top: auto; width: 100%; }
-  .hero p { max-width: 40em; }
+  .stream-band { padding: 28px 0 14px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hc-item { animation: none; }
