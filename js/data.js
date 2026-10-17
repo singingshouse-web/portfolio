@@ -24,7 +24,6 @@ const SITE = {
     { id: "megabank",   img: "./images/megabank_p1_01.webp" },
     { id: "fm-goods-b", img: "./images/fm-goods-b_p1_01.webp" },
     { id: "cosmoship",  img: "./images/cosmoship_p1_01.webp" },
-    { id: "ecard",      img: "./images/ecard_card.webp" },
     { id: "fm-plass",   img: "./images/fm-plass_p1_01.webp" },
     { id: "ikea",       img: "./images/ikea_p1_01.webp" },
     { id: "yennext",    img: "./images/yennext_p1_01.webp" },

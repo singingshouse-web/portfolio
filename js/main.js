@@ -275,7 +275,7 @@ function buildHeroCollage() {
     box.style.height = (rise + ih) + "px";
     box.style.margin = "0";
     const bandEl = document.getElementById("streamBand");
-    if (bandEl) { bandEl.style.paddingTop = pad + "px"; bandEl.style.paddingBottom = pad + "px"; bandEl.style.marginTop = (-pad * 0.6) + "px"; bandEl.style.marginBottom = (-pad * 0.5) + "px"; bandEl.style.pointerEvents = "none"; }
+    if (bandEl) { const ex = ih * scMax * 0.5; bandEl.style.paddingTop = (pad + ex) + "px"; bandEl.style.paddingBottom = (pad + ex) + "px"; bandEl.style.marginTop = (-(pad * 0.6) - ex) + "px"; bandEl.style.marginBottom = (-(pad * 0.5) - ex) + "px"; bandEl.style.pointerEvents = "none"; }
     TR.cw = cw; TR.iw = iw; TR.ih = ih; TR.w0 = iw * scMax; TR.h0 = iw * scMax * 0.75;
     items.forEach((el, i) => {
       const t = n > 1 ? i / (n - 1) : 0.5;           // 0＝最左、1＝最右
@@ -293,7 +293,7 @@ function buildHeroCollage() {
      大小只看離畫面正中間幾格，中間永遠最大。φ＝目前在畫面正中間的位置（以作品順序計） */
   const TR = { cw: 0, iw: 0, ih: 0 };
   const FALLB = 1.0, STEP = 0.46;
-  const TRAIN0 = 2.2, TRAIN1 = 8 + 2.5;
+  const trainA = () => n - 1 - 2.2, trainB = () => -2.5;   // 由左下往右上推進：左下的作品依序走到正中間
     const scAt = d => SC_MIN + (scMax - SC_MIN) / (1 + Math.pow(d / FALLB, 2));
   function renderTrain(phi) {
     /* k＝由左到右的順序；index 越大越靠左下，所以 k = n-1-index */
@@ -348,7 +348,7 @@ function buildHeroCollage() {
     const yc = r2.top + r2.height / 2;
     const yc0 = yc + window.scrollY;
     const tt = Math.min(1, Math.max(0, (yc0 - yc) / Math.max(1, yc0 + r2.height * 0.2)));
-    const trainQ = TRAIN0 + tt * (TRAIN1 - TRAIN0);
+    const trainQ = trainA() + tt * (trainB() - trainA());
     let raw = 0;
     if (trainQ !== null) { renderTrain(trainQ); return; }
     const k = Math.floor(raw);
@@ -360,7 +360,7 @@ function buildHeroCollage() {
   layout();
   if (reduce) {
     const still = () => narrowNow
-      ? renderTrain(TRAIN0)
+      ? renderTrain(trainA())
       : render(Math.floor((n - 1) / 2));            // 不動：停在中間那張放大
     still();
     addEventListener("resize", () => { layout(); still(); }, { passive: true });
