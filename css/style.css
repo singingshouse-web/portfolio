@@ -995,7 +995,8 @@ a.bento-tile { text-decoration: none; color: inherit; }
   .nav-links { grid-column: 1; justify-self: center; gap: 20px; }
   .pressure-band { padding-top: 40px; }
   .nav-links a { font-size: 11px; letter-spacing: .12em; }
-  .hero { padding: 0 0 80px; }
+  .hero { padding: 0 0 8px; }
+  #work.section { padding-top: 36px; }
   .hero-tags, #heroTags { display: none; }
   .section { padding: 70px 0; }
   .grid { grid-template-columns: 1fr; gap: 42px; }
