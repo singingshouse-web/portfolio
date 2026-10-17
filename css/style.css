@@ -954,7 +954,7 @@ a.bento-tile { text-decoration: none; color: inherit; }
 @keyframes hc-in { from { opacity: 0; } to { opacity: 1; } }
 @media (max-width: 1000px) {
   /* 手機：作品串往上疊到 HELLO 下半部，版面不用留那麼長；空白處不擋觸控 */
-  .stream-band { padding: 0; margin-top: -40vw; pointer-events: none; }
+  .stream-band { padding: 0; margin-top: -60vw; pointer-events: none; }
   .hc-item { pointer-events: auto; }
 }
 @media (prefers-reduced-motion: reduce) {
