@@ -20,14 +20,14 @@ const SITE = {
      順序＝由左到右；id 對應 BRANDS 的案例，圖用該案卡片圖。
      想增減張數，加減一行即可（桌機建議 6–10 張，手機只用前 5 張）。 */
   heroCollage: [
-    { id: "cf-embrace", img: "./images/cf-embrace_card.webp" },
-    { id: "megabank",   img: "./images/megabank_card.webp" },
-    { id: "fm-goods-b", img: "./images/fm-goods-b_card.webp" },
-    { id: "cosmoship",  img: "./images/cosmoship_card.webp" },
+    { id: "cf-embrace", img: "./images/cf-embrace_p1_01.webp" },
+    { id: "megabank",   img: "./images/megabank_p1_01.webp" },
+    { id: "fm-goods-b", img: "./images/fm-goods-b_p1_01.webp" },
+    { id: "cosmoship",  img: "./images/cosmoship_p1_01.webp" },
     { id: "ecard",      img: "./images/ecard_card.webp" },
-    { id: "fm-plass",   img: "./images/fm-plass_card.webp" },
-    { id: "ikea",       img: "./images/ikea_card.webp" },
-    { id: "yennext",    img: "./images/yennext_card.webp" },
+    { id: "fm-plass",   img: "./images/fm-plass_p1_01.webp" },
+    { id: "ikea",       img: "./images/ikea_p1_01.webp" },
+    { id: "yennext",    img: "./images/yennext_p1_01.webp" },
   ],
 
   /* 作品區版型："bento" 類別入口格 ／ "grid" 三欄列表 */

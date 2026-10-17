@@ -271,15 +271,16 @@ function buildHeroCollage() {
     const aCalc = (need - nat) / Math.max(0.2, unit - 2 / Math.max(1, n - 1));
     A = Math.max(0, Math.min(aCalc, (W - iw - cw * 0.2) / 2 / cw)) * cw;
     span = W - iw;
-    const pad = ih * (scMax - 1) / 2 + 12;           // 焦點放大後會超出的上下空間
+    const pad = Math.max(0, (scMax * ih - (rise + ih)) / 2) + 10;           // 焦點放大後會超出的上下空間
     box.style.height = (rise + ih) + "px";
-    box.style.margin = pad + "px 0 " + (pad * 0.55) + "px";
+    box.style.margin = "0";
     const bandEl = document.getElementById("streamBand");
-    if (bandEl) bandEl.style.marginTop = (-pad * 0.75) + "px";
-    TR.cw = cw; TR.iw = iw; TR.ih = ih;
+    if (bandEl) { bandEl.style.paddingTop = pad + "px"; bandEl.style.paddingBottom = pad + "px"; bandEl.style.marginTop = (-pad * 0.6) + "px"; bandEl.style.marginBottom = (-pad * 0.5) + "px"; bandEl.style.pointerEvents = "none"; }
+    TR.cw = cw; TR.iw = iw; TR.ih = ih; TR.w0 = iw * scMax; TR.h0 = iw * scMax * 0.75;
     items.forEach((el, i) => {
       const t = n > 1 ? i / (n - 1) : 0.5;           // 0＝最左、1＝最右
-      el.style.width = iw + "px";
+      el.style.width = (iw * scMax) + "px";
+      el.style.pointerEvents = "auto";
       if (narrow) { el.style.left = "0px"; el.style.top = "0px"; }
       else {
         el.style.left = (-off + A + (W - iw - 2 * A) * t) + "px";
@@ -317,7 +318,7 @@ function buildHeroCollage() {
       const sc = scAt(k - phi);
       const x = TR.cw / 2 + (X[k] - xc);
       const y = midY - (Y[k] - yc);
-      el.style.transform = `translate3d(${(x - TR.iw / 2).toFixed(1)}px,${(y - TR.ih / 2).toFixed(1)}px,0) scale(${sc.toFixed(3)})`;
+      el.style.transform = `translate3d(${(x - TR.w0 / 2).toFixed(1)}px,${(y - TR.h0 / 2).toFixed(1)}px,0) scale(${(sc / scMax).toFixed(4)})`;
       el.style.zIndex = String(Math.round(sc / scMax * 100));
     });
   }
