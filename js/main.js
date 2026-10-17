@@ -266,7 +266,7 @@ function buildHeroCollage() {
     const aCalc = (need - nat) / Math.max(0.2, unit - 2 / Math.max(1, n - 1));
     A = Math.max(0, Math.min(aCalc, (cw - iw - cw * 0.2) / 2 / cw)) * cw;
     span = cw - iw;
-    const pad = narrowNow ? ih * (scMax - 1) / 2 * 0.5 + 2 : ih * (scMax - 1) / 2 + 12;           // 焦點放大後會超出的上下空間
+    const pad = narrowNow ? 0 : ih * (scMax - 1) / 2 + 12;           // 焦點放大後會超出的上下空間
     box.style.height = (rise + ih) + "px";
     box.style.margin = pad + "px 0";
     items.forEach((el, i) => {
@@ -296,8 +296,16 @@ function buildHeroCollage() {
     /* 進度：作品串剛從畫面下緣冒出＝0，離開畫面上緣＝1；焦點由最左走到最右 */
     const p = Math.min(1, Math.max(0, (vh - r.top) / (vh + r.height)));
     /* 電腦版：焦點走完整段；手機版：提早在作品串到達畫面上方、主標接上來時剛好走完 */
-    const [p0, p1] = narrowNow ? [0.04, 0.6] : [0.12, 0.88];
-    const raw = Math.min(1, Math.max(0, (p - p0) / (p1 - p0))) * (n - 1);
+    let raw;
+    if (narrowNow) {
+      /* 手機：一開始焦點就在正中間（兩側由小到大對稱），往下滑才往右走完 */
+      const top0 = r.top + window.scrollY;
+      const pS = Math.min(1, Math.max(0, (vh - top0) / (vh + r.height)));
+      const mid = (n - 1) / 2;
+      raw = mid + Math.min(1, Math.max(0, (p - pS) / (0.6 - pS))) * (n - 1 - mid);
+    } else {
+      raw = Math.min(1, Math.max(0, (p - 0.12) / 0.76)) * (n - 1);
+    }
     /* 讓焦點停在一張上，只在兩張之間的一小段快速換過去 */
     const k = Math.min(n - 1, Math.floor(raw));
     const u = Math.min(1, Math.max(0, (raw - k - 0.3) / 0.4));
