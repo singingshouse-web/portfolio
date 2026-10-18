@@ -394,7 +394,7 @@ const BRANDS = [
           "../images/fm-goods-b_p1_01.webp",
           "../images/fm-goods-b_p1_02.webp",
           "../images/fm-goods-b_p1_03.webp",
-          "../images/fm-goods-b_p1_04webp.webp",
+          "../images/fm-goods-b_p1_04.webp",
           "../images/fm-goods-b_p1_05.webp",
           "../images/fm-goods-b_p1_06.webp",
           "../images/fm-goods-b_p1_07.webp"

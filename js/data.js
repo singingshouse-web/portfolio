@@ -440,7 +440,7 @@ const BRANDS = [
         note: "標誌疊了三個元素——字母 H 是 House，中間的聲波是引導的聲音，星芒是被照亮的那一刻。中英文橫式、直式與單標都從同一組格線推導，縮到名片大小仍然讀得出來。",
         images: [
           "./images/singsingshouse_p1_01.webp",
-          "./images/singsingshouse_p1_02webp.webp",
+          "./images/singsingshouse_p1_02.webp",
           "./images/singsingshouse_p1_03.webp",
           "./images/singsingshouse_p1_04.webp",
           "./images/singsingshouse_p1_05.webp"
@@ -587,7 +587,7 @@ const BRANDS = [
           "./images/fm-goods-b_p1_01.webp",
           "./images/fm-goods-b_p1_02.webp",
           "./images/fm-goods-b_p1_03.webp",
-          "./images/fm-goods-b_p1_04webp.webp",
+          "./images/fm-goods-b_p1_04.webp",
           "./images/fm-goods-b_p1_05.webp",
           "./images/fm-goods-b_p1_06.webp",
           "./images/fm-goods-b_p1_07.webp"
