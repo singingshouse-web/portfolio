@@ -379,11 +379,27 @@ const BRANDS = [
         note: "台灣與香港官方網站，目前皆在線上。官網的整體概念與視覺在台灣製作；產品詳情頁則以中國版的內容架構為基礎重新整理，並針對台灣與香港調整文字用法與產品名稱，兩版頁面設計相近。以台灣版首頁為例：從主視覺、依頭皮屬性分類的產品選擇，到專家推薦、頭皮健康百科與購買通路，依序排出瀏覽動線。",
         cols: 2,
         images: [
-          "./images/hscare_p1_01.webp",
-          "./images/hscare_p1_02.webp",
-          "./images/hscare_p1_03.webp",
-          "./images/hscare_p1_04.webp",
-          "./images/hscare_p1_05.webp"
+          "./images/hscare_m1.webp",
+          "./images/hscare_m2.webp",
+          "./images/hscare_m3.webp",
+          "./images/hscare_m4.webp"
+        ]
+      },
+      {
+        name: "百靈牌 刮鬍刀 全新 7 系列 活動網站",
+        note: "以「生活複雜、剃須簡單」為主軸的產品活動網站，負責網頁視覺設計。",
+        cols: 3,
+        images: ["./images/braun_01.webp", "./images/braun_02.webp"]
+      },
+      {
+        name: "好自在 甜睡許願機 活動網站",
+        note: "好自在「甜睡系列」的互動活動網站，包含網頁視覺、星座牌卡插畫設計與行動版媒體設計。",
+        cols: 4,
+        images: [
+          "./images/whisper_04.webp",
+          "./images/whisper_03.webp",
+          "./images/whisper_02.webp",
+          "./images/whisper_01.webp"
         ]
       }
     ],
