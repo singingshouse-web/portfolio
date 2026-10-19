@@ -884,8 +884,8 @@ const BRANDS = [
     nameEn: "AD FILM POST-PRODUCTION",
     category: "插畫與動態",
     tags: ["影片後製", "字幕合成", "音效對位", "特效層"],
-    card: "./images/ad-post_card.webp",
-    hero: "./images/ad-post_hero.webp",
+    card: "./images/ad-post_card.webp?v=2",
+    hero: "./images/ad-post_hero.webp?v=2",
     intro:
       "參與風倍清、Ariel 洗衣精與台灣01益生菌廣告影片的後製。把字幕、音效與音樂依畫面節奏對位，疊上特效層，部分影片也負責剪輯。點擊畫面即可播放。",
     projects: [
