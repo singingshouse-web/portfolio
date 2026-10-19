@@ -212,6 +212,12 @@ const BRANDS = [
       "長期參與兆豐銀行數位專案：從活動網站、數位帳戶的動態設計、線上結匯的前端介面，到官網與網路銀行的全站 icon。",
     projects: [
       {
+        name: "全球版官方網站",
+        note: "金融官網的難處是資訊量大又不能出錯。以明確的層級與留白，讓使用者在密集的資訊中仍找得到路。官網與網路銀行共用同一套 template，由我微調延伸。",
+        cols: 2,
+        images: ["./images/megabank_p1_01.webp", "./images/megabank_p1_02.webp"]
+      },
+      {
         name: "未來理財 2.0 活動網站",
         note: "以吉祥物 Bee 與大字級折扣數字為主軸，把各項基金優惠整理成好讀的分區，申購教學則用彈出視窗一步步帶過。從視覺設計、動態效果到與後端工程師溝通，由我獨立完成。\n活動頁：https://wwwfile.megabank.com.tw/event/wms2019Q3/fundoffer.html",
         cols: 2,
