@@ -224,6 +224,18 @@ const BRANDS = [
         images: ["./images/megabank_p2_01.webp", "./images/megabank_p2_02.webp"]
       },
       {
+        name: "Mega 理財學堂 角色動態",
+        note: "未來理財 2.0 活動網站裡的五個動態角色，包含吉祥物 Bee 的各種造型與幸運轉盤，替各個專區帶出不同的氣氛。",
+        cols: 5,
+        images: [
+          { src: "./images/megabank_p2_g1.gif", x1: true },
+          { src: "./images/megabank_p2_g2.gif", x1: true },
+          { src: "./images/megabank_p2_g3.gif", x1: true },
+          { src: "./images/megabank_p2_g4.gif", x1: true },
+          { src: "./images/megabank_p2_g5.gif", x1: true }
+        ]
+      },
+      {
         name: "數位帳戶「告別零存款 4 步曲」動態設計",
         note: "數位帳戶活動頁的四個步驟，各自搭配一段插畫動態，用角色的小動作帶出每一步的重點。這個案子我負責動態設計的部分。",
         cols: 4,
