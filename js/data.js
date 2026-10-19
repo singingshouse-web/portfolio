@@ -893,6 +893,14 @@ const BRANDS = [
           { youtube: "z0d9iG3kkrc" },
           { youtube: "TFAKBiZQdXo" }
         ]
+      },
+      { name: "KFC 泰式口味 店內電子燈片", cols: 2,
+        note: "酸辣滴咔泰檸脆雞上市的店內電子燈片，個人餐與多人餐兩支，10 秒循環播放。",
+        images: ["./images/kfc-thai_01.mp4", "./images/kfc-thai_02.mp4"]
+      },
+      { name: "KFC 韓式口味 店內電子燈片", cols: 2,
+        note: "韓辛甜薯無骨大口脆雞上市的店內電子燈片，個人餐與雙人餐兩支，10 秒循環播放。",
+        images: ["./images/kfc-korea_01.mp4", "./images/kfc-korea_02.mp4"]
       }
     ],
     also: ""
