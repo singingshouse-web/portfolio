@@ -852,7 +852,7 @@ const BRANDS = [
           "./images/mx-logo_p1_03.gif"
         ]
       },
-      { name: "MX Design 2023 Showreel 影片動效", note: "公司 2023 年度作品集影片，我參與其中的影片動效製作。點擊畫面即可播放。",
+      { name: "MX 2023 年十大事件簿（精華作品集）", note: "MX 2023 年度精華作品集，以新聞事件的趣味角度，整理一整年的十大專案。我參與其中的影片動效製作。點擊畫面即可播放。",
         images: [
           { youtube: "POShqs6pI9c" }
         ]
