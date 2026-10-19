@@ -369,8 +369,8 @@ const BRANDS = [
     nameEn: "P&G DIGITAL WEBSITES",
     category: "網頁與介面",
     tags: ["品牌官網", "產品導覽", "前端視覺"],
-    card: "./images/hscare_card.webp",
-    hero: "./images/hscare_hero.webp",
+    card: "./images/pg_card.webp",
+    hero: "./images/pg_hero.webp",
     intro:
       "任職期間為 P&G 旗下品牌製作的官方網站與電商頁面，負責前端視覺設計，並與後端工程師溝通實作細節。",
     projects: [
