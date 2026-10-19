@@ -659,7 +659,8 @@ function fitMedia(root) {
       const h = el.naturalHeight || el.videoHeight;
       if (!w || !h) return;
       const ratio = w / h;
-      fig.style.setProperty("--nat-w", w + "px");
+      const k = (fig.parentElement && fig.parentElement.dataset.x1) ? 2 : 1; /* x1：1 倍尺寸素材，以原尺寸顯示 */
+      fig.style.setProperty("--nat-w", (w * k) + "px");
       fig.style.aspectRatio = ratio.toFixed(4);
 
       /* 依「比例」決定欄數，不依賴檔案實際像素大小：
@@ -777,7 +778,7 @@ function buildBrand() {
           <h2>${esc(p.name)}</h2>
           <p>${esc(p.note).replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>')}</p>
         </div>
-        <div class="proj-flow"${p.cols ? ` style="--cols:${p.cols}"` : ""}>
+        <div class="proj-flow"${p.cols ? ` style="--cols:${p.cols}"` : ""}${p.x1 ? " data-x1=\"1\"" : ""}>
           ${p.images.map(item => `
             <figure class="rv${item && item.full ? " is-full" : ""}${item && item.youtube ? " is-yt" : ""}">${mediaHTML(item, p.name)}</figure>
           `).join("")}
