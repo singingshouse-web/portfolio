@@ -837,12 +837,12 @@ const BRANDS = [
     projects: [
       { name: "動態 Banner 系列", cols: 3, note: "為 hmm 各檔促銷製作的網路廣告動態：年終特惠倒數、聖誕驚喜包、夏季 Tee、新色登場與交換禮物企劃。在極短的秒數內完成訊息傳達，讓重點停留在畫面最後一幀。",
         images: [
-          "./images/hmm-banner_v01.mp4",
-          "./images/hmm-banner_v02.mp4",
-          "./images/hmm-banner_v03.mp4",
-          "./images/hmm-banner_v04.mp4",
-          "./images/hmm-banner_v05.mp4",
-          "./images/hmm-banner_v06.mp4"
+          "./images/hmm-banner_v01.gif",
+          "./images/hmm-banner_v02.gif",
+          "./images/hmm-banner_v03.gif",
+          "./images/hmm-banner_v04.gif",
+          "./images/hmm-banner_v05.gif",
+          "./images/hmm-banner_v06.gif"
         ]
       }
     ],
