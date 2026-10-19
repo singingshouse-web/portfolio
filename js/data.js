@@ -387,7 +387,7 @@ const BRANDS = [
         ]
       }
     ],
-    also: ""
+    also: "封面圖片：Photo by LINLI XU on Unsplash"
   },
 
 
