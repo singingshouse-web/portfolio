@@ -835,7 +835,7 @@ const BRANDS = [
     hero: "./images/hmm-banner_hero.webp",
     intro: "hmm 週年慶促銷網路廣告的動態設計，以等距插畫與倒數節奏帶動點擊。",
     projects: [
-      { name: "動態 Banner 系列", cols: 4, note: "在極短的秒數內完成訊息傳達，構圖與節奏都為了讓重點停留在畫面最後一幀。",
+      { name: "動態 Banner 系列", cols: 4, note: "歷年 hmm 各檔促銷與商品的動態 banner。在極短的秒數內完成訊息傳達，構圖與節奏都為了讓重點停留在畫面最後一幀。",
         images: [
           "./images/hmm-banner_p1_01.webp",
           "./images/hmm-banner_p1_02.webp",
@@ -843,18 +843,13 @@ const BRANDS = [
           "./images/hmm-banner_p1_04.webp",
           "./images/hmm-banner_p1_05.webp",
           "./images/hmm-banner_p1_06.webp",
-          "./images/hmm-banner_p1_07.webp"
-        ]
-      },
-      { name: "促銷檔期動態 Banner", cols: 3, x1: true,
-        note: "各檔促銷的網路廣告動態：年終特惠倒數、聖誕驚喜包、夏季 Tee、新色登場與交換禮物企劃。",
-        images: [
-          "./images/hmm-banner_v01.gif",
-          "./images/hmm-banner_v02.gif",
-          "./images/hmm-banner_v03.gif",
-          "./images/hmm-banner_v04.gif",
-          "./images/hmm-banner_v05.gif",
-          "./images/hmm-banner_v06.gif"
+          "./images/hmm-banner_p1_07.webp",
+          { src: "./images/hmm-banner_v01.gif", x1: true },
+          { src: "./images/hmm-banner_v02.gif", x1: true },
+          { src: "./images/hmm-banner_v03.gif", x1: true },
+          { src: "./images/hmm-banner_v04.gif", x1: true },
+          { src: "./images/hmm-banner_v05.gif", x1: true },
+          { src: "./images/hmm-banner_v06.gif", x1: true }
         ]
       }
     ],

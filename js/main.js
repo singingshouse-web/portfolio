@@ -567,7 +567,7 @@ function mediaHTML(item, alt) {
     }
     return `<video src="${esc(src)}" autoplay loop muted playsinline preload="metadata"></video>`;
   }
-  return `<img src="${esc(src)}" alt="${esc(alt)}" loading="lazy">`;
+  return `<img src="${esc(src)}" alt="${esc(alt)}" loading="lazy"${o.x1 ? " data-x1=\"1\"" : ""}>`;
 }
 
 /* 參與品牌列：跑馬燈（兩列反向）或靜態排列 */
@@ -659,7 +659,7 @@ function fitMedia(root) {
       const h = el.naturalHeight || el.videoHeight;
       if (!w || !h) return;
       const ratio = w / h;
-      const k = (fig.parentElement && fig.parentElement.dataset.x1) ? 2 : 1; /* x1：1 倍尺寸素材，以原尺寸顯示 */
+      const k = (el.dataset.x1 || (fig.parentElement && fig.parentElement.dataset.x1)) ? 2 : 1; /* x1：1 倍尺寸素材，以原尺寸顯示 */
       fig.style.setProperty("--nat-w", (w * k) + "px");
       fig.style.aspectRatio = ratio.toFixed(4);
 
