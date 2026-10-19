@@ -549,6 +549,15 @@ function buildWork() {
        controls:true }                                     有聲影片：封面圖 + 點擊播放          */
 function mediaHTML(item, alt) {
   const o = (item && typeof item === "object") ? item : {};
+
+  /* YouTube：{ youtube: "影片ID" } → 先顯示封面，點擊才載入播放器（不影響頁面載入速度） */
+  if (o.youtube) {
+    const id = String(o.youtube).replace(/[^\w-]/g, "");
+    return `<button class="yt" type="button" data-yt="${id}" aria-label="播放影片：${esc(alt)}">
+      <img src="https://i.ytimg.com/vi/${id}/maxresdefault.jpg" alt="${esc(alt)}" loading="lazy" data-no-parallax="1"
+        onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${id}/hqdefault.jpg'">
+      <span class="yt-play" aria-hidden="true"></span></button>`;
+  }
   const src = (typeof item === "string") ? item : (o.src || "");
 
   if (/\.(mp4|webm)$/i.test(src)) {
@@ -770,7 +779,7 @@ function buildBrand() {
         </div>
         <div class="proj-flow"${p.cols ? ` style="--cols:${p.cols}"` : ""}>
           ${p.images.map(item => `
-            <figure class="rv${item && item.full ? " is-full" : ""}">${mediaHTML(item, p.name)}</figure>
+            <figure class="rv${item && item.full ? " is-full" : ""}${item && item.youtube ? " is-yt" : ""}">${mediaHTML(item, p.name)}</figure>
           `).join("")}
         </div>
       </div>
@@ -815,3 +824,16 @@ function buildBrand() {
 
 buildHome();
 buildBrand();
+
+/* 點擊 YouTube 封面 → 換成播放器（youtube-nocookie，自動播放） */
+document.addEventListener("click", e => {
+  const btn = e.target.closest && e.target.closest(".yt");
+  if (!btn) return;
+  const id = btn.dataset.yt;
+  const f = document.createElement("iframe");
+  f.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+  f.title = btn.getAttribute("aria-label") || "YouTube";
+  f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+  f.allowFullscreen = true;
+  btn.replaceWith(f);
+});

@@ -364,19 +364,20 @@ const BRANDS = [
   {
     id: "hscare",
     scope: "任職期間專案",
-    role: "台灣與香港版網頁前端視覺設計",
-    name: "海倫仙度絲",
-    nameEn: "HEAD & SHOULDERS",
+    role: "網頁前端視覺設計、與後端工程師溝通",
+    name: "P&G 數位網站製作物",
+    nameEn: "P&G DIGITAL WEBSITES",
     category: "網頁與介面",
-    tags: ["官方網站", "產品導覽", "前端視覺"],
+    tags: ["品牌官網", "產品導覽", "前端視覺"],
     card: "./images/hscare_card.webp",
     hero: "./images/hscare_hero.webp",
     intro:
-      "海倫仙度絲台灣與香港官方網站，目前皆在線上。官網的整體概念與視覺在台灣製作；產品詳情頁則以中國版的內容架構為基礎重新整理，並針對台灣與香港調整文字用法與產品名稱，兩版的頁面設計相近。產品內頁以銷售頁的形式呈現。",
+      "任職期間為 P&G 旗下品牌製作的官方網站與電商頁面，負責前端視覺設計，並與後端工程師溝通實作細節。",
     projects: [
       {
-        name: "台灣官方網站",
-        note: "以台灣版首頁為例：從主視覺、依頭皮屬性分類的產品選擇，到專家推薦、頭皮健康百科與購買通路，依序排出瀏覽動線。",
+        name: "海倫仙度絲 官方網站",
+        note: "台灣與香港官方網站，目前皆在線上。官網的整體概念與視覺在台灣製作；產品詳情頁則以中國版的內容架構為基礎重新整理，並針對台灣與香港調整文字用法與產品名稱，兩版頁面設計相近。以台灣版首頁為例：從主視覺、依頭皮屬性分類的產品選擇，到專家推薦、頭皮健康百科與購買通路，依序排出瀏覽動線。",
+        cols: 2,
         images: [
           "./images/hscare_p1_01.webp",
           "./images/hscare_p1_02.webp",
@@ -388,6 +389,7 @@ const BRANDS = [
     ],
     also: ""
   },
+
 
   /* ═══════════ 募資專案 ═══════════
      之後每個新的募資案，複製下面整個 { } 區塊、改 id 與內容即可。
@@ -834,11 +836,11 @@ const BRANDS = [
   {
     id: "mx-logo",
     scope: "任職期間專案",
-    role: "標誌動態設計",
+    role: "標誌動態設計、影片動效",
     name: "MX 識別動畫",
     nameEn: "MX LOGO ANIMATION",
     category: "插畫與動態",
-    tags: ["動態設計", "識別動畫", "動態標誌"],
+    tags: ["動態設計", "識別動畫", "影片動效"],
     card: "./images/mx-logo_card.webp",
     hero: "./images/mx-logo_hero.webp",
     intro: "公司識別標誌的動態化設計，以幾何元素的聚合過程演繹標誌的構成邏輯。",
@@ -848,6 +850,11 @@ const BRANDS = [
           "./images/mx-logo_p1_01.gif",
           "./images/mx-logo_p1_02.gif",
           "./images/mx-logo_p1_03.gif"
+        ]
+      },
+      { name: "MX Design 2023 Showreel 影片動效", note: "公司 2023 年度作品集影片，我參與其中的影片動效製作。點擊畫面即可播放。",
+        images: [
+          { youtube: "POShqs6pI9c" }
         ]
       }
     ],
