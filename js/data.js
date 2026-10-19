@@ -836,11 +836,11 @@ const BRANDS = [
   {
     id: "mx-logo",
     scope: "任職期間專案",
-    role: "標誌動態設計、影片動效",
+    role: "標誌動態設計、影片動態與剪輯",
     name: "MX 識別動畫",
     nameEn: "MX LOGO ANIMATION",
     category: "插畫與動態",
-    tags: ["動態設計", "識別動畫", "影片動效"],
+    tags: ["動態設計", "識別動畫", "影片剪輯"],
     card: "./images/mx-logo_card.webp",
     hero: "./images/mx-logo_hero.webp",
     intro: "公司識別標誌的動態化設計，以幾何元素的聚合過程演繹標誌的構成邏輯。",
@@ -852,7 +852,7 @@ const BRANDS = [
           "./images/mx-logo_p1_03.gif"
         ]
       },
-      { name: "MX 2023 年十大事件簿（精華作品集）", note: "MX 2023 年度精華作品集，以新聞事件的趣味角度，整理一整年的十大專案。我參與其中的影片動效製作。點擊畫面即可播放。",
+      { name: "MX 2023 年十大事件簿（精華作品集）", note: "MX 2023 年度精華作品集，以新聞事件的趣味角度，整理一整年的十大專案。我拿到的是靜態圖素材，負責動態製作，並進行音效、音樂與剪輯。點擊畫面即可播放。",
         images: [
           { youtube: "POShqs6pI9c" }
         ]
