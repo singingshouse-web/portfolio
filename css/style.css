@@ -785,6 +785,9 @@ a.bento-tile { text-decoration: none; color: inherit; }
   margin: 0 auto;
 }
 
+/* 指定欄數的子案裡，圖片物件加 full:true → 該張獨占整列（例如 mockup 在上、小動圖在下） */
+.proj-flow[style*="--cols"] figure.is-full { width: 100% !important; }
+
 /* 小尺寸素材：順著版面排下去、自然折行，不鎖死欄數。
    每張依原始寬度取得起始寬度，再撐滿剩餘空間，
    但放大不超過原尺寸兩倍，避免 GIF 或小圖糊掉。
@@ -1023,6 +1026,7 @@ html { overflow-anchor: none; }
   .proj-flow[style*="--cols"] figure {
     width: calc((100% - 18px) / 2) !important;
   }
+  .proj-flow[style*="--cols"] figure.is-full { width: 100% !important; }
 
   /* 上下篇導覽：手機改為堆疊的整列連結 */
   .b-nav {

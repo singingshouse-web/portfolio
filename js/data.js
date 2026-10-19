@@ -85,7 +85,7 @@ const SITE = {
      「有想解決的問題，\n我們從那裡開始。」              */
   contactTitle: "正在找能把設計\n顧到交付的人，歡迎來信聊聊。",
   email: "hello@yennext.com",
-  clients: ["IKEA", "SK-II", "P&G", "KFC", "Intel", "LG", "PUMA", "EPSON", "Yahoo!",
+  clients: ["IKEA", "P&G", "KFC", "Intel", "LG", "PUMA", "EPSON", "Yahoo!",
     "Dove", "OLAY", "PANTENE", "Gillette", "Oral-B", "ARIEL", "好自在 whisper",
     "海倫仙度絲", "飛柔 PERT", "Neutrogena", "VS SASSOON", "白蘭氏 BRAND'S",
     "立頓 Lipton", "兆豐銀行", "桂格", "台北101", "全家 FamilyMart", "威秀影城",
@@ -108,7 +108,7 @@ const SITE = {
   about: {
     title: "關於我",
     paragraphs: [
-      "我做設計二十多年，從多媒體、平面一路走到網頁與動態。在品牌設計代理商任職期間，參與過 P&G、SK-II、台北 101、IKEA、兆豐銀行、桂格等品牌的相關專案，主要負責網頁前端視覺與廣告媒體設計。",
+      "我做設計二十多年，從多媒體、平面一路走到網頁與動態。在品牌設計代理商任職期間，參與過 P&G、台北 101、IKEA、兆豐銀行、桂格等品牌的相關專案，主要負責網頁前端視覺與廣告媒體設計。",
       "在網站專案中，遇到較複雜的互動效果，我習慣先製作動態示範，再與開發人員討論實際呈現方式。我在意的不只是設計稿，也包括後續製作與交付。",
       "這兩年我和夥伴創立品牌「心映好事」，負責品牌識別、募資頁視覺與數位內容等視覺工作。《擁抱情緒牌卡》在嘖嘖以 NT$100,000 為目標上線，最終募得 NT$1,032,197、669 位支持者，達成率 1,032%；線上抽牌系統則由我運用 AI Vibe Coding 獨立完成。",
       "當過品牌主之後，我看設計稿的角度變了——以前先看這一版好不好看，現在會先問這一頁要讓人做什麼。美感仍然是我的底線，但它要為結果服務。"
@@ -201,37 +201,44 @@ const BRANDS = [
   {
     id: "megabank",
     scope: "任職期間專案",
-    role: "網頁前端視覺設計、動態設計、icon 系統、活動網站設計與前後端溝通",
+    role: "活動網站設計與前後端溝通、動態設計、線上結匯前端設計、全站 icon 建置",
     name: "兆豐銀行",
     nameEn: "MEGA BANK",
     category: "網頁與介面",
-    tags: ["官方網站", "活動網站", "網路銀行", "動態設計", "Icon 系統"],
+    tags: ["活動網站", "動態設計", "前端設計", "Icon 系統"],
     card: "./images/megabank_card.webp",
     hero: "./images/megabank_hero.webp",
     intro:
-      "長期參與兆豐銀行數位專案，範圍涵蓋全球版官方網站改版、未來理財活動網站、數位帳戶動態設計、線上結匯前端設計，以及網路銀行的重點頁面 template 與全站 icon 建置。",
+      "長期參與兆豐銀行數位專案：從活動網站、數位帳戶的動態設計、線上結匯的前端介面，到官網與網路銀行的全站 icon。",
     projects: [
       {
-        name: "全球版官方網站改版",
-        note: "金融官網的難處是資訊量大又不能出錯。以明確的層級與留白，讓使用者在法遵規範的密集文字中仍找得到路。",
-        images: ["./images/megabank_p1_01.webp", "./images/megabank_p1_02.webp"]
-      },
-      {
-        name: "未來理財 活動網站",
-        note: "從視覺設計、動態效果到與後端工程師溝通，由我獨立完成。以「財富許願池」為主題，把試算理財這件事變成一段有節奏的互動體驗。",
+        name: "未來理財 2.0 活動網站",
+        note: "以吉祥物 Bee 與大字級折扣數字為主軸，把各項基金優惠整理成好讀的分區，申購教學則用彈出視窗一步步帶過。從視覺設計、動態效果到與後端工程師溝通，由我獨立完成。\n活動頁：https://wwwfile.megabank.com.tw/event/wms2019Q3/fundoffer.html",
         cols: 2,
         images: ["./images/megabank_p2_01.webp", "./images/megabank_p2_02.webp"]
       },
       {
-        name: "數位帳戶 動態設計",
-        note: "負責數位帳戶活動頁的動態設計：把開戶優惠拆成四個步驟，用角色與插畫動態帶出每一步的重點。",
-        cols: 2,
-        images: ["./images/megabank_p4_01.webp"]
+        name: "數位帳戶「告別零存款 4 步曲」動態設計",
+        note: "數位帳戶活動頁的四個步驟，各自搭配一段插畫動態，用角色的小動作帶出每一步的重點。這個案子我負責動態設計的部分。",
+        cols: 4,
+        images: [
+          { src: "./images/megabank_p4_01.webp", full: true },
+          "./images/megabank_p4_02.mp4",
+          "./images/megabank_p4_03.mp4",
+          "./images/megabank_p4_04.mp4",
+          "./images/megabank_p4_05.mp4"
+        ]
       },
       {
-        name: "網路銀行 重點頁面與 icon 系統",
-        note: "建置重點頁面的 template，讓後續頁面能沿用同一套結構快速複製；同時完成全站 icon 的設計與建置，統一各功能的圖示語言。",
-        images: ["./images/megabank_p3_01.webp", "./images/megabank_p3_02.webp"]
+        name: "線上結匯",
+        note: "出國結匯的線上申購流程，負責前端介面設計。首頁用四個重點圖示說明服務特色，申購、確認到交易結果以步驟條串起來，讓使用者隨時知道自己在流程的哪一步。",
+        cols: 2,
+        images: ["./images/megabank_p5_01.webp", "./images/megabank_p5_02.webp"]
+      },
+      {
+        name: "全站 icon 設計",
+        note: "兆豐全球版官方網站與網路銀行共用同一套 template，由我微調延伸；同時建置全站的 icon，用統一的線條粗細與單色處理，讓各功能的圖示語言一致。以下為部分範例。",
+        images: ["./images/megabank_icons.svg"]
       }
     ],
     also: ""
