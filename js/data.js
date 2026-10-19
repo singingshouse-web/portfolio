@@ -126,7 +126,7 @@ const SITE = {
     /* 時間軸：year 與 note 留空字串則不顯示 */
     timeline: [
       { label: "EDUCATION", name: "文化大學 廣告系", year: "", note: "廣告與傳播訓練，奠定從訊息出發思考視覺的習慣。" },
-      { label: "EXPERIENCE", name: "MX minimax design", year: "", note: "任職期間負責網頁前端視覺與廣告媒體設計，服務國際品牌與金融客戶。" },
+      { label: "EXPERIENCE", name: "MX design", year: "", note: "任職期間負責網頁前端視覺與廣告媒體設計，服務國際品牌與金融客戶。" },
       { label: "NOW", name: "近期自主專案", year: "近期", note: "自有品牌「心映好事」的視覺與數位內容製作，包含募資頁視覺與線上抽牌系統。" }
     ]
   },
@@ -170,7 +170,7 @@ const BRANDS = [
     scope: "任職期間專案",
     role: "網頁視覺設計、動態示範",
     name: "MX 官方網站",
-    nameEn: "MX MINIMAX DESIGN",
+    nameEn: "MX DESIGN",
     category: "網頁與介面",
     tags: ["官方網站", "響應式設計", "動態視覺"],
     card: "./images/MX_card.webp",
@@ -201,29 +201,36 @@ const BRANDS = [
   {
     id: "megabank",
     scope: "任職期間專案",
-    role: "網頁前端視覺設計",
+    role: "網頁前端視覺設計、動態設計、icon 系統、活動網站設計與前後端溝通",
     name: "兆豐銀行",
     nameEn: "MEGA BANK",
     category: "網頁與介面",
-    tags: ["官方網站", "活動網站", "網路銀行"],
+    tags: ["官方網站", "活動網站", "網路銀行", "動態設計", "Icon 系統"],
     card: "./images/megabank_card.webp",
     hero: "./images/megabank_hero.webp",
     intro:
-      "長期參與兆豐銀行數位專案，範圍涵蓋全球版官方網站的設計與改版更新、各波段財富管理活動網站，以及網路銀行平台的前端設計。",
+      "長期參與兆豐銀行數位專案，範圍涵蓋全球版官方網站改版、未來理財活動網站、數位帳戶動態設計、線上結匯前端設計，以及網路銀行的重點頁面 template 與全站 icon 建置。",
     projects: [
       {
-        name: "全球版官方網站",
+        name: "全球版官方網站改版",
         note: "金融官網的難處是資訊量大又不能出錯。以明確的層級與留白，讓使用者在法遵規範的密集文字中仍找得到路。",
         images: ["./images/megabank_p1_01.webp", "./images/megabank_p1_02.webp"]
       },
       {
-        name: "財富管理活動網站系列",
-        note: "波段活動要快速產出，所以先把版型模組化——每一波只換內容與色彩，系列一致性自然維持住。",
+        name: "未來理財 活動網站",
+        note: "從視覺設計、動態效果到與後端工程師溝通，由我獨立完成。以「財富許願池」為主題，把試算理財這件事變成一段有節奏的互動體驗。",
+        cols: 2,
         images: ["./images/megabank_p2_01.webp", "./images/megabank_p2_02.webp"]
       },
       {
-        name: "網路銀行平台",
-        note: "個人網銀的介面設計，以功能分群與圖示化降低操作門檻。",
+        name: "數位帳戶 動態設計",
+        note: "負責數位帳戶活動頁的動態設計：把開戶優惠拆成四個步驟，用角色與插畫動態帶出每一步的重點。",
+        cols: 2,
+        images: ["./images/megabank_p4_01.webp"]
+      },
+      {
+        name: "網路銀行 重點頁面與 icon 系統",
+        note: "建置重點頁面的 template，讓後續頁面能沿用同一套結構快速複製；同時完成全站 icon 的設計與建置，統一各功能的圖示語言。",
         images: ["./images/megabank_p3_01.webp", "./images/megabank_p3_02.webp"]
       }
     ],
