@@ -847,7 +847,6 @@ const BRANDS = [
           { src: "./images/hmm-banner_v01.gif", x1: true },
           { src: "./images/hmm-banner_v02.gif", x1: true },
           { src: "./images/hmm-banner_v03.gif", x1: true },
-          { src: "./images/hmm-banner_v04.gif", x1: true },
           { src: "./images/hmm-banner_v05.gif", x1: true },
           { src: "./images/hmm-banner_v06.gif", x1: true }
         ]
