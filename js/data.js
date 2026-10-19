@@ -859,5 +859,42 @@ const BRANDS = [
       }
     ],
     also: ""
+  },
+  {
+    id: "ad-post",
+    scope: "任職期間專案",
+    role: "字幕、音效與音樂對位、特效層合成、部分剪輯",
+    name: "廣告影片後製",
+    nameEn: "AD FILM POST-PRODUCTION",
+    category: "插畫與動態",
+    tags: ["影片後製", "字幕合成", "音效對位", "特效層"],
+    card: "https://i.ytimg.com/vi/R7-MQA-_nwE/maxresdefault.jpg",
+    hero: "https://i.ytimg.com/vi/R7-MQA-_nwE/maxresdefault.jpg",
+    intro:
+      "參與風倍清、Ariel 洗衣精與台灣01益生菌廣告影片的後製。把字幕、音效與音樂依畫面節奏對位，疊上特效層，部分影片也負責剪輯。點擊畫面即可播放。",
+    projects: [
+      { name: "風倍清 廣告影片", cols: 2,
+        note: "兩支廣告影片的後製：字幕、音效、音樂對位與特效層合成，部分剪輯。",
+        images: [
+          { youtube: "R7-MQA-_nwE" },
+          { youtube: "rDm6qsprLzY" }
+        ]
+      },
+      { name: "Ariel 洗衣精 廣告影片", cols: 2,
+        note: "兩支廣告影片的後製：字幕、音效、音樂對位與特效層合成，部分剪輯。",
+        images: [
+          { youtube: "bPjxFAYxZ60" },
+          { youtube: "1Diy-tmLG2A" }
+        ]
+      },
+      { name: "台灣01益生菌 電視廣告", cols: 2,
+        note: "兩支電視廣告的後製：字幕、音效、音樂對位與特效層合成，部分剪輯。",
+        images: [
+          { youtube: "z0d9iG3kkrc" },
+          { youtube: "TFAKBiZQdXo" }
+        ]
+      }
+    ],
+    also: ""
   }
 ];

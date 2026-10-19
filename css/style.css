@@ -799,6 +799,16 @@ a.bento-tile { text-decoration: none; color: inherit; }
 .proj-flow figure.is-yt .yt,
 .proj-flow figure.is-yt iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .proj-flow figure.is-yt { position: relative; }
+/* 指定欄數時（兩欄並排）：維持 16:9、封面鋪滿，不套用一般圖片的欄內縮放規則 */
+.proj-flow[style*="--cols"] figure.is-yt {
+  aspect-ratio: 16 / 9 !important;
+  background: #16150F;
+  position: relative;
+  margin: 0;
+}
+.proj-flow[style*="--cols"] figure.is-yt .yt img {
+  width: 100%; height: 100%; max-width: none; margin: 0; object-fit: cover;
+}
 .yt { padding: 0; background: #16150F; cursor: pointer; display: block; }
 .yt img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .yt-play {

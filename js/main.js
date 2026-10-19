@@ -837,3 +837,11 @@ document.addEventListener("click", e => {
   f.allowFullscreen = true;
   btn.replaceWith(f);
 });
+
+/* YouTube 封面沒有高解析版時（404），自動退回一般版 */
+document.addEventListener("error", e => {
+  const t = e.target;
+  if (t && t.tagName === "IMG" && /i\.ytimg\.com\/vi\/[^/]+\/maxresdefault/.test(t.src)) {
+    t.src = t.src.replace("maxresdefault", "hqdefault");
+  }
+}, true);
