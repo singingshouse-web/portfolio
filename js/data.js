@@ -298,7 +298,7 @@ const BRANDS = [
     card: "./images/ikea_card.webp",
     hero: "./images/ikea_hero.webp",
     intro:
-      "連續數年參與 IKEA 數位設計項目，包含每月定期檔期活動網頁，以及會員 eDM 與官網主頁的促銷視覺。",
+      "連續數年參與 IKEA 數位設計項目，包含每月定期檔期活動網頁、會員 eDM 與官網主頁的促銷視覺，以及 IKEA BUSINESS 企業業務初創頁面與分店 icon 延伸繪製。",
     projects: [
       {
         name: "每月檔期活動網頁",
@@ -309,6 +309,17 @@ const BRANDS = [
         name: "會員 eDM 系列",
         note: "email 環境的技術限制遠多於網頁，在能用的元素裡把促銷訊息做出品牌該有的質感。",
         images: ["./images/ikea_p2_01.webp","./images/ikea_p2_02.webp", "./images/ikea_p2_03.webp"]
+      },
+      {
+        name: "IKEA BUSINESS 企業業務 初創頁面",
+        note: "IKEA BUSINESS（企業業務）初創的專屬頁面，以企業卡夥伴為主軸，把優惠與申辦流程整理成清楚的三步驟，並同步調整手機版。",
+        images: ["./images/ikea_p3_01.webp"]
+      },
+      {
+        name: "分店 icon 延伸繪製",
+        note: "延伸繪製的各分店 icon，包含高雄、桃園、新莊、新店、台中、內湖，統一線條與尺寸，顯示不超過 60px。",
+        cols: 1,
+        images: ["./images/ikea_icons.webp"]
       }
     ],
     also: ""
