@@ -118,6 +118,12 @@ const SITE = {
     { name: "INFINI", logo: "./images/logos/infini.svg" },
     { name: "COSMOSHIP", logo: "./images/logos/cosmoship.svg" },
     { name: "HMM", logo: "./images/logos/hmm.svg" },
+    "ARIEL",
+    "佳格食品",
+    "TDCC"
+  ],
+  /* 已準備好 logo、但尚未確認是否參與的品牌（確認後移到上面的 clients） */
+  clientsHold: [
     { name: "Nestlé", logo: "./images/logos/nestle.svg" },
     { name: "DANONE", logo: "./images/logos/danone.svg" },
     { name: "SK-II", logo: "./images/logos/sk-ii.svg" },
@@ -140,11 +146,9 @@ const SITE = {
     { name: "T-DIMENSIONAL BEAUTY", logo: "./images/logos/t-dimensional-beauty.svg" },
     { name: "微熱山丘 SunnyHills", logo: "./images/logos/sunnyhills.svg" },
     { name: "CACAO LAB", logo: "./images/logos/cacaolab.svg" },
-    { name: "7-ELEVEN", logo: "./images/logos/7-eleven.svg" },
-    "ARIEL",
-    "佳格食品",
-    "TDCC"
+    { name: "7-ELEVEN", logo: "./images/logos/7-eleven.svg" }
   ],
+
 
   /* 品牌列是否使用跑馬燈（false 則為靜態排列） */
   clientsMarquee: true,
