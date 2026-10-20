@@ -758,6 +758,7 @@ function buildBrand() {
   /* 主視覺版位預覽：網址加 ?hero=a / b / c 可切換三種版型 */
   const hv = new URLSearchParams(location.search).get("hero");
   if (/^[abc]$/.test(hv || "")) document.body.classList.add("hero-" + hv);
+  else if (b.heroStyle) document.body.classList.add("hero-" + b.heroStyle);   /* data.js 指定：heroStyle:"a" */
   if (hv !== null || new URLSearchParams(location.search).get("preview")) {
     const bar = document.createElement("div");
     bar.className = "hero-switch";

@@ -289,6 +289,7 @@ const BRANDS = [
   },
   {
     id: "ikea",
+    heroStyle: "a",
     scope: "任職期間專案",
     role: "網頁與 eDM 視覺設計",
     name: "IKEA",
@@ -326,6 +327,7 @@ const BRANDS = [
   },
   {
     id: "sf",
+    heroStyle: "a",
     scope: "任職期間專案",
     role: "網頁前端視覺設計",
     name: "佳格食品",
@@ -447,6 +449,7 @@ const BRANDS = [
      累積到三件以上時，可比照 digital/ 的做法獨立成 crowdfunding/ 專頁。 */
   {
     id: "cf-embrace",
+    heroStyle: "a",
     scope: "自有專案",
     role: "募資頁視覺統合與編排、產品示意素材合成、募資影片製作；牌卡局部繪製、Layout 與完稿（頁面文案由合作夥伴負責）",
     name: "擁抱情緒牌卡",
