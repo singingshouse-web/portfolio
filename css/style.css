@@ -610,7 +610,7 @@ a.bento-tile { text-decoration: none; color: inherit; }
   font-size: 12px;
   line-height: 1.9;
   color: var(--ink-faint);
-  max-width: 46em;
+  max-width: none;   /* 桌機一行顯示，手機自然換行 */
 }
 
 /* ---------- contact ---------- */
