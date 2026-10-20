@@ -336,14 +336,14 @@ const BRANDS = [
         note: "企業集團的多品牌架構容易讓官網變成目錄。重整視覺層級與導覽動線，讓訪客先看懂集團、再找到品牌。",
         cols: 2,
         images: [
-          "./images/sf_p2_01.webp",
-          "./images/sf_p2_02.webp",
-          "./images/sf_p2_03.webp",
+          { src: "./images/sf_p2_01.webp", full: true },
+          { src: "./images/sf_p2_02.webp", full: true },
+          { src: "./images/sf_p2_03.webp", full: true },
           "./images/sf_p2_04.webp",
           "./images/sf_p2_05.webp",
           "./images/sf_p2_06.webp",
           "./images/sf_p2_07.webp",
-          "./images/sf_p2_08.webp"
+          { src: "./images/sf_p2_08.webp", full: true }
         ]
       }
     ],
