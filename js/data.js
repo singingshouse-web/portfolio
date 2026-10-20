@@ -413,7 +413,7 @@ const BRANDS = [
       {
         name: "百靈牌 刮鬍刀 全新 7 系列 活動網站",
         note: "以「生活複雜、剃須簡單」為主軸的產品活動網站，負責前端視覺設計。",
-        cols: 3,
+        cols: 2,
         images: ["./images/braun_01.webp", "./images/braun_02.webp"]
       },
       {
