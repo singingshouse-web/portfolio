@@ -227,13 +227,15 @@ const BRANDS = [
         name: "未來理財 2.0 活動網站",
         note: "以吉祥物 Bee 與大字級折扣數字為主軸，把各項基金優惠整理成好讀的分區，申購教學則用彈出視窗一步步帶過。從視覺設計、動態效果到與後端工程師溝通，由我獨立完成。",
         cols: 2,
-        images: ["./images/megabank_p2_04.webp", "./images/megabank_p2_03.webp", "./images/megabank_p2_01.webp", "./images/megabank_p2_02.webp"]
+        images: ["./images/megabank_p2_01.webp", "./images/megabank_p2_02.webp"]
       },
       {
         name: "Mega 理財學堂 角色動態",
         note: "未來理財 2.0 活動網站裡的五個動態角色，包含吉祥物 Bee 的各種造型與幸運轉盤，替各個專區帶出不同的氣氛。",
         cols: 5,
         images: [
+          { src: "./images/megabank_p2_04.webp", full: true },
+          { src: "./images/megabank_p2_03.webp", full: true },
           { src: "./images/megabank_p2_g1.gif", x1: true },
           { src: "./images/megabank_p2_g2.gif", x1: true },
           { src: "./images/megabank_p2_g3.gif", x1: true },
