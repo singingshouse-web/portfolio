@@ -100,6 +100,7 @@ const SITE = {
     { name: "PANTENE", logo: "./images/logos/pantene.svg" },
     { name: "Gillette", logo: "./images/logos/gillette.svg" },
     { name: "Oral-B", logo: "./images/logos/oral-b.svg" },
+    "ARIEL",
     { name: "好自在 whisper", logo: "./images/logos/whisper.svg" },
     { name: "海倫仙度絲", logo: "./images/logos/head-and-shoulders.svg" },
     { name: "飛柔 PERT", logo: "./images/logos/pert.svg" },
@@ -108,6 +109,7 @@ const SITE = {
     { name: "白蘭氏 BRAND'S", logo: "./images/logos/brands.svg" },
     { name: "立頓 Lipton", logo: "./images/logos/lipton.svg" },
     { name: "兆豐銀行", logo: "./images/logos/megabank.svg" },
+    "佳格食品",
     { name: "台北101", logo: "./images/logos/taipei-101.svg" },
     { name: "全家 FamilyMart", logo: "./images/logos/familymart.svg" },
     { name: "威秀影城", logo: "./images/logos/vieshow.svg" },
@@ -118,10 +120,9 @@ const SITE = {
     { name: "INFINI", logo: "./images/logos/infini.svg" },
     { name: "COSMOSHIP", logo: "./images/logos/cosmoship.svg" },
     { name: "HMM", logo: "./images/logos/hmm.svg" },
-    "ARIEL",
-    "佳格食品",
     "TDCC"
   ],
+
   /* 已準備好 logo、但尚未確認是否參與的品牌（確認後移到上面的 clients） */
   clientsHold: [
     { name: "Nestlé", logo: "./images/logos/nestle.svg" },
