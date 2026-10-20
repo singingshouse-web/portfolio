@@ -88,7 +88,7 @@ const SITE = {
   clients: ["IKEA", "P&G", "KFC", "Intel", "LG", "PUMA", "EPSON", "Yahoo!",
     "Dove", "OLAY", "PANTENE", "Gillette", "Oral-B", "ARIEL", "好自在 whisper",
     "海倫仙度絲", "飛柔 PERT", "Neutrogena", "VS SASSOON", "白蘭氏 BRAND'S",
-    "立頓 Lipton", "兆豐銀行", "桂格", "台北101", "全家 FamilyMart", "威秀影城",
+    "立頓 Lipton", "兆豐銀行", "佳格食品", "台北101", "全家 FamilyMart", "威秀影城",
     "SYSTEX", "Apacer", "LP SUPPORT", "PIMQ", "INFINI", "COSMOSHIP", "HMM", "TDCC"],
 
   /* 品牌列是否使用跑馬燈（false 則為靜態排列） */
