@@ -1122,3 +1122,9 @@ body.hero-c .b-hero:not(.is-contain) { aspect-ratio: auto; height: clamp(110px, 
 
 /* 專案頁文字：桌機放寬到約 870px，並讓斷行平均，避免孤字（例如單獨一行「互動。」） */
 .b-intro, .b-role, .proj-head p { text-wrap: balance; }
+
+/* 品牌 logo（灰色 SVG，顏色已與文字 --ink-soft 一致）：每個放在 64px 方格內，視覺重量由設計時的 70×70 畫板控制 */
+.mq-track span.lg, .clients span.lg { padding: 0; line-height: 0; }
+.mq-track { gap: 22px; }
+.mq-track span.lg img, .clients span.lg img { width: 64px; height: 64px; display: block; }
+@media (max-width: 760px) { .mq-track span.lg img, .clients span.lg img { width: 52px; height: 52px; } }

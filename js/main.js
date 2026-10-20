@@ -575,10 +575,13 @@ function buildClients() {
   const wrap = $("#clients");
   if (!wrap) return;
   const list = SITE.clients || [];
+  const clientItem = c => (c && c.logo)
+    ? `<span class="lg"><img src="${esc(c.logo)}" alt="${esc(c.name)}" title="${esc(c.name)}" loading="lazy"></span>`
+    : `<span>${esc(c && c.name ? c.name : c)}</span>`;
 
   if (!SITE.clientsMarquee) {
     wrap.className = "clients";
-    wrap.innerHTML = list.map(c => `<span>${esc(c)}</span>`).join("");
+    wrap.innerHTML = list.map(clientItem).join("");
     return;
   }
 
@@ -587,7 +590,7 @@ function buildClients() {
   wrap.className = "clients-marquee";
   wrap.innerHTML = rows.map((row, i) => {
     /* 內容複製兩份，才能無縫接續 */
-    const items = row.concat(row).map(c => `<span>${esc(c)}</span>`).join("");
+    const items = row.concat(row).map(clientItem).join("");
     return `<div class="mq-row"><div class="mq-track${i ? " rev" : ""}">${items}</div></div>`;
   }).join("");
 }
