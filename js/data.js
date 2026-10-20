@@ -323,21 +323,27 @@ const BRANDS = [
     id: "sf",
     scope: "任職期間專案",
     role: "網頁前端視覺設計",
-    name: "桂格",
+    name: "佳格食品",
     nameEn: "STANDARD FOODS",
     category: "網頁與介面",
     tags: ["官網改版", "前端視覺"],
     card: "./images/sf_card.webp",
     hero: "./images/sf_hero.webp",
-    intro: "參與桂格企業官網改版專案，負責前端視覺設計。",
+    intro: "參與佳格食品企業官網改版專案，負責前端視覺設計。",
     projects: [
       {
         name: "企業官網改版",
         note: "企業集團的多品牌架構容易讓官網變成目錄。重整視覺層級與導覽動線，讓訪客先看懂集團、再找到品牌。",
+        cols: 2,
         images: [
-          "./images/sf_p1_01.webp",
-          "./images/sf_p1_02.webp",
-          "./images/sf_p1_03.webp"
+          "./images/sf_p2_01.webp",
+          "./images/sf_p2_02.webp",
+          "./images/sf_p2_03.webp",
+          "./images/sf_p2_04.webp",
+          "./images/sf_p2_05.webp",
+          "./images/sf_p2_06.webp",
+          "./images/sf_p2_07.webp",
+          "./images/sf_p2_08.webp"
         ]
       }
     ],
