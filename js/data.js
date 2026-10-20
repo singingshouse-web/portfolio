@@ -212,12 +212,6 @@ const BRANDS = [
       "長期參與兆豐銀行數位專案：從活動網站、數位帳戶的動態設計、線上結匯的前端介面，到官網與網路銀行的全站 icon。",
     projects: [
       {
-        name: "全球版官方網站",
-        note: "金融官網的難處是資訊量大又不能出錯。以明確的層級與留白，讓使用者在密集的資訊中仍找得到路。官網與網路銀行共用同一套 template，由我微調延伸。",
-        cols: 2,
-        images: ["./images/megabank_p1_01.webp", "./images/megabank_p1_02.webp"]
-      },
-      {
         name: "網路銀行 關鍵頁面",
         note: "個人網路銀行的關鍵頁面樣板，包含登入首頁與台幣轉帳流程。以橘色作為識別色，轉帳以步驟條帶使用者走完每一步，之後的各功能頁面都延伸這套樣板。",
         cols: 2,
@@ -228,8 +222,8 @@ const BRANDS = [
         note: "以吉祥物 Bee 與大字級折扣數字為主軸，把各項基金優惠整理成好讀的分區，申購教學則用彈出視窗一步步帶過；專區裡的五個動態角色，包含 Bee 的各種造型與幸運轉盤，替各個專區帶出不同的氣氛。從視覺設計、動態效果到與後端工程師溝通，由我獨立完成。",
         cols: 5,
         images: [
-          { src: "./images/megabank_p2_04.webp", full: true },
-          { src: "./images/megabank_p2_03.webp", full: true },
+          { src: "./images/megabank_p2_04.webp", half: true },
+          { src: "./images/megabank_p2_03.webp", half: true },
           { src: "./images/megabank_p2_g1.gif", x1: true },
           { src: "./images/megabank_p2_g2.gif", x1: true },
           { src: "./images/megabank_p2_g3.gif", x1: true },

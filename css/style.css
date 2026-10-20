@@ -787,6 +787,8 @@ a.bento-tile { text-decoration: none; color: inherit; }
 
 /* 指定欄數的子案裡，圖片物件加 full:true → 該張獨占整列（例如 mockup 在上、小動圖在下） */
 .proj-flow[style*="--cols"] figure.is-full { width: 100% !important; }
+/* half:true → 在多欄子案裡固定占半列（兩張並排） */
+.proj-flow[style*="--cols"] figure.is-half { width: calc((100% - 26px) / 2) !important; }
 
 /* YouTube 影片：16:9，點擊前為封面＋播放鍵；單支影片不撐滿整列，避免過大 */
 .proj-flow figure.is-yt {

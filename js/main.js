@@ -780,7 +780,7 @@ function buildBrand() {
         </div>
         <div class="proj-flow"${p.cols ? ` style="--cols:${p.cols}"` : ""}${p.x1 ? " data-x1=\"1\"" : ""}>
           ${p.images.map(item => `
-            <figure class="rv${item && item.full ? " is-full" : ""}${item && item.youtube ? " is-yt" : ""}">${mediaHTML(item, p.name)}</figure>
+            <figure class="rv${item && item.full ? " is-full" : ""}${item && item.half ? " is-half" : ""}${item && item.youtube ? " is-yt" : ""}">${mediaHTML(item, p.name)}</figure>
           `).join("")}
         </div>
       </div>
