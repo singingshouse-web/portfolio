@@ -918,6 +918,12 @@ const BRANDS = [
     intro:
       "參與風倍清、Ariel 洗衣精與台灣01益生菌廣告影片的後製。把字幕、音效與音樂依畫面節奏對位，疊上特效層，部分影片也負責剪輯。點擊畫面即可播放。",
     projects: [
+      { name: "MX design 2023 SHOWREEL",
+        note: "MX design 2023 年度作品集錦，收錄當年度的廣告影片與動態作品。",
+        images: [
+          { youtube: "POShqs6pI9c" }
+        ]
+      },
       { name: "風倍清 廣告影片", cols: 2,
         note: "兩支廣告影片的後製：字幕、音效、音樂對位與特效層合成，部分剪輯。",
         images: [
