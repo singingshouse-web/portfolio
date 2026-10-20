@@ -1094,3 +1094,22 @@ html { overflow-anchor: none; }
     text-align: center;
   }
 }
+
+/* =========================================================
+   主視覺版位三種版型（預覽用：brand.html?id=…&hero=a|b|c）
+   a：滿版但縮短      b：內縮成內容寬度的圓角卡片      c：細長橫條
+   ========================================================= */
+body.hero-a .b-hero:not(.is-contain) { aspect-ratio: auto; height: clamp(220px, 36vh, 400px); }
+body.hero-b .b-hero:not(.is-contain) {
+  aspect-ratio: 3 / 1;
+  max-width: calc(var(--max) - var(--gutter) * 2);
+  width: calc(100% - var(--gutter) * 2);
+  margin-left: auto; margin-right: auto;
+  border-radius: 6px;
+}
+body.hero-c .b-hero:not(.is-contain) { aspect-ratio: auto; height: clamp(110px, 17vh, 190px); }
+@media (max-width: 760px) {
+  body.hero-a .b-hero:not(.is-contain) { height: 190px; aspect-ratio: auto; }
+  body.hero-b .b-hero:not(.is-contain) { aspect-ratio: 2 / 1; }
+  body.hero-c .b-hero:not(.is-contain) { height: 110px; }
+}

@@ -755,6 +755,10 @@ function buildBrand() {
 
   document.title = SITE.titleName || SITE.brandName;
 
+  /* 主視覺版位預覽：網址加 ?hero=a / b / c 可切換三種版型 */
+  const hv = new URLSearchParams(location.search).get("hero");
+  if (/^[abc]$/.test(hv || "")) document.body.classList.add("hero-" + hv);
+
   const heroBox = $("#bHero").parentElement;
   heroBox.innerHTML = mediaHTML(b.hero, `${b.name} 主視覺`);
 

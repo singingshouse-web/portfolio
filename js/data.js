@@ -334,11 +334,11 @@ const BRANDS = [
     tags: ["官網改版", "前端視覺"],
     card: "./images/sf_card.webp",
     hero: "./images/sf_hero.webp",
-    intro: "參與佳格食品企業官網改版專案，負責前端視覺設計。",
+    intro: "品牌、產品與 ESG 內容龐大，導覽深達三層。我負責視覺提案、頁面與介面設計，並協助工程落地。",
     projects: [
       {
-        name: "企業官網改版",
-        note: "企業集團的多品牌架構容易讓官網變成目錄。重整視覺層級與導覽動線，讓訪客先看懂集團、再找到品牌。",
+        name: "企業官方網站視覺設計",
+        note: "多層選單｜規劃三層選單的視覺層級，並以 After Effects 製作動態示範，讓工程團隊看懂互動。\n可延伸產品頁｜一套版型可沿用到多數產品，特殊產品保留調整彈性。\n跨裝置｜桌面、平板、手機各自調整版面，內容維持清楚。",
         images: [
           { src: "./images/sf_p2_01.webp", full: true },
           { src: "./images/sf_p2_02.webp", full: true },
@@ -351,7 +351,7 @@ const BRANDS = [
         ]
       }
     ],
-    also: ""
+    also: "負責範圍：視覺提案、主要頁面、產品頁版型、選單視覺與互動示範、開發協作"
   },
   {
     id: "pimq",
