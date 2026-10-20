@@ -1128,3 +1128,6 @@ body.hero-c .b-hero:not(.is-contain) { aspect-ratio: auto; height: clamp(110px, 
 .mq-track { gap: 22px; }
 .mq-track span.lg img, .clients span.lg img { width: 64px; height: 64px; display: block; }
 @media (max-width: 760px) { .mq-track span.lg img, .clients span.lg img { width: 52px; height: 52px; } }
+
+/* 文字品牌與 logo 垂直置中對齊 */
+.mq-track { align-items: center; }
