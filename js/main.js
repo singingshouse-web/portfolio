@@ -758,6 +758,20 @@ function buildBrand() {
   /* 主視覺版位預覽：網址加 ?hero=a / b / c 可切換三種版型 */
   const hv = new URLSearchParams(location.search).get("hero");
   if (/^[abc]$/.test(hv || "")) document.body.classList.add("hero-" + hv);
+  if (hv !== null || new URLSearchParams(location.search).get("preview")) {
+    const bar = document.createElement("div");
+    bar.className = "hero-switch";
+    bar.innerHTML = ["", "a", "b", "c"].map(k =>
+      `<button type="button" data-k="${k}"${(hv || "") === k ? ' class="is-on"' : ""}>${k ? k.toUpperCase() : "原版"}</button>`).join("");
+    bar.addEventListener("click", e => {
+      const k = e.target.dataset && e.target.dataset.k;
+      if (k === undefined) return;
+      document.body.classList.remove("hero-a", "hero-b", "hero-c");
+      if (k) document.body.classList.add("hero-" + k);
+      bar.querySelectorAll("button").forEach(x => x.classList.toggle("is-on", x === e.target));
+    });
+    document.body.appendChild(bar);
+  }
 
   const heroBox = $("#bHero").parentElement;
   heroBox.innerHTML = mediaHTML(b.hero, `${b.name} 主視覺`);
