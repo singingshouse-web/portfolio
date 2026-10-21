@@ -620,6 +620,13 @@ const BRANDS = [
         ]
       },
       {
+        name: "字體",
+        note: "三種字體各管一件事：Syne 的字重軸負責字標與大標；Montserrat 管導覽、小標與英文；中文不進字軸系統，用 Noto Sans TC，取它穩定好讀。",
+        images: [
+          "./images/yennext_p4_01.webp"
+        ]
+      },
+      {
         name: "輔助圖形",
         note: "同一條互動規則放大到整個畫面：游標靠近，網格被推開再彈回。字標講「字會回應」，這裡講「空間會回應」——同一套系統的兩個尺度。",
         images: [
