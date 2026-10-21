@@ -621,7 +621,7 @@ const BRANDS = [
       },
       {
         name: "字體",
-        note: "三種字體各管一件事：Syne 的字重軸負責字標與大標；Montserrat 管導覽、小標與英文；中文不進字軸系統，用 Noto Sans TC，取它穩定好讀。",
+        note: "兩種字體各管一件事：Syne 的字重軸負責字標、導覽與英文；中文不進字軸系統，用 Noto Sans TC，取它穩定好讀。",
         images: [
           "./images/yennext_p4_01.webp"
         ]
